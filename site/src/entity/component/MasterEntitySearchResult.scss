@@ -1,0 +1,93 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.master-entity-search-result {
+    .master-entity-search-result-more-rows {
+        height: 32px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    
+        .ms-MessageBar-content {
+            padding: 0px;
+        }
+    }
+    
+    .master-entity-search-result-header {
+        height: 32px;
+    
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    
+        .master-entity-search-result-summary {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    }
+
+    .master-entity-search-result-list-view {
+        overflow: auto;
+        max-height: 60vh;
+    }
+
+
+    .master-entity-search-result-details-list {
+
+        .master-entity-search-result-list-view-item {
+            border: 1px solid $ms-color-neutralTertiary;
+            @include ms-font-s();
+            margin: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $ms-color-neutralLight;
+            }
+
+            .section {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 4px;
+            }                
+
+            .name {
+                font-weight: bold;
+            }
+
+            .value+.value {
+                margin-left: 12px;
+            }
+        }
+
+        .master-entity-name-container {
+            .ms-TooltipHost {
+                .ms-Button {
+                    height: 18px;
+                }
+            }
+        }
+    }
+
+    .master-entity-source-summary {
+        display: inline-block;
+
+        .master-entity-source-summary-item {
+            display: inline-block;
+            color: $ms-color-orange;
+            @include ms-font-l();
+        }
+
+        .master-entity-source-summary-item+.master-entity-source-summary-item {
+            margin-left: 8px;
+        }
+    }
+}
+
+.master-entity-search-result-filter-menu {
+    .master-entity-search-result-filter-menu-input-item {
+        margin: 8px;
+    }
+}

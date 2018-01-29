@@ -1,0 +1,20 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.entity-photo-each {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align:center !important;
+    .meta-data-each {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align:center !important;
+
+        .meta-data-each-table td,
+        .meta-data-each-table th
+        {
+            text-align:left;
+            border: 1px solid lightgray;
+        }
+    }
+}

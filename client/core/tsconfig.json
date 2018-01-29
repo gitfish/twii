@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "./lib",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "declaration": true,
+        "target": "es5",
+        "allowJs": false,
+        "experimentalDecorators": true,
+        "baseUrl": "./src",
+        "lib": ["dom", "es5", "scripthost", "es2015.core", "es2015.promise", "es2015.collection"] 
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

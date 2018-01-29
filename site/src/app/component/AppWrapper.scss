@@ -1,0 +1,298 @@
+@import "~office-ui-fabric-react/dist/sass/mixins/_General.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Directionality.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Responsive.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Responsive.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/_Responsive.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Grid.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/_Grid.scss";
+
+$headerHeight: 28px;
+$appItemHeight: 28px;
+$appItemWidth: $appItemHeight;
+$tabHeight: 32px;
+$buttonHeight: 28px;
+
+// fixes / overrides
+.ms-MessageBar {
+    .ms-MessageBar-content {
+        padding-bottom: 0px;
+    }
+}
+
+.alert-icon {
+    color: $ms-color-orange;
+}
+
+.ms-Button {
+    height: $buttonHeight;
+    line-height: $buttonHeight;
+}
+
+.ms-CommandBar {
+    height: $buttonHeight;
+
+    .ms-CommandBar-primaryCommands {
+        margin-left: 0px;
+        line-height: 28px;
+    }
+
+    .ms-CommandBarItem {
+        height: $buttonHeight;
+
+        .ms-Icon {
+            @include ms-font-s();
+        }
+
+        .ms-Button {
+            line-height: $buttonHeight;
+            @include ms-font-s();
+        }
+
+        .ms-CommandBarItem-link {
+            line-height: $buttonHeight;
+            @include ms-font-s();
+        }
+
+        .ms-CommandBarItem-commandText {
+            line-height: $buttonHeight;
+            @include ms-font-s();
+        }
+
+        .ms-CommandBarItem-text {
+            line-height: $buttonHeight;
+            @include ms-font-s();
+        }
+
+        .ms-CommandBarItem-custom-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 400;
+            color: $ms-color-themeSecondary;
+            position: relative;
+            background: 0 0;
+            border: none;
+            line-height: $buttonHeight;
+            min-width: 20px;
+            text-align: center;
+            padding: 0 4px;
+            height: 100%;
+            cursor: pointer;
+            outline: transparent;
+
+            &[disabled] {
+                color: $ms-color-neutralTertiary;
+            }
+
+            .material-icons {
+                padding: 0px 4px;
+            }
+        }
+    }
+}
+
+html[dir=ltr] {
+    
+    .ms-CommandBar {
+
+        .ms-CommandBar-sideCommands {
+            padding-right: 0px;
+        }
+    }
+
+}
+
+.ms-Pivot {
+    .ms-Pivot-link {
+        height: 32px;
+        line-height: 32px;
+    }
+
+    &.ms-Pivot--tabs {
+        .ms-Pivot-link {
+            height: $tabHeight;
+            line-height: $tabHeight;
+            padding: 0px;
+        }
+    }
+}
+
+.ms-DetailsList {
+    .ms-DetailsHeader {
+        line-height: inherit;
+        .ms-DetailsHeader-cell {
+            padding: 6px 4px;
+            white-space: normal;
+            .ms-DetailsHeader-cellTitle {
+                padding: 0 4px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            &.selection-header, &.selection-cell {
+                .ms-DetailsHeader-cellTitle {
+                    justify-content: center;
+                    .ms-Icon {
+                        @include ms-font-l();
+                    }
+                }
+            }
+        }
+    }
+    .ms-FocusZone {
+        vertical-align: inherit;
+    }
+    .ms-DetailsRow {
+        user-select: text;
+        .ms-DetailsRow-cell {
+            padding: 11px 4px;
+        }
+    }
+}
+
+.ms-Tooltip {
+    max-width: 2000px;
+}
+
+.app-wrapper {
+
+    .ms-Panel {
+        .ms-Panel-header {
+            margin-top: 0px;
+            margin-bottom: 8px;
+        }
+    }
+
+    .app-header {
+        background-color: $ms-color-neutralDark;
+        height: $headerHeight;
+        line-height: $headerHeight;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        position: fixed;
+        z-index: 600;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .app-menu-button {
+            @include ms-font-m();
+            color: $ms-color-white;
+            background-color: $ms-color-neutralDark;
+            height: $appItemHeight;
+            width: auto;
+            &:hover, &.active {
+                background-color: $ms-color-neutralSecondary;
+            }
+
+            .ms-Button-label {
+                @include ms-font-m();
+            }
+
+            .ms-Icon {
+                @include ms-font-m();
+            }
+
+            .ms-Button-menuIcon {
+                @include ms-font-s();
+            }
+        }
+
+        .app-menu-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: $appItemHeight;
+            min-width: $appItemHeight;
+            color: $ms-color-white;
+            @include ms-font-m();
+
+            &.error {
+                color: $ms-color-red;
+            }
+
+            &:hover, &.active {
+                background-color: $ms-color-neutralSecondary;
+            }
+
+            .ms-Icon {
+                color: $ms-color-white;
+            }
+
+            .ms-Button-label {
+                @include ms-font-m();
+            }
+
+            .ms-Icon {
+                @include ms-font-m();
+            }
+
+            .ms-Button-menuIcon {
+                @include ms-font-s();
+            }
+        }
+
+        .app-title {
+            margin-left: 8px;
+            margin-right: 8px;
+            color: $ms-color-neutralLighter;
+            @include ms-font-m();
+        }
+
+        .app-brand {
+            background: transparent;
+            border: none;
+            margin-left: 8px;
+            margin-right: 8px;
+            height: $headerHeight;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+
+            .app-brand-title {
+                color: $ms-color-neutralLight;
+                z-index: 2;
+            }
+
+            .app-brand-logo {
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+            }
+        }
+
+        .app-header-far {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: transparent;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }     
+    }
+
+    .app-main {
+        position: fixed;
+        top: $headerHeight;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        overflow: auto;
+    }
+}

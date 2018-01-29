@@ -1,0 +1,40 @@
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+
+$selectedColor: rgb(218, 218, 218);
+
+.master-entity-source-details-list {
+
+    .details-row-wrapper {
+        &.is-selected {
+            background: $selectedColor;
+
+            .ms-DetailsRow {
+                background: $selectedColor;
+
+                .ms-DetailsRow-cell {
+                    color: $ms-color-neutralPrimary;
+                }
+            }
+        }
+    }
+
+    .selection-header {
+        .ms-DetailsHeader-cellTitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .ms-Icon {
+                @include ms-font-l();
+            }
+        }
+    }
+
+    .selection-cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

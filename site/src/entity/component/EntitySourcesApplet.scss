@@ -1,0 +1,17 @@
+@import "~common/component/CommonMixins.scss";
+
+.entity-sources-applet {
+    @include fill();
+
+    .master-entity-source-dashboard {
+        @include fill();
+
+        .master-entity-source-dashboard-command-bar {
+            @include dockTop(28px);
+        }
+
+        .master-entity-source-dashboard-container {
+            @include dockBottomOffset(28px);
+        }
+    }
+}

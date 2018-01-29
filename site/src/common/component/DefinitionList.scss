@@ -1,0 +1,24 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.definition-list {
+    
+    &.inline {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+        dt {
+            font-weight: $ms-font-weight-semibold;
+            margin: 0px;
+        }
+
+        dd {
+            font-weight: $ms-font-weight-light;
+            margin-left: 8px;
+        }
+    }
+
+}

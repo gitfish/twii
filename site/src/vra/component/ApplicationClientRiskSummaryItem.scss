@@ -1,0 +1,56 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.risk-summary-item-container {
+    @include ms-font-s();
+    display: flex;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    .risk-summary-item-col {
+        flex-grow: 1;
+        .risk-summary-field {
+            min-height: 18px;
+            .risk-summary-field-label {
+                font-weight: bold;
+            }
+            .client-value {
+                min-height: 25px;
+                @include ms-font-m();
+                font-weight: bold;
+            }
+            .risk-check-nav {
+                display: flex;
+                flex: 1 1 auto;
+                .risk-check-nav-button {
+                    padding-right: 0;
+                    padding-left: 0;
+                    min-width: 30px;
+                    margin-right: 2px;
+                    margin-left: 2px;
+                }
+                .risk-check-ts-button {
+                    @include ms-font-s();
+                }
+            }
+            .risk-check-nav-field {
+                .risk-summary-field-label {
+                    height: 28px;
+                    span {
+                        line-height: 28px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.risk-summary-item-container+.risk-summary-item-container {
+    border-top: 1px dotted #004578;
+    padding-top: 8px;
+    margin-top: 0px;
+}
+
+.risk-check-nav-menu-item {
+    @include ms-font-s();
+}

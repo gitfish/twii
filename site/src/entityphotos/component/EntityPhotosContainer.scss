@@ -1,0 +1,11 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.entity-photos-container {
+    .entity-photos-load-handler {
+        width: 100px !important;
+        .entity-photos-load-handler-section {
+            width: 100px !important;
+        }
+    }
+}

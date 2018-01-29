@@ -1,0 +1,25 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.risk-rating-value {
+    padding-left: 0px;
+    .risk-rating {
+        min-height: 25px;
+        @include ms-font-m();
+        font-weight: bold;
+        color: $ms-color-white;
+        padding-left: 8px;
+        padding-top: 4px;
+        border-radius: 3px;
+    }
+    .risk-rating-HIGH {
+        background-color: $ms-color-red;
+    }
+    .risk-rating-LOW {
+        background-color: $ms-color-green;
+    }
+    .risk-rating-DEFAULT {
+        background-color: $ms-color-neutralSecondary;
+    }
+}

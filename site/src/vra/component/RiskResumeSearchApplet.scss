@@ -1,0 +1,42 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.risk-resume-search-history-items {
+
+    .risk-resume-search-history-item-button {
+        height: 28px;
+        padding: 2px 4px;
+        background-color: $ms-color-white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .risk-resume-search-request-summary {
+            cursor: pointer;
+            dl, dt, dd, label {
+                cursor: pointer;
+            }
+        }
+
+        &:hover {
+            background-color: $ms-color-neutralLight;
+        }
+    }
+
+    overflow: auto;
+    max-height: 80vh;
+}
+
+.risk-resume-search-request-summary {
+    @include ms-font-s();
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .definition-list+.definition-list {
+        padding-left: 8px;
+    }
+}

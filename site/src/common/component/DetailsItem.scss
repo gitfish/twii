@@ -1,0 +1,37 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.details-panel {
+    margin-bottom: 15px;
+    .load-spinner {
+        padding: 8px;
+    }
+    .details-item {
+        @include ms-font-s();
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding: 0px;
+        display: flex;
+        flex-flow: column wrap;
+        .ms-Grid {
+            padding-left: 0px;
+            padding-right: 0px;
+            .ms-Grid-row {
+                margin: 0px;
+                .ms-Grid-col {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    .details-attribute-label {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    .details-item+.details-item {
+        border-top: 1px dotted #004578;
+        padding-top: 8px;
+        margin-top: 0px;
+    }
+}

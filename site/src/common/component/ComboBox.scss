@@ -1,0 +1,80 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.ad-ComboBox-callout {
+
+    .ad-ComboBox-list {
+
+        .ad-ComboBox-item {
+            background: 0 0;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 30px;
+            line-height: 20px;
+            padding: 5px 16px;
+            position: relative;
+            border: 1px solid transparent;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            text-align: left;
+            color: $ms-color-neutralPrimary;
+
+            &.is-selected {
+                background-color: $ms-color-neutralTertiaryAlt;
+                color: $ms-color-black;
+
+                &:hover {
+                    background-color: $ms-color-neutralTertiaryAlt;
+                }
+            }
+
+            &:hover {
+                background-color: $ms-color-neutralLighter;
+            }
+        }
+    }
+}
+
+.ad-ComboBox-container {
+
+    .ad-ComboBox {
+        border: 1px solid $ms-color-neutralTertiary;
+        background: $ms-color-white;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        position: relative;
+
+        &:hover {
+            border-color: $ms-color-neutralSecondary;
+        }
+
+        .ad-ComboBox-input {
+            box-sizing: border-box;
+            box-shadow: none;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            border-radius: 0;
+            border: none;
+            color: #333333;
+            padding: 0 12px 0 12px;
+            width: 100%;
+            text-overflow: ellipsis;
+            outline: 0;
+        }
+
+        .ad-ComboBox-select-control {
+            .ms-Icon {
+                font-size: 12px;
+            }
+            &:hover {
+                background-color: $ms-color-neutralLight;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import "~common/component/CommonMixins.scss";
+@import "~entity/component/EntitySourceMixins.scss";
+
+.entity-sea-cargo-applet {
+    @include fill();
+    @include entity-source();
+
+    .sea-cargo-activity-list-container {
+        @include entity-source-list-container();
+    }
+}

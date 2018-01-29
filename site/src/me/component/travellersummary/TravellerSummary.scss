@@ -1,0 +1,17 @@
+.traveller-summary {
+
+  border: 1px solid #005a9e;
+
+  .traveller-summary-rows {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;
+    padding-left: 5px !important;
+  }
+
+  .traveller-summary-ribbon {
+    background-color: #005a9e;
+  }
+
+}

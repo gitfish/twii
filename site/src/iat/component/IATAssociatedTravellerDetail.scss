@@ -1,0 +1,11 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+
+.associated-traveller-detail {
+    .associated-traveller-movement {
+        padding-right: 6px;
+    }
+    .associated-traveller-movement+.associated-traveller-movement {
+        border-left: 1px dotted $ms-color-neutralDark;
+        padding-left: 6px;
+    }
+}

@@ -1,0 +1,10 @@
+.risk-resume-search-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    .risk-resume-search-action+.risk-resume-search-action {
+        margin-left: 10px;
+    }
+}

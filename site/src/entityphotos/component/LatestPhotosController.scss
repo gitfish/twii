@@ -1,0 +1,63 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.image-metadata-modal-controller {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    .ms-modalExample-header {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        font-size: 16px !important;
+        width: 100% !important;
+        padding-left: 0px !important;
+        span {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align:center !important;
+            width: 100% !important;
+        }
+        .close-model-icon-button {
+            color: white !important;
+        }
+    }
+    .ms-modalExample-body {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 30px !important;
+        text-align:center !important;
+        .image-each-wrapper {
+            display: inline-block !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align:center !important;
+            border: solid lightgrey;
+            border-width: 0.5px 0.5px;
+            padding: 2px 2px;
+            .image-each {
+                display: inline-block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                padding-top: 20px;
+            }
+        }
+    }
+    .image-metadata-button-group {
+        margin-top: 100px !important;
+        .image-metadata-button-load-all-photos {
+            display: inline-block !important;
+            border: 1px !important;
+            padding: 1px 1px !important;
+        }
+        .image-metadata-button-load-smartgate-photos {
+            display: inline-block !important;
+            border: 1px !important;
+            padding: 1px 1px !important;
+        }
+        .image-metadata-button-load-passport-photos {
+            display: inline-block !important;
+            border: 1px !important;
+            padding: 1px 1px !important;
+        }
+    }
+}

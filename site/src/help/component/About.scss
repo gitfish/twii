@@ -1,0 +1,25 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.about {
+
+    .about-value-row+.about-value-row {
+        margin-top: 8px;
+    }
+
+    .about-label {
+        font-weight: $ms-font-weight-semibold;
+        word-wrap: break-word;
+    }
+
+    .about-value {
+        word-wrap: break-word;
+    }
+
+    .about-main {
+        padding: 8px 4px;
+    }
+
+    .about-dependencies {
+        padding: 8px 4px;
+    }
+}

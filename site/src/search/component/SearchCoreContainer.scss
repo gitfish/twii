@@ -1,0 +1,34 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.search-core {
+    position: relative;
+    
+    .search-core-body {
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    .search-overlay {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        z-index: 30000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .search-spinner {
+            background-color: $ms-color-white;
+            border: 1px solid $ms-color-neutralLight;
+            border-radius: 4px;
+        }
+    }
+
+    .search-spinner {
+        padding: 10px;
+    }
+}

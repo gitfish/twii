@@ -1,0 +1,35 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.entity-attributes {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    @include ms-font-s();
+
+    color: $ms-color-neutralPrimary;
+
+    .ms-Link {
+        color: $ms-color-neutralPrimary;
+    }
+
+    .entity-attribute {
+        padding: 6px 8px;
+        
+        .definition-list-item+.definition-list-item {
+            padding-left: 8px;
+            border-left: 1px dotted $ms-color-neutralPrimary;
+        }
+
+        .entity-attribute-value {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    }
+}

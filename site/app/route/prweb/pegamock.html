@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Pega Mock</title>
+        <script>
+            var eventDataInputId = 'event-data-input';
+            var eventDataStorageKey = 'pega-event-data';
+            window.onmessage = function(e) {
+                if(e.origin && e.source !== window) {
+                    console.log("-- Message Back: " + JSON.stringify(e.data));
+                }
+            };
+            function raiseEvent() {
+                var eventDataJson = document.getElementById(eventDataInputId).value;
+                window.postMessage(JSON.parse(eventDataJson), "*");
+            }
+            function storeEventData() {
+                var eventDataJson = document.getElementById(eventDataInputId).value;
+                localStorage.setItem(eventDataStorageKey, eventDataJson);
+            }
+            window.addEventListener('load', function() {
+                var eventDataJson = localStorage.getItem(eventDataStorageKey);
+                if (eventDataJson) {
+                    document.getElementById(eventDataInputId).value = eventDataJson;
+                }
+            }, false);
+        </script>
+    </head>
+    <body>
+        <div><span>Event Data:</span></div>
+        <div>
+            <textarea id="event-data-input" rows="20" cols="75" onchange="storeEventData()">
+{
+    "CaseID": "PA-128",
+    "DomainType": "AIR",
+    "BookingSystemCode": "EK",
+    "CreationTs": "2017-08-17T11:48:00",
+    "RecordLocator": "HF8PUS",
+    "CaseType": "",
+    "DirectionCode": "",
+    "IATTravellerID": "",
+    "LocalPortCode": "",
+    "LocalScheduleDate": "",
+    "ParentRouteId": "",
+    "RouteId": "",
+    "TravelDocCntryCode": "",
+    "TravelDocId": "",
+    "Type": "",
+    "Action": ""
+}
+            </textarea>
+        </div>
+        <div><button type="button" onclick="raiseEvent()">Raise Event</button></div>
+    </body>
+</html>

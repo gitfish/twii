@@ -1,0 +1,32 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.search-container {
+    .search-input-container {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ms-SearchBox {
+            margin-bottom: 0px;
+            background-color: $ms-color-white;
+            width: 60%;
+        }
+    }
+
+    .search-cores {
+        
+        .search-result-message {
+            .ms-MessageBar-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .ms-MessageBar-text {
+                    flex-grow: unset;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+
+.wrapper {
+  display: flex;
+  font-size: 12px;
+  height: 20px;
+  padding: 0px 10px 0px 10px;
+  overflow: hidden;
+}
+.attr-label {
+  color: black;
+  margin: .1em;
+  padding: .3em;
+  flex: 1;
+}
+.attr-value {
+  color: black;
+  margin: .1em;
+  padding: .3em;
+  flex: 1;
+}

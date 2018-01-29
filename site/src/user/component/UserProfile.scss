@@ -1,0 +1,26 @@
+@import "~office-ui-fabric-react/dist/sass/variables/_Color.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/variables/_Font.Variables.scss";
+@import "~office-ui-fabric-react/dist/sass/mixins/_Font.Mixins.scss";
+
+.user-profile {
+
+    .user-profile-display-name {
+        @include ms-font-l();
+        font-weight: bold;
+    }
+
+    .user-profile-username {
+        margin-top: 8px;
+    }
+
+    .user-profile-email {
+        margin-top: 8px;
+    }
+
+    .user-profile-roles-container {
+        margin-top: 8px;
+        .user-profile-roles-list {
+            margin-top: 4px;
+        }
+    }
+}
