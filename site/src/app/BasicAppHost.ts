@@ -21,15 +21,24 @@ class BasicAppHost extends EventEmitter implements IAppHost {
     @observable.ref view : any;
     @observable private _state : any = {};
     @observable _initialized : boolean = false;
+    @observable _root : boolean = false;
 
     get id() {
         return this._id;
     }
 
+    @computed
     get root() {
-        return false;
+        return this._root;
     }
-
+    set root(value) {
+        this.setRoot(value);
+    }
+    @action
+    setRoot(root : boolean) {
+        this._root = root;
+    }
+    
     set router(value : IRouter) {
         this._router = value;
     }

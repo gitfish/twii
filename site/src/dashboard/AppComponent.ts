@@ -23,6 +23,7 @@ class AppComponent extends Component implements IAppComponent {
     @observable protected _initParams : any;
     @observable protected _initQuery : any;
     @observable _initialized : boolean = false;
+    @observable _root : boolean = false;
 
     protected _createElement() {
         const e = document.createElement("div");
@@ -30,8 +31,17 @@ class AppComponent extends Component implements IAppComponent {
         return e;
     }
 
+    @computed
     get root() {
-        return false;
+        return this._root;
+    }
+    set root(value) {
+        this.setRoot(value);
+    }
+    
+    @action
+    setRoot(root : boolean) {
+        this._root = root;
     }
 
     get router() {

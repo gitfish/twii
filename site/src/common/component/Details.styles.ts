@@ -50,7 +50,7 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IDetailsStyles
             alignItems: "center",
             marginLeft: 8,
             selectors: {
-                ".ms-Icon": [
+                ".details-icon": [
                     {
                         fontSize: FontSizes.small,
                         paddingRight: "6px",

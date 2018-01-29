@@ -77,10 +77,10 @@ class DetailsMenuAction extends React.Component<IDetailsMenuActionProps, IDetail
             menuOpen: false
         };
     }
-    _handleClick = (e : React.MouseEvent<any>) => {
+    private _onClick = (e : React.MouseEvent<any>) => {
         this.setState({ target: e.target, menuOpen: !this.state.menuOpen });
     }
-    _handleMenuDismiss = () => {
+    private _onMenuDismiss = () => {
         this.setState({ menuOpen: false });
     }
     render() {
@@ -88,12 +88,12 @@ class DetailsMenuAction extends React.Component<IDetailsMenuActionProps, IDetail
             <div className={this.props.classNames ? this.props.classNames.action : undefined}>
                 <IconButton className="details-action-menu-toggle-button"
                                         iconProps={{ iconName: "Clear" }}
-                                        onClick={this._handleClick}
+                                        onClick={this._onClick}
                                         title="Toggle Menu"
                                         ariaLabel="Toggle Menu"
                                         ariaDescription="Toggle Menu" />
                 {this.state.menuOpen && (
-                    <ContextualMenu items={this.props.menu} shouldFocusOnMount={true} target={this.state.target} onDismiss={this._handleMenuDismiss} />
+                    <ContextualMenu items={this.props.menu} shouldFocusOnMount={true} target={this.state.target} onDismiss={this._onMenuDismiss} />
                 )}
             </div>
         );
@@ -159,7 +159,9 @@ class Details extends React.Component<IDetailsProps, IDetailsState> {
             summary = [];
             const title = this.props.title || "Details";
             if(this.props.iconProps) {
-                summary.push(<Icon key="icon" {...this.props.iconProps} />);
+                const ep = Object.assign({}, this.props.iconProps);
+                ep.className = css(ep.className, "details-icon");
+                summary.push(<Icon key="icon" {...ep} />);
             }
             summary.push(<div key="title" className="title">{title}</div>);
         }

@@ -15,6 +15,12 @@ class AppHostWrapper extends React.Component<IAppHostWrapperProps, any> {
     private _onClickBrand = () => {
         this.props.host.load({ path: "/dashboard" });
     }
+    componentWillMount() {
+        const qr = this.props.host.params._root;
+        if(qr !== undefined) {
+            this.props.host.root = qr && (qr === "true" || qr === "1") ? true : false;
+        }
+    }
     render() {
         if(this.props.host.root) {
             return <AppWrapper {...this.props} onClickBrand={this.props.onClickBrand || this._onClickBrand}>{this.props.children}</AppWrapper>;

@@ -19,7 +19,6 @@ const nextHostId = () => {
 class WindowAppHost implements IAppHost {
     private _id : string;
     private _newWindowIdSequence = new Sequence();
-    private _root : boolean = false;
     private _extension? : string;
 
     window : Window;
@@ -31,6 +30,7 @@ class WindowAppHost implements IAppHost {
     @observable.ref view : any;
     @observable private _state : any = {};
     @observable _initialized : boolean = false;
+    @observable _root : boolean = true;
 
     get id() {
         if(!this._id) {
@@ -42,11 +42,16 @@ class WindowAppHost implements IAppHost {
         this._id = id;
     }
 
+    @computed
     get root() {
         return this._root;
     }
     set root(value) {
-        this._root = value;
+        this.setRoot(value);
+    }
+    @action
+    setRoot(root : boolean) {
+        this._root = root;
     }
 
     set router(value : IRouter) {
