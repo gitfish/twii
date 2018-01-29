@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
-import { AppWrapper } from "@navish/ui-core/lib/app/component/AppWrapper";
+import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 
 class TextFieldExamples extends React.Component<any, any> {
     private _onRenderPrefix = () => {

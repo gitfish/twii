@@ -1,4 +1,4 @@
-import { BrowserAppHost } from "@navish/core/lib/app/BrowserAppHost";
+import { BrowserAppHost } from "@twii/core/lib/app/BrowserAppHost";
 
 const RootAppHost = new BrowserAppHost();
 RootAppHost.window = window;

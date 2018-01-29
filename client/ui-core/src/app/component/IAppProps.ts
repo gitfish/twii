@@ -1,4 +1,4 @@
-import { IAppHost } from "@navish/core/lib/app/IAppHost";
+import { IAppHost } from "@twii/core/lib/app/IAppHost";
 
 interface IAppProps {
     host: IAppHost;

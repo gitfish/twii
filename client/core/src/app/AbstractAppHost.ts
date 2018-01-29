@@ -23,13 +23,22 @@ abstract class AbstractAppHost implements IAppHost {
     @observable.ref view : any;
     @observable private _state : any = {};
     @observable protected _initialized : boolean = false;
+    @observable protected _root : boolean = false;
 
     get id() {
         return this._id;
     }
 
+    @computed
     get root() {
-        return false;
+        return this._root;
+    }
+    set root(value) {
+        this._root = value;
+    }
+    @action
+    setRoot(root : boolean) {
+        this._root = root;
     }
 
     get router() {

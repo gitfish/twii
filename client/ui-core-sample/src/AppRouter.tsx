@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Router } from "roota/lib/Router";
 import { exactPath } from "roota/lib/Utils";
-import { AppWrapper } from "@navish/ui-core/lib/app/component/AppWrapper";
+import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 
 const AppRouter = new Router();
 AppRouter.use("/user/profile/menuItem", exactPath(req => {

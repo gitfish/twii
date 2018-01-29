@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IAppHost } from "@navish/core/lib/app/IAppHost";
+import { IAppHost } from "@twii/core/lib/app/IAppHost";
 import { Sync } from "../../common/component/Sync";
 import { Error } from "../../common/component/Error";
 import { Spinner } from "office-ui-fabric-react/lib/Spinner";

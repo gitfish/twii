@@ -1,6 +1,6 @@
 import * as React from "react";
-import IAppProps from "@navish/ui-core/lib/app/component/IAppletProps";
-import { AppWrapper } from "@navish/ui-core/lib/app/component/AppWrapper";
+import IAppProps from "@twii/ui-core/lib/app/component/IAppProps";
+import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 
 class DefaultApplet extends React.Component<IAppProps, any> {
     render() {

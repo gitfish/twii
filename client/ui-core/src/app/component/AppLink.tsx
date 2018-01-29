@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IAppHost } from "@navish/core/lib/app/IAppHost";
+import { IAppHost } from "@twii/core/lib/app/IAppHost";
 import { IRequest } from "roota/lib/IRequest";
 
 interface IAppLinkProps {

@@ -1,5 +1,5 @@
 {
-  "name": "@navish/ui-core-sample",
+  "name": "@twii/ui-core-sample",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -20,8 +20,8 @@
     "copy-webpack-plugin": "^4.2.3",
     "core-js": "^2.5.1",
     "del": "^3.0.0",
-    "@navish/core": "^1.0.0",
-    "@navish/ui-core": "^1.0.0",
+    "@twii/core": "^1.0.0",
+    "@twii/ui-core": "^1.0.0",
     "html-webpack-plugin": "^2.30.1",
     "office-ui-fabric-react": "^5.40.2",
     "react": "^16.2.0",

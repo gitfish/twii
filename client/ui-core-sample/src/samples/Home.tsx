@@ -1,7 +1,7 @@
 import * as React from "react";
-import IAppletProps from "@navish/ui-core/lib/app/component/IAppletProps";
-import { AppWrapper } from "@navish/ui-core/lib/app/component/AppWrapper";
-import { AppLink } from "@navish/ui-core/lib/app/component/AppLink";
+import IAppletProps from "@twii/ui-core/lib/app/component/IAppProps";
+import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
+import { AppLink } from "@twii/ui-core/lib/app/component/AppLink";
 
 class HomeApplet extends React.Component<IAppletProps, any> {
     render() {

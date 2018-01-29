@@ -1,6 +1,6 @@
 import * as React from "react";
-import { IAppHost } from "@navish/core/lib/app/IAppHost";
-import { AppHost } from "@navish/core/lib/app/AppHost";
+import { IAppHost } from "@twii/core/lib/app/IAppHost";
+import { AppHost } from "@twii/core/lib/app/AppHost";
 import { AppHostContainer, IAppHostCallbackProps } from "./AppHost";
 import { IRequest } from "roota/lib/IRequest";
 import { IRouter } from "roota/lib/IRouter";

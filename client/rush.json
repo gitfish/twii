@@ -5,17 +5,17 @@
 
   "projects": [
     {
-      "packageName": "@navish/core",
+      "packageName": "@twii/core",
       "projectFolder": "core",
       "shouldPublish": true
     },
     {
-      "packageName": "@navish/ui-core",
+      "packageName": "@twii/ui-core",
       "projectFolder": "ui-core",
       "shouldPublish": true
     },
     {
-      "packageName": "@navish/ui-core-sample",
+      "packageName": "@twii/ui-core-sample",
       "projectFolder": "ui-core-sample"
     }
   ]
