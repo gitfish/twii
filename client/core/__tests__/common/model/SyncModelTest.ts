@@ -1,11 +1,12 @@
-import SyncModel from "common/model/SyncModel";
+import { SyncModel } from "common/model/SyncModel";
 
 describe("Supplier Model", () => {
     test("standard", () => {
         const m = new SyncModel();
-        m.syncStart("test1");
+        m.syncStart({ id: "test1", type: "read" });
 
         expect(m.id).toBe("test1");
+        expect(m.type).toBe("read");
         expect(m.syncing).toBeTruthy();
         expect(m.startDate).toBeTruthy();
         expect(m.endDate).toBeFalsy();

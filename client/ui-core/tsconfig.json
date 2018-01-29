@@ -9,10 +9,15 @@
         "allowJs": false,
         "jsx": "react",
         "experimentalDecorators": true,
-        "baseUrl": "./src",
-        "lib": ["dom", "es5", "scripthost", "es2015.core", "es2015.promise", "es2015.collection"] 
+        "lib": ["dom", "es5", "scripthost", "es2015.core", "es2015.promise", "es2015.collection"],
+        "types": [
+            "jest"
+        ]
     },
     "include": [
         "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }

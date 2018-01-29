@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { AppHostContainer } from "app/component/AppHost";
-import { AppHost } from "fenz-core/lib/app/AppHost";
+import { AppHostContainer } from "@twii/ui-core/lib/app/component/AppHost";
+import { AppHost } from "@twii/core/lib/app/AppHost";
 import { Router } from "roota/lib/Router";
-import { toPromise } from "fenz-core/lib/common/SyncUtils";
+import { toPromise } from "@twii/core/lib/common/SyncUtils";
 
 describe("App Host Container Component", () => {
     test("render", async () => {

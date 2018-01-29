@@ -1,4 +1,4 @@
-import SyncSupplierModel from "common/model/SyncSupplierModel";
+import { SyncSupplierModel } from "common/model/SyncSupplierModel";
 
 describe("Supplier Model", () => {
     test("all", () => {

@@ -24,7 +24,7 @@ const getClassNames = memoizeFunction((styles : IAppWrapperStyles, className?: s
         headerFar: mergeStyles("app-header-far", styles.headerFar),
         headerItem: mergeStyles("app-header-item", styles.headerItem),
         headerItemError: mergeStyles("app-header-item-error", styles.headerItemError),
-        main: mergeStyles("app-main")
+        main: mergeStyles("app-main", styles.main)
     };
 });
 

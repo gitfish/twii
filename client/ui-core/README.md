@@ -1,2 +1,2 @@
-# fenz-core-ui-fabric
-Core React UI Components used by Fenz Org
+# @twii/ui-core
+Core React UI Components used by twii

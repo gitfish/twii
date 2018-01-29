@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { AppHostWrapper } from "app/component/AppHostWrapper";
-import { AppHost } from "fenz-core/lib/app/AppHost";
-import { BrowserAppHost } from "fenz-core/lib/app/BrowserAppHost";
+import { AppHostWrapper } from "@twii/ui-core/app/component/AppHostWrapper";
+import { AppHost } from "@twii/core/lib/app/AppHost";
+import { BrowserAppHost } from "@twii/core/lib/app/BrowserAppHost";
 import { IRequest } from "roota/lib/IRequest";
 import { Router } from "roota/lib/Router";
 

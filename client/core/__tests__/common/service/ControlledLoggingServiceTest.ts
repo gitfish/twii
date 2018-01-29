@@ -1,5 +1,5 @@
 import { ILogEntry, CollectingLoggingService } from "common/service/CollectingLoggingService";
-import ControlledLoggingService from "common/service/ControlledLoggingService";
+import { ControlledLoggingService } from "common/service/ControlledLoggingService";
 import { alwaysTrue, alwaysFalse } from "common/Suppliers";
 
 describe("Controlled Logging Service", () => {

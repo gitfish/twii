@@ -1,4 +1,4 @@
-import SupplierModel from "common/model/SupplierModel";
+import { SupplierModel } from "common/model/SupplierModel";
 
 describe("Supplier Model", () => {
     test("all", () => {

@@ -1,2 +1,2 @@
-# fenz-core
-Core Utilities, Services, Models and Components used by Fenz Org
+# @twii/core
+Core Utilities, Services, Models and Components used by twii

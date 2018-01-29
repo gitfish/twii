@@ -1,5 +1,5 @@
-import TransientStorageService from "common/service/TransientStorageService";
-import ChainedStorageService from "common/service/ChainedStorageService";
+import { TransientStorageService } from "common/service/TransientStorageService";
+import { ChainedStorageService } from "common/service/ChainedStorageService";
 
 describe("ChainedStorageService", () => {
     test("getItem", async () => {

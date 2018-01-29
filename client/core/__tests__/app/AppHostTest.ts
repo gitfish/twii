@@ -1,6 +1,6 @@
-import AppHost from "app/AppHost";
-import AppRouterContext from "app/AppRouterContext";
-import Router from "roota/lib/Router";
+import { AppHost } from "app/AppHost";
+import { AppRouterContext } from "app/AppRouterContext";
+import { Router } from "roota/lib/Router";
 import * as qs from "qs";
 
 describe("App Host", () => {

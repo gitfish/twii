@@ -1,8 +1,8 @@
 import * as React from "react";
-import IAppProps from "@twii/ui-core/lib/app/component/IAppProps";
+import { IAppProps } from "@twii/ui-core/lib/app/component/IAppProps";
 import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 
-class DefaultApplet extends React.Component<IAppProps, any> {
+class DefaultApp extends React.Component<IAppProps, any> {
     render() {
         const farItems = [
             { path: "/error/sample" },
@@ -18,4 +18,4 @@ class DefaultApplet extends React.Component<IAppProps, any> {
     }
 }
 
-export { DefaultApplet }
+export { DefaultApp }

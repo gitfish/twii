@@ -1,5 +1,5 @@
 import { BrowserAppHost, globalWindowAppHostResolver } from "app/BrowserAppHost";
-import Router from "roota/lib/Router";
+import { Router } from "roota/lib/Router";
 import * as qs from "qs";
 import { JSDOM } from "jsdom";
 

@@ -1,7 +1,6 @@
 {
   "name": "@twii/core",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "lodash.isfunction": "^3.0.8",

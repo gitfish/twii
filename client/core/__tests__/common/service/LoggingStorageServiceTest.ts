@@ -1,6 +1,6 @@
-import LoggingStorageService from "common/service/LoggingStorageService";
-import TransientStorageService from "common/service/TransientStorageService";
-import CollectingLoggingService from "common/service/CollectingLoggingService";
+import { LoggingStorageService } from "common/service/LoggingStorageService";
+import { TransientStorageService } from "common/service/TransientStorageService";
+import { CollectingLoggingService } from "common/service/CollectingLoggingService";
 
 describe("Logging Storage Service", () => {
     test("logging", async () => {

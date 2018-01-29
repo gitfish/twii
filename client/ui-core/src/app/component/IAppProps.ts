@@ -4,4 +4,4 @@ interface IAppProps {
     host: IAppHost;
 }
 
-export { IAppProps as default, IAppProps }
+export { IAppProps }

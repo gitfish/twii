@@ -1,4 +1,4 @@
-import EventEmitter from "common/EventEmitter";
+import { EventEmitter } from "common/EventEmitter";
 
 describe("Event Emitter", () => {
     test("listener management", () => {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { AppLink } from "app/component/AppLink";
-import { AppHost } from "fenz-core/lib/app/AppHost";
+import { AppLink } from "@twii/ui-core/lib/app/component/AppLink";
+import { AppHost } from "@twii/core/lib/app/AppHost";
 import { Router } from "roota/lib/Router";
 
 describe("App Host Container Component", () => {

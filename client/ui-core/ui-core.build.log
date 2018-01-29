@@ -1,3 +1,0 @@
-Unable to calculate incremental build state. Instead running full rebuild. Error: spawnSync C:\WINDOWS\system32\cmd.exe ENAMETOOLONG
->>> @twii/ui-core
-tsc 
