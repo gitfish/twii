@@ -1,2 +1,7 @@
 client/common/temp/
 client/ui-core-sample/ui-core-sample.build.log
+client/ui-dashboard-sample/ui-dashboard-sample.build.log
+client/ui-dashboard-sample/ui-dashboard-sample.build.error.log
+client/core/core.build.log
+client/ui-core/ui-core.build.log
+client/ui-dashboard/ui-dashboard.build.log

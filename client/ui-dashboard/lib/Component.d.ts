@@ -1,0 +1,32 @@
+import { IComponent } from "./IComponent";
+import { IDashboard } from "./IDashboard";
+import { IRequest } from "roota/lib/IRequest";
+import { EventEmitter } from "@twii/core/lib/common/EventEmitter";
+import { IConsumerFunc } from "@twii/core/lib/common/IConsumerFunc";
+import { IPredicateFunc } from "@twii/core/lib/common/IPredicateFunc";
+declare abstract class Component extends EventEmitter {
+    private _id;
+    parent: IComponent;
+    private _addApplet;
+    type: string;
+    constructor();
+    readonly id: string;
+    readonly top: any;
+    addApplet: IRequest;
+    setAddApplet(addApplet: IRequest): void;
+    readonly dashboard: IDashboard;
+    remove(comp: IComponent): void;
+    removeFromParent(): void;
+    replace(newItem: IComponent, oldItem: IComponent): void;
+    readonly config: any;
+    setConfig(config: any): Promise<any>;
+    protected _visitChildren(callback: IConsumerFunc<IComponent>): void;
+    visit(callback: IConsumerFunc<IComponent>): void;
+    protected _findFirstChild(predicate: IPredicateFunc<IComponent>): IComponent;
+    findFirst(predicate: IPredicateFunc<IComponent>): IComponent;
+    protected _findAllChildren(predicate: IPredicateFunc<IComponent>): IComponent[];
+    findAll(predicate: IPredicateFunc<IComponent>): IComponent[];
+    unmount(): void;
+    toJSON(): any;
+}
+export { Component };

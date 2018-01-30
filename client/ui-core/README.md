@@ -1,2 +1,2 @@
 # @twii/ui-core
-Core React UI Components used by twii
+Core UI Components used by twii

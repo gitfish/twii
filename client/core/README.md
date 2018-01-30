@@ -1,2 +1,2 @@
 # @twii/core
-Core Utilities, Services, Models and Components used by twii
+Core Utilities, Services and Models used by twii

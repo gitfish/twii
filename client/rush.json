@@ -15,8 +15,17 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@twii/ui-dashboard",
+      "projectFolder": "ui-dashboard",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@twii/ui-core-sample",
       "projectFolder": "ui-core-sample"
+    },
+    {
+      "packageName": "@twii/ui-dashboard-sample",
+      "projectFolder": "ui-dashboard-sample"
     }
   ]
 }

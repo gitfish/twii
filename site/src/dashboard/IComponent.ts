@@ -2,7 +2,6 @@ import IDashboard from "./IDashboard";
 import IWindow from "./IWindow";
 import IRouter from "roota/lib/IRouter";
 import IRequest from "roota/lib/IRequest";
-import IRouterManager from "roota/lib/IRouterManager";
 import IEventEmitter from "util/IEventEmitter";
 
 interface IComponentCallback {

@@ -1,0 +1,48 @@
+import { IDashboardList } from "./IDashboardList";
+import { IDashboard } from "./IDashboard";
+import { IComponent } from "./IComponent";
+import { Component } from "./Component";
+import { SyncModel } from "@twii/core/lib/common/model/SyncModel";
+declare class DashboardList extends Component implements IDashboardList {
+    sync: SyncModel;
+    private _activeIndex;
+    dashboards: IDashboard[];
+    private _closeDisabled;
+    private _createDefaultDashboard;
+    private _saveDelay;
+    loader: () => Promise<any>;
+    saver: (data: any) => Promise<any>;
+    private _configSaveDisposer;
+    constructor();
+    private _onResize;
+    readonly type: string;
+    createDefaultDashboard: boolean;
+    setCreateDefaultDashboard(createDefaultDashboard: boolean): void;
+    readonly dashboardCount: number;
+    closeDisabled: boolean;
+    setCloseDisabled(closeDisabled: boolean): void;
+    activeIndex: number;
+    setActiveIndex(value: any): void;
+    active: IDashboard;
+    setActive(value: IDashboard): void;
+    readonly config: {
+        type: string;
+        activeIndex: number;
+        dashboards: any[];
+        closeDisabled: boolean;
+    };
+    setConfig(value: any): any;
+    add(dashboard: IDashboard, makeActive?: boolean): void;
+    private addDefaultDashboard();
+    remove(node: IComponent): void;
+    private _saveConfig;
+    saveDelay: number;
+    private _loadDone;
+    private _loadError;
+    load(): Promise<any>;
+    protected _findFirstChild(predicate: any): any;
+    protected _findAllChildren(predicate: any): IComponent[];
+    unmount(): void;
+    clear(): void;
+}
+export { DashboardList };
