@@ -1,12 +1,8 @@
 {
-  "name": "analyst-desktop",
+  "name": "@twii/site",
   "version": "3.0.0",
-  "description": "Analyst Desktop",
+  "description": "Twii Site",
   "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.immi.gov.au:8443/scm/repo/analystdesktop.git"
-  },
   "scripts": {
     "clean": "node task/clean.js",
     "start": "node app",
@@ -16,7 +12,7 @@
     "test": "jest"
   },
   "author": "analystdesktop@border.gov.au",
-  "license": "ISC",
+  "license": "MIT",
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
