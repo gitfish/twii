@@ -97,6 +97,16 @@ abstract class AbstractAppHost implements IAppHost {
         this._state = Object.assign({}, this._state, state);
     }
 
+    @action
+    getState<T = any>(key : string, factory?: () => T) {
+        let r = this._state[key];
+        if(r === undefined && factory) {
+            r = factory();
+            this._state[key] = r;
+        }
+        return r;
+    }
+
     get url() {
         return this.getUrl(this.request);
     }

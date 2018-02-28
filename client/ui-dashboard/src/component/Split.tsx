@@ -6,10 +6,13 @@ import { IHSplit, IVSplit } from "../ISplit";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import { ComponentFactory } from "./ComponentFactory";
 import { hsplit, vsplit, isSplit } from "../ComponentTypes";
-import { ClassNames } from "./Split.style";
+import { IHSplitStyles, IVSplitStyles, getHSplitStyles, getVSplitStyles } from "./Split.styles";
+import { IHSplitClassNames, IVSplitClassNames, getHSplitClassNames, getVSplitClassNames } from "./Split.classNames";
 
 interface IHSplitProps {
     hsplit: IHSplit;
+    styles?: IHSplitStyles;
+    className?: string;
 }
 
 @observer
@@ -87,33 +90,21 @@ class HSplit extends React.Component<IHSplitProps, any> {
         this.props.hsplit.removeEventListener("resize", this._onResize);
     }
     render() {
+        const classNames = getHSplitClassNames(getHSplitStyles(null, this.props.styles), this.props.className);
         let left = this.props.hsplit.left;
         let right = this.props.hsplit.right;
         let leftContent = ComponentFactory(left);
         let rightContent = ComponentFactory(right);
-        if(!isSplit(left)) {
-            leftContent = (
-                <div className={css(ClassNames.leftPane, "pane hsplit-pane left-pane")}>
-                    {leftContent}
-                </div>
-            )
-        }
-        if(!isSplit(right)) {
-            rightContent = (
-                <div className={css(ClassNames.rightPane, "pane hsplit-pane right-pane")}>
-                    {rightContent}
-                </div>
-            )
-        };
+        
         return (
-            <div className={css(ClassNames.root, "hsplit")} style={{ position: "absolute", top: 0, right: 0, bottom: 0, left: 0 }} ref={this._onRef}>
-                <div className={css(ClassNames.leftContainer, "split-container" , "hsplit-left-container")} ref={this._onLeftPaneRef} style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "50%" }}>
+            <div className={classNames.root} ref={this._onRef}>
+                <div className={classNames.leftPane} ref={this._onLeftPaneRef} style={{ width: "50%" }}>
                     {leftContent}
                 </div>
-                <div className={css(ClassNames.splitter, "hsplit-splitter", { active: this.props.hsplit.splitActive })} style={{ position: "absolute", top: 0, bottom: 0, width: 5 }} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
+                <div className={css(classNames.splitter, { active: this.props.hsplit.splitActive })} style={{ position: "absolute", top: 0, bottom: 0, width: 5 }} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
                     <div className="hsplit-splitter-content" style={{ width: "100%", height: "100%" }}></div>
                 </div>
-                <div className={css(ClassNames.rightContainer, "split-container", "hsplit-right-container")} ref={this._onRightPaneRef} style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "50%" }}>
+                <div className={classNames.rightPane} ref={this._onRightPaneRef} style={{ width: "50%" }}>
                     {rightContent}
                 </div>
             </div>
@@ -123,6 +114,8 @@ class HSplit extends React.Component<IHSplitProps, any> {
 
 interface IVSplitProps {
     vsplit: IVSplit;
+    styles?: IVSplitStyles;
+    className?: string;
 }
 
 @observer
@@ -200,33 +193,20 @@ class VSplit extends React.Component<IVSplitProps, any> {
         this.props.vsplit.removeEventListener("resize", this._onResize);
     }
     render() {
+        const classNames = getVSplitClassNames(getVSplitStyles(null, this.props.styles), this.props.className);
         let top = this.props.vsplit.top;
         let bottom = this.props.vsplit.bottom;
         let topContent = ComponentFactory(top);
         let bottomContent = ComponentFactory(bottom);
-        if(!isSplit(top)) {
-            topContent = (
-                <div className={css(ClassNames.topPane, "pane vsplit-pane top-pane")}>
-                    {topContent}
-                </div>
-            )
-        }
-        if(!isSplit(bottom)) {
-            bottomContent = (
-                <div className={css(ClassNames.bottomPane, "pane vsplit-pane bottom-pane")}>
-                    {bottomContent}
-                </div>
-            )
-        };
         return (
-            <div className={css(ClassNames.root, "vsplit")} style={{ position: "absolute", top: 0, right: 0, bottom: 0, left: 0 }} ref={this._onRef}>
-                <div className={css(ClassNames.topContainer, "split-container", "vsplit-top-container")} ref={this._onTopPaneRef} style={{ position: "absolute", left: 0, top: 0, right: 0, height: "50%" }}>
+            <div className={classNames.root} ref={this._onRef}>
+                <div className={classNames.topPane} ref={this._onTopPaneRef} style={{ height: "50%" }}>
                     {topContent}
                 </div>
-                <div className={css(ClassNames.splitter, "vsplit-splitter", { active: this.props.vsplit.splitActive })} style={{ position: "absolute", left: 0, right: 0, height: 5 }} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
+                <div className={css(classNames.splitter, { active: this.props.vsplit.splitActive })} style={{ position: "absolute", left: 0, right: 0, height: 5 }} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
                     <div className="vsplit-splitter-content" style={{ width: "100%", height: "100%" }}></div>
                 </div>
-                <div className={css(ClassNames.bottomContainer, "split-container", "vsplit-bottom-container")} ref={this._onBottomPaneRef} style={{ position: "absolute", left: 0, bottom: 0, right: 0, height: "50%" }}>
+                <div className={classNames.bottomPane} ref={this._onBottomPaneRef} style={{ height: "50%" }}>
                     {bottomContent}
                 </div>
             </div>

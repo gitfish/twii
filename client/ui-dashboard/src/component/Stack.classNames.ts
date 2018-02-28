@@ -8,6 +8,9 @@ interface IStackClassNames {
     tabBar?: string;
     actionBar?: string;
     action?: string;
+    actionIcon?: string;
+    closeAction?: string;
+    closeActionIcon?: string;
     addAction?: string;
     tab?: string;
     tabTitleContainer?: string;
@@ -27,6 +30,9 @@ const getClassNames = memoizeFunction((styles : IStackStyles, className?: string
         tabBar: mergeStyles("stack-tab-bar", styles.tabBar),
         actionBar: mergeStyles("stack-action-bar", styles.actionBar),
         action: mergeStyles("stack-action", styles.action),
+        actionIcon: mergeStyles("stack-action-icon", styles.actionIcon),
+        closeAction: mergeStyles("stack-close-action", styles.closeActionIcon),
+        closeActionIcon: mergeStyles("stack-close-action-icon", styles.closeActionIcon),
         addAction: mergeStyles("stack-add-action", styles.addAction),
         tab: mergeStyles("stack-tab", styles.tab),
         tabTitleContainer: mergeStyles("stack-tab-title-container", styles.tabTitleContainer),

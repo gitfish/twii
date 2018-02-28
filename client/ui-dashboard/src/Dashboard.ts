@@ -1,5 +1,4 @@
 import { observable, action, computed, reaction, IReactionDisposer } from "mobx";
-import { IRequest } from "roota/lib/IRequest";
 import { IDashboard } from "./IDashboard";
 import { IDashboardList } from "./IDashboardList";
 import { IComponent } from "./IComponent";

@@ -38,7 +38,7 @@ class StackCloseAction extends React.Component<IStackProps, any> {
                         className={css(this.props.classNames.action, "close-action")}
                         title="Close all Widgets"
                         onClick={this._onClick}>
-                    <Icon iconName="ChromeClose" />
+                    <Icon className={this.props.classNames.closeActionIcon} iconName="ChromeClose" />
                 </button>
             );
         }

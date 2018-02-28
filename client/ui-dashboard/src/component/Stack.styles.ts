@@ -7,6 +7,9 @@ interface IStackStyles {
     tabBar?: IStyle;
     actionBar?: IStyle;
     action?: IStyle;
+    actionIcon?: IStyle;
+    closeAction?: IStyle;
+    closeActionIcon?: IStyle;
     addAction?: IStyle;
     tab?: IStyle;
     tabTitleContainer?: IStyle;
@@ -23,6 +26,21 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IStackStyles) 
     if(!theme) {
         theme = getTheme();
     }
+
+    const DefaultActionStyle : IStyle = {
+        color: theme.palette.themeDarker,
+        height: 28,
+        width: 28,
+        lineHeight: 28,
+        background: "transparent",
+        border: "none",
+        outline: "none",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer"
+    };
+
     const DefaultStyles : IStackStyles = {
         root: {
             position: "absolute",
@@ -155,32 +173,22 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IStackStyles) 
         tabPanel: {
 
         },
-        action: {
-            color: theme.palette.themeDarker,
-            height: 28,
-            width: 28,
-            lineHeight: 28,
-            background: "transparent",
-            border: "none",
-            outline: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
+        action: DefaultActionStyle,
+        actionIcon: {
+            fontSize: theme.fonts.small.fontSize,
+            fontWeight: FontWeights.regular
+        },
+        closeAction: Object.assign({}, DefaultActionStyle, {
             selectors: {
-                ".ms-Icon": {
-                    fontSize: theme.fonts.small.fontSize,
-                    fontWeight: FontWeights.regular
-                },
-                "&.close-action": {
-                    selectors: {
-                        ":hover": {
-                            color: theme.palette.white,
-                            backgroundColor: theme.palette.redDark
-                        }
-                    }
+                ":hover": {
+                    color: theme.palette.white,
+                    backgroundColor: theme.palette.redDark
                 }
             }
+        }),
+        closeActionIcon: {
+            fontSize: theme.fonts.small.fontSize,
+            fontWeight: FontWeights.regular
         },
         actionBar: {
             display: "flex",

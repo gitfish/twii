@@ -1,8 +1,7 @@
 import * as React from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
-import { AppHostWrapper } from "@twii/ui-core/lib/app/component/AppHostWrapper";
-import { IAppProps } from "@twii/ui-core/lib/app/component/IAppProps";
+import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 
 class TextFieldExamples extends React.Component<any, any> {
     private _onRenderPrefix = () => {
@@ -54,17 +53,17 @@ class FormExamples extends React.Component<any, any> {
     }
 }
 
-class FormExamplesApp extends React.Component<any, any> {
+class FormExamplesApplet extends React.Component<any, any> {
     render() {
         const farItems = [
             { path: "/user/profile/menuItem"}
         ];
         return (
-            <AppHostWrapper host={this.props.host} title="Form Examples" farItems={farItems}>
+            <AppWrapper title="Form Examples" farItems={farItems}>
                 <FormExamples />
-            </AppHostWrapper>
+            </AppWrapper>
         );
     }
 }
 
-export { FormExamplesApp, FormExamples, TextFieldExamples }
+export { FormExamplesApplet, FormExamples, TextFieldExamples }

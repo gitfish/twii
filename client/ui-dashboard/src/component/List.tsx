@@ -6,11 +6,15 @@ import { removeComponent } from "../ComponentActions";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { css } from "office-ui-fabric-react/lib/Utilities";
-import { ClassNames } from "./List.style";
+import { IListStyles, getStyles } from "./List.styles";
+import { IListClassNames, getClassNames } from "./List.classNames";
 import { ProjectedWindowPortal } from "./WindowPortal";
 
 interface IListProps {
     stack: IStack;
+    className?: string;
+    styles?: IListStyles;
+    classNames?: IListClassNames;
 }
 
 @observer
@@ -49,7 +53,7 @@ class ListAddAction extends React.Component<IListProps, any> {
 class ListNearActionBar extends React.Component<IListProps, any> {
     render() {
         return (
-            <div className={css(ClassNames.nearActionBar, "list-near-action-bar")}>
+            <div className={this.props.classNames.nearActionBar}>
                 <ListAddAction {...this.props} />
             </div>
         )
@@ -59,7 +63,7 @@ class ListNearActionBar extends React.Component<IListProps, any> {
 class ListFarActionBar extends React.Component<IListProps, any> {
     render() {
         return (
-            <div className={css(ClassNames.farActionBar, "list-far-action-bar")}>
+            <div className={this.props.classNames.farActionBar}>
                 <ListCloseAction {...this.props} />
             </div>
         )
@@ -86,7 +90,7 @@ class ListHeader extends React.Component<IListProps, any> {
     render() {
         if(this.props.stack.addApplet || !this.props.stack.closeDisabled) {
             return (
-                <div className={css(ClassNames.header, "list-header")} onDragOver={this._onDragOver} onDrop={this._onDrop}>
+                <div className={this.props.classNames.windowHeader} onDragOver={this._onDragOver} onDrop={this._onDrop}>
                     <ListNearActionBar {...this.props} />
                     <ListFarActionBar {...this.props} />
                 </div>
@@ -105,8 +109,8 @@ interface IListWindowProps extends IListProps {
 class ListWindowTitle extends React.Component<IListWindowProps, any> {
     render() {
         return (
-            <div className={css(ClassNames.windowTitleContainer, "list-window-title-container")}>
-                <div className={css(ClassNames.windowTitle, "list-window-title")}>
+            <div className={this.props.classNames.windowTitleContainer}>
+                <div className={this.props.classNames.windowTitle}>
                     {this.props.window.title}
                 </div>
             </div>
@@ -156,7 +160,7 @@ class ListWindowToggleAction extends React.Component<IListWindowProps, any> {
 class ListWindowActionBar extends React.Component<IListWindowProps, any> {
     render() {
         return (
-            <div className={css(ClassNames.windowActionBar, "list-window-action-bar")}>
+            <div className={this.props.classNames.windowActionBar}>
                 <ListWindowToggleAction {...this.props} />
                 <ListWindowCloseAction {...this.props} />
             </div>
@@ -208,7 +212,7 @@ class ListWindowHeader extends React.Component<IListWindowProps, any> {
     }
     render() {
         return (
-            <div className={css(ClassNames.windowHeader, "window-header")}
+            <div className={this.props.classNames.windowHeader}
                 draggable={true}
                 onMouseDown={this._onMouseDown}
                 onClick={this._onClick}
@@ -227,7 +231,7 @@ class ListWindowHeader extends React.Component<IListWindowProps, any> {
 class ListWindowBody extends React.Component<IListWindowProps, any> {
     render() {
         return (
-            <div className={css(ClassNames.windowBody, "window-body", { "content-hidden": this.props.window.contentHidden})}>
+            <div className={css(this.props.classNames.windowBody, { "content-hidden": this.props.window.contentHidden})}>
                 <ProjectedWindowPortal window={this.props.window} className="list-window-portal" listenToPosition={true} />
             </div>
         );
@@ -242,7 +246,7 @@ class ListWindow extends React.Component<IListWindowProps, any> {
             s = { height: this.props.height };
         }
         return (
-            <div className={css(ClassNames.window, "list-window", "pane", { "content-hidden": this.props.window.contentHidden })} style={s}>
+            <div className={css(this.props.classNames.window, "pane", { "content-hidden": this.props.window.contentHidden })} style={s}>
                 <ListWindowHeader {...this.props} />
                 <ListWindowBody {...this.props} />
             </div>
@@ -258,7 +262,7 @@ class ListAppender extends React.Component<IListProps, any> {
     render() {
         if(this.props.stack.addApplet) {
             return (
-                <div className={css(ClassNames.appender, "list-appender")} onClick={this._onClick}>
+                <div className={this.props.classNames.appender} onClick={this._onClick}>
                     <Icon iconName="AddTo" />
                 </div>
             );
@@ -336,7 +340,7 @@ class ListBody extends React.Component<IListProps, IListWindowsState> {
                 return <ListWindow key={w.id} stack={this.props.stack} window={w} height={this.state.windowHeight} />;
             });
             return (
-                <div className={css(ClassNames.body, "list-body")}
+                <div className={this.props.classNames.body}
                     onDragOver={this._onDragOver}
                     onDrop={this._onDrop}
                     ref={this._onRef}>
@@ -358,9 +362,10 @@ class List extends React.Component<IListProps, any> {
         this.props.stack.windows.forEach(w => w.emit({ type: "resize" }));
     }
     render() {
+        const classNames = this.props.classNames || getClassNames(getStyles(null, this.props.styles), this.props.className);
         return (
-            <div id={this.props.stack.id} className={css(ClassNames.root, "List")} onScroll={this._onScroll}>
-                <ListBody {...this.props} />
+            <div id={this.props.stack.id} className={classNames.root} onScroll={this._onScroll}>
+                <ListBody {...this.props} classNames={classNames} />
             </div>
         );
     }

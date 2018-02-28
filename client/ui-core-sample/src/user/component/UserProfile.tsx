@@ -3,12 +3,14 @@ import { HoverCard, IExpandingCardProps } from "office-ui-fabric-react";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { Callout } from "office-ui-fabric-react/lib/Callout";
-import { ClassNames } from "./UserProfile.style";
+import { getClassNames } from "./UserProfile.classNames";
+import { IUserProfileStyles, getStyles } from "./UserProfile.styles";
 
 class UserProfile extends React.Component<any, any> {
     render() {
+        const classNames = getClassNames(getStyles(null));
         return (
-            <div className={ClassNames.root}>
+            <div className={classNames.root}>
                 <div className="name">Sample User</div>
                 <div className="email">sample.user@ui-sample.com</div>
             </div>

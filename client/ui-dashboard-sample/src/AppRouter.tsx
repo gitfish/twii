@@ -1,9 +1,10 @@
 import * as React from "react";
 import { Router } from "roota/lib/Router";
-import { exactPath } from "roota/lib/Utils";
+import { exactPath } from "roota/lib/Routers";
 import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 
 const AppRouter = new Router();
+/*
 AppRouter.use("/user/profile/menuItem", exactPath(req => {
     return import("user/component/UserProfile").then(m => {
         return <m.UserProfileMenuItemWithCallout />;
@@ -40,5 +41,6 @@ AppRouter.defaultHandler = (req) => {
         return <m.DefaultApp host={req.app} />;
     })
 };
+*/
 
 export { AppRouter }

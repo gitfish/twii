@@ -1,4 +1,4 @@
-import Router from "roota/lib/Router";
+import { Router } from "roota/lib/Router";
 import { window, stack, list, vsplit, hsplit } from "./ComponentTypes";
 
 const r = new Router();
