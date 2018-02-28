@@ -232,7 +232,7 @@ class StackAddAction extends React.Component<IStackProps, any> {
         this.props.stack.addNew();
     }
     render() {
-        if(this.props.stack.addApplet) {
+        if(this.props.stack.addApp) {
             return (
                 <button type="button"
                         title="Add Widget"

@@ -1,6 +1,5 @@
 import { IComponent } from "./IComponent";
 import { ISync } from "@twii/core/lib/common/ISync";
-import { IRequest } from "roota/lib/IRequest";
 
 interface IDashboard extends IComponent {
     sync: ISync;
@@ -9,7 +8,6 @@ interface IDashboard extends IComponent {
     blockSource: IComponent;
     drag: IComponent;
     closeDisabled : boolean;
-    addApplet : IRequest;
     columnCount : number;
     
     setTitle(title : string) : void;
@@ -19,7 +17,6 @@ interface IDashboard extends IComponent {
     setBlockSource(blockSource : IComponent) : void;
     clearBlockSource() : void;
     setCloseDisabled(closeDisabled : boolean) : void;
-    setAddApplet(addApplet : IRequest) : void;
     clear() : void;
     isListLayout : boolean;
     listLayout() : Promise<any>;

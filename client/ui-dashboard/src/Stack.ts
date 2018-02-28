@@ -134,8 +134,8 @@ class Stack extends Component implements IStack {
 
     @action
     addNew() {
-        if(this.dashboard && this.dashboard.addApplet) {
-            return this.open(this.dashboard.addApplet);
+        if(this.dashboard && this.dashboard.addApp) {
+            return this.open(this.dashboard.addApp);
         }
         return Promise.resolve();
     }

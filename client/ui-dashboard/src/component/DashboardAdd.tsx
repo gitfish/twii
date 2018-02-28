@@ -10,7 +10,6 @@ import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button"
 import { isBlank, isNotBlank } from "@twii/core/lib/common/StringUtils";
 import { KeyCodes } from "office-ui-fabric-react/lib/Utilities";
 import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
-import "./DashboardAdd.scss";
 
 interface IDashboardPropertyEditorProps {
     dashboard: IDashboard;

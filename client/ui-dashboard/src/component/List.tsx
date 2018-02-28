@@ -43,7 +43,7 @@ class ListAddAction extends React.Component<IListProps, any> {
         this.props.stack.addNew();
     }
     render() {
-        if(this.props.stack.addApplet) {
+        if(this.props.stack.addApp) {
             return <IconButton className={css("list-action", "add-action")} title="Add Widget" iconProps={{ iconName: "Add" }} onClick={this._onClick} />
         }
         return null;
@@ -88,7 +88,7 @@ class ListHeader extends React.Component<IListProps, any> {
         s.dropWindow(s.windowCount > 0 ? s.windows[0] : undefined);
     }
     render() {
-        if(this.props.stack.addApplet || !this.props.stack.closeDisabled) {
+        if(this.props.stack.addApp || !this.props.stack.closeDisabled) {
             return (
                 <div className={this.props.classNames.windowHeader} onDragOver={this._onDragOver} onDrop={this._onDrop}>
                     <ListNearActionBar {...this.props} />
@@ -260,7 +260,7 @@ class ListAppender extends React.Component<IListProps, any> {
         this.props.stack.addNew();
     }
     render() {
-        if(this.props.stack.addApplet) {
+        if(this.props.stack.addApp) {
             return (
                 <div className={this.props.classNames.appender} onClick={this._onClick}>
                     <Icon iconName="AddTo" />

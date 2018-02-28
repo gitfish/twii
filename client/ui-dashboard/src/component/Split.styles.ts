@@ -65,7 +65,7 @@ const getVSplitStyles = memoizeFunction((theme : ITheme, customStyles?: IVSplitS
             left: 0
         },
         splitter: {
-            cursor: "ew-resize",
+            cursor: "ns-resize",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

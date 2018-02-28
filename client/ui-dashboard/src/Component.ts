@@ -15,7 +15,7 @@ import { IPredicateFunc } from "@twii/core/lib/common/IPredicateFunc";
 abstract class Component extends EventEmitter {
     private _id : string;
     @observable.ref parent : IComponent;
-    @observable private _addApplet : IRequest;
+    @observable private _addApp : IRequest;
     type : string;
 
     constructor() {
@@ -32,25 +32,25 @@ abstract class Component extends EventEmitter {
     }
 
     @computed
-    get addApplet() {
-        if(this._addApplet !== undefined) {
-            return this._addApplet;
+    get addApp() {
+        if(this._addApp !== undefined) {
+            return this._addApp;
         }
         const p = this.parent;
         if(p === this) {
             console.warn("-- Ancestor Resolution Cycle Detected");
             return undefined;
         }
-        return p ? p.addApplet : undefined;
+        return p ? p.addApp : undefined;
     }
 
-    set addApplet(addApplet : IRequest) {
-        this.setAddApplet(addApplet);
+    set addApp(addApp : IRequest) {
+        this.setAddApp(addApp);
     }
 
     @action
-    setAddApplet(addApplet : IRequest) {
-        this._addApplet = addApplet;
+    setAddApp(addApp : IRequest) {
+        this._addApp = addApp;
     }
 
     @computed

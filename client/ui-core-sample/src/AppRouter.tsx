@@ -16,22 +16,22 @@ AppRouter.use("/error/sample", exactPath(req => {
 
 AppRouter.use("/samples/form", exactPath(req => {
     return import("samples/Form").then(m => {
-        return <m.FormExamplesApplet />;
+        return <m.FormExamplesApp />;
     });
 }));
 
 AppRouter.use((req, next) => {
     if(req.path === "/" || req.path === "/index" || req.path === "/home") {
         return import("samples/Home").then(m => {
-            return <m.HomeApplet host={req.app} />;
+            return <m.HomeApp host={req.app} />;
         });
     }
     return next();
 });
 
 AppRouter.defaultHandler = (req) => {
-    return import("./DefaultApplet").then(m => {
-        return <m.DefaultApplet host={req.app} />;
+    return import("./DefaultApp").then(m => {
+        return <m.DefaultApp host={req.app} />;
     })
 };
 

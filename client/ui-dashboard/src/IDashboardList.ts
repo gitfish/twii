@@ -10,11 +10,9 @@ interface IDashboardList extends IComponent {
     dashboards : IDashboard[];
     dashboardCount: number;
     closeDisabled: boolean;
-    addApplet : IRequest;
     setActive(active : IDashboard) : void;
     setActiveIndex(activeIndex : number) : void;
     add(dashboard : IDashboard, makeActive?: boolean) : void;
-    setAddApplet(addApplet : IRequest) : void;
     setCloseDisabled(closeDisabled : boolean) : void;
     clear() : void;
 }

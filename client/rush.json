@@ -1,5 +1,5 @@
 {
-  "rushVersion": "4.2.4",
+  "rushVersion": "4.2.5",
   "npmVersion": "5.5.1",
   "nodeSupportedVersionRange": ">=8.9.0 <9.0.0",
 
@@ -17,6 +17,11 @@
     {
       "packageName": "@twii/ui-dashboard",
       "projectFolder": "ui-dashboard",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@twii/ui-sample-base",
+      "projectFolder": "ui-sample-base",
       "shouldPublish": true
     },
     {

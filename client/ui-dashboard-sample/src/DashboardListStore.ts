@@ -1,7 +1,8 @@
-import { DashboardList } from "./DashboardList";
-import { DashboardStorageServiceContext } from "./DashboardStorageServiceContext";
+import { DashboardList } from "@twii/ui-dashboard/lib/DashboardList";
+import { DashboardStorageServiceContext } from "@twii/ui-dashboard/lib/DashboardStorageServiceContext";
 
-const storageKey = "analyst-desktop-dashboard-list";
+const storageKey = "sample-dashboard-list";
+
 const DashboardListStore = new DashboardList();
 DashboardListStore.loader = () => {
     return DashboardStorageServiceContext.value.getItem(storageKey);
@@ -11,4 +12,4 @@ DashboardListStore.saver = (data) => {
 };
 DashboardListStore.addApp = { title: "Add Widget", path: "/listing/bookmarks" };
 
-export { DashboardListStore as default, DashboardListStore }
+export { DashboardListStore }

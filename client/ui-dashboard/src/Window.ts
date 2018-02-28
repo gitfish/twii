@@ -182,9 +182,15 @@ class Window extends Component implements IWindow {
 
     @action
     close() {
+        this.emit({ type: "beforeclose" });
         if(this.onClose) {
             this.onClose(this);
         }
+        if(this.dashboard) {
+            this.dashboard.destroyPortal(this);
+        }
+        this.removeFromParent();
+        this.emit({ type: "close" });
     }
 
     get portal() {

@@ -126,7 +126,7 @@ class DashboardList extends Component implements IDashboardList {
             dashboard.removeFromParent();
             dashboard.parent = this;
             this.dashboards.push(dashboard);
-            if(!dashboard.component && this.addApplet) {
+            if(!dashboard.component && this.addApp) {
                 const s = new Stack();
                 dashboard.setComponent(s);
                 s.addNew();
@@ -138,7 +138,7 @@ class DashboardList extends Component implements IDashboardList {
     }
 
     private addDefaultDashboard() {
-        if(this.dashboardCount === 0 && this.createDefaultDashboard && this.addApplet) {
+        if(this.dashboardCount === 0 && this.createDefaultDashboard && this.addApp) {
             const newDashboard = new Dashboard();
             newDashboard.setTitle("Dashboard 1");
             this.add(newDashboard, true);

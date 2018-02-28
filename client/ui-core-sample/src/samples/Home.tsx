@@ -3,7 +3,7 @@ import { IAppProps } from "@twii/ui-core/lib/app/component/IAppProps";
 import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 import { AppLink } from "@twii/ui-core/lib/app/component/AppLink";
 
-class HomeApplet extends React.Component<IAppProps, any> {
+class HomeApp extends React.Component<IAppProps, any> {
     render() {
         const farItems = [
             { path: "/error/sample" },
@@ -12,7 +12,7 @@ class HomeApplet extends React.Component<IAppProps, any> {
         return (
             <AppWrapper title="Example App Home" farItems={farItems}>
                 <div style={{ padding: 8 }}>
-                    <h3>Example App Home</h3>
+                    <h3>UI Core Sample App Home</h3>
                     <ul>
                         <li><AppLink host={this.props.host} request={{ path: "/samples/form" }}>Form</AppLink></li>
                     </ul>
@@ -22,4 +22,4 @@ class HomeApplet extends React.Component<IAppProps, any> {
     }
 }
 
-export { HomeApplet }
+export { HomeApp }

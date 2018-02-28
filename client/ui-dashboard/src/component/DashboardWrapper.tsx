@@ -10,7 +10,7 @@ import { IDashboardStyles, getStyles } from "./Dashboard.styles";
 interface IDashboardWrapperProps {
     className?: string;
     config?: any;
-    addApplet?: IRequest;
+    addApp?: IRequest;
     loader?: () => Promise<any>;
     saver?: (data : any) => Promise<any>;
     saveDelay?: number;
@@ -29,7 +29,7 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
         this._setFromProps(this.props);
     }
     private _setFromProps(props : IDashboardWrapperProps) {
-        this.dashboard.addApplet = props.addApplet;
+        this.dashboard.addApp = props.addApp;
         this.dashboard.setConfig(props.config);
         this.dashboard.loader = props.loader;
         this.dashboard.saver = props.saver;

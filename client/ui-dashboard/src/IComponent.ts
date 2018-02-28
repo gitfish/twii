@@ -11,8 +11,8 @@ interface IComponent extends IEventEmitter {
     top: IComponent;
     dashboard: IDashboard;
     config : any;
-    addApplet: IRequest;
-    setAddApplet(addApplet : IRequest) : void;
+    addApp: IRequest;
+    setAddApp(addApp : IRequest) : void;
     setConfig(state : any) : Promise<any>;
     remove(comp : IComponent) : void;
     removeFromParent() : void;

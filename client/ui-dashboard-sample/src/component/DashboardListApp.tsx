@@ -2,11 +2,11 @@ import * as React from "react";
 import { IAppHost } from "@twii/core/lib/app/IAppHost";
 import { AppWrapper } from "@twii/ui-core/lib/app/component/AppWrapper";
 import { IAppProps } from "@twii/ui-core/lib/app/component/IAppProps";
-import { DashboardListContainer } from "./DashboardList";
+import { DashboardListContainer } from "@twii/ui-dashboard/lib/component/DashboardList";
 import { DashboardListStore } from "../DashboardListStore";
-import { DashboardListMenuButton } from "./DashboardListMenuButton";
+import { DashboardListMenuButton } from "@twii/ui-dashboard/lib/component/DashboardListMenuButton";
 
-class DashboardListApplet extends React.Component<IAppProps, any> {
+class DashboardListApp extends React.Component<IAppProps, any> {
     componentWillMount() {
         DashboardListStore.load();
     }
@@ -15,15 +15,13 @@ class DashboardListApplet extends React.Component<IAppProps, any> {
     }
     render() {
         const title = <DashboardListMenuButton dashboardList={DashboardListStore} />;
-        const farItems = [
-            { path: "/dashboard/layout" }
-        ];
+
         return (
-            <AppWrapper className="dashboard-list-applet" title={title} farItems={farItems}>
+            <AppWrapper className="dashboard-list-applet" title={title}>
                 <DashboardListContainer dashboardList={DashboardListStore} host={this.props.host} />
             </AppWrapper>
         );
     }
 }
 
-export { DashboardListApplet as default, DashboardListApplet }
+export { DashboardListApp }

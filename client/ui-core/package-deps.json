@@ -1,0 +1,32 @@
+{
+  "files": {
+    "ui-core/.gitignore": "290eea2c4e56a3bad129652e6c92ea4b2b388428",
+    "ui-core/.npmignore": "e69de3809a1f0a96caeca133d454526e2ad7e97f",
+    "ui-core/README.md": "2b6c8e326b4c1c33297f00d07db7d6b90db8be62",
+    "ui-core/__tests__/app/component/AppHostTest.tsx": "d9ba20ff35fb2fb743a5b88173f5ae79fba0b11c",
+    "ui-core/__tests__/app/component/AppHostWrapperTest.tsx": "35f75ab3f01f36f1c59f375a9334f889cc61c1c4",
+    "ui-core/__tests__/app/component/AppLinkTest.tsx": "64bea633293be2934015f9dbe22f8a08d11c5571",
+    "ui-core/__tests__/app/component/AppTest.tsx": "b010f727a701ab294a73821992dc58931b4bfeed",
+    "ui-core/__tests__/app/component/AppWrapperStyleTest.ts": "f0b57dd03831d3d30396574e6966705f2341c9fe",
+    "ui-core/__tests__/app/component/AppWrapperTest.tsx": "71287e65232ad407c2859eb2979e2fa38f0f9ccc",
+    "ui-core/__tests__/common/component/Error.classNames.Test.ts": "b4b980cf00f20746af16bafdffa5a67d77afec44",
+    "ui-core/__tests__/common/component/ErrorTest.tsx": "663eef84ab1e1d07ecf07b99025d50c901616c92",
+    "ui-core/package.json": "777ef8ba11d5f0c0b87fff96bb1019d4c39f4444",
+    "ui-core/src/app/component/App.tsx": "a8dd17a3d1e36e2bc1c12310009b30b8e2f33a9a",
+    "ui-core/src/app/component/AppHost.tsx": "429c7d5a4ae1b6d37ee78d0c391c170ce2284539",
+    "ui-core/src/app/component/AppHostWrapper.tsx": "159383ad68c26d0d3ebee10ace8ca0e914933405",
+    "ui-core/src/app/component/AppLink.tsx": "2c3a239b1c995347db11c40ca85b07ab897c86d8",
+    "ui-core/src/app/component/AppWrapper.classNames.ts": "ae3482e50d626d4d3a51dc6864deda49c9dd820a",
+    "ui-core/src/app/component/AppWrapper.styles.ts": "87d63861ada901a225ef6f6541b0af05cb06bc23",
+    "ui-core/src/app/component/AppWrapper.tsx": "6785e10cf2c967256b8aeeaa8ce07fe5d65d3db8",
+    "ui-core/src/app/component/IAppProps.ts": "920da5aff9524ff5ad3226b124f6c636a14a1a54",
+    "ui-core/src/common/component/Error.classNames.ts": "0032892a3de26f5ce5b795c96d9a69b3ec132c66",
+    "ui-core/src/common/component/Error.styles.ts": "95591ed46303237ac6ffd8a7ca743cfb16cb4102",
+    "ui-core/src/common/component/Error.tsx": "e7f84daeb2ee80367d89790a3d3fa8b85a2d519f",
+    "ui-core/src/common/component/Sync.tsx": "d49febe3bccde0c91a2661800d1939ae488bf71e",
+    "ui-core/task/clean.js": "a94a0a9a7730ce70b8ac36ee56f785280a1ef8b4",
+    "ui-core/tsconfig.json": "0a6172d9c886070568a1dba26f090ad7fe804940",
+    "ui-core/package-deps.json": "58c94e4b79275a444348b469692a2e51e03fc503"
+  },
+  "arguments": "tsc "
+}

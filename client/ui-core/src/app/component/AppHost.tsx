@@ -56,7 +56,7 @@ class AppHostContainer extends React.Component<IAppHostContainerProps, any> {
         }
     }
     private _onRenderDone = () => {
-        return this.props.host.view;
+        return this.props.host.view || null;
     }
     private _onRenderError = (error : any) => {
         return <AppHostError host={this.props.host} error={error} onRenderError={this.props.onRenderError} />;

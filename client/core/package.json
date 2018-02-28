@@ -4,7 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash.isfunction": "^3.0.8",
-    "mobx": "^3.4.1",
+    "mobx": "^3.6.0",
     "qs": "^6.5.1",
     "roota": "^1.4.0"
   },
