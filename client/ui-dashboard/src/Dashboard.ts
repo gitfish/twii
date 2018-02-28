@@ -7,6 +7,8 @@ import { Component } from "./Component";
 import { SyncModel } from "@twii/core/lib/common/model/SyncModel";
 import { ComponentFactoryRouter } from "./ComponentFactoryRouter";
 import * as ComponentTypes from "./ComponentTypes";
+import { IStack } from "./IStack";
+import { ISplit, IHSplit, IVSplit } from "./ISplit";
 
 class Dashboard extends Component implements IDashboard {
     @observable sync = new SyncModel();
@@ -250,7 +252,7 @@ class Dashboard extends Component implements IDashboard {
         // find all windows
         const windows = this.findAll(c => c.type === "window");
         // find active
-        const active = this.findFirst(c => c.type === "window" && c.active);
+        const active = this.findFirst(c => c.type === "window" && (c as IWindow).active);
         const stack = new m.Stack();
         this.setComponent(stack);
         windows.forEach(w => {
@@ -281,7 +283,7 @@ class Dashboard extends Component implements IDashboard {
         // find all windows
         const windows = this.findAll(c => c.type === "window");
         // find active
-        const active = this.findFirst(c => c.type === "window" && c.active);
+        const active = this.findFirst(c => c.type === "window" && (c as IWindow).active);
         const list = new m.List();
         this.setComponent(list);
         windows.forEach(w => {
@@ -314,7 +316,7 @@ class Dashboard extends Component implements IDashboard {
 
     @computed
     get columnCount() {
-        return this.isColumnSplitLayout ? this.component.columnCount : 1;
+        return this.isColumnSplitLayout ? (this.component as IHSplit).columnCount : 1;
     }
 
     @computed
@@ -462,7 +464,7 @@ class Dashboard extends Component implements IDashboard {
     @action
     splitLeft(newComp?: IComponent) : Promise<any> {
         if(this.splittable) {
-            return this.component.splitLeft(newComp);
+            return (this.component as IStack).splitLeft(newComp);
         }
         return Promise.resolve();
     }
@@ -470,7 +472,7 @@ class Dashboard extends Component implements IDashboard {
     @action
     splitRight(newComp?: IComponent) : Promise<any> {
         if(this.splittable) {
-            return this.component.splitRight(newComp);
+            return (this.component as IStack).splitRight(newComp);
         }
         return Promise.resolve();
     }
@@ -478,7 +480,7 @@ class Dashboard extends Component implements IDashboard {
     @action
     splitTop(newComp : IComponent) : Promise<any> {
         if(this.splittable) {
-            return this.component.splitTop(newComp);
+            return (this.component as IStack).splitTop(newComp);
         }
         return Promise.resolve();
     }
@@ -486,7 +488,7 @@ class Dashboard extends Component implements IDashboard {
     @action
     splitBottom(newComp : IComponent) : Promise<any> {
         if(this.splittable) {
-            return this.component.splitBottom(newComp);
+            return (this.component as IStack).splitBottom(newComp);
         }
         return Promise.resolve();
     }
@@ -510,9 +512,9 @@ class Dashboard extends Component implements IDashboard {
     }
 
     @action
-    unmount() {
+    close() {
         if(this._component) {
-            this._component.unmount();
+            this._component.close();
         }
         delete this._portalRoot;
     }

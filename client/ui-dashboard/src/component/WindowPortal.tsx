@@ -63,7 +63,7 @@ class ProjectedWindowPortal extends React.Component<IWindowPortalProps, any> {
     private _renderApp() : Promise<any> {
         const portal = this.props.window.portal;
         if(portal && portal.children.length === 0) {
-            this.props.window.unmountHandler = () => {
+            this.props.window.onClose = () => {
                 ReactDOM.unmountComponentAtNode(portal);
             };
             return new Promise((resolve, reject) =>  {

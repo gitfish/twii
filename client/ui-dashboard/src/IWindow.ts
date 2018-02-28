@@ -25,7 +25,7 @@ interface IWindow extends IComponent {
     toggleContent() : void;
     load(request : IRequest) : Promise<any>;
     open(request : IRequest) : Promise<IWindow>;
-    close() : void;
+    portal: HTMLElement;
 }
 
 export { IWindow }

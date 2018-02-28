@@ -12,6 +12,8 @@ interface IDashboard extends IComponent {
     
     setTitle(title : string) : void;
     setComponent(component : IComponent) : void;
+    componentConfig : any;
+    setComponentConfig(componentConfig : any) : Promise<any>;
     setDrag(drag : IComponent) : void;
     clearDrag() : void;
     setBlockSource(blockSource : IComponent) : void;

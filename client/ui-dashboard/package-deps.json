@@ -1,5 +1,6 @@
 {
   "files": {
+    "ui-dashboard/package-deps.json": "a0d825551143f07b0565c6f64ea208a65166808c",
     "ui-dashboard/package.json": "666b637bf1dc921a351d3112e258d4a4f7a9b5fa",
     "ui-dashboard/src/Component.ts": "22eb68fc7bdf8eff57f3c73d2b0073ee4e4735b0",
     "ui-dashboard/src/ComponentActions.ts": "3a990120798798db065901b593c9c379c935e4b2",
@@ -61,8 +62,7 @@
     "ui-dashboard/src/component/WindowPortal.styles.ts": "98a9e9ef03105aa46f09d2966abb6dfff7ac5a3d",
     "ui-dashboard/src/component/WindowPortal.tsx": "2ff693dbaa52b2d5add9056f2485a480a9669c48",
     "ui-dashboard/task/clean.js": "72c9c7338aa8629a57cdcede9eba3edfa007b164",
-    "ui-dashboard/tsconfig.json": "25e758182822eb75cc38fadadbe47eba0d49a2e8",
-    "ui-dashboard/package-deps.json": "b1534890cb70149c69ef47bbd556a3948c43836c"
+    "ui-dashboard/tsconfig.json": "25e758182822eb75cc38fadadbe47eba0d49a2e8"
   },
   "arguments": "tsc "
 }

@@ -124,7 +124,7 @@ abstract class Component extends EventEmitter {
     }
 
     @action
-    unmount() {
+    close() {
         // does nothing by default
     }
 

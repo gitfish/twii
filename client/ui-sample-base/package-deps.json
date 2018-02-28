@@ -1,9 +1,11 @@
 {
   "files": {
     "ui-sample-base/README.md": "a18758c5ee52211d28f40f588d39fdcfaabdc9a3",
+    "ui-sample-base/package-deps.json": "717eb5c0f4c7ecd4a0fe27db07660c29f963d2b3",
     "ui-sample-base/package.json": "0589e5620355acee665c44b80b03b86fa43f999b",
     "ui-sample-base/src/component/Form.tsx": "ffa8a91e84ddab4e5c2486f323bf9277df4303bb",
-    "ui-sample-base/task/clean.js": "a94a0a9a7730ce70b8ac36ee56f785280a1ef8b4"
+    "ui-sample-base/task/clean.js": "a94a0a9a7730ce70b8ac36ee56f785280a1ef8b4",
+    "ui-sample-base/ui-sample-base.build.log": "d11e2f88fd10081c1024e1bbfebe4c0fa9d64b0c"
   },
   "arguments": "tsc "
 }

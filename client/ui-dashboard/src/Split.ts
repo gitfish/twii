@@ -202,12 +202,12 @@ class Split extends Component implements ISplit {
     }
 
     @action
-    unmount() {
+    close() {
         if(this.first) {
-            this.first.unmount();
+            this.first.close();
         }
         if(this.second) {
-            this.second.unmount();
+            this.second.close();
         }
     }
 }
@@ -303,8 +303,8 @@ class HSplit extends Split implements IHSplit {
     get columnCount() {
         const left = this.left;
         const right = this.right;
-        const leftCount = left && left.type === ComponentTypes.hsplit ? left.columnCount : 1;
-        const rightCount = right && right.type === ComponentTypes.hsplit ? right.columnCount : 1;
+        const leftCount = left && left.type === ComponentTypes.hsplit ? (left as IHSplit).columnCount : 1;
+        const rightCount = right && right.type === ComponentTypes.hsplit ? (right as IHSplit).columnCount : 1;
         return leftCount + rightCount;
     }
 }
@@ -400,8 +400,8 @@ class VSplit extends Split implements IVSplit {
     get rowCount() {
         const top = this.top;
         const bottom = this.bottom;
-        const topCount = top && top.type === ComponentTypes.vsplit ? top.rowCount : 1;
-        const bottomCount = bottom && bottom.type === ComponentTypes.vsplit ? bottom.rowCount : 1;
+        const topCount = top && top.type === ComponentTypes.vsplit ? (top as IVSplit).rowCount : 1;
+        const bottomCount = bottom && bottom.type === ComponentTypes.vsplit ? (bottom as IVSplit).rowCount : 1;
         return topCount + bottomCount;
     }
 }

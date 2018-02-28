@@ -11,6 +11,7 @@
     "ui-core/__tests__/app/component/AppWrapperTest.tsx": "71287e65232ad407c2859eb2979e2fa38f0f9ccc",
     "ui-core/__tests__/common/component/Error.classNames.Test.ts": "b4b980cf00f20746af16bafdffa5a67d77afec44",
     "ui-core/__tests__/common/component/ErrorTest.tsx": "663eef84ab1e1d07ecf07b99025d50c901616c92",
+    "ui-core/package-deps.json": "f8d0df8b9e4125c5dfcda99c762f60c248aedea2",
     "ui-core/package.json": "777ef8ba11d5f0c0b87fff96bb1019d4c39f4444",
     "ui-core/src/app/component/App.tsx": "a8dd17a3d1e36e2bc1c12310009b30b8e2f33a9a",
     "ui-core/src/app/component/AppHost.tsx": "429c7d5a4ae1b6d37ee78d0c391c170ce2284539",
@@ -25,8 +26,7 @@
     "ui-core/src/common/component/Error.tsx": "e7f84daeb2ee80367d89790a3d3fa8b85a2d519f",
     "ui-core/src/common/component/Sync.tsx": "d49febe3bccde0c91a2661800d1939ae488bf71e",
     "ui-core/task/clean.js": "a94a0a9a7730ce70b8ac36ee56f785280a1ef8b4",
-    "ui-core/tsconfig.json": "0a6172d9c886070568a1dba26f090ad7fe804940",
-    "ui-core/package-deps.json": "58c94e4b79275a444348b469692a2e51e03fc503"
+    "ui-core/tsconfig.json": "0a6172d9c886070568a1dba26f090ad7fe804940"
   },
   "arguments": "tsc "
 }

@@ -78,19 +78,19 @@
     "ui-dashboard-sample/fonts/selawik/selawik-semibold.woff2": "2b3d1b4148da13a09eaf89e878b47e7b51d8206d",
     "ui-dashboard-sample/fonts/selawik/selawik-semilight.woff": "9df8514e78a1ef0a782ad336720916260532666e",
     "ui-dashboard-sample/fonts/selawik/selawik-semilight.woff2": "eb1539084fd6490b5bc23b28e740cc48e4f89054",
+    "ui-dashboard-sample/package-deps.json": "bff82a98e35233e5893d1a3550c6adb9ad3fd7b9",
     "ui-dashboard-sample/package.json": "ade69efbac15858763957ca02eb296d26260c2aa",
     "ui-dashboard-sample/src/AppConfig.d.ts": "32537027c7fec67452d1dad1edeebfc4fb2e8c28",
     "ui-dashboard-sample/src/AppRouter.tsx": "9cd8fa0169b9ed87a436a505e321a08b6de005d1",
+    "ui-dashboard-sample/src/DashboardListStore.ts": "66af90d1d10274cc56ae0dd0b5a92842befe2f5f",
     "ui-dashboard-sample/src/RootAppHost.ts": "2c20d664a4d343afe81e7ad75b097d57300a06f7",
+    "ui-dashboard-sample/src/component/DashboardListApp.tsx": "f2e717baea198d3ccdb0b3bc9cc81f18d60ab3ef",
     "ui-dashboard-sample/src/index.template.ts": "bc3571bc4e1b57f6c9dc82603d28e10c44bbb879",
     "ui-dashboard-sample/src/loaders.d.ts": "6b2c7d0fc4ad8dbf70a46b124cdfde7c79f75e66",
     "ui-dashboard-sample/src/main.tsx": "17edb1318930dcda744c316a6266565a03e1bb0a",
     "ui-dashboard-sample/task/clean.js": "72c9c7338aa8629a57cdcede9eba3edfa007b164",
     "ui-dashboard-sample/tsconfig.json": "9e01d4866b9c5afe0bab9c616f4283154a8305d7",
-    "ui-dashboard-sample/webpack.config.js": "81bb76161a51849a84aee2c903b5240b148078fa",
-    "ui-dashboard-sample/package-deps.json": "612c86f482c3870862dab70c2aec75d41d6e637a",
-    "ui-dashboard-sample/src/DashboardListStore.ts": "66af90d1d10274cc56ae0dd0b5a92842befe2f5f",
-    "ui-dashboard-sample/src/component/DashboardListApp.tsx": "f2e717baea198d3ccdb0b3bc9cc81f18d60ab3ef"
+    "ui-dashboard-sample/webpack.config.js": "81bb76161a51849a84aee2c903b5240b148078fa"
   },
   "arguments": "webpack "
 }

@@ -79,6 +79,7 @@
     "ui-core-sample/fonts/selawik/selawik-semibold.woff2": "2b3d1b4148da13a09eaf89e878b47e7b51d8206d",
     "ui-core-sample/fonts/selawik/selawik-semilight.woff": "9df8514e78a1ef0a782ad336720916260532666e",
     "ui-core-sample/fonts/selawik/selawik-semilight.woff2": "eb1539084fd6490b5bc23b28e740cc48e4f89054",
+    "ui-core-sample/package-deps.json": "f4dcd095a65dcad2927bdeaf93d900633bd4730c",
     "ui-core-sample/package.json": "5a73fb8dbe0960c20edd8df250aa3fca33f1af17",
     "ui-core-sample/src/AppConfig.d.ts": "32537027c7fec67452d1dad1edeebfc4fb2e8c28",
     "ui-core-sample/src/AppRouter.tsx": "2e040f8f68822c9766f5dacc21a3fd98efc91bb1",
@@ -95,8 +96,7 @@
     "ui-core-sample/src/user/component/UserProfile.tsx": "55c9defc227ff592ad1aa07c7ddf7026d3192130",
     "ui-core-sample/task/clean.js": "72c9c7338aa8629a57cdcede9eba3edfa007b164",
     "ui-core-sample/tsconfig.json": "9e01d4866b9c5afe0bab9c616f4283154a8305d7",
-    "ui-core-sample/webpack.config.js": "81bb76161a51849a84aee2c903b5240b148078fa",
-    "ui-core-sample/package-deps.json": "0938b5e3e9e454a74ffb4e4493a21cfa247e308a"
+    "ui-core-sample/webpack.config.js": "81bb76161a51849a84aee2c903b5240b148078fa"
   },
   "arguments": "webpack "
 }

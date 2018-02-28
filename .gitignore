@@ -6,3 +6,4 @@ client/core/core.build.log
 client/ui-core/ui-core.build.log
 client/ui-dashboard/ui-dashboard.build.log
 lib
+client/ui-sample-base/ui-sample-base.build.log

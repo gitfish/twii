@@ -36,7 +36,7 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
         this.dashboard.saveDelay = props.saveDelay;
     }
     componentWillReceiveProps(nextProps) {
-        this.dashboard.unmount();
+        this.dashboard.close();
         this._setFromProps(nextProps);
     }
     componentWillMount() {
@@ -45,7 +45,7 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
         }
     }
     componentWillUnmount() {
-        this.dashboard.unmount();
+        this.dashboard.close();
     }
     render() {
         return <DashboardContainer className={this.props.className} dashboard={this.dashboard} host={this.props.host} styles={this.props.styles} />

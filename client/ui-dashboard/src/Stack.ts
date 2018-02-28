@@ -364,13 +364,10 @@ class Stack extends Component implements IStack {
 
     @action
     close() {
-        this.unmount();
+        while(this.windowCount > 0) {
+            this.windows[0].close();
+        }
         this.removeFromParent();
-    }
-
-    @action
-    unmount() {
-        this.windows.forEach(w => w.unmount());
     }
 }
 

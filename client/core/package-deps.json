@@ -20,6 +20,7 @@
     "core/__tests__/common/service/CollectingLoggingServiceTest.ts": "d1dab54e4fe76fa0be9ffa9d006736dc11814bd6",
     "core/__tests__/common/service/ControlledLoggingServiceTest.ts": "e8041b3ea9783cf21864abd058032470e4ea8e5c",
     "core/__tests__/common/service/LoggingStorageServiceTest.ts": "dac4a27058149b714227e279bae3ed033ed96d64",
+    "core/package-deps.json": "cbf5da7aebaa522e14b5b3a349b6826cce3d2adb",
     "core/package.json": "37373c4ad9e5441eeb3c0fe38787d6a6c1a8463c",
     "core/src/app/AbstractAppHost.ts": "62e1cb0b3da7233b4836ff307315a956e39232f3",
     "core/src/app/AppHost.ts": "7a3798d8d498c58f4354e48a76a40a84007dc1b7",
@@ -62,8 +63,7 @@
     "core/src/common/service/TransientStorageService.ts": "4510c89d1218e4451bff43b53613964334bf9033",
     "core/task/clean.js": "a94a0a9a7730ce70b8ac36ee56f785280a1ef8b4",
     "core/tsconfig.json": "d2f47ffa033d33d5f2dd47d476adca28d4163d38",
-    "core/yarn.lock": "85c8eb3d901dc1cef3da9435ee2727e9b1baba70",
-    "core/package-deps.json": "14ad8a908f4e815938496aadd5f299cf0f2c2459"
+    "core/yarn.lock": "85c8eb3d901dc1cef3da9435ee2727e9b1baba70"
   },
   "arguments": "tsc "
 }

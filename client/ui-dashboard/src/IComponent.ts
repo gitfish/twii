@@ -20,8 +20,7 @@ interface IComponent extends IEventEmitter {
     visit(callback : IConsumerFunc<IComponent>) : void;
     findFirst(predicate : IPredicateFunc<IComponent>) : IComponent;
     findAll(predicate : IPredicateFunc<IComponent>) : IComponent[];
-    unmount() : void;
-    [key : string] : any;
+    close() : void;
 }
 
 export { IComponent }

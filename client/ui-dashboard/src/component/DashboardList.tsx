@@ -19,7 +19,7 @@ interface IDashboardListProps {
 @observer
 class DashboardList extends React.Component<IDashboardListProps, any> {
     componentWillUnmount() {
-        this.props.dashboardList.unmount();
+        this.props.dashboardList.close();
     }
     render() {
         const active = this.props.dashboardList.active;

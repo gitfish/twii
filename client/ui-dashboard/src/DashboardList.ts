@@ -156,7 +156,7 @@ class DashboardList extends Component implements IDashboardList {
                 this.setActiveIndex(this.dashboards.length - 1);
             }
 
-            dashboard.unmount();
+            dashboard.close();
 
             if(this.dashboardCount === 0) {
                 this.addDefaultDashboard();
@@ -234,16 +234,16 @@ class DashboardList extends Component implements IDashboardList {
     }
 
     @action
-    unmount() {
-        this.dashboards.forEach(db => db.unmount());
+    close() {
+        this.dashboards.forEach(db => db.close());
+        this.dashboards = [];
+        this.setActiveIndex(-1);
+        this.addDefaultDashboard();
     }
 
     @action
     clear() {
-        this.unmount();
-        this.dashboards = [];
-        this.setActiveIndex(-1);
-        this.addDefaultDashboard();
+        this.close();
     }
 }
 
