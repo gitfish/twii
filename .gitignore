@@ -7,3 +7,8 @@ client/ui-core/ui-core.build.log
 client/ui-dashboard/ui-dashboard.build.log
 lib
 client/ui-sample-base/ui-sample-base.build.log
+client/yarn-error.log
+client/core/core.build.error.log
+client/ui-dashboard-sample/yarn-error.log
+client/ui-dashboard/yarn-error.log
+client/ui-core-sample/yarn-error.log

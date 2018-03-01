@@ -38,7 +38,7 @@ class StackCloseAction extends React.Component<IStackProps, any> {
                         className={css(this.props.classNames.action, "close-action")}
                         title="Close all Widgets"
                         onClick={this._onClick}>
-                    <Icon className={this.props.classNames.closeActionIcon} iconName="ChromeClose" />
+                    <Icon className={this.props.classNames.actionIcon} iconName="ChromeClose" />
                 </button>
             );
         }
@@ -60,6 +60,7 @@ class StackActionBar extends React.Component<IStackProps, any> {
 interface IStackWindowProps extends IStackProps {
     window: IWindow;
     first?: boolean;
+    last?: boolean;
 }
 
 @observer
@@ -87,11 +88,11 @@ class StackTabCloseAction extends React.Component<IStackWindowProps, any> {
     render() {
         if(this.props.window && !this.props.window.closeDisabled) {
             return (
-                <button type="button" className={css(this.props.classNames.tabAction, "close-action")}
+                <button type="button" className={css(this.props.classNames.tabAction, "close-action", { active: this.props.window.active })}
                                title={`Close ${this.props.window.title || "Widget"}`}
                                onMouseDown={this._onMouseDown}
                                onClick={this._onClick}>
-                    <Icon className="stack-tab-action-icon" iconName="ChromeClose" />
+                    <Icon className={this.props.classNames.tabActionIcon} iconName="ChromeClose" />
                 </button>
             );
         }
@@ -178,7 +179,7 @@ class StackTab extends React.Component<IStackWindowProps, any> {
     }
     render() {
         return (
-            <div className={css(this.props.classNames.tab, { active: this.props.window.active, first: this.props.first })}
+            <div className={css(this.props.classNames.tab, { active: this.props.window.active, first: this.props.first, last: this.props.last })}
                  role="tab"
                  id={`${this.props.window.id}-tab`}
                  aria-controls={`${this.props.window.id}-tab-panel`}
@@ -267,7 +268,7 @@ class StackTabBar extends React.Component<IStackProps, any> {
     }
     render() {
         const tabs = this.props.stack.windows.map((w, idx) => {
-            return <StackTab key={w.id} stack={this.props.stack} window={w} classNames={this.props.classNames} first={idx === 0} />;
+            return <StackTab key={w.id} stack={this.props.stack} window={w} classNames={this.props.classNames} first={idx === 0} last={idx === this.props.stack.windowCount - 1} />;
         });
         return (
             <div className={this.props.classNames.tabBar} onDragOver={this._onDragOver} onDrop={this._onDrop}>

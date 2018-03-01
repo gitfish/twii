@@ -144,7 +144,7 @@ const createConfig = (env) => {
                 { from: "fonts", to: "fonts" }
             ]),
             new CopyWebpackPlugin([
-                { from: "node_modules/@uifabric/icons/fonts", to: "icons/fabric" }
+                { from: "../node_modules/@uifabric/icons/fonts", to: "icons/fabric" }
             ])
         ]
     };

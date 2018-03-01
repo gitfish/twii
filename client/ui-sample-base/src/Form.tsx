@@ -53,7 +53,7 @@ class FormExamples extends React.Component<any, any> {
     }
 }
 
-class FormExamplesApp extends React.Component<any, any> {
+class FormSampleApp extends React.Component<any, any> {
     render() {
         const farItems = [
             { path: "/user/profile/menuItem"}
@@ -66,4 +66,4 @@ class FormExamplesApp extends React.Component<any, any> {
     }
 }
 
-export { FormExamplesApp, FormExamples, TextFieldExamples }
+export { FormSampleApp, FormExamples, TextFieldExamples }

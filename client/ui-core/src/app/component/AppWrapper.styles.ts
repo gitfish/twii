@@ -1,5 +1,6 @@
 import { IStyle, IStyleSet, ITheme, getTheme, concatStyleSets } from "@uifabric/styling";
 import { memoizeFunction } from "@uifabric/utilities";
+import { IMapFunc } from "@twii/core/lib/common/IMapFunc";
 
 interface IAppWrapperStyles {
     root?: IStyle;
@@ -13,11 +14,12 @@ interface IAppWrapperStyles {
     main?: IStyle;
 }
 
-const getStyles = memoizeFunction((theme : ITheme, customStyles?: IAppWrapperStyles) => {
-    if(!theme) {
-        theme = getTheme();
-    }
-    const DefaultStyles : IAppWrapperStyles = {
+interface IAppWrapperStyleConfig {
+    defaultStyles: (theme : ITheme) => IAppWrapperStyles;
+}
+
+const defaultStyles = (theme : ITheme) : IAppWrapperStyles => {
+    return {
         root: {},
         header: {
             backgroundColor: theme.palette.neutralDark,
@@ -113,8 +115,14 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IAppWrapperSty
             overflow: "auto"
         }
     };
+};
 
-    return concatStyleSets(DefaultStyles, customStyles);
+const StyleConfig : IAppWrapperStyleConfig = {
+    defaultStyles: defaultStyles
+};
+
+const getStyles = memoizeFunction((theme : ITheme, customStyles?: IAppWrapperStyles) => {
+    return concatStyleSets(StyleConfig.defaultStyles(theme || getTheme()), customStyles);
 });
 
-export { IAppWrapperStyles, getStyles }
+export { IAppWrapperStyles, IAppWrapperStyleConfig, getStyles, StyleConfig }

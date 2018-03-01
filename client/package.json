@@ -1,0 +1,11 @@
+{
+    "private": true,
+    "workspaces": [
+        "core",
+        "ui-core",
+        "ui-dashboard",
+        "ui-sample-base",
+        "ui-core-sample",
+        "ui-dashboard-sample"
+    ]
+}

@@ -10,14 +10,13 @@ interface IErrorStyles {
     itemValue?: IStyle;
 }
 
-const getStyles = memoizeFunction((theme: ITheme, customStyles?: IErrorStyles) => {
-    if(!theme) {
-        theme = getTheme();
-    }
-    const DefaultStyles : IErrorStyles = {
-        root: {
+interface IErrorStyleConfig {
+    defaultStyles: (theme : ITheme) => IErrorStyles;
+}
 
-        },
+const defaultStyles = (theme : ITheme) : IErrorStyles => {
+    return  {
+        root: {},
         compact: {
             display: "flex",
             justifyContent: "center",
@@ -44,8 +43,15 @@ const getStyles = memoizeFunction((theme: ITheme, customStyles?: IErrorStyles) =
             overflow: "auto"
         })
     };
-    return concatStyleSets(DefaultStyles, customStyles);
+};
+
+const StyleConfig : IErrorStyleConfig = {
+    defaultStyles: defaultStyles
+};
+
+const getStyles = memoizeFunction((theme: ITheme, customStyles?: IErrorStyles) => {
+    return concatStyleSets(StyleConfig.defaultStyles(theme || getTheme()), customStyles);
 });
 
 
-export { IErrorStyles, getStyles }
+export { IErrorStyles, IErrorStyleConfig, getStyles, StyleConfig }

@@ -5,11 +5,12 @@ interface IWindowPortalStyles {
     root?: IStyle;
 }
 
-const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IWindowPortalStyles | undefined) => {
-    if(!theme) {
-        theme = getTheme();
-    }
-    const DefaultStyles : IWindowPortalStyles = {
+interface IWindowPortalStyleConfig {
+    defaultStyles: (theme : ITheme) => IWindowPortalStyles;
+}
+
+const defaultStyles = (theme : ITheme) : IWindowPortalStyles => {
+    return {
         root: {
             backgroundColor: theme.palette.white,
             position: "absolute",
@@ -18,11 +19,17 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IWindowPortalS
             bottom: 0,
             left: 0,
             overflow: "auto"
-        },
-        
+        }
     };
-    return concatStyleSets(DefaultStyles, customStyles);
+};
+
+const StyleConfig : IWindowPortalStyleConfig = {
+    defaultStyles: defaultStyles
+};
+
+const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IWindowPortalStyles | undefined) => {
+    return concatStyleSets(StyleConfig.defaultStyles(theme || getTheme()), customStyles);
 });
 
-export { IWindowPortalStyles, getStyles }
+export { IWindowPortalStyles, IWindowPortalStyleConfig, getStyles, StyleConfig }
 
