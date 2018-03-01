@@ -136,7 +136,7 @@ const createConfig = (env) => {
                 debug: true
             }),
             new HtmlWebpackPlugin({
-                title: "UI Core Sample",
+                title: "UI Dashboard Sample",
                 template: "src/index.template.ts",
                 fabricFontBasePath: fabricFontBasePath
             }),

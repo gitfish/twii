@@ -32,7 +32,7 @@ describe("App Host", () => {
         const router = new Router();
 
         router.use("/not/ready/for/this", (req, res) => {
-            return "notReadyForThis";
+            return "notReadyForThis" + (req.params.name || "");
         });
         router.use("/not/ready/for/that", (req, res) => {
             return "notReadyForThat";
@@ -49,6 +49,11 @@ describe("App Host", () => {
         await host.load({ path: "/not/ready/for/that" });
         expect(host.path).toBe("/not/ready/for/that");
         expect(host.view).toBe("notReadyForThat");
+
+        await host.load({ path: "/not/ready/for/this", query: { name: "Woo" } });
+        expect(host.path).toBe("/not/ready/for/this");
+        expect(host.view).toBe("notReadyForThisWoo");
+        expect(host.params.name).toBe("Woo");
     });
 
     test("emit event", () => {

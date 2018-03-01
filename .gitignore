@@ -12,3 +12,4 @@ client/core/core.build.error.log
 client/ui-dashboard-sample/yarn-error.log
 client/ui-dashboard/yarn-error.log
 client/ui-core-sample/yarn-error.log
+client/core/yarn-error.log
