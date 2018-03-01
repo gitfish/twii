@@ -6,11 +6,12 @@ interface IDashboardStyles {
     overlay?: IStyle;
 }
 
-const getStyles = memoizeFunction((theme : ITheme, customStyles?: IDashboardStyles) => {
-    if(!theme) {
-        theme = getTheme();
-    }
-    const DefaultStyles : IDashboardStyles = {
+interface IDashboardStyleConfig {
+    defaultStyles: (theme : ITheme) => IDashboardStyles;
+}
+
+const defaultStyles = (theme : ITheme) : IDashboardStyles => {
+    return {
         root: {
             backgroundColor: theme.palette.neutralTertiaryAlt
         },
@@ -24,9 +25,15 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IDashboardStyl
                 }
             }
         }
-    };
+    }
+};
 
-    return concatStyleSets(DefaultStyles, customStyles);
+const StyleConfig : IDashboardStyleConfig = {
+    defaultStyles: defaultStyles
+};
+
+const getStyles = memoizeFunction((theme : ITheme, customStyles?: IDashboardStyles) => {
+    return concatStyleSets(StyleConfig.defaultStyles(theme || getTheme()), customStyles);
 });
 
-export { IDashboardStyles, getStyles }
+export { IDashboardStyles, IDashboardStyleConfig, getStyles, StyleConfig }
