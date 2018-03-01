@@ -192,7 +192,7 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            backgroundColor: "transparent"
+            backgroundColor: theme.palette.themeDarkAlt
         },
         body: {
             position: "absolute",
