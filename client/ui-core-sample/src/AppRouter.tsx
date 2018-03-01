@@ -16,7 +16,7 @@ AppRouter.use("/error/sample", exactPath(req => {
 
 AppRouter.use("/samples/form", exactPath(req => {
     return import("@twii/ui-sample-base/lib/Form").then(m => {
-        return <m.FormSampleApp />;
+        return <m.FormSampleApp host={req.app} />;
     });
 }));
 

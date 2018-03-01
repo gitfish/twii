@@ -4,9 +4,9 @@ import { IDashboard } from "./IDashboard";
 import { Dashboard } from "./Dashboard";
 import { IComponent } from "./IComponent";
 import { isNotBlank } from "@twii/core/lib/common/StringUtils";
-import { IComponentRemoveModel, IComponentRemoveOptions } from "./IComponentRemoveModel";
+import { IComponentRemove, IComponentRemoveOptions } from "./IComponentRemove";
 
-class ComponentRemoveModel implements IComponentRemoveModel {
+class ComponentRemove implements IComponentRemove {
     private _saveHandler : (component : IComponent) => void;
     @observable active : boolean = false;
     @observable component : IComponent;
@@ -40,4 +40,4 @@ class ComponentRemoveModel implements IComponentRemoveModel {
     }
 }
 
-export { ComponentRemoveModel }
+export { ComponentRemove }

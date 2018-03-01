@@ -5,7 +5,6 @@ import { IWindow } from "./IWindow";
 import { IWindowManager } from "./IWindowManager";
 import { IRequest } from "roota/lib/IRequest";
 import { Component } from "./Component";
-import { dispatchWindowResize } from "./DOMHelper";
 import * as ComponentTypes from "./ComponentTypes";
 import * as qs from "qs";
 import { WindowAppHost } from "./WindowAppHost";

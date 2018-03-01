@@ -2,10 +2,10 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { Dialog, DialogFooter, DialogContent } from "office-ui-fabric-react/lib/Dialog";
 import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
-import { IDashboardRemoveModel } from "../IDashboardRemoveModel";
+import { IDashboardRemove } from "../model/IDashboardRemove";
 
 interface IDashboardRemoveProps {
-    remove: IDashboardRemoveModel;
+    remove: IDashboardRemove;
 }
 
 @observer

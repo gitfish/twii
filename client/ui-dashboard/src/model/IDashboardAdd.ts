@@ -6,7 +6,7 @@ interface IDashboardAddOptions {
     existing?: IDashboard;
 }
 
-interface IDashboardAddModel {
+interface IDashboardAdd {
     active : boolean;
     dashboardList : IDashboardList;
     existing : IDashboard;
@@ -21,4 +21,4 @@ interface IDashboardAddModel {
     cancel() : void;
 }
 
-export { IDashboardAddOptions, IDashboardAddModel }
+export { IDashboardAddOptions, IDashboardAdd }

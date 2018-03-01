@@ -2,10 +2,10 @@ import { observable, action, computed } from "mobx";
 import { IDashboardList } from "./IDashboardList";
 import { IDashboard } from "./IDashboard";
 import { Dashboard } from "./Dashboard";
-import { IDashboardAddModel, IDashboardAddOptions } from "./IDashboardAddModel";
+import { IDashboardAdd, IDashboardAddOptions } from "./IDashboardAdd";
 import { isNotBlank } from "@twii/core/lib/common/StringUtils";
 
-class DashboardAddModel implements IDashboardAddModel {
+class DashboardAdd implements IDashboardAdd {
     @observable active : boolean = false;
     @observable dashboardList : IDashboardList;
     @observable existing : IDashboard;
@@ -69,4 +69,4 @@ class DashboardAddModel implements IDashboardAddModel {
     }
 }
 
-export { DashboardAddModel as default, DashboardAddModel }
+export { DashboardAdd }

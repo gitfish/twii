@@ -6,7 +6,7 @@ interface IDashboardRemoveOptions {
     dashboard?: IDashboard;
 }
 
-interface IDashboardRemoveModel {
+interface IDashboardRemove {
     active : boolean;
     dashboardList : IDashboardList;
     dashboard: IDashboard;
@@ -16,4 +16,4 @@ interface IDashboardRemoveModel {
     cancel() : void;
 }
 
-export { IDashboardRemoveOptions, IDashboardRemoveModel }
+export { IDashboardRemoveOptions, IDashboardRemove }

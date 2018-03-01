@@ -2,10 +2,10 @@ import { observable, action, computed } from "mobx";
 import { IDashboardList } from "./IDashboardList";
 import { IDashboard } from "./IDashboard";
 import { Dashboard } from "./Dashboard";
-import { IDashboardRemoveModel, IDashboardRemoveOptions } from "./IDashboardRemoveModel";
+import { IDashboardRemove, IDashboardRemoveOptions } from "./IDashboardRemove";
 import { isNotBlank } from "@twii/core/lib/common/StringUtils";
 
-class DashboardRemoveModel implements IDashboardRemoveModel {
+class DashboardRemove implements IDashboardRemove {
     @observable active : boolean = false;
     @observable dashboardList : IDashboardList;
     @observable dashboard : IDashboard;
@@ -40,4 +40,4 @@ class DashboardRemoveModel implements IDashboardRemoveModel {
     }
 }
 
-export { DashboardRemoveModel as default, DashboardRemoveModel }
+export { DashboardRemove }

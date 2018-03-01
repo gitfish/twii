@@ -1,4 +1,4 @@
-import { ComponentGlobals } from "./ComponentGlobals";
+import { ComponentGlobals } from "../ComponentGlobals";
 
 const removeAllChildren = (node : Node) : Node[] => {
     const r : Node[] = [];

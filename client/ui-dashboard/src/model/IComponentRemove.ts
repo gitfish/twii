@@ -5,7 +5,7 @@ interface IComponentRemoveOptions {
     saveHandler?: (component : IComponent) => void;
 }
 
-interface IComponentRemoveModel {
+interface IComponentRemove {
     active : boolean;
     component : IComponent;
     init(opts: IComponentRemoveOptions) : void;
@@ -13,4 +13,4 @@ interface IComponentRemoveModel {
     cancel() : void;
 }
 
-export { IComponentRemoveOptions, IComponentRemoveModel,  }
+export { IComponentRemoveOptions, IComponentRemove }

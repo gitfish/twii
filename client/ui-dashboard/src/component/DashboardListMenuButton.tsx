@@ -1,11 +1,10 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IDashboardList } from "../IDashboardList";
-import { DashboardListStore } from "../DashboardListStore";
+import { IDashboardList } from "../model/IDashboardList";
 import { DefaultButton } from "office-ui-fabric-react/lib/Button";
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
-import { IDashboard } from "../IDashboard";
-import { Dashboard } from "../Dashboard";
+import { IDashboard } from "../model/IDashboard";
+import { Dashboard } from "../model/Dashboard";
 import { addDashboard, removeDashboard } from "../DashboardActions";
 import { Sync } from "@twii/ui-core/lib/common/component/Sync";
 
@@ -138,10 +137,4 @@ class DashboardListMenuButtonContainer extends React.Component<IDashboardListMen
     }
 }
 
-class DashboardListMenuApp extends React.Component<any, any> {
-    render() {
-        return <DashboardListMenuButton dashboardList={DashboardListStore} />;
-    }
-}
-
-export { IDashboardListMenuButtonProps, DashboardListMenuButtonContainer, DashboardListMenuButton, DashboardListMenuApp }
+export { IDashboardListMenuButtonProps, DashboardListMenuButtonContainer, DashboardListMenuButton }

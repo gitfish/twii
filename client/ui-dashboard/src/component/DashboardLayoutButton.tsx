@@ -1,11 +1,10 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IDashboardList } from "../IDashboardList";
-import { IDashboard } from "../IDashboard";
+import { IDashboardList } from "../model/IDashboardList";
+import { IDashboard } from "../model/IDashboard";
 import { DefaultButton } from "office-ui-fabric-react/lib/Button";
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
 import { DashboardAddStore } from "../DashboardAddStore";
-import { DashboardListStore } from "../DashboardListStore";
 import { IDashboardProps } from "./IDashboardProps";
 import { IDashboardListProps } from "./IDashboardListProps";
 import { Sync } from "@twii/ui-core/lib/common/component/Sync";
@@ -174,12 +173,6 @@ class DashboardListLayoutActiveButtonContainer extends React.Component<IDashboar
     }
 }
 
-class DashboardListLayoutApplet extends React.Component<any, any> {
-    render() {
-        return <DashboardListLayoutActiveButtonContainer dashboardList={DashboardListStore} />;
-    }
-}
-
 export { 
     DashboardListLayoutActiveButtonContainer,
     DashboardListLayoutActiveButton,
@@ -188,6 +181,5 @@ export {
     createDashboardLayoutItems,
     createDashboardLayoutSectionItem,
     createDashboardSettingsItem,
-    createDashboardLayoutItem,
-    DashboardListLayoutApplet
+    createDashboardLayoutItem
 }

@@ -1,11 +1,11 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { autorun, IReactionDisposer } from "mobx";
-import { IComponent } from "../IComponent";
-import { IHSplit, IVSplit } from "../ISplit";
+import { IComponent } from "../model/IComponent";
+import { IHSplit, IVSplit } from "../model/ISplit";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import { ComponentFactory } from "./ComponentFactory";
-import { hsplit, vsplit, isSplit } from "../ComponentTypes";
+import { hsplit, vsplit, isSplit } from "../model/ComponentTypes";
 import { IHSplitStyles, IVSplitStyles, getHSplitStyles, getVSplitStyles } from "./Split.styles";
 import { IHSplitClassNames, IVSplitClassNames, getHSplitClassNames, getVSplitClassNames } from "./Split.classNames";
 

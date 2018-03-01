@@ -1,10 +1,9 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IDashboard } from "../IDashboard";
-import { IDashboardList } from "../IDashboardList";
+import { IDashboard } from "../model/IDashboard";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
-import { IDashboardAddModel } from "../IDashboardAddModel";
+import { IDashboardAdd } from "../model/IDashboardAdd";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { isBlank, isNotBlank } from "@twii/core/lib/common/StringUtils";
@@ -30,7 +29,7 @@ class DashboardPropertyEditor extends React.Component<IDashboardPropertyEditorPr
 }
 
 interface IDashboardAddProps {
-    add: IDashboardAddModel
+    add: IDashboardAdd
 }
 
 @observer

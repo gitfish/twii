@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { observer } from "mobx-react";
-import { IDashboard } from "../IDashboard";
+import { IDashboard } from "../model/IDashboard";
 import { ComponentFactory } from "./ComponentFactory";
 import { Sync } from "@twii/ui-core/lib/common/component/Sync";
 import { ComponentRemoveDialog } from "./ComponentRemove";
@@ -11,7 +11,7 @@ import { ComponentGlobals } from "../ComponentGlobals";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import { IDashboardStyles, getStyles } from "./Dashboard.styles";
 import { getClassNames, IDashboardClassNames } from "./Dashboard.classNames";
-import * as ComponentTypes from "../ComponentTypes";
+import * as ComponentTypes from "../model/ComponentTypes";
 
 interface IDashboardProps {
     dashboard: IDashboard;

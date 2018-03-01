@@ -1,10 +1,10 @@
 import * as React from "react";
-import { IComponent } from "../IComponent";
-import { IStack } from "../IStack";
+import { IComponent } from "../model/IComponent";
+import { IStack } from "../model/IStack";
 import { Stack } from "./Stack";
-import { IHSplit, IVSplit } from "../ISplit";
+import { IHSplit, IVSplit } from "../model/ISplit";
 import { HSplit, VSplit } from "./Split";
-import { IWindow } from "../IWindow";
+import { IWindow } from "../model/IWindow";
 import { ProjectedWindowPortal } from "./WindowPortal";
 import { List } from "./List";
 

@@ -2,20 +2,21 @@ import { observable, computed, action } from "mobx";
 import { IComponent } from "./IComponent";
 import { IDashboard } from "./IDashboard";
 import { IWindow } from "./IWindow";
-import { ComponentIdSequence } from "./ComponentIdSequence";
+import { ComponentIdSequence } from "../ComponentIdSequence";
 import { isFunction } from "lodash.isfunction";
 import { IRequest } from "roota/lib/IRequest";
 import { EventEmitter } from "@twii/core/lib/common/EventEmitter";
-import { removeAllChildren } from "./DOMHelper";
-import { ComponentGlobals } from "./ComponentGlobals";
+import { ComponentGlobals } from "../ComponentGlobals";
 import { isEqual } from "lodash.isequal";
 import { IConsumerFunc } from "@twii/core/lib/common/IConsumerFunc";
 import { IPredicateFunc } from "@twii/core/lib/common/IPredicateFunc";
+import { ISupplierFunc } from "@twii/core/lib/common/ISupplierFunc";
 
 abstract class Component extends EventEmitter {
     private _id : string;
     @observable.ref parent : IComponent;
     @observable private _addApp : IRequest;
+    @observable.ref private _addAppSupplier : ISupplierFunc<IRequest>;
     type : string;
 
     constructor() {
@@ -51,6 +52,28 @@ abstract class Component extends EventEmitter {
     @action
     setAddApp(addApp : IRequest) {
         this._addApp = addApp;
+    }
+
+    @computed
+    get addAddSupplier() {
+        if(this._addAppSupplier !== undefined) {
+            return this._addAppSupplier;
+        }
+        const p = this.parent;
+        if(p === this) {
+            console.warn("-- Ancestor Resolution Cycle Detected");
+            return undefined;
+        }
+        return p ? p.addAppSupplier : undefined;
+    }
+
+    set addAppSupplier(value) {
+        this.setAddAppSupplier(value);
+    }
+
+    @action
+    setAddAppSupplier(addAddSupplier : ISupplierFunc<IRequest>) {
+        this._addAppSupplier = addAddSupplier;
     }
 
     @computed

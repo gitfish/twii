@@ -1,5 +1,5 @@
-import { DashboardList } from "@twii/ui-dashboard/lib/DashboardList";
-import { DashboardStorageServiceContext } from "@twii/ui-dashboard/lib/DashboardStorageServiceContext";
+import { DashboardList } from "@twii/ui-dashboard/lib/model/DashboardList";
+import { DashboardStorageServiceContext } from "@twii/ui-dashboard/lib/service/DashboardStorageServiceContext";
 
 const storageKey = "sample-dashboard-list";
 
@@ -10,6 +10,6 @@ DashboardListStore.loader = () => {
 DashboardListStore.saver = (data) => {
     return DashboardStorageServiceContext.value.setItem(storageKey, data);
 };
-DashboardListStore.addApp = { title: "Add Widget", path: "/listing/bookmarks" };
+DashboardListStore.addApp = { title: "Add App", path: "/app/add" };
 
 export { DashboardListStore }

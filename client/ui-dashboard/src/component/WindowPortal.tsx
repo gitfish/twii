@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { IWindow } from "../IWindow";
+import { IWindow } from "../model/IWindow";
 import { AppHostContainer } from "@twii/ui-core/lib/app/component/AppHost";
 import { IWindowPortalStyles, getStyles } from "./WindowPortal.styles";
 import { getClassNames } from "./WindowPortal.classNames";
-import { dispatchWindowResize } from "../DOMHelper";
+import { dispatchWindowResize } from "./DOMHelper";
 
 interface IWindowPortalProps {
     window: IWindow;

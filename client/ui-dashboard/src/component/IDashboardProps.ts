@@ -1,4 +1,4 @@
-import { IDashboard } from "../IDashboard";
+import { IDashboard } from "../model/IDashboard";
 
 interface IDashboardProps {
     dashboard: IDashboard;

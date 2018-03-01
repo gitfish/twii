@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IDashboardList } from "../IDashboardList";
-import { IDashboard } from "../IDashboard";
+import { IDashboardList } from "../model/IDashboardList";
+import { IDashboard } from "../model/IDashboard";
 import { Dashboard } from "./Dashboard";
 import { Sync } from "@twii/ui-core/lib/common/component/Sync";
 import { DashboardAddPanel } from "./DashboardAdd";

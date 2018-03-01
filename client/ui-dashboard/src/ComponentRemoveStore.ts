@@ -1,5 +1,5 @@
-import { ComponentRemoveModel } from "./ComponentRemoveModel";
+import { ComponentRemove } from "./model/ComponentRemove";
 
-const ComponentRemoveStore = new ComponentRemoveModel();
+const ComponentRemoveStore = new ComponentRemove();
 
 export { ComponentRemoveStore }

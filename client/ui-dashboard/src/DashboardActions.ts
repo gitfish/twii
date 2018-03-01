@@ -1,8 +1,7 @@
 import { action, IAction } from "mobx";
-import { IDashboard } from "./IDashboard";
-import { IDashboardAddOptions } from "./IDashboardAddModel";
+import { IDashboardAddOptions } from "./model/IDashboardAdd";
 import { DashboardAddStore } from "./DashboardAddStore";
-import { IDashboardRemoveOptions } from "./IDashboardRemoveModel";
+import { IDashboardRemoveOptions } from "./model/IDashboardRemove";
 import { DashboardRemoveStore } from "./DashboardRemoveStore";
 
 const addDashboard = action((opts : IDashboardAddOptions) => {

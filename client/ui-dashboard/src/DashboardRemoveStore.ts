@@ -1,5 +1,5 @@
-import DashboardRemoveModel from "./DashboardRemoveModel";
+import { DashboardRemove } from "./model/DashboardRemove";
 
-const DashboardRemoveStore = new DashboardRemoveModel();
+const DashboardRemoveStore = new DashboardRemove();
 
 export { DashboardRemoveStore }

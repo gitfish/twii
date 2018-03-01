@@ -1,5 +1,5 @@
-import DashboardAddModel from "./DashboardAddModel";
+import { DashboardAdd } from "./model/DashboardAdd";
 
-const DashboardAddStore = new DashboardAddModel();
+const DashboardAddStore = new DashboardAdd();
 
 export { DashboardAddStore }

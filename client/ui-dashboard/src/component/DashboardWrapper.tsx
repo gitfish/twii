@@ -1,16 +1,18 @@
 import * as React from "react";
 import { IRequest } from "roota/lib/IRequest";
 import { action } from "mobx";
-import { Dashboard } from "../Dashboard";
-import { IDashboard } from "../IDashboard";
+import { Dashboard } from "../model/Dashboard";
+import { IDashboard } from "../model/IDashboard";
 import { DashboardContainer } from "./Dashboard";
 import { IEventEmitter } from "@twii/core/lib/common/IEventEmitter";
 import { IDashboardStyles, getStyles } from "./Dashboard.styles";
+import { ISupplierFunc } from "@twii/core/lib/common/ISupplierFunc";
 
 interface IDashboardWrapperProps {
     className?: string;
     config?: any;
     addApp?: IRequest;
+    addAppSupplier: ISupplierFunc<IRequest>;
     loader?: () => Promise<any>;
     saver?: (data : any) => Promise<any>;
     saveDelay?: number;
@@ -30,6 +32,7 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
     }
     private _setFromProps(props : IDashboardWrapperProps) {
         this.dashboard.addApp = props.addApp;
+        this.dashboard.addAppSupplier = props.addAppSupplier;
         this.dashboard.setConfig(props.config);
         this.dashboard.loader = props.loader;
         this.dashboard.saver = props.saver;
