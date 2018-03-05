@@ -1,7 +1,0 @@
-@import "~common/component/CommonMixins.scss";
-@import "~entity/component/EntitySourceMixins.scss";
-
-.entity-iata-applet {
-    @include fill();
-    @include entity-source();
-}

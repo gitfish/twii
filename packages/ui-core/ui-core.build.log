@@ -1,0 +1,3 @@
+>>> @twii/ui-core
+Found mismatch: "ui-core/package-deps.json": "1c97c2341211c5ecd2f6f4a171de9a3f4d928540" !== "9a2d6189bdce56c31fd8aa989828f84313233c1a"
+tsc 

@@ -1,0 +1,158 @@
+0 silly input [ 'build' ]
+1 silly flags { _: [ 'run' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   script: 'build',
+1 silly flags   args: [] }
+2 verbose rootPath C:\workspace\gitfish\twii
+3 info version 2.9.0
+4 silly existsSync C:\workspace\gitfish\twii\VERSION
+5 silly initialize attempt
+6 silly initialize success
+7 silly execute attempt
+8 silly runScriptInDir build [] core
+9 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\core' }
+10 silly runScriptInDir build [] entity
+11 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\entity' }
+12 silly runScriptInDir build [] ui-core
+13 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-core' }
+14 silly runScriptInDir build [] ui-dashboard
+15 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-dashboard' }
+16 silly runScriptInDir build [] ui-sample-base
+17 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-sample-base' }
+18 silly runScriptInDir build [] ui-core-sample
+19 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-core-sample' }
+20 silly runScriptInDir build [] ui-dashboard-sample
+21 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-dashboard-sample' }
+22 error build Errored while running script in '@twii/ui-dashboard-sample'
+23 error execute callback with error
+24 error Error: Command failed: yarn run build
+24 error error An unexpected error occurred: "Command failed.
+24 error Exit code: 2
+24 error Command: C:\\WINDOWS\\system32\\cmd.exe
+24 error Arguments: /d /s /c webpack
+24 error Directory: C:\\workspace\\gitfish\\twii\\packages\\ui-dashboard-sample
+24 error Output:
+24 error ".
+24 error yarn run v1.5.1
+24 error $ webpack
+24 error [copy-webpack-plugin] WARNING - unable to locate '../node_modules/@uifabric/icons/fonts' at 'C:\workspace\gitfish\twii\packages\node_modules\@uifabric\icons\fonts'
+24 error Hash: 6a133e8f6ff167893645
+24 error Version: webpack 3.11.0
+24 error Time: 7404ms
+24 error                                                Asset       Size  Chunks                    Chunk Names
+24 error   fonts/segoeui-easteuropean/segoeui-semilight.woff2      30 kB          [emitted]
+24 error                                                 0.js     238 kB       0  [emitted]
+24 error                                                 2.js    25.1 kB       2  [emitted]
+24 error                                              main.js     179 kB       3  [emitted]         main
+24 error                                            vendor.js    2.73 MB       4  [emitted]  [big]  vendor
+24 error                                             0.js.map     304 kB       0  [emitted]
+24 error                                             1.js.map     330 kB       1  [emitted]
+24 error                                             2.js.map    32.7 kB       2  [emitted]
+24 error                                          main.js.map     242 kB       3  [emitted]         main
+24 error                                        vendor.js.map    3.38 MB       4  [emitted]         vendor
+24 error                                           index.html  644 bytes          [emitted]
+24 error      fonts/leelawadeeui-thai/leelawadeeui-light.woff    57.5 kB          [emitted]
+24 error      fonts/leelawadeeui-thai/leelawadeeui-bold.woff2    43.5 kB          [emitted]
+24 error    fonts/leelawadeeui-thai/leelawadeeui-regular.woff    60.3 kB          [emitted]
+24 error       fonts/leelawadeeui-thai/leelawadeeui-bold.woff    55.9 kB          [emitted]
+24 error     fonts/leelawadeeui-thai/leelawadeeui-light.woff2    45.1 kB          [emitted]
+24 error   fonts/leelawadeeui-thai/leelawadeeui-regular.woff2    47.6 kB          [emitted]
+24 error   fonts/leelawadeeui-thai/leelawadeeui-semibold.woff    55.9 kB          [emitted]
+24 error fonts/leelawadeeui-thai/leelawadeeui-semilight.woff2    45.1 kB          [emitted]
+24 error             fonts/segoeui-arabic/segoeui-light.woff2    59.6 kB          [emitted]
+24 error  fonts/leelawadeeui-thai/leelawadeeui-semibold.woff2    43.5 kB          [emitted]
+24 error  fonts/leelawadeeui-thai/leelawadeeui-semilight.woff    57.5 kB          [emitted]
+24 error           fonts/segoeui-arabic/segoeui-regular.woff2    61.3 kB          [emitted]
+24 error          fonts/segoeui-arabic/segoeui-semibold.woff2    61.7 kB          [emitted]
+24 error              fonts/segoeui-arabic/segoeui-light.woff      76 kB          [emitted]
+24 error           fonts/segoeui-arabic/segoeui-semibold.woff    79.4 kB          [emitted]
+24 error           fonts/segoeui-cyrillic/segoeui-light.woff2    23.3 kB          [emitted]
+24 error            fonts/segoeui-cyrillic/segoeui-light.woff      31 kB          [emitted]
+24 error         fonts/segoeui-arabic/segoeui-semilight.woff2    60.8 kB          [emitted]
+24 error            fonts/segoeui-arabic/segoeui-regular.woff    78.1 kB          [emitted]
+24 error          fonts/segoeui-arabic/segoeui-semilight.woff      78 kB          [emitted]
+24 error         fonts/segoeui-cyrillic/segoeui-regular.woff2    30.9 kB          [emitted]
+24 error          fonts/segoeui-cyrillic/segoeui-regular.woff    41.1 kB          [emitted]
+24 error         fonts/segoeui-cyrillic/segoeui-semibold.woff    36.4 kB          [emitted]
+24 error        fonts/segoeui-cyrillic/segoeui-semilight.woff    34.7 kB          [emitted]
+24 error        fonts/segoeui-cyrillic/segoeui-semibold.woff2    25.9 kB          [emitted]
+24 error        fonts/segoeui-easteuropean/segoeui-light.woff    39.2 kB          [emitted]
+24 error       fonts/segoeui-easteuropean/segoeui-light.woff2    28.8 kB          [emitted]
+24 error       fonts/segoeui-cyrillic/segoeui-semilight.woff2    25.3 kB          [emitted]
+24 error     fonts/segoeui-easteuropean/segoeui-regular.woff2    35.8 kB          [emitted]
+24 error    fonts/segoeui-easteuropean/segoeui-semibold.woff2    32.5 kB          [emitted]
+24 error     fonts/segoeui-easteuropean/segoeui-semibold.woff    46.2 kB          [emitted]
+24 error    fonts/segoeui-easteuropean/segoeui-semilight.woff    43.1 kB          [emitted]
+24 error      fonts/segoeui-easteuropean/segoeui-regular.woff    49.4 kB          [emitted]
+24 error                                                 1.js     247 kB       1  [emitted]
+24 error               fonts/segoeui-greek/segoeui-light.woff      31 kB          [emitted]
+24 error              fonts/segoeui-greek/segoeui-light.woff2    23.5 kB          [emitted]
+24 error            fonts/segoeui-greek/segoeui-regular.woff2    29.1 kB          [emitted]
+24 error           fonts/segoeui-greek/segoeui-semibold.woff2    24.9 kB          [emitted]
+24 error             fonts/segoeui-greek/segoeui-regular.woff    37.8 kB          [emitted]
+24 error            fonts/segoeui-greek/segoeui-semibold.woff    33.3 kB          [emitted]
+24 error          fonts/segoeui-greek/segoeui-semilight.woff2    23.7 kB          [emitted]
+24 error           fonts/segoeui-greek/segoeui-semilight.woff    31.9 kB          [emitted]
+24 error              fonts/segoeui-hebrew/segoeui-light.woff    27.7 kB          [emitted]
+24 error           fonts/segoeui-hebrew/segoeui-semibold.woff    31.9 kB          [emitted]
+24 error             fonts/segoeui-hebrew/segoeui-light.woff2    43.3 kB          [emitted]
+24 error            fonts/segoeui-hebrew/segoeui-regular.woff      34 kB          [emitted]
+24 error           fonts/segoeui-hebrew/segoeui-regular.woff2    41.6 kB          [emitted]
+24 error         fonts/segoeui-hebrew/segoeui-semilight.woff2    34.5 kB          [emitted]
+24 error          fonts/segoeui-hebrew/segoeui-semilight.woff    28.9 kB          [emitted]
+24 error          fonts/segoeui-vietnamese/segoeui-light.woff    33.5 kB          [emitted]
+24 error          fonts/segoeui-hebrew/segoeui-semibold.woff2    37.7 kB          [emitted]
+24 error         fonts/segoeui-vietnamese/segoeui-light.woff2      25 kB          [emitted]
+24 error        fonts/segoeui-vietnamese/segoeui-regular.woff    40.2 kB          [emitted]
+24 error       fonts/segoeui-vietnamese/segoeui-regular.woff2    30.6 kB          [emitted]
+24 error      fonts/segoeui-vietnamese/segoeui-semibold.woff2    27.3 kB          [emitted]
+24 error       fonts/segoeui-vietnamese/segoeui-semibold.woff    37.3 kB          [emitted]
+24 error       fonts/segoeui-westeuropean/segoeui-light.woff2    20.6 kB          [emitted]
+24 error         fonts/segoeui-westeuropean/segoeui-light.ttf    40.2 kB          [emitted]
+24 error        fonts/segoeui-westeuropean/segoeui-light.woff    24.7 kB          [emitted]
+24 error       fonts/segoeui-westeuropean/segoeui-regular.ttf    56.8 kB          [emitted]
+24 error     fonts/segoeui-vietnamese/segoeui-semilight.woff2    25.7 kB          [emitted]
+24 error      fonts/segoeui-vietnamese/segoeui-semilight.woff    34.8 kB          [emitted]
+24 error      fonts/segoeui-westeuropean/segoeui-regular.woff    33.9 kB          [emitted]
+24 error      fonts/segoeui-westeuropean/segoeui-semibold.ttf      49 kB          [emitted]
+24 error     fonts/segoeui-westeuropean/segoeui-regular.woff2    26.5 kB          [emitted]
+24 error     fonts/segoeui-westeuropean/segoeui-semibold.woff    30.6 kB          [emitted]
+24 error    fonts/segoeui-westeuropean/segoeui-semibold.woff2    23.1 kB          [emitted]
+24 error     fonts/segoeui-westeuropean/segoeui-semilight.ttf    41.6 kB          [emitted]
+24 error                     fonts/selawik/selawik-light.woff    19.5 kB          [emitted]
+24 error                    fonts/selawik/selawik-light.woff2    14.5 kB          [emitted]
+24 error   fonts/segoeui-westeuropean/segoeui-semilight.woff2    21.6 kB          [emitted]
+24 error    fonts/segoeui-westeuropean/segoeui-semilight.woff      26 kB          [emitted]
+24 error                  fonts/selawik/selawik-regular.woff2    14.6 kB          [emitted]
+24 error                   fonts/selawik/selawik-regular.woff    19.6 kB          [emitted]
+24 error                 fonts/selawik/selawik-semibold.woff2    14.9 kB          [emitted]
+24 error                 fonts/selawik/selawik-semilight.woff    19.9 kB          [emitted]
+24 error                  fonts/selawik/selawik-semibold.woff    19.8 kB          [emitted]
+24 error                fonts/selawik/selawik-semilight.woff2    14.9 kB          [emitted]
+24 error  [120] (webpack)/buildin/global.js 509 bytes {4} [built]
+24 error  [178] ../ui-core/lib/common/component/Error.js 6.94 kB {3} [built]
+24 error  [188] ../core/lib/app/AppRouterContext.js 246 bytes {3} [built]
+24 error  [300] ../ui-core/lib/app/component/AppHost.js 3.57 kB {3} [built]
+24 error  [302] ../ui-core/lib/common/component/Sync.js 4.14 kB {3} [built]
+24 error  [307] ../core/lib/common/Context.js 1.12 kB {3} [built]
+24 error  [311] multi ./src/main.tsx 28 bytes {3} [built]
+24 error  [312] ./src/main.tsx 741 bytes {3} [built]
+24 error  [327] ./src/RootAppHost.ts 189 bytes {3} [built]
+24 error  [328] ../core/lib/app/BrowserAppHost.js 7.46 kB {3} [built]
+24 error  [333] ./src/AppRouter.tsx 920 bytes {3} [built]
+24 error  [480] multi react react-dom mobx mobx-react core-js office-ui-fabric-react 88 bytes {4} [built]
+24 error  [865] ../ui-sample-base/lib/Form.js 4.55 kB {0} [built]
+24 error  [866] ./src/component/AppList.tsx 1.72 kB {2} [built]
+24 error  [867] ./src/component/DashboardListApp.tsx 1.79 kB {1} [built]
+24 error     + 980 hidden modules
+24 error
+24 error ERROR in [copy-webpack-plugin] unable to locate '../node_modules/@uifabric/icons/fonts' at 'C:\workspace\gitfish\twii\packages\node_modules\@uifabric\icons\fonts'
+24 error Child html-webpack-plugin for "index.html":
+24 error      1 asset
+24 error        [0] C:/workspace/gitfish/twii/node_modules/html-webpack-plugin/lib/loader.js!./src/index.template.ts 768 bytes {0} [built]
+24 error info If you think this is a bug, please open a bug report with the information provided in "C:\\workspace\\gitfish\\twii\\packages\\ui-dashboard-sample\\yarn-error.log".
+24 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+24 error
+24 error     at Promise.all.then.arr (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\node_modules\execa\index.js:236:11)
+24 error     at <anonymous>
