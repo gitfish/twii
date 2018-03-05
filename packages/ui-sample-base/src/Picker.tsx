@@ -48,7 +48,7 @@ class PickerSamples extends React.Component<any, any> {
 
 class PickerSampleApp extends React.Component<IAppProps, any> {
     componentWillMount() {
-
+        this.props.host.setTitle("Picker Sample")
     }
     render() {
         return (
