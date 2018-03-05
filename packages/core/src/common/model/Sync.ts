@@ -1,7 +1,7 @@
 import { observable, action, computed } from "mobx";
 import { IMutableSync, ISyncOptions } from "../IMutableSync";
 
-class SyncModel implements IMutableSync {
+class Sync implements IMutableSync {
     @observable id: string;
     @observable type: string;
     @observable startDate: Date;
@@ -46,4 +46,4 @@ class SyncModel implements IMutableSync {
     }
 }
 
-export { SyncModel }
+export { Sync }

@@ -5,11 +5,11 @@ import { IComponent } from "./IComponent";
 import { Component } from "./Component";
 import { Dashboard } from "./Dashboard";
 import { Stack } from "./Stack";
-import { SyncModel } from "@twii/core/lib/common/model/SyncModel";
+import { Sync } from "@twii/core/lib/common/model/Sync";
 import * as ComponentTypes from "./ComponentTypes";
 
 class DashboardList extends Component implements IDashboardList {
-    @observable sync = new SyncModel();
+    @observable sync = new Sync();
     @observable private _activeIndex : number = -1;
     @observable dashboards : IDashboard[] = [];
     @observable private _closeDisabled = false;

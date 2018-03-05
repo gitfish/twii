@@ -1,5 +1,4 @@
 import { observable, action, computed, autorun } from "mobx";
-import { SyncModel } from "@twii/core/lib/common/model/SyncModel";
 import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { IWindowManager } from "./IWindowManager";

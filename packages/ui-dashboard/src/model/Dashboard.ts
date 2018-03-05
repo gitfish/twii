@@ -4,14 +4,14 @@ import { IDashboardList } from "./IDashboardList";
 import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { Component } from "./Component";
-import { SyncModel } from "@twii/core/lib/common/model/SyncModel";
+import { Sync } from "@twii/core/lib/common/model/Sync";
 import { ComponentFactoryRouter } from "./ComponentFactoryRouter";
 import * as ComponentTypes from "./ComponentTypes";
 import { IStack } from "./IStack";
 import { ISplit, IHSplit, IVSplit } from "./ISplit";
 
 class Dashboard extends Component implements IDashboard {
-    @observable sync = new SyncModel();
+    @observable sync = new Sync();
     @observable private _title : string;
     @observable private _closeDisabled: boolean;
     

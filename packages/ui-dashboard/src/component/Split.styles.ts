@@ -25,6 +25,9 @@ const getHSplitStyles = memoizeFunction((theme : ITheme, customStyles?: IHSplitS
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            position: "absolute",
+            top: 0,
+            bottom: 0,
             width: 5
         },
         leftPane: {

@@ -130,4 +130,4 @@ class CompactError extends React.Component<IErrorProps, any> {
     }
 }
 
-export { IErrorProps, Error as default, Error, CompactError };
+export { IErrorProps, Error, CompactError };

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { IAppProps } from "@twii/ui-core/lib/app/component/IAppProps";
 import { AppHostWrapper } from "@twii/ui-core/lib/app/component/AppHostWrapper";
+import { containsIgnoreCase } from "@twii/core/lib/common/StringUtils";
 import { TagPicker, ITag } from "office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker";
 
 const tags : ITag[] = [
@@ -32,14 +33,17 @@ const tags : ITag[] = [
 
 class PickerSamples extends React.Component<any, any> {
     private _onResolveSuggestions = (filter : string, selectedItems : ITag[]) => {
-        return tags;
+        const filtered = tags.filter(tag => {
+            return containsIgnoreCase(tag.name, filter) && !selectedItems.some(s => s.key === tag.key);
+        });
+        return filtered;
     }
     render() {
         return (
             <div className="picker-samples" style={{ padding: 8 }}>
                 <div className="tag-picker-samples-section">
                     <h2>Tag Picker Samples</h2>
-                    <TagPicker onResolveSuggestions={this._onResolveSuggestions} />
+                    <TagPicker onResolveSuggestions={this._onResolveSuggestions} pickerSuggestionsProps={{ noResultsFoundText: "No matching states available" }} />
                 </div>
             </div>
         );

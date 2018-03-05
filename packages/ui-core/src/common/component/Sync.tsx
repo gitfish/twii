@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { ISync } from "@twii/core/lib/common/ISync";
-import Error from "./Error";
+import { Error } from "./Error";
 import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 
 interface ISyncProps {
@@ -73,4 +73,4 @@ class Sync extends React.Component<ISyncProps, any> {
     }
 }
 
-export { ISyncProps, Sync as default, Sync, DefaultSyncProps }
+export { ISyncProps, Sync, DefaultSyncProps }

@@ -1,7 +1,7 @@
 import { observable, action, computed } from "mobx";
 import { IMutableSupplier } from "../IMutableSupplier";
 
-class SupplierModel<T> implements IMutableSupplier<T> {
+class Supplier<T> implements IMutableSupplier<T> {
     @observable.ref _value : T;
 
     @computed
@@ -23,4 +23,4 @@ class SupplierModel<T> implements IMutableSupplier<T> {
     }
 }
 
-export { SupplierModel };
+export { Supplier };

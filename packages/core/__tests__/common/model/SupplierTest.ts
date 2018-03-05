@@ -1,8 +1,8 @@
-import { SupplierModel } from "common/model/SupplierModel";
+import { Supplier } from "common/model/Supplier";
 
 describe("Supplier Model", () => {
     test("all", () => {
-        const m = new SupplierModel<string>();
+        const m = new Supplier<string>();
         m.value = "Test";
 
         expect(m.value).toBe("Test");

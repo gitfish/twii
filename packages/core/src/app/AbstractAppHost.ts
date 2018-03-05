@@ -1,5 +1,5 @@
 import { observable, action, computed } from "mobx";
-import { SyncModel } from "../common/model/SyncModel";
+import { Sync } from "../common/model/Sync";
 import { toPromise as syncToPromise } from "../common/SyncUtils";
 import { IRouter } from "roota/lib/IRouter";
 import { IRequest } from "roota/lib/IRequest";
@@ -19,7 +19,7 @@ abstract class AbstractAppHost implements IAppHost {
     
     @observable private _title : string;
     @observable protected _req : IRequest;
-    @observable sync = new SyncModel();
+    @observable sync = new Sync();
     @observable.ref view : any;
     @observable private _state : any = {};
     @observable protected _initialized : boolean = false;

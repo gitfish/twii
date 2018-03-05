@@ -101,7 +101,7 @@ class HSplit extends React.Component<IHSplitProps, any> {
                 <div className={classNames.leftPane} ref={this._onLeftPaneRef} style={{ width: "50%" }}>
                     {leftContent}
                 </div>
-                <div className={css(classNames.splitter, { active: this.props.hsplit.splitActive })} style={{ position: "absolute", top: 0, bottom: 0, width: 5 }} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
+                <div className={css(classNames.splitter, { active: this.props.hsplit.splitActive })} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
                     <div className="hsplit-splitter-content" style={{ width: "100%", height: "100%" }}></div>
                 </div>
                 <div className={classNames.rightPane} ref={this._onRightPaneRef} style={{ width: "50%" }}>

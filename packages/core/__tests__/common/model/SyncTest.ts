@@ -1,8 +1,8 @@
-import { SyncModel } from "common/model/SyncModel";
+import { Sync } from "common/model/Sync";
 
-describe("Supplier Model", () => {
+describe("Sync Model", () => {
     test("standard", () => {
-        const m = new SyncModel();
+        const m = new Sync();
         m.syncStart({ id: "test1", type: "read" });
 
         expect(m.id).toBe("test1");
@@ -18,7 +18,7 @@ describe("Supplier Model", () => {
     });
 
     test("end", () => {
-        const m = new SyncModel();
+        const m = new Sync();
         m.syncEnd();
 
         expect(m.syncing).toBeFalsy();
@@ -28,7 +28,7 @@ describe("Supplier Model", () => {
     });
 
     test("error", () => {
-        const m = new SyncModel();
+        const m = new Sync();
         m.syncStart();
 
         m.syncError({ message: "Test Error"});
