@@ -74,27 +74,14 @@ class Dashboard extends React.Component<IDashboardProps, any> {
         const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
         const component = this.props.dashboard.component;
         let content = ComponentFactory(component);
-        
-        const style : React.CSSProperties = this.props.hidden ? {
-            position: "absolute",
-            top: -1,
-            left: -1,
-            width: 0,
-            height: 0,
-            overflow: "hidden"
-        } : {
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0
-        };
         return (
-            <div id={this.props.dashboard.id} className={classNames.root} style={style}>
+            <div id={this.props.dashboard.id} className={css(classNames.root, { hidden: this.props.hidden })}>
                 <DashboardBlockOverlay {...this.props} classNames={classNames} />
                 <ComponentRemoveDialog remove={ComponentRemoveStore} />
                 <div className="dashboard-portal-root" ref={this._onPortalRootRef}></div>
-                {content}
+                <div className={classNames.content}>
+                    {content}
+                </div>
             </div>
         );
     }
