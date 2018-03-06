@@ -271,7 +271,7 @@ class StackTabBar extends React.Component<IStackProps, any> {
             return <StackTab key={w.id} stack={this.props.stack} window={w} classNames={this.props.classNames} first={idx === 0} last={idx === this.props.stack.windowCount - 1} />;
         });
         return (
-            <div className={this.props.classNames.tabBar} onDragOver={this._onDragOver} onDrop={this._onDrop}>
+            <div className={this.props.classNames.tabBar} role="tablist" onDragOver={this._onDragOver} onDrop={this._onDrop}>
                 {tabs}
                 <StackAddAction {...this.props} />
             </div>

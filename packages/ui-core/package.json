@@ -17,9 +17,9 @@
     "lodash.isfunction": "^3.0.8",
     "lodash.isobject": "^3.0.2",
     "lodash.isstring": "^4.0.1",
-    "mobx": "^3.6.0",
+    "mobx": "^3.6.1",
     "mobx-react": "^4.4.2",
-    "office-ui-fabric-react": "^5.59.0",
+    "office-ui-fabric-react": "^5.59.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "roota": "^1.5.0"

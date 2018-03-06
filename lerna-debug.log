@@ -1,40 +1,23 @@
-0 silly input [ 'build' ]
-1 silly flags { _: [ 'run' ],
+0 silly input [ 'mobx-react' ]
+1 silly flags { _: [ 'add' ],
 1 silly flags   'reject-cycles': false,
 1 silly flags   rejectCycles: false,
-1 silly flags   script: 'build',
-1 silly flags   args: [] }
+1 silly flags   scope: 'ui-core',
+1 silly flags   args: [ 'mobx-react' ] }
 2 verbose rootPath C:\workspace\gitfish\twii
 3 info version 2.9.0
-4 silly existsSync C:\workspace\gitfish\twii\VERSION
-5 silly initialize attempt
-6 silly initialize success
-7 silly execute attempt
-8 silly runScriptInDir build [] core
-9 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\core' }
-10 silly runScriptInDir build [] entity
-11 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\entity' }
-12 silly runScriptInDir build [] ui-core
-13 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-core' }
-14 silly runScriptInDir build [] ui-dashboard
-15 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-dashboard' }
-16 silly runScriptInDir build [] ui-sample-base
-17 silly getExecOpts { cwd: 'C:\\workspace\\gitfish\\twii\\packages\\ui-sample-base' }
-18 error build Errored while running script in '@twii/ui-dashboard'
-19 error execute callback with error
-20 error Error: Command failed: yarn run build
-20 error error An unexpected error occurred: "Command failed.
-20 error Exit code: 2
-20 error Command: C:\\WINDOWS\\system32\\cmd.exe
-20 error Arguments: /d /s /c tsc
-20 error Directory: C:\\workspace\\gitfish\\twii\\packages\\ui-dashboard
-20 error Output:
-20 error ".
-20 error yarn run v1.5.1
-20 error $ tsc
-20 error src/model/Window.ts(2,27): error TS2307: Cannot find module '@twii/core/lib/common/model/SyncModel'.
-20 error info If you think this is a bug, please open a bug report with the information provided in "C:\\workspace\\gitfish\\twii\\packages\\ui-dashboard\\yarn-error.log".
-20 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
-20 error
-20 error     at Promise.all.then.arr (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\node_modules\execa\index.js:236:11)
-20 error     at <anonymous>
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync C:\workspace\gitfish\twii\VERSION
+7 info scope ui-core
+8 error EPACKAGES Errored while collecting packages and package graph
+9 error Error: No packages found that match scope 'ui-core'
+9 error     at Function.filterPackages (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\lib\PackageUtilities.js:226:17)
+9 error     at AddCommand.runPreparations (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\lib\Command.js:328:60)
+9 error     at C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\lib\Command.js:204:18
+9 error     at new Promise (<anonymous>)
+9 error     at AddCommand.run (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\lib\Command.js:188:14)
+9 error     at Object.handler (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\lib\commands\AddCommand.js:77:14)
+9 error     at Object.self.runCommand (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\node_modules\yargs\lib\command.js:233:22)
+9 error     at Object.Yargs.self._parseArgs (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\node_modules\yargs\yargs.js:990:30)
+9 error     at Object.Yargs.self.parse (C:\Users\mfish\AppData\Roaming\npm\node_modules\lerna\node_modules\yargs\yargs.js:532:23)
