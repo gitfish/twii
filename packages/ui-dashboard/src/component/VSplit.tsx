@@ -100,8 +100,8 @@ class VSplit extends React.Component<IVSplitProps, any> {
                         {topContent}
                     </div>
                 </div>
-                <div className={css(classNames.splitter, { active: this.props.vsplit.splitActive })} style={{ position: "absolute", left: 0, right: 0, height: 5 }} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
-                    <div className="vsplit-splitter-content" style={{ width: "100%", height: "100%" }}></div>
+                <div className={css(classNames.splitter, { active: this.props.vsplit.splitActive })} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
+                    <div className={css(classNames.splitterContent, { active: this.props.vsplit.splitActive })}></div>
                 </div>
                 <div className={classNames.bottomPane} ref={this._onBottomPaneRef} style={{ height: "50%" }}>
                     <div className={classNames.bottomContent}>

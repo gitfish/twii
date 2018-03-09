@@ -5,11 +5,12 @@ import { IAppViewStyles } from "./AppView.styles";
 interface IAppViewClassNames {
     root?: string;
     menu?: string;
+    menuControl?: string;
     title?: string;
-    headerNear?: string;
-    headerFar?: string;
-    headerItem?: string;
-    headerItemError?: string;
+    menuNear?: string;
+    menuFar?: string;
+    menuItem?: string;
+    menuItemError?: string;
     main?: string;
 }
 
@@ -17,6 +18,7 @@ const getClassNames = memoizeFunction((styles : IAppViewStyles, className?: stri
     return {
         root: mergeStyles("app-view", className, styles.root),
         menu: mergeStyles("app-view-menu", styles.menu),
+        menuControl: mergeStyles("app-view-menu-control", styles.menuControl),
         title: mergeStyles("app-view-title", styles.title),
         menuNear: mergeStyles("app-view-menu-near", styles.menuNear),
         menuFar: mergeStyles("app-view-menu-far", styles.menuFar),

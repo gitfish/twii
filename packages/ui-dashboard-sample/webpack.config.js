@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const WriteFilePlugin = require("write-file-webpack-plugin");
 
 const isNodeModuleFile = (filename) => {
     return filename.indexOf("node_modules") >= 0;
@@ -142,7 +143,8 @@ const createConfig = (env) => {
             ]),
             new CopyWebpackPlugin([
                 { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" }
-            ])
+            ]),
+            new WriteFilePlugin()
         ]
     };
 

@@ -4,6 +4,7 @@ import { memoizeFunction } from "@uifabric/utilities";
 interface IVSplitStyles {
     root?: IStyle;
     splitter?: IStyle;
+    splitterContent?: IStyle;
     topPane?: IStyle;
     topContent?: IStyle;
     bottomPane?: IStyle;
@@ -28,7 +29,19 @@ const defaultStyles = (theme : ITheme) : IVSplitStyles => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: 5
+            position: "absolute",
+            left: 0,
+            right: 0,
+            height: 5,
+            backgroundColor: "transparent"
+        },
+        splitterContent: {
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            overflow: "hidden"
         },
         topPane: {
             position: "absolute",

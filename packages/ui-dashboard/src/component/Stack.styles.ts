@@ -113,7 +113,8 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             left: 0,
             top: 0,
             bottom: 0,
-            right: 0
+            right: 0,
+            boxShadow: `0 0 5px 0 rgba(0, 0, 0, 0.4)`
         },
         header: {
             position: "absolute",

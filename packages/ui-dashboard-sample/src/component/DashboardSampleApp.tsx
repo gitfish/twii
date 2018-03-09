@@ -28,7 +28,13 @@ class DashboardSampleApp extends React.Component<IAppProps, any> {
         };
         const customStyles : IDashboardStyles = {
             root: {
-                backgroundColor: getTheme().palette.orange
+                backgroundColor: getTheme().palette.neutralLighter
+            },
+            content: {
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20
             }
         };
         return (

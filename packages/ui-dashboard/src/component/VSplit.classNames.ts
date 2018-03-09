@@ -5,6 +5,7 @@ import { IVSplitStyles } from "./VSplit.styles";
 interface IVSplitClassNames {
     root?: string;
     splitter?: string;
+    splitterContent?: string;
     topPane?: string;
     topContent?: string;
     bottomPane?: string;
@@ -15,6 +16,7 @@ const getClassNames = memoizeFunction((styles : IVSplitStyles, className?: strin
     return {
         root: mergeStyles("vsplit", styles.root, className),
         splitter: mergeStyles("vsplit-splitter", styles.splitter),
+        splitterContent: mergeStyles("vsplit-splitter-content", styles.splitterContent),
         topPane: mergeStyles("vsplit-top-pane", styles.topPane),
         topContent: mergeStyles("vsplit-top-content", styles.topContent),
         bottomPane: mergeStyles("vsplit-bottom-pane", styles.bottomPane),

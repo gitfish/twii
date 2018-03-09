@@ -35,7 +35,8 @@
     "ts-loader": "^4.0.1",
     "typescript": "^2.7.2",
     "webpack": "^4.1.0",
-    "webpack-dev-server": "^3.1.0"
+    "webpack-dev-server": "^3.1.0",
+    "write-file-webpack-plugin": "^4.2.0"
   },
   "devDependencies": {
     "webpack-cli": "^2.0.10"

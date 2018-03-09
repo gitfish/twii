@@ -69,10 +69,21 @@ class AppViewMain extends React.Component<IAppViewProps, any> {
     }
 }
 
+class AppViewMenuControl extends React.Component<IAppViewProps, any> {
+    render() {
+        return (
+            <button type="button" className={this.props.classNames.menuControl}>
+                <Icon iconName="GlobalNavButton" />
+            </button>
+        );
+    }
+}
+
 class AppViewMenu extends React.Component<IAppViewProps, any> {
     render() {
         return (
             <nav className={this.props.classNames.menu}>
+                <AppViewMenuControl {...this.props} />
                 {/*
                 <AppMenuNear {...this.props} />
                 <AppBrand {...this.props} />

@@ -4,6 +4,7 @@ import { memoizeFunction } from "@uifabric/utilities";
 interface IHSplitStyles {
     root?: IStyle;
     splitter?: IStyle;
+    splitterContent?: IStyle;
     leftPane?: IStyle;
     leftContent?: IStyle;
     rightPane?: IStyle;
@@ -31,7 +32,16 @@ const defaultStyles = (theme : ITheme) : IHSplitStyles => {
             position: "absolute",
             top: 0,
             bottom: 0,
-            width: 5
+            width: 5,
+            backgroundColor: "transparent"
+        },
+        splitterContent: {
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            overflow: "hidden"
         },
         leftPane: {
             position: "absolute",

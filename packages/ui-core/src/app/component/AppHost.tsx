@@ -49,6 +49,15 @@ class AppHostLoad extends React.Component<IAppHostLoadProps, any> {
     }
 }
 
+class AppHostContent extends React.Component<IAppHostContainerProps, any> {
+    componentWillMount() {
+        this.props.host.setTitle(this.props.host.path);
+    }
+    render() {
+        return this.props.host.view || null;
+    }
+}
+
 class AppHostContainer extends React.Component<IAppHostContainerProps, any> {
     componentWillMount() {
         if(!this.props.noLoadOnMount) {
@@ -56,8 +65,7 @@ class AppHostContainer extends React.Component<IAppHostContainerProps, any> {
         }
     }
     private _onRenderDone = () => {
-        this.props.host.setTitle(this.props.host.path);
-        return this.props.host.view || null;
+        return <AppHostContent {...this.props} />
     }
     private _onRenderError = (error : any) => {
         return <AppHostError host={this.props.host} error={error} onRenderError={this.props.onRenderError} />;

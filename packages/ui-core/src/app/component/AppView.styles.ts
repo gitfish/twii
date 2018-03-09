@@ -5,6 +5,7 @@ interface IAppViewStyles {
     root?: IStyle;
     menu?: IStyle;
     title?: IStyle;
+    menuControl?: IStyle;
     menuNear?: IStyle;
     menuFar?: IStyle;
     menuItem?: IStyle;
@@ -20,21 +21,35 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
     return {
         root: {},
         menu: {
-            backgroundColor: theme.palette.neutralDark,
-            width: 32,
-            lineHeight: 32,
+            backgroundColor: theme.palette.themeDark,
+            width: 40,
             left: 0,
             top: 0,
-            right: 0,
+            bottom: 0,
             position: "absolute",
             zIndex: 600,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center"
         },
-        menuNear: {
+        menuControl: {
+            outline: "none",
+            border: "none",
+            background: "transparent",
             position: "absolute",
             top: 0,
+            left: 0,
+            right: 0,
+            height: 40,
+            width: 40,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: theme.palette.white
+        },
+        menuNear: {
+            position: "absolute",
+            top: 40,
             left: 0,
             right: 0
         },
@@ -51,8 +66,8 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: 32,
-            minWidth: 32,
+            height: 40,
+            minWidth: 40,
             overflow: "hidden",
             color: theme.palette.white,
             selectors: {
@@ -88,7 +103,7 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
         main: {
             position: "absolute",
             top: 0,
-            left: 32,
+            left: 40,
             right: 0,
             bottom: 0,
             overflow: "auto"
