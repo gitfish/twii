@@ -2,7 +2,7 @@ import { observable, action, computed, autorun } from "mobx";
 import { Component } from "./Component";
 import { IComponent } from "./IComponent";
 import { ISplit, IHSplit, IVSplit } from "./ISplit";
-import { ComponentFactoryRouter } from "./ComponentFactoryRouter";
+import { ComponentFactory } from "./ComponentFactory";
 import * as ComponentTypes from "./ComponentTypes";
 
 const Defaults = {
@@ -77,7 +77,7 @@ class Split extends Component implements ISplit {
     @action
     setFirstConfig(config : any) {
         if(config && config.component) {
-            return ComponentFactoryRouter.handleRequest({ path: config.component.type }).then(component => {
+            return ComponentFactory(config.component.type).then(component => {
                 this.setFirst(component);
                 return component.setConfig(config.component);
             });
@@ -116,7 +116,7 @@ class Split extends Component implements ISplit {
     @action
     setSecondConfig(config : any) {
         if(config && config.component) {
-            return ComponentFactoryRouter.handleRequest({ path: config.component.type }).then(component => {
+            return ComponentFactory(config.component.type).then(component => {
                 this.setSecond(component);
                 return component.setConfig(config.component);
             });

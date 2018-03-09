@@ -16,6 +16,12 @@ AppRouter.use("/samples/picker", exactPath(req => {
     });
 }));
 
+AppRouter.use("/samples/dashboard", exactPath(req => {
+    return import("./component/DashboardSampleApp").then(m => {
+        return <m.DashboardSampleApp host={req.app} />;
+    });
+}));
+
 AppRouter.use("/app/add", exactPath(req => {
     return import("./component/AppList").then(m => {
         return <m.AppListApp host={req.app} />;

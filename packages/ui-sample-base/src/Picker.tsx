@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IAppProps } from "@twii/ui-core/lib/app/component/IAppProps";
-import { AppHostWrapper } from "@twii/ui-core/lib/app/component/AppHostWrapper";
+import { AppHostView } from "@twii/ui-core/lib/app/component/AppHostView";
 import { containsIgnoreCase } from "@twii/core/lib/common/StringUtils";
 import { TagPicker, ITag } from "office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker";
 
@@ -56,9 +56,9 @@ class PickerSampleApp extends React.Component<IAppProps, any> {
     }
     render() {
         return (
-            <AppHostWrapper host={this.props.host} title="Picker Sample App">
+            <AppHostView host={this.props.host} title="Picker Sample App">
                 <PickerSamples />
-            </AppHostWrapper>
+            </AppHostView>
         )
     }
 }

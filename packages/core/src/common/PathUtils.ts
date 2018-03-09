@@ -50,11 +50,11 @@ const dirname = function(path : string) : string {
     }
 };
 
-const extname = function(path : string) : string {
+const extname = function(path : string, noDelim : boolean = false) : string {
     if(path) {
         const lastExtIdx = path.lastIndexOf(extDelim);
         if(lastExtIdx >= 0) {
-            return path.substring(lastExtIdx);
+            return path.substring(noDelim ? lastExtIdx + 1 : lastExtIdx);
         }
     }
     return "";

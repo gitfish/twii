@@ -1,74 +1,53 @@
 import { IStyle, IStyleSet, ITheme, getTheme, concatStyleSets } from "@uifabric/styling";
 import { memoizeFunction } from "@uifabric/utilities";
-import { IMapFunc } from "@twii/core/lib/common/IMapFunc";
 
-interface IAppWrapperStyles {
+interface IAppViewStyles {
     root?: IStyle;
-    header?: IStyle;
+    menu?: IStyle;
     title?: IStyle;
-    brand?: IStyle;
-    headerNear?: IStyle;
-    headerFar?: IStyle;
-    headerItem?: IStyle;
-    headerItemError?: IStyle;
+    menuNear?: IStyle;
+    menuFar?: IStyle;
+    menuItem?: IStyle;
+    menuItemError?: IStyle;
     main?: IStyle;
 }
 
-interface IAppWrapperStyleConfig {
-    defaultStyles: (theme : ITheme) => IAppWrapperStyles;
+interface IAppViewStyleConfig {
+    defaultStyles: (theme : ITheme) => IAppViewStyles;
 }
 
-const defaultStyles = (theme : ITheme) : IAppWrapperStyles => {
+const defaultStyles = (theme : ITheme) : IAppViewStyles => {
     return {
         root: {},
-        header: {
+        menu: {
             backgroundColor: theme.palette.neutralDark,
-            height: 32,
+            width: 32,
             lineHeight: 32,
             left: 0,
             top: 0,
             right: 0,
-            position: "fixed",
+            position: "absolute",
             zIndex: 600,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center"
         },
-        title: Object.assign({}, theme.fonts.medium, {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginLeft: 8,
-            marginRight: 8,
-            color: theme.palette.white
-        }),
-        brand: Object.assign({}, theme.fonts.medium, {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginLeft: 8,
-            marginRight: 8,
-            color: theme.palette.white
-        }),
-        headerNear: {
+        menuNear: {
             position: "absolute",
             top: 0,
             left: 0,
-            bottom: 0,
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center"
+            right: 0
         },
-        headerFar: {
+        menuFar: {
             position: "absolute",
-            top: 0,
+            left: 0,
             right: 0,
             bottom: 0,
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center"
         },
-        headerItem: {
+        menuItem: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -98,7 +77,7 @@ const defaultStyles = (theme : ITheme) : IAppWrapperStyles => {
                 }
             }
         },
-        headerItemError: {
+        menuItemError: {
             color: theme.palette.red,
             selectors: {
                 ".ms-Icon": {
@@ -107,9 +86,9 @@ const defaultStyles = (theme : ITheme) : IAppWrapperStyles => {
             }
         },
         main: {
-            position: "fixed",
-            top: 32,
-            left: 0,
+            position: "absolute",
+            top: 0,
+            left: 32,
             right: 0,
             bottom: 0,
             overflow: "auto"
@@ -117,12 +96,12 @@ const defaultStyles = (theme : ITheme) : IAppWrapperStyles => {
     };
 };
 
-const StyleConfig : IAppWrapperStyleConfig = {
+const StyleConfig : IAppViewStyleConfig = {
     defaultStyles: defaultStyles
 };
 
-const getStyles = memoizeFunction((theme : ITheme, customStyles?: IAppWrapperStyles) => {
+const getStyles = memoizeFunction((theme : ITheme, customStyles?: IAppViewStyles) => {
     return concatStyleSets(StyleConfig.defaultStyles(theme || getTheme()), customStyles);
 });
 
-export { IAppWrapperStyles, IAppWrapperStyleConfig, getStyles, StyleConfig }
+export { IAppViewStyles, IAppViewStyleConfig, getStyles, StyleConfig }

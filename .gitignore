@@ -7,3 +7,4 @@
 **/lib
 **/test-out
 yarn-error.log
+/lerna-debug.log

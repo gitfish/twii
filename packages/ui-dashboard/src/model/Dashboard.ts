@@ -5,7 +5,7 @@ import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { Component } from "./Component";
 import { Sync } from "@twii/core/lib/common/model/Sync";
-import { ComponentFactoryRouter } from "./ComponentFactoryRouter";
+import { ComponentFactory } from "./ComponentFactory";
 import * as ComponentTypes from "./ComponentTypes";
 import { IStack } from "./IStack";
 import { ISplit, IHSplit, IVSplit } from "./ISplit";
@@ -139,7 +139,7 @@ class Dashboard extends Component implements IDashboard {
     @action
     setComponentConfig(config : any) {
         if(config) {
-            return ComponentFactoryRouter.handleRequest({ path: config.type }).then(component => {
+            return ComponentFactory(config.type).then(component => {
                 this.setComponent(component);
                 return component.setConfig(config);
             });

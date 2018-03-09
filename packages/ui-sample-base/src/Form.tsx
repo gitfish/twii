@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
-import { AppHostWrapper } from "@twii/ui-core/lib/app/component/AppHostWrapper";
+import { AppHostView } from "@twii/ui-core/lib/app/component/AppHostView";
 import { IAppProps } from "@twii/ui-core/lib/app/component/IAppProps";
 
 class TextFieldSamples extends React.Component<any, any> {
@@ -60,9 +60,9 @@ class FormSampleApp extends React.Component<IAppProps, any> {
     }
     render() {
         return (
-            <AppHostWrapper host={this.props.host} title="Form Sample">
+            <AppHostView host={this.props.host} title="Form Sample">
                 <FormExamples />
-            </AppHostWrapper>
+            </AppHostView>
         );
     }
 }

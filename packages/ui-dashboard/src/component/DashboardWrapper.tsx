@@ -12,7 +12,7 @@ interface IDashboardWrapperProps {
     className?: string;
     config?: any;
     addApp?: IRequest;
-    addAppSupplier: ISupplierFunc<IRequest>;
+    addAppSupplier?: ISupplierFunc<IRequest>;
     loader?: () => Promise<any>;
     saver?: (data : any) => Promise<any>;
     saveDelay?: number;

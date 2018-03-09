@@ -80,6 +80,7 @@ const createConfig = (env) => {
     const buildVersion = env && env.buildVersion ? env.buildVersion : production ? "Unknown" : "DEV";
 
     const config = {
+        mode: production ? "production" : "development",
         entry: {
             main: ["./src/main.tsx"],
             vendor: ["react", "react-dom", "mobx", "mobx-react", "core-js", "office-ui-fabric-react"]
@@ -131,10 +132,6 @@ const createConfig = (env) => {
             historyApiFallback: true
         },
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin({
-                name: "vendor",
-                debug: true
-            }),
             new HtmlWebpackPlugin({
                 title: "UI Dashboard Sample",
                 template: "src/index.template.ts",

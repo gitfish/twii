@@ -1,10 +1,10 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IAppWrapperProps, AppWrapper } from "./AppWrapper";
+import { IAppViewProps, AppView } from "./AppView";
 import { IAppHost } from "@twii/core/lib/app/IAppHost";
 import { css } from "@uifabric/utilities/lib/css";
 
-interface IAppHostWrapperProps extends IAppWrapperProps {
+interface IAppHostViewProps extends IAppViewProps {
     host: IAppHost;
 }
 
@@ -13,7 +13,7 @@ interface IAppHostWrapperProps extends IAppWrapperProps {
  * application wrapper if need be.
  */
 @observer
-class AppHostWrapper extends React.Component<IAppHostWrapperProps, any> {
+class AppHostView extends React.Component<IAppHostViewProps, any> {
     componentWillMount() {
         const qr = this.props.host.params._root;
         if(qr !== undefined) {
@@ -22,10 +22,10 @@ class AppHostWrapper extends React.Component<IAppHostWrapperProps, any> {
     }
     render() {
         if(this.props.host.root) {
-            return <AppWrapper {...this.props}>{this.props.children}</AppWrapper>;
+            return <AppView {...this.props}>{this.props.children}</AppView>;
         }
-        return <div className={css("app-host-wrapper", this.props.className)}>{this.props.children}</div>;
+        return <div className={css("app-view-wrapper", this.props.className)}>{this.props.children}</div>;
     }
 }
 
-export { IAppHostWrapperProps, AppHostWrapper as default, AppHostWrapper }
+export { IAppHostViewProps, AppHostView }
