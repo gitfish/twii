@@ -19,7 +19,13 @@ interface IAppViewStyleConfig {
 
 const defaultStyles = (theme : ITheme) : IAppViewStyles => {
     return {
-        root: {},
+        root: {
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+        },
         menu: {
             backgroundColor: theme.palette.themeDark,
             width: 40,
@@ -27,7 +33,6 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
             top: 0,
             bottom: 0,
             position: "absolute",
-            zIndex: 600,
             display: "flex",
             justifyContent: "flex-start",
             alignItems: "center"

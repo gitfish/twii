@@ -19,7 +19,7 @@ const defaultStyles = (theme : ITheme) : IDashboardStyles => {
             right: 0,
             bottom: 0,
             left: 0,
-            backgroundColor: theme.palette.neutralTertiary,
+            background: "transparent",
             selectors: {
                 "&.hidden": {
                     top: -1,

@@ -32,8 +32,7 @@ const defaultStyles = (theme : ITheme) : IHSplitStyles => {
             position: "absolute",
             top: 0,
             bottom: 0,
-            width: 5,
-            backgroundColor: "transparent"
+            width: 5
         },
         splitterContent: {
             position: "absolute",
@@ -48,7 +47,8 @@ const defaultStyles = (theme : ITheme) : IHSplitStyles => {
             left: 0,
             top: 0,
             bottom: 0,
-            overflow: "hidden"
+            overflow: "hidden",
+            boxShadow: `0 0 5px 0 rgba(0, 0, 0, 0.4)`
         },
         leftContent: {
             position: "absolute",
@@ -63,7 +63,8 @@ const defaultStyles = (theme : ITheme) : IHSplitStyles => {
             right: 0,
             top: 0,
             bottom: 0,
-            overflow: "hidden"
+            overflow: "hidden",
+            boxShadow: `0 0 5px 0 rgba(0, 0, 0, 0.4)`
         },
         rightContent: {
             position: "absolute",
