@@ -24,7 +24,7 @@ class AppHostView extends React.Component<IAppHostViewProps, any> {
         if(this.props.host.root) {
             return <AppView {...this.props}>{this.props.children}</AppView>;
         }
-        return <div className={css("app-view-wrapper", this.props.className)}>{this.props.children}</div>;
+        return <div className={this.props.className}>{this.props.children}</div>;
     }
 }
 

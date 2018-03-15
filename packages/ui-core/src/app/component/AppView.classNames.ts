@@ -4,13 +4,14 @@ import { IAppViewStyles } from "./AppView.styles";
 
 interface IAppViewClassNames {
     root?: string;
-    menu?: string;
-    menuControl?: string;
     title?: string;
-    menuNear?: string;
-    menuFar?: string;
+    menu?: string;
+    menuGlass?: string;
+    menuContent?: string;
+    menuContentNear?: string;
+    menuContentFar?: string;
     menuItem?: string;
-    menuItemError?: string;
+    menuItemIcon?: string;
     main?: string;
 }
 
@@ -18,12 +19,13 @@ const getClassNames = memoizeFunction((styles : IAppViewStyles, className?: stri
     return {
         root: mergeStyles("app-view", className, styles.root),
         menu: mergeStyles("app-view-menu", styles.menu),
-        menuControl: mergeStyles("app-view-menu-control", styles.menuControl),
+        menuGlass: mergeStyles("app-view-menu-glass", styles.menuGlass),
+        menuContent: mergeStyles("app-view-menu-content", styles.menuContent),
         title: mergeStyles("app-view-title", styles.title),
-        menuNear: mergeStyles("app-view-menu-near", styles.menuNear),
-        menuFar: mergeStyles("app-view-menu-far", styles.menuFar),
+        menuContentNear: mergeStyles("app-view-menu-content-near", styles.menuContentNear),
+        menuContentFar: mergeStyles("app-view-menu-far", styles.menuContentFar),
         menuItem: mergeStyles("app-view-menu-item", styles.menuItem),
-        menuItemError: mergeStyles("app-view-menu-item-error", styles.menuItemError),
+        menuItemIcon: mergeStyles("app-view-menu-item-icon", styles.menuItemIcon),
         main: mergeStyles("app-view-main", styles.main)
     };
 });

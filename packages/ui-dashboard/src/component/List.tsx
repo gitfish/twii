@@ -31,7 +31,7 @@ class ListCloseAction extends React.Component<IListProps, any> {
     }
     render() {
         if(!this.props.stack.closeDisabled) {
-            return <IconButton className={css("list-action", "close-action")} title="Close all Widgets" iconProps={{ iconName: "ChromeClose" }} onClick={this._onClick} />
+            return <IconButton className={css("list-action", "close-action")} title="Close all Tabs" iconProps={{ iconName: "ChromeClose" }} onClick={this._onClick} />
         }
         return null;
     }

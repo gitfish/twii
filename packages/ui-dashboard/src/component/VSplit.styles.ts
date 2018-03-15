@@ -47,8 +47,7 @@ const defaultStyles = (theme : ITheme) : IVSplitStyles => {
             top: 0,
             left: 0,
             right: 0,
-            overflow: "hidden",
-            boxShadow: `0 0 5px 0 rgba(0, 0, 0, 0.4)`
+            overflow: "hidden"
         },
         topContent: {
             position: "absolute",
@@ -63,8 +62,7 @@ const defaultStyles = (theme : ITheme) : IVSplitStyles => {
             bottom: 0,
             left: 0,
             right: 0,
-            overflow: "hidden",
-            boxShadow: `0 0 5px 0 rgba(0, 0, 0, 0.4)`
+            overflow: "hidden"
         },
         bottomContent: {
             position: "absolute",

@@ -83,8 +83,7 @@ const createConfig = (env) => {
     const config = {
         mode: production ? "production" : "development",
         entry: {
-            main: ["./src/main.tsx"],
-            vendor: ["react", "react-dom", "mobx", "mobx-react", "core-js", "office-ui-fabric-react"]
+            main: "./src/main.tsx"
         },
         output: {
             filename: production ? "[name].[chunkhash].js" : "[name].js",
