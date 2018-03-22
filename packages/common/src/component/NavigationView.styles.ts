@@ -42,6 +42,9 @@ const defaultStyles = (theme : ITheme) : INavigationViewStyles => {
                     width: 200,
                     backgroundColor: theme.palette.neutralTertiary,
                     boxShadow: "0 0 5px 0 rgba(0, 0, 0, 0.4)"
+                },
+                "&.inline": {
+                    boxShadow: "none"
                 }
             }
         },
@@ -95,6 +98,9 @@ const defaultStyles = (theme : ITheme) : INavigationViewStyles => {
             selectors: {
                 ":hover": {
                     backgroundColor: theme.palette.neutralSecondary
+                },
+                "&.active": {
+                    backgroundColor: theme.palette.themeDark
                 }
             }
         },

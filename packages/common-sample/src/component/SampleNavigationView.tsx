@@ -4,9 +4,7 @@ import { HostNavigationView } from "@twii/common/lib/component/HostNavigationVie
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
-interface ISampleNavigationViewProps extends IAppProps {
-    
-}
+interface ISampleNavigationViewProps extends IAppProps {}
 
 @observer
 class SampleNavigationView extends React.Component<ISampleNavigationViewProps, any> {
@@ -16,7 +14,7 @@ class SampleNavigationView extends React.Component<ISampleNavigationViewProps, a
                 key: "home",
                 name: "Home",
                 iconProps: { iconName: "Home" },
-                path: "/",
+                active: !this.props.host.path || this.props.host.path === "/",
                 onClick: () => {
                     this.props.host.load({ path: "/" });
                 }
@@ -25,6 +23,7 @@ class SampleNavigationView extends React.Component<ISampleNavigationViewProps, a
                 key: "form",
                 name: "Form",
                 iconProps: { iconName: "Articles" },
+                active: this.props.host.path === "/samples/form",
                 onClick: () => {
                     this.props.host.load({ path: "/samples/form" });
                 }
@@ -33,6 +32,7 @@ class SampleNavigationView extends React.Component<ISampleNavigationViewProps, a
                 key: "picker",
                 name: "Picker",
                 iconProps: { iconName: "CheckList" },
+                active: this.props.host.path === "/samples/picker",
                 onClick: () => {
                     this.props.host.load({ path: "/samples/picker" });
                 }
@@ -41,6 +41,7 @@ class SampleNavigationView extends React.Component<ISampleNavigationViewProps, a
                 key: "personform",
                 name: "Person Form",
                 iconProps: { iconName: "Contact" },
+                active: this.props.host.path === "/samples/personform",
                 onClick: () => {
                     this.props.host.load({ path: "/samples/personform" });
                 }

@@ -46,7 +46,8 @@ class NavigationViewMenuItem extends React.Component<INavigationViewMenuItemProp
         return (
             <button key={item.key} 
                     type="button"
-                    className={this.props.classNames.menuItem}
+                    disabled={item.disabled}
+                    className={css(this.props.classNames.menuItem, { active: item.active })}
                     title={this.props.open ? undefined : item.name}
                     onClick={item.onClick ? this._onClick : undefined}>
                 <div className={this.props.classNames.menuItemIconContainer}>
@@ -126,7 +127,7 @@ class NavigationViewMenu extends React.Component<INavigationViewMenuInternalProp
     }
     render() {
         return (
-            <nav className={css(this.props.classNames.menu, { open: this.props.open })}>
+            <nav className={css(this.props.classNames.menu, { open: this.props.open, inline: this.props.inline })}>
                 <div className={this.props.classNames.menuGlass}></div>
                 <div className={css(this.props.classNames.menuContent, { open: this.props.open })}>
                     {this._onRenderControl()}
