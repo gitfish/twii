@@ -44,21 +44,23 @@ class NavigationViewMenuItem extends React.Component<INavigationViewMenuItemProp
     render() {
         const item = this.props.item;
         return (
-            <button key={item.key} 
-                    type="button"
-                    disabled={item.disabled}
-                    className={css(this.props.classNames.menuItem, { active: item.active })}
-                    title={this.props.open ? undefined : item.name}
-                    onClick={item.onClick ? this._onClick : undefined}>
-                <div className={this.props.classNames.menuItemIconContainer}>
-                    <Icon  {...item.iconProps} />
-                </div>
-                {this.props.open && (
-                    <div className={this.props.classNames.menuItemTitleContainer}>
-                        {item.name}
+            <div role="menuitem" className={this.props.classNames.menuItemContainer}>
+                <button key={item.key} 
+                        type="button"
+                        disabled={item.disabled}
+                        className={css(this.props.classNames.menuItem, { active: item.active })}
+                        title={this.props.open ? undefined : item.name}
+                        onClick={item.onClick ? this._onClick : undefined}>
+                    <div className={this.props.classNames.menuItemIconContainer}>
+                        <Icon  {...item.iconProps} />
                     </div>
-                )}
-            </button>
+                    {this.props.open && (
+                        <div className={this.props.classNames.menuItemTitleContainer}>
+                            {item.name}
+                        </div>
+                    )}
+                </button>
+            </div>
         );
     }
 }
@@ -127,7 +129,7 @@ class NavigationViewMenu extends React.Component<INavigationViewMenuInternalProp
     }
     render() {
         return (
-            <nav className={css(this.props.classNames.menu, { open: this.props.open, inline: this.props.inline })}>
+            <nav role="menubar" className={css(this.props.classNames.menu, { open: this.props.open, inline: this.props.inline })} aria-expanded={this.props.open}>
                 <div className={this.props.classNames.menuGlass}></div>
                 <div className={css(this.props.classNames.menuContent, { open: this.props.open })}>
                     {this._onRenderControl()}

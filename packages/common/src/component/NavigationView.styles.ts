@@ -10,6 +10,7 @@ interface INavigationViewStyles {
     menuControl?: IStyle;
     menuContentNear?: IStyle;
     menuContentFar?: IStyle;
+    menuItemContainer?: IStyle;
     menuItem?: IStyle;
     menuItemTitleContainer?: IStyle;
     menuItemIconContainer?: IStyle;
@@ -80,6 +81,9 @@ const defaultStyles = (theme : ITheme) : INavigationViewStyles => {
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center"
+        },
+        menuItemContainer: {
+
         },
         menuItem: {
             outline: "none",

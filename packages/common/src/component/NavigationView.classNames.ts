@@ -10,6 +10,7 @@ interface INavigationViewClassNames {
     menuContent?: string;
     menuContentNear?: string;
     menuContentFar?: string;
+    menuItemContainer?: string;
     menuItem?: string;
     menuItemTitleContainer?: string;
     menuItemIconContainer?: string;
@@ -25,6 +26,7 @@ const getClassNames = memoizeFunction((styles : INavigationViewStyles, className
         title: mergeStyles("navigation-view-title", styles.title),
         menuContentNear: mergeStyles("navigation-view-menu-content-near", styles.menuContentNear),
         menuContentFar: mergeStyles("navigation-view-menu-far", styles.menuContentFar),
+        menuItemContainer: mergeStyles("navigation-view-menu-item-container", styles.menuItemContainer),
         menuItem: mergeStyles("navigation-view-menu-item", styles.menuItem),
         menuItemTitleContainer: mergeStyles("navigation-view-menu-item-title-container", styles.menuItemTitleContainer),
         menuItemIconContainer: mergeStyles("navigation-view-menu-item-icon-container", styles.menuItemIconContainer),
