@@ -5,7 +5,7 @@ import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { HostNavigationView } from "@twii/common/lib/component/HostNavigationView";
 import { getTheme } from "@uifabric/styling";
 
-class DashboardSample extends React.Component<IAppProps, any> {
+class DashboardSampleApp extends React.Component<IAppProps, any> {
     componentWillMount() {
         this.props.host.setTitle("Dashboard Sample");
     }
@@ -41,4 +41,4 @@ class DashboardSample extends React.Component<IAppProps, any> {
     }
 }
 
-export { DashboardSample }
+export { DashboardSampleApp }

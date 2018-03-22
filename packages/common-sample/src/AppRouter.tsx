@@ -13,7 +13,7 @@ AppRouter.use("/samples/form", exactPath(req => {
     return import("@twii/sample-base/lib/component/Form").then(m => {
         return (
             <SampleNavigationView host={req.app}>
-                <m.FormSamples />
+                <m.FormSamplesApp host={req.app} />
             </SampleNavigationView>
         );
     });
@@ -23,7 +23,7 @@ AppRouter.use("/samples/picker", exactPath(req => {
     return import("@twii/sample-base/lib/component/Picker").then(m => {
         return (
             <SampleNavigationView host={req.app}>
-                <m.PickerSamples />
+                <m.PickerSamplesApp host={req.app} />
             </SampleNavigationView>
         );
     });
@@ -33,7 +33,7 @@ AppRouter.use("/samples/personform", exactPath(req => {
     return import("@twii/sample-base/lib/component/PersonForm").then(m => {
         return (
             <SampleNavigationView host={req.app}>
-                <m.PersonFormSamples />
+                <m.PersonFormSamples host={req.app} />
             </SampleNavigationView>
         );
     });

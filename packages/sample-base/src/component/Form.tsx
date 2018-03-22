@@ -51,4 +51,13 @@ class FormSamples extends React.Component<any, any> {
     }
 }
 
-export { FormSamples, TextFieldSamples }
+class FormSamplesApp extends React.Component<IAppProps, any> {
+    componentWillMount() {
+        this.props.host.setTitle("Form Samples");
+    }
+    render() {
+        return <FormSamples />
+    }
+}
+
+export { FormSamples, TextFieldSamples, FormSamplesApp }

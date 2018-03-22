@@ -6,19 +6,19 @@ const AppRouter = new Router();
 
 AppRouter.use("/samples/form", exactPath(req => {
     return import("@twii/sample-base/lib/component/Form").then(m => {
-        return <m.FormSamples />;
+        return <m.FormSamplesApp host={req.app} />;
     });
 }));
 
 AppRouter.use("/samples/picker", exactPath(req => {
     return import("@twii/sample-base/lib/component/Picker").then(m => {
-        return <m.PickerSamples />;
+        return <m.PickerSamplesApp host={req.app} />;
     });
 }));
 
 AppRouter.use("/samples/dashboard", exactPath(req => {
     return import("./component/DashboardSample").then(m => {
-        return <m.DashboardSample host={req.app} />;
+        return <m.DashboardSampleApp host={req.app} />;
     });
 }));
 

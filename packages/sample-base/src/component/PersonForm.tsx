@@ -38,4 +38,13 @@ class PersonFormSamples extends React.Component<any, any> {
     }
 }
 
-export { IPersonFormProps, PersonForm, PersonFormSamples }
+class PersonFormSamplesApp extends React.Component<IAppProps, any> {
+    componentWillMount() {
+        this.props.host.setTitle("Person Form");
+    }
+    render() {
+        return <PersonFormSamples />
+    }
+}
+
+export { IPersonFormProps, PersonForm, PersonFormSamples, PersonFormSamplesApp }

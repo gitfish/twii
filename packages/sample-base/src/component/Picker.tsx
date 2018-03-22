@@ -49,4 +49,13 @@ class PickerSamples extends React.Component<any, any> {
     }
 }
 
-export { PickerSamples }
+class PickerSamplesApp extends React.Component<IAppProps, any> {
+    componentWillMount() {
+        this.props.host.setTitle("Picker Samples");
+    }
+    render() {
+        return <PickerSamples />;
+    }
+}
+
+export { PickerSamples, PickerSamplesApp }
