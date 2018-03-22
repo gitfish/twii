@@ -19,7 +19,7 @@ import { IListingActivity } from "../IListingActivity";
 import { IUserProfile } from "../../user/IUserProfile";
 import { IImage } from "../../media/IImage";
 import { IAuthConfig, Defaults } from "../../Config"; 
-import { wordsToCamelCase } from "@twii/core/lib/common/StringUtils";
+import { wordsToCamelCase } from "@haat/common/lib/common/StringUtils";
 
 const handleError = (error : any) => {
     if(error.response && error.response.status === 400) {

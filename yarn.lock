@@ -47,7 +47,14 @@
   version "16.0.39"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.39.tgz#6aef052209521cd76f62cd7286abdc8fd787e39d"
 
-"@uifabric/icons@>=5.5.0 <6.0.0", "@uifabric/icons@^5.5.0":
+"@uifabric/icons@>=5.6.0 <6.0.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@uifabric/icons/-/icons-5.6.0.tgz#7a93d71c6db625c40abbc0c6afb060f69fd56735"
+  dependencies:
+    "@uifabric/styling" ">=5.19.1 <6.0.0"
+    tslib "^1.7.1"
+
+"@uifabric/icons@^5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@uifabric/icons/-/icons-5.5.0.tgz#d3af32d07f6fc9201f44e143ce401e9d887604d4"
   dependencies:
@@ -75,6 +82,15 @@
     "@uifabric/utilities" ">=5.13.0 <6.0.0"
     tslib "^1.7.1"
 
+"@uifabric/styling@>=5.19.1 <6.0.0", "@uifabric/styling@>=5.20.0 <6.0.0":
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/@uifabric/styling/-/styling-5.20.0.tgz#def2b07f971ffb60c3ea80692d038858244b9b83"
+  dependencies:
+    "@microsoft/load-themed-styles" "^1.7.13"
+    "@uifabric/merge-styles" ">=5.13.0 <6.0.0"
+    "@uifabric/utilities" ">=5.18.3 <6.0.0"
+    tslib "^1.7.1"
+
 "@uifabric/utilities@>=5.13.0 <6.0.0":
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-5.13.0.tgz#4b1abf1baf967c8a928f96fb88bec4f53cf33b05"
@@ -84,18 +100,9 @@
     prop-types "^15.5.10"
     tslib "^1.7.1"
 
-"@uifabric/utilities@>=5.14.1 <6.0.0":
-  version "5.14.1"
-  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-5.14.1.tgz#495ce8f0a6c12154876cb17ed3f6a93a7af62ceb"
-  dependencies:
-    "@microsoft/load-themed-styles" "^1.7.13"
-    "@uifabric/merge-styles" ">=5.13.0 <6.0.0"
-    prop-types "^15.5.10"
-    tslib "^1.7.1"
-
-"@uifabric/utilities@^5.14.0":
-  version "5.14.0"
-  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-5.14.0.tgz#088a34882c47c05cdcd5dbe6beb98b5e2b680ebe"
+"@uifabric/utilities@>=5.18.3 <6.0.0", "@uifabric/utilities@>=5.19.1 <6.0.0", "@uifabric/utilities@^5.19.1":
+  version "5.19.1"
+  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-5.19.1.tgz#2c47a246d5dad799e1f74b553cb108507c4ccc5d"
   dependencies:
     "@microsoft/load-themed-styles" "^1.7.13"
     "@uifabric/merge-styles" ">=5.13.0 <6.0.0"
@@ -5334,7 +5341,7 @@ mobx-react@^4.4.2:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-mobx@^3.6.0, mobx@^3.6.1:
+mobx@^3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.6.1.tgz#ae63a8f00e1485a740d0f91ae2f6a5f68e303bea"
 
@@ -5342,7 +5349,7 @@ modify-values@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.0.tgz#e2b6cdeb9ce19f99317a53722f3dbf5df5eaaab2"
 
-moment@^2.11.2, moment@^2.6.0:
+moment@^2.11.2, moment@^2.21.0, moment@^2.6.0:
   version "2.21.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
 
@@ -5626,15 +5633,15 @@ obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.1.tgz#104124b6c602c6796881a042541d36db43a5264e"
 
-office-ui-fabric-react@^5.59.1:
-  version "5.59.1"
-  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-5.59.1.tgz#8df55b4b0c7e6ab92aa803a32baa4b2edc91aba4"
+office-ui-fabric-react@^5.68.0:
+  version "5.68.0"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-5.68.0.tgz#c4fd4089b9d6fb006a538dde5710cef608e46ab6"
   dependencies:
     "@microsoft/load-themed-styles" "^1.7.13"
-    "@uifabric/icons" ">=5.5.0 <6.0.0"
+    "@uifabric/icons" ">=5.6.0 <6.0.0"
     "@uifabric/merge-styles" ">=5.13.0 <6.0.0"
-    "@uifabric/styling" ">=5.19.0 <6.0.0"
-    "@uifabric/utilities" ">=5.14.1 <6.0.0"
+    "@uifabric/styling" ">=5.20.0 <6.0.0"
+    "@uifabric/utilities" ">=5.19.1 <6.0.0"
     prop-types "^15.5.10"
     tslib "^1.7.1"
 
@@ -6629,9 +6636,9 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^2.0.0"
     inherits "^2.0.1"
 
-roota@^1.4.0, roota@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/roota/-/roota-1.5.0.tgz#79616b3cf95184f0c0690295b007a8dec2ad9757"
+roota@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/roota/-/roota-1.7.0.tgz#db3ef99ce49421293dea12fe58ea17f55f91e84e"
   dependencies:
     lodash.isfunction "^3.0.8"
     lodash.isstring "^4.0.1"

@@ -1,8 +1,0 @@
-src/
-__tests__/
-task/
-__coverage__/
-.gitignore
-.travis.yml
-tsconfig.json
-yarn.lock

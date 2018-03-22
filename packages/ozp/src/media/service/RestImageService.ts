@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IImage } from "../IImage";
 import { IImageService, IGetImagesRequest } from "./IImageService";
-import { extname } from "@twii/core/lib/common/PathUtils";
+import { extname } from "@haat/common/lib/common/PathUtils";
 import { IAuthConfig, Defaults } from "../../Config"; 
 
 class RestImageService implements IImageService {

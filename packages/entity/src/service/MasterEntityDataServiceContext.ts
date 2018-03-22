@@ -1,4 +1,4 @@
-import { Context } from "@twii/core/lib/common/Context";
+import { Context } from "@twii/common/lib/Context";
 import { IMasterEntityDataService } from "./IMasterEntityDataService";
 import { RestMasterEntityDataService } from "./RestMasterEntityDataService";
 
