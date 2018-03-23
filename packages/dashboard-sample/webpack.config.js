@@ -133,7 +133,7 @@ const createConfig = (env) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: "UI Dashboard Sample",
+                title: "Dashboard Sample",
                 template: "src/index.template.ts",
                 fabricFontBasePath: fabricFontBasePath
             }),
