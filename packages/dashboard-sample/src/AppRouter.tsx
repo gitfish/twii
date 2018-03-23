@@ -16,6 +16,12 @@ AppRouter.use("/samples/picker", exactPath(req => {
     });
 }));
 
+AppRouter.use("/samples/personform", exactPath(req => {
+    return import("@twii/sample-base/lib/component/PersonForm").then(m => {
+        return <m.PersonFormSamplesApp host={req.app} />;
+    });
+}));
+
 AppRouter.use("/samples/dashboard", exactPath(req => {
     return import("./component/DashboardSample").then(m => {
         return <m.DashboardSampleApp host={req.app} />;

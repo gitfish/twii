@@ -23,6 +23,9 @@ class AppListApp extends React.Component<IAppProps, any> {
                             <li>
                                 <AppLink host={this.props.host} request={{ path: "/samples/dashboard", replace: true }}>Dashboard Sample</AppLink>
                             </li>
+                            <li>
+                                <AppLink host={this.props.host} request={{ path: "/samples/personform", replace: true}}>Person Form</AppLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
