@@ -19,11 +19,14 @@ interface IDashboardProps {
     hidden?: boolean;
     host?: IEventTarget;
     styles?: IDashboardStyles;
+}
+
+interface IDashboardPropsInternal extends IDashboardProps {
     classNames?: IDashboardClassNames;
 }
 
 @observer
-class DashboardBlockOverlay extends React.Component<IDashboardProps, any> {
+class DashboardBlockOverlay extends React.Component<IDashboardPropsInternal, any> {
     render() {
         if(this.props.dashboard && this.props.dashboard.blockSource) {
             const classNames = this.props.classNames;

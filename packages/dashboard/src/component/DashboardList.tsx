@@ -10,10 +10,12 @@ import { DashboardRemoveDialog } from "./DashboardRemove";
 import { DashboardRemoveStore } from "../DashboardRemoveStore";
 import { ComponentGlobals } from "../ComponentGlobals";
 import { IEventTarget } from "@twii/common/lib/IEventEmitter";
+import { IDashboardStyles } from "./Dashboard.styles";
 
 interface IDashboardListProps {
     dashboardList: IDashboardList;
     host?: IEventTarget;
+    dashboardStyles?: IDashboardStyles;
 }
 
 @observer
@@ -24,7 +26,7 @@ class DashboardList extends React.Component<IDashboardListProps, any> {
     render() {
         const active = this.props.dashboardList.active;
         const dashboards = this.props.dashboardList.dashboards.map(db => {
-            return <Dashboard key={db.id} hidden={db !== active} dashboard={db} host={this.props.host} />
+            return <Dashboard key={db.id} hidden={db !== active} dashboard={db} host={this.props.host} styles={this.props.dashboardStyles} />
         });
         return (
             <div className="dashboard-list">
