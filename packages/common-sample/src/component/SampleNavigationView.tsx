@@ -8,6 +8,9 @@ interface ISampleNavigationViewProps extends IAppProps {}
 
 @observer
 class SampleNavigationView extends React.Component<ISampleNavigationViewProps, any> {
+    private _onMenuOpenChange = () => {
+        console.log("-- Menu Open Change");
+    }
     render() {
         const items : IContextualMenuItem[] = [
             {
@@ -47,7 +50,14 @@ class SampleNavigationView extends React.Component<ISampleNavigationViewProps, a
                 }
             }
         ];
-        return <HostNavigationView host={this.props.host} title="Samples" menuProps={{ inline: true, items: items }}>{this.props.children}</HostNavigationView>;
+        return (
+            <HostNavigationView host={this.props.host}
+                                   title="Samples"
+                                   menuInline items={items}
+                                   onMenuOpenChange={this._onMenuOpenChange}>
+                {this.props.children}
+            </HostNavigationView>
+        );
     }
 }
 

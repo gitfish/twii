@@ -131,7 +131,7 @@ const defaultStyles = (theme : ITheme) : INavigationViewStyles => {
             overflow: "auto",
             transition: "left 0.2s",
             selectors: {
-                "&.menuOpen": {
+                "&.menuInlineOffset": {
                     left: 200
                 }
             }

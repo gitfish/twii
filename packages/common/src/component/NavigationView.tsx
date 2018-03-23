@@ -3,7 +3,7 @@ import { Image } from "office-ui-fabric-react/lib/Image";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import { TooltipHost } from "office-ui-fabric-react/lib/Tooltip";
 import { Icon, IIconProps } from "office-ui-fabric-react/lib/Icon";
-import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
+import { IContextualMenuItem, IContextualMenu } from "office-ui-fabric-react/lib/ContextualMenu";
 import { CompactError } from "./Error";
 import { css } from "@uifabric/utilities/lib/css";
 import { IRequest } from "roota/lib/IRequest";
@@ -11,23 +11,14 @@ import { AppContainer } from "./App";
 import { INavigationViewStyles, getStyles } from "./NavigationView.styles";
 import { INavigationViewClassNames, getClassNames } from "./NavigationView.classNames";
 
-interface INavigationViewMenuProps {
-    open?: boolean;
-    inline?: boolean;
-    items?: IContextualMenuItem[];
-    farItems?: IContextualMenuItem[];
-    onOpenChange?: (open : boolean) => void;
-}
-
-interface INavigationViewMenuInternalProps extends INavigationViewMenuProps {
-    title?: string;
-    classNames: INavigationViewClassNames;
-}
-
 interface INavigationViewProps {
     title?: any;
     className?: string;
-    menuProps?: INavigationViewMenuProps;
+    menuOpen?: boolean;
+    menuInline?: boolean;
+    items?: IContextualMenuItem[];
+    farItems?: IContextualMenuItem[];
+    onMenuOpenChange?: (open : boolean) => void;
     styles?: INavigationViewStyles;
 }
 
@@ -35,11 +26,15 @@ interface INavigationViewMenuItemProps {
     item: IContextualMenuItem;
     open: boolean;
     classNames: INavigationViewClassNames;
+    onClickItem?: (e : React.MouseEvent<HTMLElement>, item : IContextualMenuItem) => void;
 }
 
 class NavigationViewMenuItem extends React.Component<INavigationViewMenuItemProps, any> {
     private _onClick = (e) => {
         this.props.item.onClick(e, this.props.item);
+        if(this.props.onClickItem) {
+            this.props.onClickItem(e, this.props.item);
+        }
     }
     render() {
         const item = this.props.item;
@@ -69,19 +64,15 @@ interface INavigationViewMenuControlProps {
     open: boolean;
     title?: string;
     classNames: INavigationViewClassNames;
-    onOpenChange?: (open : boolean) => void;
+    onClick?: (e : React.MouseEvent<HTMLElement>) => void;
 }
 
 class NavigationViewMenuControl extends React.Component<INavigationViewMenuControlProps, any> {
-    private _onClick = () => {
-        const open = this.props.open !== undefined ? this.props.open : false;
-        this.props.onOpenChange(!open);
-    }
     render() {
         return (
             <button type="button"
                     className={this.props.classNames.menuItem}
-                    onClick={this.props.onOpenChange ? this._onClick : undefined}
+                    onClick={this.props.onClick}
                     title={this.props.open ? "Close Menu" : "Open Menu"}>
                 <div className={this.props.classNames.menuItemIconContainer}>
                     <Icon iconName="GlobalNavButton" />
@@ -96,98 +87,123 @@ class NavigationViewMenuControl extends React.Component<INavigationViewMenuContr
     }
 }
 
-class NavigationViewMenu extends React.Component<INavigationViewMenuInternalProps, any> {
-    private _onRenderControl = () => {
-        return <NavigationViewMenuControl title={this.props.title} open={this.props.open} onOpenChange={this.props.onOpenChange} classNames={this.props.classNames} />;
+interface INavigationViewState {
+    menuOpen?: boolean;
+    menuTransition?: boolean;
+    mainTransition?: boolean;
+}
+
+class NavigationView extends React.Component<INavigationViewProps, INavigationViewState> {
+    protected _classNames : INavigationViewClassNames;
+    constructor(props : INavigationViewProps) {
+        super(props);
+        this.state = { menuOpen: this.props.menuOpen !== undefined ? this.props.menuOpen : false, menuTransition: false, mainTransition: false }
     }
-    private _onRenderMenuItem = (item : IContextualMenuItem) => {
-        return <NavigationViewMenuItem key={item.key} item={item} open={this.props.open} classNames={this.props.classNames} />;
+    componentWillReceiveProps(nextProps : INavigationViewProps) {
+        if(nextProps.menuOpen !== undefined && nextProps.menuOpen !== this.state.menuOpen) {
+            this.menuOpen = nextProps.menuOpen;
+        }
     }
-    private _onRenderContentNear = () => {
+    get menuOpen() {
+        return this.state.menuOpen;
+    }
+    set menuOpen(value : boolean) {
+        this.setState({ menuOpen: value, menuTransition: true, mainTransition: this.props.menuInline ? true : false });
+    }
+    private _onMainMouseDown = () => {
+        if(this.menuOpen) {
+            this.menuOpen = false;
+        }
+    }
+    private _onClickControl = () => {
+        this.menuOpen = !this.menuOpen;
+    }
+    protected _renderMenuControl() : React.ReactNode {
+        return <NavigationViewMenuControl open={this.state.menuOpen}
+                                          title={this.props.title}
+                                          classNames={this._classNames}
+                                          onClick={this._onClickControl} />;
+    }
+    protected _onMenuItemClicked = (e, item) => {
+
+    }
+    protected _renderMenuItem = (item : IContextualMenuItem, idx?: number) : React.ReactNode => {
+        return <NavigationViewMenuItem item={item}
+                                       key={item.key}
+                                       open={this.state.menuOpen}
+                                       classNames={this._classNames}
+                                       onClickItem={this._onMenuItemClicked} />;
+    }
+    protected _renderMenuContentNear() : React.ReactNode {
         const items = this.props.items;
         if(items && items.length > 0) {
-            const itemViews = items.map(this._onRenderMenuItem);
+            const itemViews = items.map(this._renderMenuItem);
             return (
-                <div className={this.props.classNames.menuContentNear}>
+                <div className={this._classNames.menuContentNear}>
                     {itemViews}
                 </div>
             );
         }
         return null;
     }
-    private _onRenderContentFar = () => {
+    protected _renderMenuContentFar() : React.ReactNode {
         const items = this.props.farItems;
         if(items && items.length > 0) {
-            const itemViews = items.map(this._onRenderMenuItem);
+            const itemViews = items.map(this._renderMenuItem);
             return (
-                <div className={this.props.classNames.menuContentFar}>
+                <div className={this._classNames.menuContentFar}>
                     {itemViews}
                 </div>
             );
         }
         return null;
     }
-    render() {
+    private _notifyMenuOpenChange = () => {
+        if(this.props.onMenuOpenChange && !this.state.menuTransition && !this.state.mainTransition) {
+            this.props.onMenuOpenChange(this.state.menuOpen);
+        }
+    }
+    private _onMenuTransitionEnd = () => {
+        this.setState({ menuTransition: false }, this._notifyMenuOpenChange);
+    }
+    protected _renderMenu() : React.ReactNode {
         return (
-            <nav role="menubar" className={css(this.props.classNames.menu, { open: this.props.open, inline: this.props.inline })} aria-expanded={this.props.open}>
-                <div className={this.props.classNames.menuGlass}></div>
-                <div className={css(this.props.classNames.menuContent, { open: this.props.open })}>
-                    {this._onRenderControl()}
-                    {this._onRenderContentNear()}
-                    {this._onRenderContentFar()}
+            <nav role="menubar"
+                 className={css(this._classNames.menu, { open: this.state.menuOpen, inline: this.props.menuInline })}
+                 onTransitionEnd={this._onMenuTransitionEnd} aria-expanded={this.state.menuOpen && !this.state.menuTransition}>
+                <div className={this._classNames.menuGlass}></div>
+                <div className={css(this._classNames.menuContent)}>
+                    {this._renderMenuControl()}
+                    {this._renderMenuContentNear()}
+                    {this._renderMenuContentFar()}
                 </div>
             </nav>
         );
     }
-}
-
-interface INavigationViewState {
-    menuOpen?: boolean;
-}
-
-class NavigationView extends React.Component<INavigationViewProps, INavigationViewState> {
-    constructor(props : INavigationViewProps) {
-        super(props);
-        this.state = { menuOpen: props.menuProps && props.menuProps.open !== undefined ? props.menuProps.open : undefined}
+    private _onMainTransitionEnd = () => {
+        this.setState({ mainTransition: false }, this._notifyMenuOpenChange);
     }
-    componentWillReceiveProps(nextProps : INavigationViewProps) {
-        if(nextProps.menuProps && nextProps.menuProps.open !== undefined && nextProps.menuProps.open !== this.state.menuOpen) {
-            this.setState({ menuOpen: nextProps.menuProps.open }, this._notifyMenuOpenChange);
-        }
-    }
-    private _notifyMenuOpenChange = () => {
-        if(this.props.menuProps && this.props.menuProps.onOpenChange) {
-            this.props.menuProps.onOpenChange(this.state.menuOpen);
-        }
-    }
-    private _onMenuOpenChange = (open : boolean) => {
-        if(open !== this.state.menuOpen) {
-            this.setState({ menuOpen: open }, this._notifyMenuOpenChange);
-        }
-    }
-    private _onMainMouseDown = () => {
-        if(this.state.menuOpen) {
-            this.setState({ menuOpen: false });
-            if(this.props.menuProps && this.props.menuProps.onOpenChange) {
-                this.props.menuProps.onOpenChange(false);
-            }
-        }
+    protected _renderMain() : React.ReactNode {
+        return (
+            <div role="main" className={css(this._classNames.main, { menuInlineOffset: this.state.menuOpen && this.props.menuInline })}
+                             onMouseDown={!this.props.menuInline ? this._onMainMouseDown : undefined}
+                             onTransitionEnd={this.props.menuInline ? this._onMainTransitionEnd : undefined}>
+                {this.props.children}
+            </div>
+        );
     }
     render() {
-        const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
+        this._classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
         return (
-            <div className={css(classNames.root, { menuOpen: this.state.menuOpen })}>
-                <NavigationViewMenu {...this.props.menuProps} classNames={classNames} open={this.state.menuOpen} onOpenChange={this._onMenuOpenChange} title={this.props.title} />
-                <div role="main" className={css(classNames.main, { menuOpen: this.props.menuProps && this.props.menuProps.inline ? this.state.menuOpen : false })} onMouseDown={!this.props.menuProps || !this.props.menuProps.inline ? this._onMainMouseDown : undefined}>
-                    {this.props.children}
-                </div>
+            <div className={css(this._classNames.root, { menuOpen: this.state.menuOpen })}>
+                {this._renderMenu()}
+                {this._renderMain()}
             </div>
         );
     }
 }
 
 export {
-    INavigationViewMenuProps,
     INavigationViewProps,
     INavigationViewState,
     NavigationView
