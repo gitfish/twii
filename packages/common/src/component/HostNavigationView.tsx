@@ -2,29 +2,34 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { INavigationViewProps, NavigationView } from "./NavigationView";
 import { IAppHost } from "../IAppHost";
+import { IAppProps } from "./IAppProps";
+import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
-interface IHostNavigationViewProps extends INavigationViewProps {
+interface IHostNavigationViewProps extends IAppProps, INavigationViewProps {
     host: IAppHost;
 }
 
 /**
- * This is a convenience wrapper for wrapping a context based component in an
- * application wrapper if need be.
+ * Host app view wrapper.
  */
 @observer
 class HostNavigationView extends React.Component<IHostNavigationViewProps, any> {
     componentWillMount() {
         const qr = this.props.host.params._root;
         if(qr !== undefined) {
-            this.props.host.root = qr && (qr === "true" || qr === "1") ? true : false;
+            this.props.host.setRoot(qr && (qr === "true" || qr === "1") ? true : false);
         }
-        this.props.host.setTitle(this.props.title);
+    }
+    private _onMenuOpenChange = (open : boolean) => {
+        this.props.host.setState({ navigationMenuOpen: open });
     }
     render() {
-        if(this.props.host.root) {
-            return <NavigationView {...this.props}>{this.props.children}</NavigationView>;
-        }
-        return <div className={this.props.className}>{this.props.children}</div>;
+        const title = `${this.props.title}${this.props.title && this.props.host.title ? " - " : ""}${this.props.host.title}`;
+        return (
+            <HostNavigationView {...this.props} title={title} root={this.props.host.root} menuOpen={this.props.host.state.navigationMenuOpen} onMenuOpenChange={this._onMenuOpenChange}>
+                {this.props.children}
+            </HostNavigationView>
+        );
     }
 }
 

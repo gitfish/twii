@@ -3,8 +3,9 @@ import { momentFromString, momentToString, momentToISOString } from "./MomentUti
 
 const Formats = {
     date: "YYYY-MM-DD",
-    timestampNoTimezone: "YYYY-MM-DD[T]HH:mm:ss.SSS"
-}
+    timestampNoTimezone: "YYYY-MM-DD[T]HH:mm:ss.SSS",
+    timestampOut: "DD/MM/YYYY HH:mm:ss"
+};
 
 const momentFromDataString = (value : string) : moment.Moment => {
     return momentFromString(value, Formats.date);
@@ -33,10 +34,15 @@ const momentFromTimestampDataString = (value : string, keepTimezone : boolean = 
     return undefined
 };
 
+const timestampIO = (value : string, outFormat: string = Formats.timestampOut) : string => {
+    return momentToString(momentFromTimestampDataString(value), outFormat);
+};
+
 export { 
     momentFromDataString,
     momentToDataString,
     momentToTimestampDataString,
     momentFromTimestampDataString,
-    Formats
+    Formats,
+    timestampIO
 }

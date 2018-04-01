@@ -22,6 +22,7 @@ interface IAppHost extends IEventEmitter, IStateManager {
     getUrl(request: IRequest) : string;
     open(request: IRequest) : Promise<IAppHost>;
     close() : void;
+    setRoot(root : boolean) : void;
 }
 
 export { IAppHost }

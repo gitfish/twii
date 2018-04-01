@@ -1,41 +1,35 @@
 import * as React from "react";
+import { observer } from "mobx-react"; 
 import { IAppHost } from "@twii/common/lib/IAppHost";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
-import { HostNavigationView } from "@twii/common/lib/component/HostNavigationView";
+import { HostAppView } from "@twii/common/lib/component/HostAppView";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { DashboardListContainer } from "@twii/dashboard/lib/component/DashboardList";
 import { DashboardListStore } from "../DashboardListStore";
-import { DashboardListMenuButton } from "@twii/dashboard/lib/component/DashboardListMenuButton";
 import { INavigationViewStyles } from "@twii/common/lib/component/NavigationView.styles";
 import { getTheme } from "@uifabric/styling";
 import { addDashboard } from "@twii/dashboard/lib/DashboardActions";
+import { createCommandBarMenuItem } from "@twii/dashboard/lib/component/DashboardMenuHelper";
+import { createDashboardListLayoutItem } from "@twii/dashboard/lib/component/DashboardLayoutMenuHelper";
 
+@observer
 class DashboardListApp extends React.Component<IAppProps, any> {
     componentWillMount() {
         DashboardListStore.load();
     }
-    componentDidMount() {
-        this.props.host.setTitle("Dashboards");
-    }
-    private _onAppMenuOpenChanged = () => {
-        DashboardListStore.emit({ type: "resize" });
-    }
     render() {
-        //const title = <DashboardListMenuButton dashboardList={DashboardListStore} />;
         const items : IContextualMenuItem[] = [
-            {
-                key: "addDashboard",
-                name: "Add Dashboard",
-                iconProps: { iconName: "Add" },
-                onClick: () => {
-                    addDashboard({ dashboardList: DashboardListStore })
-                }
-            }
+            createCommandBarMenuItem(DashboardListStore)
         ];
+        const farItems : IContextualMenuItem[] = [];
+        const layoutItem = createDashboardListLayoutItem(DashboardListStore);
+        if(layoutItem) {
+            farItems.push(layoutItem);
+        };
         return (
-            <HostNavigationView host={this.props.host} title="Dashboards" items={items} menuInline={true} onMenuOpenChange={this._onAppMenuOpenChanged}>
+            <HostAppView host={this.props.host} title="Dashboards" items={items} farItems={farItems}>
                 <DashboardListContainer dashboardList={DashboardListStore} host={this.props.host} dashboardStyles={{ root: { background: getTheme().palette.neutralTertiary }, content: { top: 0, right: 0, bottom: 0, left: 0 } }} />
-            </HostNavigationView>
+            </HostAppView>
         );
     }
 }

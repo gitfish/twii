@@ -1,12 +1,38 @@
 import * as React from "react";
 import { Calendar, ICalendarStrings } from "office-ui-fabric-react/lib/Calendar";
-import { Callout, DirectionalHint } from "office-ui-fabric-react/lib/Callout";
+import { ICalloutProps, Callout, DirectionalHint } from "office-ui-fabric-react/lib/Callout";
 import { TextField, ITextFieldProps } from "office-ui-fabric-react/lib/TextField";
-import { KeyCodes } from "office-ui-fabric-react/lib/Utilities";
-import { isNotBlank } from "../StringUtils";
+import { KeyCodes, css } from "office-ui-fabric-react/lib/Utilities";
+import { IconButton } from "office-ui-fabric-react/lib/Button";
+import * as StringUtils from "../StringUtils";
 import * as moment from "moment";
-import { getStyles, IMomentFieldStyles } from "./MomentField.styles";
-import { getClassNames } from "./MomentField.classNames";
+import { IMomentFieldStyles, getStyles } from "./MomentField.styles";
+import { IMomentFieldClassNames, getClassNames } from "./MomentField.classNames";
+
+const defaultFormats = [
+    "DD/MM/YYYY",
+    "D/M/YY",
+    "D/MMM/YY",
+    "D/MMMM/YY",
+    "D/M/YYYY",
+    "D/MMM/YYYY",
+    "D/MMMM/YYYY",
+    "D-M-YY",
+    "D-MMM-YY",
+    "D-MMMM-YY",
+    "D-M-YYYY",
+    "D-MMM-YYYY",
+    "D-MMMM-YYYY",
+    "D M YY",
+    "D MMM YY",
+    "D MMMM YY",
+    "D M YYYY",
+    "D MMM YYYY",
+    "D MMMM YYYY",
+    "YYYY-M-D",
+    "MMM D YYYY",
+    "MMM D, YYYY"
+];
 
 const defaultCalendarStrings : ICalendarStrings = {
     months: [
@@ -58,31 +84,6 @@ const defaultCalendarStrings : ICalendarStrings = {
     goToToday: "Go to today"
 };
 
-const defaultFormats = [
-    "DD/MM/YYYY",
-    "D/M/YY",
-    "D/MMM/YY",
-    "D/MMMM/YY",
-    "D/M/YYYY",
-    "D/MMM/YYYY",
-    "D/MMMM/YYYY",
-    "D-M-YY",
-    "D-MMM-YY",
-    "D-MMMM-YY",
-    "D-M-YYYY",
-    "D-MMM-YYYY",
-    "D-MMMM-YYYY",
-    "D M YY",
-    "D MMM YY",
-    "D MMMM YY",
-    "D M YYYY",
-    "D MMM YYYY",
-    "D MMMM YYYY",
-    "YYYY-M-D",
-    "MMM D YYYY",
-    "MMM D, YYYY"
-];
-
 const Defaults = {
     calendarStrings : defaultCalendarStrings,
     formats: defaultFormats
@@ -93,21 +94,24 @@ interface IMomentFieldProps {
     calendarStrings?: ICalendarStrings;
     formats?: string[];
     isRequired?: boolean;
-    allowTextInput?: boolean;
     className?: string;
     ariaLabel?: string;
     label?: string;
     onRenderLabel?: (props : ITextFieldProps) => React.ReactElement<any>;
     placeholder?: string;
+    readonly?: boolean;
     isMonthPickerVisible?: boolean;
     onSelectDate?: (date?: Date) => void;
     onChange?: (value : moment.Moment) => void;
+    readOnly?: boolean;
+    disabled?: boolean;
+    hideCalendar?: boolean;
+    calloutProps?: ICalloutProps;
     styles?: IMomentFieldStyles;
 }
 
 const DefaultMomentFieldProps : IMomentFieldProps = {
     isRequired: false,
-    allowTextInput: true,
     isMonthPickerVisible: true
 }
 
@@ -122,15 +126,15 @@ interface IMomentFieldState {
  * The fabric date picker's not quite sufficient for our purposes - this lifts most of the code from there, with overrides where necessary
  */
 class MomentField extends React.Component<IMomentFieldProps, IMomentFieldState> {
-    public static defaultProps = DefaultMomentFieldProps
-    protected _preventFocusOpeningCalendar : boolean;
+    public static defaultProps = DefaultMomentFieldProps;
+    protected _classNames : IMomentFieldClassNames;
     protected _calloutTargetRef : HTMLDivElement;
     protected _calendarRef : Calendar;
 
     constructor(props : any) {
         super(props);
         const value = this.props.value;
-        const format = value ? String(value.creationData().format) : this.formats[0];
+        const format = value ? String(value.creationData().format) :this.formats[0];
         let text : string;
         if(value) {
             const input = value.creationData().input;
@@ -149,14 +153,9 @@ class MomentField extends React.Component<IMomentFieldProps, IMomentFieldState> 
             calendarOn: false
         };
     }
-
-    get formats() {
-        return this.props.formats && this.props.formats.length > 0 ? this.props.formats : Defaults.formats;
-    }
-
     componentWillReceiveProps(nextProps : IMomentFieldProps) {
         const value = nextProps.value;
-        const format = value ? String(value.creationData().format) : this.formats[0];
+        const format = value ? String(value.creationData().format) : this.formats[0]
         let text : string;
         if(value) {
             const input = value.creationData().input;
@@ -174,7 +173,13 @@ class MomentField extends React.Component<IMomentFieldProps, IMomentFieldState> 
             format: format
         });
     }
-    protected _handleSelectDate = (date: Date) => {
+    get formats() : string[] {
+        return this.props.formats && this.props.formats.length > 0 ? this.props.formats : Defaults.formats;
+    }
+    get calendarStrings() : ICalendarStrings {
+        return this.props.calendarStrings || Defaults.calendarStrings;
+    }
+    protected _onSelectDate = (date: Date) => {
         const v = moment(date, this.state.format);
         this.setState({
             selectedDate: date,
@@ -188,55 +193,23 @@ class MomentField extends React.Component<IMomentFieldProps, IMomentFieldState> 
             this.props.onChange(v);
         }
     }
-    protected _handleCalloutPositioned = () => {
+    protected _onCalloutPositioned = () => {
         if(this._calendarRef) {
             this._calendarRef.focus();
         }
     }
     protected _showCalendar() : void {
-        if(!this.state.calendarOn) {
-            this._preventFocusOpeningCalendar = true;
-            this.setState({
-                calendarOn: true
-            });
-        }
+        this.setState({
+            calendarOn: true
+        });
     }
     protected _dismissCalendar() : void {
-        if(this.state.calendarOn) {
-            this.setState({
-                calendarOn: false
-            });
-        }
+        this.setState({
+            calendarOn: false
+        });
     }
-    protected _handleCalendarDismissed = () : void => {
-        this._preventFocusOpeningCalendar = true;
+    protected _onCalendarDismissed = () : void => {
         this._dismissCalendar();
-    }
-    protected _handleEscKey = (e : React.KeyboardEvent<HTMLInputElement>) => {
-        this._handleCalendarDismissed();
-    }
-    protected _onTextFieldFocus = (e : React.FocusEvent<HTMLInputElement>) => {
-        if(!this.props.allowTextInput) {
-            if(!this._preventFocusOpeningCalendar) {
-                this._showCalendar();
-            } else {
-                this._preventFocusOpeningCalendar = false;
-            }
-        }
-    }
-    protected _onTextFieldBlur = (e : React.FocusEvent<HTMLInputElement>) => {
-
-    }
-    protected _onTextFieldClick = (e : React.MouseEvent<HTMLInputElement>) => {
-        if(!this.state.calendarOn) {
-            this._showCalendar();
-        } else {
-            if (this.props.allowTextInput) {
-                this.setState({
-                    calendarOn: false
-                });
-            }
-        }
     }
     protected _formatDate(date?: Date) : string {
         if(date) {
@@ -248,85 +221,65 @@ class MomentField extends React.Component<IMomentFieldProps, IMomentFieldState> 
         return moment(text, this.formats as moment.MomentFormatSpecification, true);
     }
     protected _onTextFieldChanged = (text : string) => {
-        if(this.props.allowTextInput) {
-            if(this.state.calendarOn) {
-                this._dismissCalendar();
-            }
-            
-            const v = isNotBlank(text) ? this._parseDate(text) : undefined;
-            console.log("-- Text Field Changed: " + v);
-            this.setState({
-                selectedDate: v && v.isValid() ? v.toDate() : null,
-                text: text,
-                format: v && v.isValid() ? String(v.creationData().format) : this.formats[0]
-            });
-            if(this.props.onChange) {
-                this.props.onChange(v);
-            }
+        const v = StringUtils.isNotBlank(text) ? this._parseDate(text) : undefined;
+        this.setState({
+            selectedDate: v && v.isValid() ? v.toDate() : null,
+            text: text,
+            format: v && v.isValid() ? String(v.creationData().format) : this.formats[0]
+        });
+        if(this.props.onChange) {
+            this.props.onChange(v);
         }
     }
-    protected _onTextFieldkeyDown = (e : React.KeyboardEvent<HTMLInputElement>) => {
-        switch (e.which) {
-            case KeyCodes.enter:
-                e.preventDefault();
-                e.stopPropagation();
-                if(!this.state.calendarOn) {
-                    this._showCalendar();
-                } else {
-                    // When DatePicker allows input date string directly,
-                    // it is expected to hit another enter to close the popup
-                    if(this.props.allowTextInput) {
-                        this._dismissCalendar();
-                    }
-                }
-                break;
-            case KeyCodes.escape:
-                this._handleEscKey(e);
-                break;
-            default:
-                break;
-        }
+    protected _onClickCalendarButton = () => {
+        this.setState({ calendarOn: !this.state.calendarOn });
     }
-    protected _handleCalendarRef = (ref: Calendar) => {
+    protected _onCalendarRef = (ref: Calendar) => {
         this._calendarRef = ref;
     }
-    protected _handleCalloutTargetRef = (ref : HTMLDivElement) => {
+    protected _onCalloutTargetRef = (ref : HTMLDivElement) => {
         this._calloutTargetRef = ref;
     }
+    protected _onRenderSuffix = () => {
+        if(!this.props.hideCalendar) {
+            return (
+                <div className={this._classNames.calendarButtonContainer}  ref={this._onCalloutTargetRef}>
+                    <IconButton className={this._classNames.calendarButton} iconProps={{ iconName: "Calendar" }} onClick={this._onClickCalendarButton} />
+                </div>
+            );
+        }
+        return null;
+    }
     render() {
-        const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
+        this._classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
         return (
-            <div className={classNames.root}>
-                <div className={classNames.inputContainer} ref={this._handleCalloutTargetRef}>
-                    <TextField className={classNames.textField}
+            <div className={this._classNames.root}>
+                <div className={this._classNames.inputContainer}>
+                    <TextField className={this._classNames.textField}
                                ariaLabel={this.props.ariaLabel}
                                label={this.props.label}
                                aria-haspopup={true}
                                required={this.props.isRequired}
-                               onKeyDown={this._onTextFieldkeyDown}
-                               onFocus={this._onTextFieldFocus}
-                               onBlur={this._onTextFieldBlur}
-                               onClick={this._onTextFieldClick}
                                onChanged={this._onTextFieldChanged}
                                placeholder={this.props.placeholder}
-                               iconProps={{ iconName: "Calendar" }}
-                               readOnly={!this.props.allowTextInput}
+                               readOnly={this.props.readOnly}
+                               disabled={this.props.disabled}
                                value={this.state.text || ""}
-                               onRenderLabel={this.props.onRenderLabel} />
+                               onRenderLabel={this.props.onRenderLabel}
+                               onRenderSuffix={this._onRenderSuffix} />
                 </div>
                 {
                     this.state.calendarOn &&
                     (
-                        <Callout gapSpace={0}
+                        <Callout {...this.props.calloutProps}
                                  target={this._calloutTargetRef}
-                                 onDismiss={this._handleCalendarDismissed}
+                                 onDismiss={this._onCalendarDismissed}
                                  directionalHint={DirectionalHint.bottomLeftEdge}
-                                 isBeakVisible={false}
-                                 onPositioned={this._handleCalloutPositioned}>
-                            <Calendar strings={this.props.calendarStrings || Defaults.calendarStrings}
+                                 onPositioned={this._onCalloutPositioned}>
+                            <Calendar strings={this.calendarStrings}
                                         value={this.state.selectedDate}
-                                        onSelectDate={this._handleSelectDate}
-                                        isMonthPickerVisible={this.props.isMonthPickerVisible} ref={this._handleCalendarRef}
+                                        onSelectDate={this._onSelectDate}
+                                        isMonthPickerVisible={this.props.isMonthPickerVisible} ref={this._onCalendarRef}
                                         navigationIcons={ { leftNavigation: "ChevronLeft", rightNavigation: "ChevronRight" }} />
                         </Callout>
                     )
@@ -336,4 +289,4 @@ class MomentField extends React.Component<IMomentFieldProps, IMomentFieldState> 
     }
 }
 
-export { IMomentFieldProps, IMomentFieldState, MomentField, Defaults, defaultCalendarStrings, defaultFormats };
+export { IMomentFieldState, IMomentFieldProps, MomentField, Defaults };

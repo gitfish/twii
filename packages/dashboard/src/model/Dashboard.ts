@@ -329,6 +329,7 @@ class Dashboard extends Component implements IDashboard {
         return this.component && (!this.isColumnSplitLayout || this.columnCount !== 2);
     }
 
+    // these layout shortcuts should probably move into a helper class / model and we need to make the layouts pluggable/configurable
     @action
     private _columnSplitLayout = (handler: (ColSplit : any, Container : any) => void) => {
         const firstContainer = this.findFirst(c => c.type === "list" || c.type === "stack");

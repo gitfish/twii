@@ -14,6 +14,7 @@ interface INavigationViewClassNames {
     menuItem?: string;
     menuItemTitleContainer?: string;
     menuItemIconContainer?: string;
+    menuItemIconAlt?: string;
     main?: string;
 }
 
@@ -30,6 +31,7 @@ const getClassNames = memoizeFunction((styles : INavigationViewStyles, className
         menuItem: mergeStyles("navigation-view-menu-item", styles.menuItem),
         menuItemTitleContainer: mergeStyles("navigation-view-menu-item-title-container", styles.menuItemTitleContainer),
         menuItemIconContainer: mergeStyles("navigation-view-menu-item-icon-container", styles.menuItemIconContainer),
+        menuItemIconAlt: mergeStyles("navigation-view-menu-item-icon-alt", styles.menuItemIconAlt),
         main: mergeStyles("navigation-view-main", styles.main)
     };
 });

@@ -45,7 +45,7 @@ interface IStringService {
     rightPad(text : string, length : number, padChar?: string) : string;
     stripRight(text : string, stripChar : string) : string;
     rightStrip(text : string, stripChar : string) : string;
-    join<T = any>(items : T[], textMap: IMapFunc<T, T[], string>, separator?: string) : string;
+    join<T = any>(items : T[], textMap: IMapFunc<T, string>, separator?: string) : string;
     capitalizeFirstLetter(text : string) : string;
     wordsToCamelCase(text : string) : string;
 }

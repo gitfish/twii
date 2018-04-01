@@ -1,23 +1,28 @@
 import axios from "axios";
 import { IImage } from "../IImage";
 import { IImageService, IGetImagesRequest } from "./IImageService";
-import { extname } from "@haat/common/lib/common/PathUtils";
-import { IAuthConfig, Defaults } from "../../Config"; 
+import { extname } from "@twii/common/lib/PathUtils";
+import { IBasicAuthCredentials } from "@twii/common/lib/IBasicAuthCredentials";
+
+const Defaults = {
+    baseUrl: "/api",
+    auth: undefined
+};
 
 class RestImageService implements IImageService {
     private _baseUrl;
-    private _authConfig;
+    private _authConfig : IBasicAuthCredentials;
     get baseUrl() {
-        return this._baseUrl || Defaults.apiBaseUrl;
+        return this._baseUrl || Defaults.baseUrl;
     }
     set baseUrl(value : string) {
         this._baseUrl = value;
     }
     // NOTE: this would probably only ever be for server side usage
     get auth() {
-        return this._authConfig || Defaults.apiAuth;
+        return this._authConfig || Defaults.auth;
     }
-    set auth(value : IAuthConfig) {
+    set auth(value : IBasicAuthCredentials) {
         this._authConfig = value;
     }
     getImageUrl(request : IImage) : string {

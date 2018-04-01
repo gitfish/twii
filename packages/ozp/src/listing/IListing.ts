@@ -44,4 +44,4 @@ interface IListing {
     doc_urls?: IListingLink[];
 }
 
-export { IListing as default, IListing }
+export { IListing }

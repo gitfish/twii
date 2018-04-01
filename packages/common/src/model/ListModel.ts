@@ -1,6 +1,7 @@
 import { observable, action, computed } from "mobx";
 import { IListModel } from "./IListModel";
 import { Sync } from "./Sync";
+import { toPromise } from "../SyncUtils";
 
 class ListModel<T> implements IListModel<T> {
     @observable sync = new Sync();
@@ -41,8 +42,18 @@ class ListModel<T> implements IListModel<T> {
     }
 
     @action
+    setValue(value) {
+        this.setItems(value);
+    }
+
+    @action
     clearItems() : void {
         this.setItems([], undefined);
+    }
+
+    @action
+    clearValue() {
+        this.clearItems();
     }
 
     @action
@@ -77,10 +88,57 @@ class ListModel<T> implements IListModel<T> {
         return this.items.slice(0);
     }
 
+    @computed
+    get value() {
+        return this.itemsView;
+    }
+
     @action
     clear() {
         this.setItems([]);
         this.sync.clear();
+    }
+
+    @action
+    private _onLoad = (r) => {
+        if(r) {
+            if(Array.isArray(r)) {
+                this.setItems(r);
+            } else {
+                this.setItems(r.items ? r.items : [], r ? r.total : undefined);
+            }
+        }
+        this.sync.syncEnd();
+    }
+
+    @action
+    private _onError = (error : any) => {
+        this.clearItems();
+        this.sync.syncError(error);
+    }
+
+    protected _loadImpl() : Promise<T[] | { items: T[], total?: number }> {
+        return Promise.reject({ code: "NOT_IMPLEMENTED", message: "_loadImpl() not implemented"});
+    }
+
+    @action
+    refresh() : Promise<void> {
+        if(this.sync.syncing) {
+            return toPromise(this.sync);
+        }
+        this.sync.syncStart({ type: "load" });
+        return this._loadImpl().then(this._onLoad).catch(this._onError);
+    }
+
+    @action
+    load() : Promise<void> {
+        if(this.sync.syncing) {
+            return toPromise(this.sync);
+        }
+        if(!this.sync.hasSynced || this.sync.error) {
+            return this.refresh();
+        }
+        return Promise.resolve();
     }
 }
 

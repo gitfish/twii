@@ -1,5 +1,5 @@
 import axios from "axios";
-import IListing from "../IListing";
+import { IListing } from "../IListing";
 import { IListingBookmark } from "../IListingBookmark";
 import { IListingReview } from "../IListingReview";
 import { IListingFeedback } from "../IListingFeedback";
@@ -18,8 +18,8 @@ import { IListingStoreFront } from "../IListingStoreFront";
 import { IListingActivity } from "../IListingActivity";
 import { IUserProfile } from "../../user/IUserProfile";
 import { IImage } from "../../media/IImage";
-import { IAuthConfig, Defaults } from "../../Config"; 
-import { wordsToCamelCase } from "@haat/common/lib/common/StringUtils";
+import { wordsToCamelCase } from "@twii/common/lib/StringUtils";
+import { IBasicAuthCredentials } from "@twii/common/lib/IBasicAuthCredentials";
 
 const handleError = (error : any) => {
     if(error.response && error.response.status === 400) {
@@ -32,19 +32,24 @@ const createUniqueName = (value : IListing) : string => {
     return wordsToCamelCase(value.title);
 };
 
+const Defaults = {
+    baseUrl: "/api",
+    auth: undefined
+};
+
 class RestListingService implements IListingService {
     private _baseUrl : string;
-    private _auth : IAuthConfig; 
+    private _auth : IBasicAuthCredentials; 
     get baseUrl() {
-        return this._baseUrl || Defaults.apiBaseUrl;
+        return this._baseUrl || Defaults.baseUrl;
     }
     set baseUrl(value : string) {
         this._baseUrl = value;
     }
     get auth() {
-        return this._auth || Defaults.apiAuth;
+        return this._auth || Defaults.auth;
     }
-    set auth(value : IAuthConfig) {
+    set auth(value : IBasicAuthCredentials) {
         this._auth = value;
     }
     getListing(request : IListingRequest) : Promise<IListing> {
@@ -146,4 +151,4 @@ class RestListingService implements IListingService {
     }
 }
 
-export { RestListingService }
+export { RestListingService, Defaults }

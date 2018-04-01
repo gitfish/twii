@@ -10,6 +10,6 @@ DashboardListStore.loader = () => {
 DashboardListStore.saver = (data) => {
     return DashboardStorageServiceContext.value.setItem(storageKey, data);
 };
-DashboardListStore.addApp = { title: "Add App", path: "/app/add" };
+DashboardListStore.addApp = { title: "Samples Home", path: "/samples/home" };
 
 export { DashboardListStore }

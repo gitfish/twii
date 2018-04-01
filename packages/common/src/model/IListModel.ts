@@ -1,8 +1,8 @@
 import { ISync } from "../ISync";
 import { IList } from "../IList";
+import { ISyncSupplier } from "../ISyncSupplier";
 
-interface IListModel<T> extends IList<T> {
-    sync: ISync;
+interface IListModel<T> extends IList<T>, ISyncSupplier<T[]> {
     total: number;
     itemsView: T[];
     addItem(item : T, atIndex?: number) : void;

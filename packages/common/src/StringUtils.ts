@@ -270,7 +270,7 @@ const stripRight = (s : string, stripChar : string) : string => {
     return s;
 };
 
-const join = <T = any>(items : T[], textMap: IMapFunc<T, T[], string>, separator?: string) : string => {
+const join = <T = any>(items : T[], textMap: IMapFunc<T, String>, separator?: string) : string => {
     const elems : string[] = [];
     if(items && items.length > 0) {
         let it;

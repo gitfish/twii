@@ -5,13 +5,17 @@ interface IMomentFieldStyles {
     root?: IStyle;
     inputContainer?: IStyle;
     textField?: IStyle;
+    calendarButtonContainer?: IStyle;
+    calendarButton?: IStyle;
 }
 
 const defaultStyles = (theme : ITheme) : IMomentFieldStyles => {
     return {
         root: {},
         inputContainer: {},
-        textField: {}
+        textField: {},
+        calendarButtonContainer: {},
+        calendarButton: {}
     };
 };
 

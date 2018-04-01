@@ -75,11 +75,11 @@ export {
     IListingRequest,
     IListingListRequest,
     IListingListResponse,
+    IListingListOrgCounts,
     IListingListCounts,
     IListingSearchRequest,
     IListingReviewListRequest,
     IListingFeedbackListRequest,
     IListingReviewRequest,
-    IListingService as default,
     IListingService
 }

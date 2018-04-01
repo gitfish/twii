@@ -8,6 +8,13 @@ class SyncSupplier<T = any> extends Supplier<T> implements ISyncSupplier<T> {
     @observable sync = new Sync();
     loader : () => Promise<T>;
 
+    protected _loadImpl() : Promise<T> {
+        if(this.loader) {
+            return this.loader();
+        }
+        return Promise.reject({ code: "NOT_IMPLEMENTED", message: "_loadImpl() not implemented" });
+    }
+
     @action
     private _onLoad = (value : T) => {
         this.setValue(value);
@@ -26,8 +33,8 @@ class SyncSupplier<T = any> extends Supplier<T> implements ISyncSupplier<T> {
             return toPromise(this.sync);
         }
         if(this.loader) {
-            this.sync.syncStart();
-            return this.loader().then(this._onLoad).catch(this._onError);
+            this.sync.syncStart({ type: "load" });
+            return this._loadImpl().then(this._onLoad).catch(this._onError);
         }
     }
 

@@ -1,7 +1,7 @@
-import { ISupplier } from "./ISupplier";
+import { IMutableSupplier } from "./IMutableSupplier";
 import { ISync } from "./ISync";
 
-interface ISyncSupplier<T> extends ISupplier<T> {
+interface ISyncSupplier<T> extends IMutableSupplier<T> {
     sync: ISync;
     load() : Promise<void>;
     refresh() : Promise<void>;

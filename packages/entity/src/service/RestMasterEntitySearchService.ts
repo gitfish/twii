@@ -7,8 +7,6 @@ import {
 } from "./IMasterEntitySearchService";
 //import * as DefaultHttpErrorHandler from "common/HttpErrorHandler";
 
-const DEFAULT_MAX_RECORDS = 2000;
-
 const Defaults = {
     baseUrl: "/DataServices",
     maxNumberOfRecords: 2000

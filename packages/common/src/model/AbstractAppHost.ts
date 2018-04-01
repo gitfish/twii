@@ -28,13 +28,13 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     get id() {
         return this._id;
     }
-
+ 
     @computed
     get root() {
         return this._root;
     }
     set root(value) {
-        this._root = value;
+        this.setRoot(value);
     }
     @action
     setRoot(root : boolean) {

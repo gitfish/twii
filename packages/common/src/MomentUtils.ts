@@ -58,6 +58,10 @@ const dateToISOString = (value : Date) : string => {
     return value ? momentToISOString(moment(value)) : undefined;
 };
 
+const io = (value : string, inFormat: string, outFormat : string) : string => {
+    return momentToString(momentFromString(value, inFormat), outFormat);
+};
+
 export {
     isValidMoment,
     isMomentBefore,
@@ -69,5 +73,6 @@ export {
     momentToString,
     dateToString,
     momentToISOString,
-    dateToISOString
+    dateToISOString,
+    io
 }

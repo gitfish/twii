@@ -5,6 +5,8 @@ import { BoundDropdown } from "@twii/common/lib/component/BoundDropdown";
 import { BoundMomentField } from "@twii/common/lib/component/BoundMomentField";
 import { AddressForm } from "./AddressForm";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
+import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
+import { SampleHostAppView } from "./SampleHostAppView";
 
 interface IPersonFormProps {
     person: Person;
@@ -24,26 +26,35 @@ class PersonForm extends React.Component<IPersonFormProps, any> {
     }
 }
 
-class PersonFormSamples extends React.Component<any, any> {
-    private _person = new Person();
+class PersonFormSamples extends React.Component<IPersonFormProps, any> {
     render() {
         return (
             <div className="person-form-samples" style={{ padding: 8 }}>
                 <h2>Person Form Samples</h2>
-                <PersonForm person={this._person} />
+                <PersonForm person={this.props.person} />
                 <hr/>
-                <PersonForm person={this._person} />
+                <PersonForm person={this.props.person} />
             </div>
         )
     }
 }
 
 class PersonFormSamplesApp extends React.Component<IAppProps, any> {
+    get person() : Person {
+        return this.props.host.getState("person", () => { return new Person() });
+    }
+    private _onClickClear = () => {
+        this.person.clear();
+    }
     componentWillMount() {
-        this.props.host.setTitle("Person Form");
+        this.props.host.setTitle("Person Form Samples");
     }
     render() {
-        return <PersonFormSamples />
+        return (
+            <SampleHostAppView {...this.props}>
+                <PersonFormSamples person={this.person} />
+            </SampleHostAppView>
+        );
     }
 }
 

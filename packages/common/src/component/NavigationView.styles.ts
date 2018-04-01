@@ -14,6 +14,7 @@ interface INavigationViewStyles {
     menuItem?: IStyle;
     menuItemTitleContainer?: IStyle;
     menuItemIconContainer?: IStyle;
+    menuItemIconAlt?: IStyle;
     main?: IStyle;
 }
 
@@ -121,16 +122,20 @@ const defaultStyles = (theme : ITheme) : INavigationViewStyles => {
             justifyContent: "center",
             alignItems: "center"
         },
+        menuItemIconAlt: Object.assign({}, theme.fonts.tiny),
         main: {
             zIndex: 1,
             position: "absolute",
             top: 0,
-            left: 40,
+            left: 0,
             right: 0,
             bottom: 0,
             overflow: "auto",
             transition: "left 0.2s",
             selectors: {
+                "&.hasMenu": {
+                    left: 40
+                },
                 "&.menuInlineOffset": {
                     left: 200
                 }

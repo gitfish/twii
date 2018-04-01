@@ -28,9 +28,21 @@ AppRouter.use("/samples/dashboard", exactPath(req => {
     });
 }));
 
-AppRouter.use("/app/add", exactPath(req => {
-    return import("./component/AppList").then(m => {
-        return <m.AppListApp host={req.app} />;
+AppRouter.use("/samples/sticky", exactPath(req => {
+    return import("@twii/sample-base/lib/component/Sticky").then(m => {
+        return <m.StickySampleApp host={req.app} />;
+    });
+}));
+
+AppRouter.use("/samples/navigationview", exactPath(req => {
+    return import("@twii/sample-base/lib/component/NavigationView").then(m => {
+        return <m.NavigationViewSampleApp host={req.app} />;
+    });
+}));
+
+AppRouter.use("/samples/home", exactPath(req => {
+    return import("@twii/sample-base/lib/component/Home").then(m => {
+        return <m.Home host={req.app} />;
     });
 }));
 

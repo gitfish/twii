@@ -2,6 +2,7 @@ import * as React from "react";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { containsIgnoreCase } from "@twii/common/lib/StringUtils";
 import { TagPicker, ITag } from "office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker";
+import { SampleHostAppView } from "./SampleHostAppView";
 
 const tags : ITag[] = [
     {
@@ -54,7 +55,11 @@ class PickerSamplesApp extends React.Component<IAppProps, any> {
         this.props.host.setTitle("Picker Samples");
     }
     render() {
-        return <PickerSamples />;
+        return (
+            <SampleHostAppView host={this.props.host}>
+                <PickerSamples />
+            </SampleHostAppView>
+        );
     }
 }
 

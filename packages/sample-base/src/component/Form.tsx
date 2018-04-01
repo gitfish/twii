@@ -2,6 +2,7 @@ import * as React from "react";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
+import { SampleHostAppView } from "./SampleHostAppView";
 
 class TextFieldSamples extends React.Component<any, any> {
     private _onRenderPrefix = () => {
@@ -56,7 +57,11 @@ class FormSamplesApp extends React.Component<IAppProps, any> {
         this.props.host.setTitle("Form Samples");
     }
     render() {
-        return <FormSamples />
+        return (
+            <SampleHostAppView host={this.props.host}>
+                <FormSamples />
+            </SampleHostAppView>
+        );
     }
 }
 

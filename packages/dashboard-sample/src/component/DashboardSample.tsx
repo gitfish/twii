@@ -2,7 +2,6 @@ import * as React from "react";
 import { DashboardWrapper } from "@twii/dashboard/lib/component/DashboardWrapper";
 import { IDashboardStyles } from "@twii/dashboard/lib/component/Dashboard.styles";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { HostNavigationView } from "@twii/common/lib/component/HostNavigationView";
 import { getTheme } from "@uifabric/styling";
 
 class DashboardSampleApp extends React.Component<IAppProps, any> {
