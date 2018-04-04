@@ -1,6 +1,6 @@
 import { AppHost } from "model/AppHost";
 import { AppRouterContext } from "AppRouterContext";
-import { Router } from "roota/lib/Router";
+import { Router } from "@twii/router/lib/Router";
 import * as qs from "qs";
 
 describe("App Host", () => {

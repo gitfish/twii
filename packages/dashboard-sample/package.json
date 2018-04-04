@@ -15,6 +15,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@twii/router": "^1.0.0",
     "@twii/common": "^1.0.0",
     "@twii/dashboard": "^1.0.0",
     "@twii/sample-base": "^1.0.0",
@@ -24,15 +25,13 @@
     "mobx-react": "^5.0.0",
     "office-ui-fabric-react": "^5.78.0",
     "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "roota": "^1.7.0"
+    "react-dom": "^16.3.0"
   },
   "devDependencies": {
+    "@types/react": "^16.3.4",
     "del": "^3.0.0",
     "html-webpack-plugin": "^3.0.6",
     "copy-webpack-plugin": "^4.2.3",
-    "@types/react": "^16.3.4",
-    "@types/react-dom": "^16.0.4",
     "webpack-cli": "^2.0.10",
     "typescript": "^2.8.0",
     "ts-loader": "^4.0.1",

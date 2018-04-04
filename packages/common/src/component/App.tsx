@@ -2,8 +2,8 @@ import * as React from "react";
 import { IAppHost } from "../IAppHost";
 import { AppHost } from "../model/AppHost";
 import { AppHostContainer } from "./AppHost";
-import { IRequest } from "roota/lib/IRequest";
-import { IRouter } from "roota/lib/IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { IRouter } from "@twii/router/lib/IRouter";
 
 interface IAppContainerProps extends IRequest {
     router?: IRouter;

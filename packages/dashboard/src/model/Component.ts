@@ -4,7 +4,7 @@ import { IDashboard } from "./IDashboard";
 import { IWindow } from "./IWindow";
 import { ComponentIdSequence } from "../ComponentIdSequence";
 import { isFunction } from "lodash.isfunction";
-import { IRequest } from "roota/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { EventEmitter } from "@twii/common/lib/EventEmitter";
 import { ComponentGlobals } from "../ComponentGlobals";
 import { isEqual } from "lodash.isequal";

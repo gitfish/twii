@@ -2,7 +2,7 @@ import { observable, action, computed, autorun } from "mobx";
 import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { IWindowManager } from "./IWindowManager";
-import { IRequest } from "roota/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { Component } from "./Component";
 import * as ComponentTypes from "./ComponentTypes";
 import * as qs from "qs";

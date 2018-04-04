@@ -31,11 +31,11 @@ class ComponentRemoveDialog extends React.Component<IComponentRemoveProps, any> 
         let title;
         if(c) {
             if(c.type === "stack" || c.type === "list") {
-                title = "all Widgets";
+                title = "all Tabs";
             }
         }
         if(!title) {
-            title = "the Widget";
+            title = "the Tab";
         }
         
         return (

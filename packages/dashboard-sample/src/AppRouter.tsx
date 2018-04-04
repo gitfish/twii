@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Router } from "roota/lib/Router";
-import { exactPath } from "roota/lib/Routers";
+import { Router } from "@twii/router/lib/Router";
+import { exactPath } from "@twii/router/lib/Routers";
 
 const AppRouter = new Router();
 

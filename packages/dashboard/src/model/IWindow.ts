@@ -1,4 +1,4 @@
-import { IRequest } from "roota/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { IWindowManager } from "./IWindowManager";
 import { IComponent } from "./IComponent";
 import { IAppHost } from "@twii/common/lib/IAppHost";

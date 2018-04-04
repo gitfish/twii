@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IRequest } from "roota/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { action } from "mobx";
 import { Dashboard } from "../model/Dashboard";
 import { IDashboard } from "../model/IDashboard";

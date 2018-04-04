@@ -1,5 +1,5 @@
 import { IDashboard } from "./IDashboard";
-import { IRequest } from "roota/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { IEventEmitter } from "@twii/common/lib/IEventEmitter";
 import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
 import { IPredicateFunc } from "@twii/common/lib/IPredicateFunc";

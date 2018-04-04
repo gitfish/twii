@@ -2,6 +2,7 @@ import * as React from "react";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { SampleHostAppView } from "./SampleHostAppView";
 import { AppLink } from "@twii/common/lib/component/AppLink";
+import { List } from "office-ui-fabric-react/lib/List";
 
 class Home extends React.Component<IAppProps, any> {
     componentWillMount() {

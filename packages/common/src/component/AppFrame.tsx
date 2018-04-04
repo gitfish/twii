@@ -2,7 +2,7 @@ import * as React from "react";
 import { IAppHost } from "../IAppHost";
 import { IAppFrameStyles, getStyles } from "./AppFrame.styles";
 import { getClassNames } from "./AppFrame.classNames";
-import { IRouter } from "roota/lib/IRouter";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { AppRouterContext } from "../AppRouterContext";
 
 interface IAppFrameProps {

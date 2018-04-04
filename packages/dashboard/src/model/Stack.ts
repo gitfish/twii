@@ -5,7 +5,7 @@ import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { Window } from "./Window";
 import { IWindowManager } from "./IWindowManager";
-import { IRequest } from "roota/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import * as ComponentTypes from "./ComponentTypes";
 
 /**

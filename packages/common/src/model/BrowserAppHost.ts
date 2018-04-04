@@ -1,8 +1,8 @@
 import { AbstractAppHost } from "./AbstractAppHost";
 import { action } from "mobx";
 import { IAppHost } from "../IAppHost";
-import { IRequest } from "roota/lib/IRequest";
-import { IRouter } from "roota/lib/IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { computed } from "mobx";
 import * as PathUtils from "../PathUtils";
 import * as qs from "qs";

@@ -44,7 +44,7 @@ class ListAddAction extends React.Component<IListProps, any> {
     }
     render() {
         if(this.props.stack.addApp || this.props.stack.addAppSupplier) {
-            return <IconButton className={css("list-action", "add-action")} title="Add Widget" iconProps={{ iconName: "Add" }} onClick={this._onClick} />
+            return <IconButton className={css("list-action", "add-action")} title="Add App" iconProps={{ iconName: "Add" }} onClick={this._onClick} />
         }
         return null;
     }
@@ -130,7 +130,7 @@ class ListWindowCloseAction extends React.Component<IListWindowProps, any> {
     render() {
         if(this.props.window && !this.props.window.closeDisabled) {
             return <IconButton className={css("list-window-action", "close-action")}
-                               title={`Close ${this.props.window.title || "Widget"}`}
+                               title={`Close ${this.props.window.title || "App"}`}
                                iconProps={{ iconName: "ChromeClose" }}
                                onMouseDown={this._onMouseDown}
                                onClick={this._onClick} />
@@ -150,7 +150,7 @@ class ListWindowToggleAction extends React.Component<IListWindowProps, any> {
     }
     render() {
         return <IconButton className={css("list-window-action", "toggle-action")}
-                            title={`Toggle ${this.props.window.title || "Widget"}`}
+                            title={`Toggle ${this.props.window.title || "App"}`}
                             iconProps={{ iconName: this.props.window.contentHidden ? "ChevronDown" : "ChevronUp" }}
                             onMouseDown={this._onMouseDown}
                             onClick={this._onClick} />

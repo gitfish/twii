@@ -1,4 +1,4 @@
-import { Router } from "roota/lib/Router";
+import { Router } from "@twii/router/lib/Router";
 import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 import { IComponent } from "./IComponent";
 import { window, stack, list, vsplit, hsplit } from "./ComponentTypes";

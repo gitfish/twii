@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
 import { AppLink } from "component/AppLink";
 import { AppHost } from "model/AppHost";
-import { Router } from "roota/lib/Router";
+import { Router } from "@twii/router/lib/Router";
 
 describe("App Host Container Component", () => {
     test("render", async () => {

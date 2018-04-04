@@ -1,5 +1,5 @@
-import { IRequest } from "roota/lib/IRequest";
-import { IRequestHandler } from "roota/lib/IRequestHandler";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { IRequestHandler } from "@twii/router/lib/IRequestHandler";
 import { IUserProfile } from "./IUserProfile";
 import { UserProfileStore } from "./model/UserProfileStore";
 import * as StringUtils from "@twii/common/lib/StringUtils";

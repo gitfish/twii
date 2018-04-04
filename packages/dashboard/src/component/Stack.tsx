@@ -89,7 +89,7 @@ class StackTabCloseAction extends React.Component<IStackWindowProps, any> {
         if(this.props.window && !this.props.window.closeDisabled) {
             return (
                 <button type="button" className={css(this.props.classNames.tabAction, "close-action", { active: this.props.window.active })}
-                               title={`Close ${this.props.window.title || "Widget"}`}
+                               title={`Close ${this.props.window.title || "Tab"}`}
                                onMouseDown={this._onMouseDown}
                                onClick={this._onClick}>
                     <Icon className={this.props.classNames.tabActionIcon} iconName="ChromeClose" />
@@ -236,7 +236,7 @@ class StackAddAction extends React.Component<IStackProps, any> {
         if(this.props.stack.addApp || this.props.stack.addAppSupplier) {
             return (
                 <button type="button"
-                        title="Add Widget"
+                        title="Add Tab"
                         className={this.props.classNames.addAction}
                         onClick={this._onClick}>
                     <Icon className="stack-add-action-icon" iconName="Add" />

@@ -1,7 +1,7 @@
 import { IDashboard } from "./IDashboard";
 import { IComponent } from "./IComponent";
 import { ISync } from "@twii/common/lib/ISync";
-import { IRequest } from "roota/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 
 interface IDashboardList extends IComponent {
     sync: ISync;
