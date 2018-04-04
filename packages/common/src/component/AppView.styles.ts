@@ -12,56 +12,7 @@ interface IAppViewCommandBarStyles {
     item?: IStyle;
 }
 
-const defaultCommandBarStyles = (theme : ITheme) : IAppViewCommandBarStyles => {
-    return {
-        root: {
-            height: 28
-        },
-        item: {
-            lineHeight: 28,
-            height: 28,
-            selectors: {
-                ".ms-CommandBarItem-link": {
-                    lineHeight: 28
-                }
-            }
-        }
-    }
-};
-
-const defaultRootCommandBarStyles = (theme : ITheme) : IAppViewCommandBarStyles => {
-    return concatStyleSets(defaultCommandBarStyles(theme), {
-        root: {
-            backgroundColor: theme.palette.neutralDark
-        },
-        item: {
-            backgroundColor: theme.palette.neutralDark,
-            color: theme.palette.neutralLighter,
-            selectors: {
-                ".ms-CommandBarItem-link": {
-                    backgroundColor: theme.palette.neutralDark,
-                    color: theme.palette.neutralLighter,
-                    selectors: {
-                        ".ms-CommandBarItem-icon": {
-                            color: theme.palette.neutralLighter
-                        },
-                        ".ms-CommandBarItem-chevronDown": {
-                            color: theme.palette.neutralLighter
-                        },
-                        ":hover": {
-                            backgroundColor: theme.palette.neutralPrimary
-                        }
-                    }
-                }
-            }
-        }
-    });
-}
-
 const defaultStyles = (theme : ITheme) : IAppViewStyles => {
-    const commandBarStyles = defaultCommandBarStyles(theme);
-    const rootCommandBarStyles = defaultRootCommandBarStyles(theme);
-    console.log("-- Root Command Bar Styles: " + JSON.stringify(rootCommandBarStyles.root));
     return {
         root: {
             position: "absolute",
@@ -94,7 +45,7 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
                 },
                 "&.rootView": {
                     selectors: {
-                        ".ms-CommandBar": Object.assign({}, rootCommandBarStyles.root, {
+                        ".ms-CommandBar": {
                             backgroundColor: theme.palette.neutralDark,
                             selectors: {
                                 ".ms-CommandBarItem": {
@@ -117,7 +68,7 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
                                     }
                                 }
                             }
-                        })
+                        }
                     }
                 }
             }
@@ -139,9 +90,7 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
 };
 
 const Defaults = {
-    styles: defaultStyles,
-    commandBarStyles: defaultCommandBarStyles,
-    rootCommandBarStyles: defaultRootCommandBarStyles
+    styles: defaultStyles
 };
 
 const getStyles = memoizeFunction((theme : ITheme, customStyles?: IAppViewStyles) : IAppViewStyles => {
@@ -153,7 +102,5 @@ export {
     IAppViewCommandBarStyles,
     getStyles,
     defaultStyles,
-    defaultCommandBarStyles,
-    defaultRootCommandBarStyles,
     Defaults
 }

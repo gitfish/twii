@@ -11,7 +11,8 @@ const defaultStyles = (theme : ITheme) : ISyncOverlayStyles => {
         root: {
             display: "flex",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            zIndex: 30000
         },
         content: {}
     }
