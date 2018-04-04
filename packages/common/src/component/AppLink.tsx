@@ -8,6 +8,7 @@ interface IAppLinkProps {
     title?: string;
     className?: string;
     onClick?: () => void;
+    style?: React.CSSProperties;
 }
 
 class AppLink extends React.Component<IAppLinkProps, undefined> {
@@ -24,7 +25,7 @@ class AppLink extends React.Component<IAppLinkProps, undefined> {
         const href = this.props.host.getUrl(this.props.request);
         const content = React.Children.count(this.props.children) > 0 ? this.props.children : this.props.title;
         return (
-            <a className={this.props.className} title={this.props.title} href={href} onClick={this._onClick}>{content}</a>
+            <a style={this.props.style} className={this.props.className} title={this.props.title} href={href} onClick={this._onClick}>{content}</a>
         );
     }
 }
