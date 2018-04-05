@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { IDashboard } from "../model/IDashboard";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { BoundTextField } from "@twii/common/lib/component/BoundTextField";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import { IDashboardAdd } from "../model/IDashboardAdd";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
@@ -9,6 +9,8 @@ import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button"
 import { isBlank, isNotBlank } from "@twii/common/lib/StringUtils";
 import { KeyCodes } from "office-ui-fabric-react/lib/Utilities";
 import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
+import { IDashboardAddStyles, getStyles } from "./DashboardAdd.styles";
+import { IDashboardAddClassNames, getClassNames } from "./DashboardAdd.classNames";
 
 interface IDashboardPropertyEditorProps {
     dashboard: IDashboard;
@@ -16,24 +18,23 @@ interface IDashboardPropertyEditorProps {
 
 @observer
 class DashboardPropertyEditor extends React.Component<IDashboardPropertyEditorProps, any> {
-    _handleTitleChange = (text : string) => {
-        this.props.dashboard.setTitle(text);
-    }
     render() {
         return (
             <div className="dashboard-property-editor">
-                <TextField label="Title" value={this.props.dashboard.title || ""} onChanged={this._handleTitleChange} />
+                <BoundTextField label="Title" binding={{ target: this.props.dashboard, key: "title", setterName: "setTitle" }} />
             </div>
         );
     }
 }
 
-interface IDashboardAddProps {
-    add: IDashboardAdd
+interface IDashboardAddActionsProps {
+    add: IDashboardAdd;
+    className?: string;
+    actionClassName?: string;
 }
 
 @observer
-class DashboardAddFormActions extends React.Component<IDashboardAddProps, any> {
+class DashboardAddActions extends React.Component<IDashboardAddActionsProps, any> {
     private _onClickCancel = () => {
         this.props.add.cancel();
     }
@@ -42,11 +43,11 @@ class DashboardAddFormActions extends React.Component<IDashboardAddProps, any> {
     }
     render() {
         return (
-            <div className="dashboard-add-form-actions">
-                <DefaultButton className="dashboard-form-action" onClick={this._onClickCancel}>Cancel</DefaultButton>
-                <PrimaryButton className="dashboard-form-action" onClick={this._onClickSave} disabled={!this.props.add.saveEnabled}>OK</PrimaryButton>
+            <div className={this.props.className}>
+                <DefaultButton className={this.props.actionClassName} onClick={this._onClickCancel}>Cancel</DefaultButton>
+                <PrimaryButton className={this.props.actionClassName} onClick={this._onClickSave} disabled={!this.props.add.saveEnabled}>OK</PrimaryButton>
             </div>
-        )
+        );
     }
 }
 
@@ -72,8 +73,13 @@ class ExistingDashboardSelector extends React.Component<IDashboardAddProps, any>
     }
 }
 
+interface IDashboardAddEditorProps {
+    add: IDashboardAdd;
+    className?: string;
+}
+
 @observer
-class DashboardAddForm extends React.Component<IDashboardAddProps, any> {
+class DashboardAddEditor extends React.Component<IDashboardAddEditorProps, any> {
     private _onKeyDown = (e : React.KeyboardEvent<HTMLElement>) => {
         if(e.which === KeyCodes.enter && this.props.add.saveEnabled) {
             this.props.add.save();
@@ -85,10 +91,10 @@ class DashboardAddForm extends React.Component<IDashboardAddProps, any> {
     render() {
         if(this.props.add.active) {
             return (
-                <div className="dashboard-add-form">
+                <div className={this.props.className}>
                     <DashboardPropertyEditor dashboard={this.props.add.dashboard} />
                     <ExistingDashboardSelector {...this.props} />
-                    <Checkbox label="Set Dashboard Active" onChange={this._onMakeActiveChange} checked={this.props.add.makeActive} />
+                    <Checkbox label="Set Dashboard Active" onChange={this._onMakeActiveChange} checked={this.props.add.makeActive} styles={{ root: { marginTop: 8 } }}  />
                 </div>
             );
         }
@@ -96,23 +102,32 @@ class DashboardAddForm extends React.Component<IDashboardAddProps, any> {
     }
 }
 
+interface IDashboardAddProps {
+    add: IDashboardAdd;
+    styles?: IDashboardAddStyles;
+    className?: string;
+}
+
 @observer
 class DashboardAddPanel extends React.Component<IDashboardAddProps, any> {
-    private _onRenderFooterContent = () => {
-        return <DashboardAddFormActions {...this.props} />;
+    private _classNames : IDashboardAddClassNames;
+    private _onRenderActions = () => {
+        return <DashboardAddActions add={this.props.add} className={this._classNames.actions} actionClassName={this._classNames.action} />;
     }
-    private _onRenderBody = () => {
-        return <DashboardAddForm {...this.props} />;
+    private _onRenderEditor = () => {
+        return <DashboardAddEditor add={this.props.add} className={this._classNames.editor} />;
     }
     private _onDismiss = () => {
         this.props.add.cancel();
     }
     render() {
+        this._classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
         return (
-            <Panel isOpen={this.props.add.active}
+            <Panel className={this._classNames.root}
+                   isOpen={this.props.add.active}
                    isLightDismiss={true}
-                   onRenderFooterContent={this._onRenderFooterContent}
-                   onRenderBody={this._onRenderBody}
+                   onRenderFooterContent={this._onRenderActions}
+                   onRenderBody={this._onRenderEditor}
                    headerText="Add Dashboard"
                    type={PanelType.medium}
                    onDismiss={this._onDismiss} />

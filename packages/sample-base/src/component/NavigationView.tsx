@@ -3,8 +3,17 @@ import { NavigationView } from "@twii/common/lib/component/NavigationView";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { SampleHostAppView } from "./SampleHostAppView";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
+import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
+
+interface INavigationViewSampleAppState {
+    menuInline: boolean;
+}
 
 class NavigationViewSampleApp extends React.Component<IAppProps, any> {
+    constructor(props : IAppProps) {
+        super(props);
+        this.state = { menuInline: false };
+    }
     componentWillMount() {
         this.props.host.setTitle("Navigation View Sample");
     }
@@ -13,6 +22,9 @@ class NavigationViewSampleApp extends React.Component<IAppProps, any> {
     }
     private _onClickGoodbye = () => {
         
+    }
+    private _onMenuInlineChange = (e : any, checked : boolean) => {
+        this.setState({ menuInline: checked });
     }
     render() {
         const items : IContextualMenuItem[] = [
@@ -38,9 +50,13 @@ class NavigationViewSampleApp extends React.Component<IAppProps, any> {
         ];
         return (
             <SampleHostAppView host={this.props.host}>
-                <NavigationView title="Sample Navigation View" items={items}>
+                <NavigationView title="Sample Navigation View" items={items} menuInline={this.state.menuInline}>
                     <div style={{ padding: 8 }}>
-                        <p>Sample Navigation View Content</p>
+                        <h2>Navigation View Sample</h2>
+                        
+                        <div style={{ padding: 8 }}>
+                            <Checkbox label="Inline" value={this.state.menuInline} onChange={this._onMenuInlineChange} />
+                        </div>
                     </div>
                 </NavigationView>
             </SampleHostAppView>

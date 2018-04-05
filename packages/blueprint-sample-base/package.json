@@ -1,0 +1,12 @@
+{
+  "name": "@twii/blueprint-sample-base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.0.3",
+    "react-dom": "^16.0.3",
+    "react-transition-group": "^2.2.1",
+    "@blueprintjs/core": "^2.0.1"
+  }
+}

@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "rootDir": "./src",
         "outDir": "./lib",
         "sourceMap": true,
         "noImplicitAny": false,
@@ -20,7 +21,7 @@
         ]
     },
     "include": [
-        "src/**/*"
+        "src"
     ],
     "exclude": [
         "node_modules"

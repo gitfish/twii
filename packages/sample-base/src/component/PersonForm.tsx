@@ -3,6 +3,7 @@ import { Person } from "../model/Person";
 import { BoundTextField } from "@twii/common/lib/component/BoundTextField";
 import { BoundDropdown } from "@twii/common/lib/component/BoundDropdown";
 import { BoundMomentField } from "@twii/common/lib/component/BoundMomentField";
+import { BoundCheckbox } from "@twii/common/lib/component/BoundCheckbox";
 import { AddressForm } from "./AddressForm";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
@@ -16,10 +17,11 @@ class PersonForm extends React.Component<IPersonFormProps, any> {
     render() {
         return (
             <div className="person-form" style={{ padding: 8 }}>
-                <BoundTextField label="First Name" bindTarget={this.props.person} bindKey="firstName" />
-                <BoundTextField label="Middle Name" bindTarget={this.props.person} bindKey="middleName" />
-                <BoundTextField label="Last Name" bindTarget={this.props.person} bindKey="lastName" />
-                <BoundMomentField label="Date of Birth" bindTarget={this.props.person} bindKey="dob" />
+                <BoundTextField label="First Name" binding={{ target: this.props.person, key: "firstName" }} />
+                <BoundTextField label="Middle Name" binding={{ target: this.props.person, key: "middleName" }} />
+                <BoundTextField label="Last Name" binding={{ target: this.props.person, key: "lastName" }} />
+                <BoundMomentField label="Date of Birth" binding={{ target: this.props.person, key: "dob" }} />
+                <BoundCheckbox label="Opt In" binding={{ target: this.props.person, key: "optIn" }} />
                 <AddressForm address={this.props.person.address} />
             </div>
         );

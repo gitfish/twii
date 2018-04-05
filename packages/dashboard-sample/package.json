@@ -38,6 +38,7 @@
     "webpack": "^4.1.0",
     "webpack-dev-server": "^3.1.0",
     "write-file-webpack-plugin": "^4.2.0",
-    "source-map-loader": "^0.2.3"
+    "source-map-loader": "^0.2.3",
+    "css-loader": "^0.28.11"
   }
 }

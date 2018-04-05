@@ -57,6 +57,7 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
         cursor: "pointer",
         height: 24,
         marginLeft: 4,
+        transition: "background-color 0.3s ease",
         selectors: {
             "&.active": {
                 backgroundColor: theme.palette.neutralLighter,
@@ -131,6 +132,7 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             width: 24,
             marginLeft: 4,
             cursor: "pointer",
+            transition: "background-color 0.3s ease",
             selectors: {
                 ":hover": {
                     backgroundColor: theme.palette.themeTertiary

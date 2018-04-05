@@ -1,27 +1,34 @@
 import { IBoundProps } from "./IBoundProps";
+import { IBinding } from "./IBinding";
 
 const setBoundValue = <V = any>(props : IBoundProps<any, V>, value : V) => {
-    if(props.bindSetter) {
-        props.bindSetter(value);
-    } else if(props.bindSetterName) {
-        const s = props.bindTarget[props.bindSetterName];
-        s.call(props.bindTarget, value);
-    } else {
-        props.bindTarget[props.bindKey] = value;
+    const binding = props.binding;
+    if(binding) {
+        if(binding.setter) {
+            binding.setter(value);
+        } else if(binding.setterName) {
+            const s = binding.target[binding.setterName];
+            s.call(binding.target, value);
+        } else {
+            binding.target[binding.key] = value;
+        }
     }
 };
 
 const getBoundValue = <V = any>(props : IBoundProps<any, V>) : V => {
-    if(props.bindGetter) {
-        return props.bindGetter();
-    }
+    const binding = props.binding;
+    if(binding) {
+        if(binding.getter) {
+            return binding.getter();
+        }
+        
+        if(binding.getterName) {
+            const s = binding.target[binding.getterName];
+            return s.call(binding.target);
+        }
     
-    if(props.bindGetterName) {
-        const s = props.bindTarget[props.bindGetterName];
-        return s.call(props.bindTarget);
+        return binding.target[binding.key];
     }
-
-    return props.bindTarget[props.bindKey];
 };
 
 export { getBoundValue, setBoundValue }

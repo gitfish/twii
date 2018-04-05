@@ -8,6 +8,7 @@ class Person {
     @observable lastName : string;
     @observable dob : moment.Moment;
     @observable address : Address = new Address();
+    @observable optIn : boolean = false;
 
     @action
     clear() {
@@ -15,6 +16,7 @@ class Person {
         this.middleName = undefined;
         this.lastName = undefined;
         this.dob = undefined;
+        this.optIn = false;
         this.address.clear();
     }
 }
