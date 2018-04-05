@@ -21,7 +21,7 @@ class PersonForm extends React.Component<IPersonFormProps, any> {
                 <BoundTextField label="Middle Name" binding={{ target: this.props.person, key: "middleName" }} />
                 <BoundTextField label="Last Name" binding={{ target: this.props.person, key: "lastName" }} />
                 <BoundMomentField label="Date of Birth" binding={{ target: this.props.person, key: "dob" }} />
-                <BoundCheckbox label="Opt In" binding={{ target: this.props.person, key: "optIn" }} />
+                <BoundCheckbox label="Opt In" binding={{ target: this.props.person, key: "optIn" }} styles={{ root: { marginTop: 8 } }} />
                 <AddressForm address={this.props.person.address} />
             </div>
         );

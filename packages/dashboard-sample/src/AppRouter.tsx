@@ -46,6 +46,12 @@ r.use("/samples/rmwc/card", exactPath(req => {
     });
 }));
 
+r.use("/samples/rmwc/form", exactPath(req => {
+    return import("@twii/sample-base/lib/rmwc/component/FormSample").then(m => {
+        return <m.FormSampleApp host={req.app} />; 
+    });
+}));
+
 r.use("/samples/home", exactPath(req => {
     return import("@twii/sample-base/lib/component/Home").then(m => {
         return <m.Home host={req.app} />;

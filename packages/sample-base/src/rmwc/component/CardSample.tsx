@@ -10,15 +10,17 @@ class CardSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <h2>React Material Web Components Card Samples</h2>
-                    <h3>Fully Featured</h3>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <div style={{ padding: 8 }}>
-                        <CardSample />
-                    </div>
-                    <h3>Mini Card</h3>
-                    <div style={{ padding: 8 }}>
-                        <MiniCardSample />
+                        <h2>React Material Web Components Card Samples</h2>
+                        <h3>Fully Featured</h3>
+                        <div style={{ padding: 8 }}>
+                            <CardSample />
+                        </div>
+                        <h3>Mini Card</h3>
+                        <div style={{ padding: 8 }}>
+                            <MiniCardSample />
+                        </div>
                     </div>
                 </div>
             </SampleHostAppView>

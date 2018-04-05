@@ -22,6 +22,10 @@ const samples = [
     {
         path: "/samples/rmwc/card",
         title: "RMWC Card Samples"
+    },
+    {
+        path: "/samples/rmwc/form",
+        title: "RMWC Form Samples"
     }
 ];
 
