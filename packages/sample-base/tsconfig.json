@@ -4,6 +4,7 @@
         "outDir": "./lib",
         "sourceMap": true,
         "noImplicitAny": false,
+        "module": "esnext",
         "moduleResolution": "node",
         "declaration": true,
         "target": "es5",

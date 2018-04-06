@@ -5,6 +5,7 @@ import { TextField, TextFieldIcon, TextFieldHelperText } from "rmwc/TextField";
 import { Select } from "rmwc/Select";
 import { Slider } from "rmwc/Slider";
 import { Switch } from "rmwc/Switch";
+import { Checkbox } from "rmwc/Checkbox";
 
 class TextFieldSamples extends React.Component<any, any> {
     render() {
@@ -146,7 +147,7 @@ interface ISwitchSamplesState {
     cookiesChecked?: boolean;
 }
 
-class SwitchSamples extends React.Component<any, any> {
+class SwitchSamples extends React.Component<any, ISwitchSamplesState> {
     constructor(props : any) {
         super(props);
         this.state = {};
@@ -171,7 +172,42 @@ class SwitchSamples extends React.Component<any, any> {
     }
 }
 
+interface ICheckboxSamplesState {
+    cookiesChecked?: boolean;
+}
+
+class CheckboxSamples extends React.Component<any, ICheckboxSamplesState> {
+    constructor(props : any) {
+        super(props);
+        this.state = {};
+    }
+    render() {
+        return (
+            <div>
+                {/* Controlled with change handlers */}
+                <Checkbox
+                  checked={this.state.cookiesChecked || false}
+                  onChange={evt => this.setState({cookiesChecked: evt.target.checked})}>
+                  Cookies
+                </Checkbox>
+                
+                {/* Standard Checkbox */}
+                <Checkbox>Pizza</Checkbox>
+                
+                {/* Using the label prop */}
+                <Checkbox label="Icecream" />
+                
+                {/* Making a "half" checked, indeterminate Checkbox */}
+                <Checkbox indeterminate={true}>Broccoli</Checkbox>
+            </div>
+        );
+    }
+}
+
 class FormSampleApp extends React.Component<IAppProps, any> {
+    componentWillMount() {
+        this.props.host.setTitle("RMWC Form Samples");
+    }
     render() {
         return (
             <HostAppView host={this.props.host}>
@@ -191,6 +227,10 @@ class FormSampleApp extends React.Component<IAppProps, any> {
                     <h2>Switch Samples</h2>
                     <div style={{ padding: 8 }}>
                         <SwitchSamples />
+                    </div>
+                    <h2>Checkbox Samples</h2>
+                    <div style={{ padding: 8 }}>
+                        <CheckboxSamples />
                     </div>
                 </div>
             </HostAppView>

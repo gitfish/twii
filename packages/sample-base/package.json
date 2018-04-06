@@ -9,6 +9,7 @@
       "build-watch": "tsc -w"
     },
     "dependencies": {
+      "@twii/router": "^1.0.0",
       "@twii/common": "^1.0.0",
       "@uifabric/styling": "^5.22.0",
       "@uifabric/utilities": "^5.23.0",
@@ -19,7 +20,9 @@
       "react-dom": "^16.3.0",
       "mobx": "^4.1.1",
       "mobx-react": "^5.0.0",
-      "rmwc": "^1.4.1"
+      "rmwc": "^1.4.1",
+      "@blueprintjs/core": "^2.1.1",
+      "react-transition-group": "^2.2.1"
     },
     "devDependencies": {
       "@types/react": "^16.3.4",

@@ -138,13 +138,10 @@ const createConfig = (env) => {
                 fabricFontBasePath: fabricFontBasePath
             }),
             new CopyWebpackPlugin([
-                { from: "../../fonts/ms", to: "fonts" }
-            ]),
-            new CopyWebpackPlugin([
-                { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" }
-            ]),
-            new CopyWebpackPlugin([
-                { from: "../../node_modules/material-components-web/dist/material-components-web.min.css", to: "css/material-components-web.css" }
+                { from: "../../fonts/ms", to: "fonts" },
+                { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" },
+                { from: "../../node_modules/material-components-web/dist/material-components-web.min.css", to: "css/material-components-web.css" },
+                { from: "../../node_modules/@blueprintjs/core/lib/css/blueprint.css", to: "css/blueprint.css" }
             ]),
             new WriteFilePlugin()
         ]

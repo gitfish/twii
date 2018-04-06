@@ -8,6 +8,7 @@ const createTemplate = (params) => {
                 <title>${params.htmlWebpackPlugin.options.title}</title>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <link rel="stylesheet" href="css/material-components-web.css" />
+                <link rel="stylesheet" href="css/blueprint.css" />
                 <script type="text/javascript">
                     window["FabricConfig"] = {
                         fontBaseUrl: "${params.htmlWebpackPlugin.options.fabricFontBasePath}"

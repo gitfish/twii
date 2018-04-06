@@ -42,9 +42,21 @@ const sampleGroups = [
                 title: "Form/Input Samples"
             }
         ]
+    },
+    {
+        key: "blueprint-samples",
+        title: "Blueprint Samples",
+        items: [
+            {
+                path: "/samples/blueprint/alert",
+                title: "Alert Samples"
+            },
+            {
+                path: "/samples/blueprint/dialog",
+                title: "Dialog Samples"
+            }
+        ]
     }
-    
-    
 ];
 
 export { sampleGroups }
