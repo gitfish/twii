@@ -66,6 +66,18 @@ const createSampleRouter = () : Router => {
         });
     }));
     
+    r.use("/samples/blueprint/contextmenu", exactPath(req => {
+        return import("./blueprint/component/ContextMenuSample").then(m => {
+            return <m.ContextMenuSampleApp host={req.app} />
+        });
+    }));
+    
+    r.use("/samples/blueprint/collapse", exactPath(req => {
+        return import("./blueprint/component/CollapseSample").then(m => {
+            return <m.CollapseSampleApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/home", exactPath(req => {
         return import("./component/Home").then(m => {
             return <m.Home host={req.app} />;

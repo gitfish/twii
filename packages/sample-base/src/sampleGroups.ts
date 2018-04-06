@@ -54,6 +54,14 @@ const sampleGroups = [
             {
                 path: "/samples/blueprint/dialog",
                 title: "Dialog Samples"
+            },
+            {
+                path: "/samples/blueprint/contextmenu",
+                title: "Context Menu Samples"
+            },
+            {
+                path: "/samples/blueprint/collapse",
+                title: "Collapse Samples"
             }
         ]
     }
