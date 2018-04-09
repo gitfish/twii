@@ -6,7 +6,6 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { css } from "@uifabric/utilities/lib/css";
 
 interface IAppViewProps {
-    title?: string;
     items?: IContextualMenuItem[];
     farItems?: IContextualMenuItem[];
     root?: boolean;
@@ -17,7 +16,8 @@ interface IAppViewProps {
 class AppView extends React.Component<IAppViewProps, any> {
     private _classNames : IAppViewClassNames;
     protected get hasMenu() {
-        return (this.props.items && this.props.items.length > 0) || (this.props.farItems && this.props.farItems.length > 0);
+        return (this.props.items && this.props.items.length > 0) ||
+               (this.props.farItems && this.props.farItems.length > 0) ? true : false;
     }
     protected _renderMenu() : React.ReactNode {
         if(this.hasMenu) {

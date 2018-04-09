@@ -1,4 +1,5 @@
 import { IDashboard } from "./IDashboard";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { IRequest } from "@twii/router/lib/IRequest";
 import { IEventEmitter } from "@twii/common/lib/IEventEmitter";
 import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
@@ -12,10 +13,10 @@ interface IComponent extends IEventEmitter {
     top: IComponent;
     dashboard: IDashboard;
     config : any;
-    addApp: IRequest;
-    addAppSupplier: ISupplierFunc<IRequest>;
-    setAddApp(addApp : IRequest) : void;
-    setAddAppSupplier(addAppSupplier : ISupplierFunc<IRequest>) : void;
+    router: IRouter;
+    setRouter(router : IRouter) : void;
+    addApp: IRequest | ISupplierFunc<IRequest>;
+    setAddApp(addApp : IRequest | ISupplierFunc<IRequest>) : void;
     setConfig(state : any) : Promise<any>;
     remove(comp : IComponent) : void;
     removeFromParent() : void;

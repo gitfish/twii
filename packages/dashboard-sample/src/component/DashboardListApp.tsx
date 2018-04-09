@@ -27,7 +27,7 @@ class DashboardListApp extends React.Component<IAppProps, any> {
             farItems.push(layoutItem);
         };
         return (
-            <HostAppView host={this.props.host} title="Dashboards" items={items} farItems={farItems}>
+            <HostAppView host={this.props.host} items={items} farItems={farItems}>
                 <DashboardListContainer dashboardList={DashboardListStore} host={this.props.host} dashboardStyles={{ root: { background: getTheme().palette.neutralTertiary }, content: { top: 0, right: 0, bottom: 0, left: 0 } }} />
             </HostAppView>
         );

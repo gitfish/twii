@@ -78,6 +78,12 @@ const createSampleRouter = () : Router => {
         });
     }));
     
+    r.use("/samples/blueprint/navbar", exactPath(req => {
+        return import("./blueprint/component/NavbarSample").then(m => {
+            return <m.NavbarSampleApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/home", exactPath(req => {
         return import("./component/Home").then(m => {
             return <m.Home host={req.app} />;

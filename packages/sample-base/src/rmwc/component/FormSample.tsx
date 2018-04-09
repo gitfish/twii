@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { HostAppView } from "@twii/common/lib/component/HostAppView";
+import { SampleHostAppView } from "../../component/SampleHostAppView";
 import { TextField, TextFieldIcon, TextFieldHelperText } from "rmwc/TextField";
 import { Select } from "rmwc/Select";
 import { Slider } from "rmwc/Slider";
@@ -210,7 +210,7 @@ class FormSampleApp extends React.Component<IAppProps, any> {
     }
     render() {
         return (
-            <HostAppView host={this.props.host}>
+            <SampleHostAppView host={this.props.host}>
                 <div style={{ padding: 8 }}>
                     <h2>Text Field Samples</h2>
                     <div style={{ padding: 8 }}>
@@ -233,7 +233,7 @@ class FormSampleApp extends React.Component<IAppProps, any> {
                         <CheckboxSamples />
                     </div>
                 </div>
-            </HostAppView>
+            </SampleHostAppView>
         );
     }
 }

@@ -21,9 +21,8 @@ class HostAppView extends React.Component<IHostAppViewProps, any> {
         }
     }
     render() {
-        const title = `${this.props.title}${this.props.title && this.props.host.title ? " - " : ""}${this.props.host.title}`;
         return (
-            <AppView {...this.props} title={title} root={this.props.host.root}>
+            <AppView {...this.props} root={this.props.host.root}>
                 {this.props.children}
             </AppView>
         );

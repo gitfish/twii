@@ -38,6 +38,9 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
                             selectors: {
                                 ".ms-CommandBarItem-link": {
                                     lineHeight: 28
+                                },
+                                ".ms-CommandBarItem-text": {
+                                    lineHeight: 28
                                 }
                             }
                         }
@@ -50,6 +53,10 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
                             selectors: {
                                 ".ms-CommandBarItem": {
                                     selectors: {
+                                        ".ms-CommandBarItem-text": {
+                                            backgroundColor: theme.palette.neutralDark,
+                                            color: theme.palette.neutralLighter
+                                        },
                                         ".ms-CommandBarItem-link": {
                                             backgroundColor: theme.palette.neutralDark,
                                             color: theme.palette.neutralLighter,

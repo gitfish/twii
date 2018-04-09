@@ -4,6 +4,7 @@ import { IDashboard } from "./IDashboard";
 import { IWindow } from "./IWindow";
 import { ComponentIdSequence } from "../ComponentIdSequence";
 import { isFunction } from "lodash.isfunction";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { IRequest } from "@twii/router/lib/IRequest";
 import { EventEmitter } from "@twii/common/lib/EventEmitter";
 import { ComponentGlobals } from "../ComponentGlobals";
@@ -15,8 +16,8 @@ import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 abstract class Component extends EventEmitter {
     private _id : string;
     @observable.ref parent : IComponent;
-    @observable private _addApp : IRequest;
-    @observable.ref private _addAppSupplier : ISupplierFunc<IRequest>;
+    @observable.ref private _addApp : IRequest | ISupplierFunc<IRequest>;
+    @observable.ref private _router : IRouter;
     type : string;
 
     constructor() {
@@ -45,35 +46,34 @@ abstract class Component extends EventEmitter {
         return p ? p.addApp : undefined;
     }
 
-    set addApp(addApp : IRequest) {
+    set addApp(addApp : IRequest | ISupplierFunc<IRequest>) {
         this.setAddApp(addApp);
     }
 
     @action
-    setAddApp(addApp : IRequest) {
+    setAddApp(addApp : IRequest | ISupplierFunc<IRequest>) {
         this._addApp = addApp;
     }
-
+    
     @computed
-    get addAddSupplier() {
-        if(this._addAppSupplier !== undefined) {
-            return this._addAppSupplier;
+    get router() {
+        if(this._router !== undefined) {
+            return this._router;
         }
         const p = this.parent;
         if(p === this) {
             console.warn("-- Ancestor Resolution Cycle Detected");
             return undefined;
         }
-        return p ? p.addAppSupplier : undefined;
+        return p ? p.router : undefined;
     }
-
-    set addAppSupplier(value) {
-        this.setAddAppSupplier(value);
+    set router(value) {
+        this.setRouter(value);
     }
-
+    
     @action
-    setAddAppSupplier(addAddSupplier : ISupplierFunc<IRequest>) {
-        this._addAppSupplier = addAddSupplier;
+    setRouter(router : IRouter) {
+        this._router = router;
     }
 
     @computed

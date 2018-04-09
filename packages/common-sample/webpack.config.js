@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const WriteFilePlugin = require("write-file-webpack-plugin");
 
 const isNodeModuleFile = (filename) => {
     return filename.indexOf("node_modules") >= 0;
@@ -137,11 +138,12 @@ const createConfig = (env) => {
                 fabricFontBasePath: fabricFontBasePath
             }),
             new CopyWebpackPlugin([
-                { from: "../../fonts/ms", to: "fonts" }
+                { from: "../../fonts/ms", to: "fonts" },
+                { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" },
+                { from: "../../node_modules/material-components-web/dist/material-components-web.min.css", to: "css/material-components-web.css" },
+                { from: "../../node_modules/@blueprintjs/core/lib/css/blueprint.css", to: "css/blueprint.css" }
             ]),
-            new CopyWebpackPlugin([
-                { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" }
-            ])
+            new WriteFilePlugin()
         ]
     };
 

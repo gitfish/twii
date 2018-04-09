@@ -24,9 +24,8 @@ class HostNavigationView extends React.Component<IHostNavigationViewProps, any> 
         this.props.host.setState({ navigationMenuOpen: open });
     }
     render() {
-        const title = `${this.props.title}${this.props.title && this.props.host.title ? " - " : ""}${this.props.host.title}`;
         return (
-            <HostNavigationView {...this.props} title={title} root={this.props.host.root} menuOpen={this.props.host.state.navigationMenuOpen} onMenuOpenChange={this._onMenuOpenChange}>
+            <HostNavigationView {...this.props} title={this.props.host.title || this.props.title} root={this.props.host.root} menuOpen={this.props.host.state.navigationMenuOpen} onMenuOpenChange={this._onMenuOpenChange}>
                 {this.props.children}
             </HostNavigationView>
         );

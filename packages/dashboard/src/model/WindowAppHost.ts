@@ -1,6 +1,7 @@
 import { action } from "mobx";
 import { IAppHost } from "@twii/common/lib/IAppHost";
 import { AbstractAppHost } from "@twii/common/lib/model/AbstractAppHost";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { IRequest } from "@twii/router/lib/IRequest";
 import { IWindow } from "./IWindow";
 
@@ -14,6 +15,18 @@ class WindowAppHost extends AbstractAppHost {
 
     get defaultRequest() {
         return { path: this._window.path, params: this._window.params, query: this._window.query };
+    }
+    
+    get router() : IRouter {
+        return this._window.router;
+    }
+    set router(value : IRouter) {
+        this.setRouter(value);
+    }
+    
+    @action
+    setRouter(router : IRouter) {
+        this._window.setRouter(router);
     }
 
     open(request: IRequest) : Promise<IAppHost> {

@@ -11,8 +11,7 @@ import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 interface IDashboardWrapperProps {
     className?: string;
     config?: any;
-    addApp?: IRequest;
-    addAppSupplier?: ISupplierFunc<IRequest>;
+    addApp?: IRequest | ISupplierFunc<IRequest>;
     loader?: () => Promise<any>;
     saver?: (data : any) => Promise<any>;
     saveDelay?: number;
@@ -32,7 +31,6 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
     }
     private _setFromProps(props : IDashboardWrapperProps) {
         this.dashboard.addApp = props.addApp;
-        this.dashboard.addAppSupplier = props.addAppSupplier;
         this.dashboard.setConfig(props.config);
         this.dashboard.loader = props.loader;
         this.dashboard.saver = props.saver;

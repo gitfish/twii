@@ -6,6 +6,8 @@ import { IWindow } from "./IWindow";
 import { Window } from "./Window";
 import { IWindowManager } from "./IWindowManager";
 import { IRequest } from "@twii/router/lib/IRequest";
+import { isFunction } from "@twii/common/lib/LangUtils";
+import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 import * as ComponentTypes from "./ComponentTypes";
 
 /**
@@ -138,8 +140,8 @@ class Stack extends Component implements IStack {
 
     @action
     addNew() {
-        if(this.addApp || this.addAppSupplier) {
-            return this.open(this.addApp || this.addAppSupplier());
+        if(this.addApp) {
+            return this.open(isFunction(this.addApp) ? (this.addApp as ISupplierFunc<IRequest>)() : this.addApp);
         }
         return Promise.resolve();
     }

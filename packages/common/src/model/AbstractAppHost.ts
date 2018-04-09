@@ -9,7 +9,6 @@ import * as qs from "qs";
 import * as Id from "../Id";
 import { stripRight } from "../StringUtils";
 import { IEventEmitter } from "../IEventEmitter";
-import { AppRouterContext } from "../AppRouterContext";
 import { StateManager } from "./StateManager";
 
 const IdPrefix = "app-host-";
@@ -42,7 +41,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     }
 
     get router() {
-        return this._router || AppRouterContext.value;
+        return this._router;
     }
     set router(router : IRouter) {
         this.setRouter(router);
@@ -212,7 +211,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     abstract emit(event) : void;
 
     toJSON() {
-        return Object.assign({}, this._req, { id: this.id });
+        return { id: this.id };
     }
 }
 

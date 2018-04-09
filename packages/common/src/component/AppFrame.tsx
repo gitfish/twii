@@ -3,7 +3,6 @@ import { IAppHost } from "../IAppHost";
 import { IAppFrameStyles, getStyles } from "./AppFrame.styles";
 import { getClassNames } from "./AppFrame.classNames";
 import { IRouter } from "@twii/router/lib/IRouter";
-import { AppRouterContext } from "../AppRouterContext";
 
 interface IAppFrameProps {
     src: string;
@@ -24,12 +23,9 @@ class AppFrame extends React.Component<IAppFrameProps, IAppFrameState> {
         super(props);
         this.state = { renderFrame : false };
     }
-    private get router() {
-        return this.props.messageRouter || AppRouterContext.value;
-    }
     private _onMessage = (e : MessageEvent) => {
-        if(e.origin && e.source === this._frameRef.contentWindow) {
-            this.router.handleRequest(e.data).then(value => {
+        if(e.origin && e.source === this._frameRef.contentWindow && this.props.messageRouter) {
+            this.props.messageRouter.handleRequest(e.data).then(value => {
                 e.source.postMessage({ correlationId: e.data.correlationId, value: value }, "*");
             }).catch(error => {
                 try {

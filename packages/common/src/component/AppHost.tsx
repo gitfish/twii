@@ -3,7 +3,6 @@ import { observer } from "mobx-react";
 import { IAppHost } from "../IAppHost";
 import { Sync } from "./Sync";
 import { Error } from "./Error";
-import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 import { SyncOverlay } from "./SyncOverlay";
 
 interface IAppHostProps {

@@ -1,7 +1,7 @@
 const sampleGroups = [
     {
-        key: "office-ui-fabric",
-        title: "Office UI Fabric Samples",
+        key: "fabric",
+        title: "Fabric Samples",
         items: [
             {
                 path: "/samples/form",
@@ -62,6 +62,10 @@ const sampleGroups = [
             {
                 path: "/samples/blueprint/collapse",
                 title: "Collapse Samples"
+            },
+            {
+                path: "/samples/blueprint/navbar",
+                title: "Navbar Samples"
             }
         ]
     }

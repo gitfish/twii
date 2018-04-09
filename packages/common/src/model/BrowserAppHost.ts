@@ -8,6 +8,10 @@ import * as PathUtils from "../PathUtils";
 import * as qs from "qs";
 import { stripRight } from "../StringUtils";
 
+const Defaults = {
+    WindowAppHostKey: "__app_host__"
+};
+
 interface IWindowAppHostResolver {
     (window : Window, sourceHost?: IAppHost) : Promise<IAppHost> | IAppHost;
 }
@@ -32,10 +36,11 @@ const globalWindowAppHostResolver = (globalKey : string, pollInterval : number =
     }
 };
 
+
 class BrowserAppHost extends AbstractAppHost {
-    window : Window;
-    private windowAppHostResolver?: IWindowAppHostResolver;
     basePath : string;
+    private _window : Window;
+    private _windowAppHostResolver?: IWindowAppHostResolver;
     private _extension : string;
 
     get root() {
@@ -44,6 +49,30 @@ class BrowserAppHost extends AbstractAppHost {
 
     get extension() {
         return this._extension;
+    }
+    
+    get windowAppHostResolver() : IWindowAppHostResolver {
+        return this._windowAppHostResolver || globalWindowAppHostResolver(Defaults.WindowAppHostKey);
+    }
+    
+    set windowAppHostResolver(value) {
+        this._windowAppHostResolver = value;
+    }
+    
+    @action
+    setTitle(title : string) {
+        super.setTitle(title);
+        this.window.document.title = title;
+    }
+    
+    get window() {
+        return this._window;
+    }
+    set window(value) {
+        this._window = value;
+        if(value) {
+            value[Defaults.WindowAppHostKey] = this;       
+        }
     }
 
     getUrl(request : IRequest) : string {
@@ -151,5 +180,6 @@ class BrowserAppHost extends AbstractAppHost {
 export {
     IWindowAppHostResolver,
     globalWindowAppHostResolver,
-    BrowserAppHost
+    BrowserAppHost,
+    Defaults
 }

@@ -8,7 +8,7 @@ import { sampleGroups } from "../sampleGroups";
 @observer
 class SampleHostAppView extends React.Component<IAppProps, any> {
     private _onClickItem = (e, item) => {
-        this.props.host.load({ path: item.path });
+        this.props.host.load({ path: item.path, replace: true });
     }
     render() {
         const groupItems = sampleGroups.map(g => {
@@ -31,7 +31,16 @@ class SampleHostAppView extends React.Component<IAppProps, any> {
             };
             return groupItem;
         });
-        const items : IContextualMenuItem[] = [
+        const items : IContextualMenuItem[] = [];
+        if(this.props.host.root) {
+            items.push(
+                {
+                    key: "title",
+                    name: `Samples - ${this.props.host.title}`
+                }
+            );
+        };
+        const farItems : IContextualMenuItem[] = [
             {
                 key: "samples",
                 name: "Samples",
@@ -41,7 +50,7 @@ class SampleHostAppView extends React.Component<IAppProps, any> {
             }
         ];
         return (
-            <HostAppView host={this.props.host} title="Samples" farItems={items}>
+            <HostAppView host={this.props.host} items={items} farItems={farItems}>
                 {this.props.children}
             </HostAppView>
         );
