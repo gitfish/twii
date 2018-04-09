@@ -6,8 +6,7 @@ import { NavbarDivider } from "@blueprintjs/core/lib/esm/components/navbar/navba
 import { Alignment } from "@blueprintjs/core/lib/esm/common/alignment";
 import { DARK, INPUT } from "@blueprintjs/core/lib/esm/common/classes";
 import { Button } from "@blueprintjs/core/lib/esm/components/button/buttons";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { SampleHostAppView } from "../../component/SampleHostAppView";
+import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 
 class NavbarSample extends React.Component<any, any> {
     render() {

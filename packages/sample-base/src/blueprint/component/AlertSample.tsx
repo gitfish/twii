@@ -1,8 +1,7 @@
 import * as React from "react";
 import { Alert } from "@blueprintjs/core/lib/esm/components/alert/alert";
 import { Button } from "@blueprintjs/core/lib/esm/components/button/buttons";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { SampleHostAppView } from "../../component/SampleHostAppView";
+import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 
 interface IAlertSamplesState {
     open?: boolean;

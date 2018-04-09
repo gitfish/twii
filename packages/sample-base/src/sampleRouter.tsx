@@ -6,32 +6,32 @@ const createSampleRouter = () : Router => {
 
     const r = new Router();
     
-    r.use("/samples/form", exactPath(req => {
-        return import("./component/Form").then(m => {
+    r.use("/samples/fabric/form", exactPath(req => {
+        return import("./fabric/component/Form").then(m => {
             return <m.FormSamplesApp host={req.app} />;
         });
     }));
     
-    r.use("/samples/picker", exactPath(req => {
-        return import("./component/Picker").then(m => {
+    r.use("/samples/fabric/picker", exactPath(req => {
+        return import("./fabric/component/Picker").then(m => {
             return <m.PickerSamplesApp host={req.app} />;
         });
     }));
     
-    r.use("/samples/personform", exactPath(req => {
-        return import("./component/PersonForm").then(m => {
+    r.use("/samples/fabric/personform", exactPath(req => {
+        return import("./fabric/component/PersonForm").then(m => {
             return <m.PersonFormSamplesApp host={req.app} />;
         });
     }));
     
-    r.use("/samples/sticky", exactPath(req => {
-        return import("./component/Sticky").then(m => {
+    r.use("/samples/fabric/sticky", exactPath(req => {
+        return import("./fabric/component/Sticky").then(m => {
             return <m.StickySampleApp host={req.app} />;
         });
     }));
     
-    r.use("/samples/navigationview", exactPath(req => {
-        return import("./component/NavigationView").then(m => {
+    r.use("/samples/fabric/navigationview", exactPath(req => {
+        return import("./fabric/component/NavigationView").then(m => {
             return <m.NavigationViewSampleApp host={req.app} />;
         });
     }));

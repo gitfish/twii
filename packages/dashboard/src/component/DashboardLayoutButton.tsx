@@ -7,8 +7,8 @@ import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } fro
 import { DashboardAddStore } from "../DashboardAddStore";
 import { IDashboardProps } from "./IDashboardProps";
 import { IDashboardListProps } from "./IDashboardListProps";
-import { Sync } from "@twii/common/lib/component/Sync";
-import { CompactError } from "@twii/common/lib/component/Error";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
+import { CompactError } from "@twii/fabric-ui/lib/component/Error";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import { createDashboardLayoutSectionItem } from "./DashboardLayoutMenuHelper";
 

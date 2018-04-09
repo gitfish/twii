@@ -1,6 +1,5 @@
 import * as React from "react";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { SampleHostAppView } from "../../component/SampleHostAppView";
+import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 import { ContextMenuTarget } from "@blueprintjs/core/lib/esm/components/context-menu/contextMenuTarget";
 import { Menu } from "@blueprintjs/core/lib/esm/components/menu/menu";
 import { MenuItem } from "@blueprintjs/core/lib/esm/components/menu/menuItem";

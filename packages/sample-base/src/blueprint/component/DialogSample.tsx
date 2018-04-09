@@ -1,8 +1,7 @@
 import * as React from "react";
 import { Dialog } from "@blueprintjs/core/lib/esm/components/dialog/dialog";
 import { Button } from "@blueprintjs/core/lib/esm/components/button/buttons";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { SampleHostAppView } from "../../component/SampleHostAppView";
+import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 
 interface IDialogSamplesState {
     open?: boolean;

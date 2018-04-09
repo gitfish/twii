@@ -1,6 +1,5 @@
 import * as React from "react";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { SampleHostAppView } from "../../component/SampleHostAppView";
+import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 import {
   Card,
   CardPrimaryAction,

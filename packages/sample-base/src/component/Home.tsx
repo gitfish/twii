@@ -1,16 +1,13 @@
 import * as React from "react";
-import { IAppHost } from "@twii/common/lib/IAppHost";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { IRequest } from "@twii/router/lib/IRequest";
-import { SampleHostAppView } from "./SampleHostAppView";
-import { AppLink } from "@twii/common/lib/component/AppLink";
+import { SampleHostAppView, IAppProps } from "./SampleHostAppView";
+import { AppLink } from "@twii/common-ui/lib/component/AppLink";
 import { List } from "office-ui-fabric-react/lib/List";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { getTheme } from "@uifabric/styling";
 import { sampleGroups } from "../sampleGroups";
 
-interface ISampleAppTileProps {
-    host: IAppHost;
+interface ISampleAppTileProps extends IAppProps {
     request: IRequest;
 }
 
@@ -23,7 +20,7 @@ class SampleAppTile extends React.Component<ISampleAppTileProps, any> {
                         <Icon iconName="Puzzle" />
                     </div>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", position: "absolute", fontSize: 10, top: 60, right: 0, bottom: 0, left: 0, backgroundColor: getTheme().palette.themeDark, color: getTheme().palette.white }}>
-                        <div style={{ display: "flex", whitespace: "no-wrap", overflow: "hidden", textOverflow: "ellipsis", alignItems: "center", justifyContent: "center" }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 8 }}>
                             {this.props.request.title}
                         </div>
                     </div>

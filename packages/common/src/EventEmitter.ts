@@ -1,5 +1,5 @@
 import { IEvent, IEventEmitter } from "./IEventEmitter";
-import * as isFunction from "lodash.isfunction";
+import { isFunction } from "./LangUtils";
 
 class EventEmitter implements IEventEmitter {
     private _listeners : any;

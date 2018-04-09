@@ -4,23 +4,23 @@ const sampleGroups = [
         title: "Fabric Samples",
         items: [
             {
-                path: "/samples/form",
+                path: "/samples/fabric/form",
                 title: "Form Samples"
             },
             {
-                path: "/samples/picker",
+                path: "/samples/fabric/picker",
                 title: "Picker Samples"
             },
             {
-                path: "/samples/personform",
+                path: "/samples/fabric/personform",
                 title: "Person Form (Bound Fields)"
             },
             {
-                path: "/samples/sticky",
+                path: "/samples/fabric/sticky",
                 title: "Sticky Samples"
             },
             {
-                path: "/samples/navigationview",
+                path: "/samples/fabric/navigationview",
                 title: "Navigation View Samples"
             }
         ]

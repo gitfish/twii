@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { observer } from "mobx-react";
 import { IDashboard } from "../model/IDashboard";
 import { ComponentFactory } from "./ComponentFactory";
-import { Sync } from "@twii/common/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { ComponentRemoveDialog } from "./ComponentRemove";
 import { ComponentRemoveStore } from "../ComponentRemoveStore";
 import { IEventTarget } from "@twii/common/lib/IEventEmitter";

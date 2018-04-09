@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { HostAppView } from "@twii/common/lib/component/HostAppView";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { sampleGroups } from "../sampleGroups";
 
@@ -57,4 +57,4 @@ class SampleHostAppView extends React.Component<IAppProps, any> {
     }
 }
 
-export { SampleHostAppView }
+export { SampleHostAppView, IAppProps }

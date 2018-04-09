@@ -1,6 +1,5 @@
 import * as React from "react";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
-import { SampleHostAppView } from "../../component/SampleHostAppView";
+import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 import { TextField, TextFieldIcon, TextFieldHelperText } from "rmwc/TextField";
 import { Select } from "rmwc/Select";
 import { Slider } from "rmwc/Slider";

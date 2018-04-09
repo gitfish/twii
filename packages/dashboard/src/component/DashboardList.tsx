@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { IDashboardList } from "../model/IDashboardList";
 import { IDashboard } from "../model/IDashboard";
 import { Dashboard } from "./Dashboard";
-import { Sync } from "@twii/common/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { DashboardAddPanel } from "./DashboardAdd";
 import { DashboardAddStore } from "../DashboardAddStore";
 import { DashboardRemoveDialog } from "./DashboardRemove";

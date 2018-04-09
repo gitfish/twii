@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { IDashboard } from "../model/IDashboard";
-import { BoundTextField } from "@twii/common/lib/component/BoundTextField";
+import { BoundTextField } from "@twii/fabric-ui/lib/component/BoundTextField";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import { IDashboardAdd } from "../model/IDashboardAdd";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
@@ -21,7 +21,7 @@ class DashboardPropertyEditor extends React.Component<IDashboardPropertyEditorPr
     render() {
         return (
             <div className="dashboard-property-editor">
-                <BoundTextField label="Title" binding={{ target: this.props.dashboard, key: "title", setterName: "setTitle" }} />
+                <BoundTextField label="Title" binding={{ target: this.props.dashboard, key: "title", setter: "setTitle" }} />
             </div>
         );
     }
