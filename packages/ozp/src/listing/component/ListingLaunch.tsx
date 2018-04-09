@@ -1,15 +1,16 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { IListingModel } from "../model/IListingModel";
 import { ListingApprovalStatus } from "../ListingApprovalStatus";
 import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
-import { Sync } from "@twii/common/lib/component/Sync";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import { AppFrame } from "@twii/common/lib/component/AppFrame";
 import { isExternalListing } from "../ListingHelper";
-import { HostAppView } from "@twii/common/lib/component/HostAppView";
+import { AppFrame } from "@twii/fabric-ui/lib/component/AppFrame";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { ListingModelSupplier } from "../model/ListingModelSupplier";
+import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 interface IListingLaunchProps extends IAppProps {
     listing: IListingModel;
@@ -94,8 +95,14 @@ class ListingLaunchApp extends React.Component<IListingLaunchAppProps, any> {
         this.props.host.setTitle(`${this.props.host.params.title || ""}`);
     }
     render() {
+        const items : IContextualMenuItem[] = [
+            {
+                key: "title",
+                name: "Launching..."
+            }
+        ];
         return (
-            <HostAppView title="Launching" host={this.props.host}>
+            <HostAppView host={this.props.host} items={items}>
                 <ListingLaunchContainer host={this.props.host} listingSupplier={new ListingModelSupplier(this.props.listingId)} />
             </HostAppView>
         );

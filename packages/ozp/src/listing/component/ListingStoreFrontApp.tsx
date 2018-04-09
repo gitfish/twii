@@ -1,9 +1,10 @@
 import * as React from "react";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { IListing } from "../IListing";
-import { HostAppView } from "@twii/common/lib/component/HostAppView";
 import { ListingStoreFrontContainer } from "./ListingStoreFront";
 import { ListingStoreFrontModel } from "../model/ListingStoreFrontModel";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 class ListingStoreFrontApp extends React.Component<IAppProps, any> {
     private _onSelectItem = (listing : IListing) => {
@@ -27,8 +28,14 @@ class ListingStoreFrontApp extends React.Component<IAppProps, any> {
         this.props.host.setTitle("Shop");
     }
     render() {
+        const items : IContextualMenuItem[] = [
+            {
+                key: "title",
+                name: "App Store"
+            }  
+        ];
         return (
-            <HostAppView host={this.props.host} title="Shop">
+            <HostAppView host={this.props.host} items={items}>
                 <ListingStoreFrontContainer storeFront={this.listingStoreFront}
                                             onSelectItem={this._onSelectItem}
                                             onAdd={this._onAdd}

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { isAuthorised } from "../UserAuthHelper";
 import { UserProfileStore } from "../model/UserProfileStore";
-import { Sync } from "@twii/common/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { IUserProfile } from "../IUserProfile";
 
 interface IUserContainerProps {

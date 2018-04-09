@@ -1,12 +1,13 @@
 import * as React from "react";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { ListingBookmarksContainer } from "./ListingBookmarks";
 import { ListingBookmarkListStore } from "../model/ListingBookmarkListStore";
 import { IListing } from "../IListing";
 import { launch } from "../ListingActions";
-import { HostAppView } from "@twii/common/lib/component/HostAppView";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import { AppLink } from "@twii/common/lib/component/AppLink";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { AppLink } from "@twii/common-ui/lib/component/AppLink";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 class ListingBookmarksApp extends React.Component<IAppProps, any> {
     private _onSelectListing = (listing : IListing) => {
@@ -23,8 +24,14 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
         );
     }
     render() {
+        const items : IContextualMenuItem[] = [
+            {
+                key: "title",
+                name: "Bookmarks"
+            }  
+        ];
         return (
-            <HostAppView title="Add Widget" host={this.props.host}>
+            <HostAppView host={this.props.host} items={items}>
                 <ListingBookmarksContainer bookmarkList={ListingBookmarkListStore} onSelectListing={this._onSelectListing} onRenderNoBookmarks={this._onRenderNoBookmarks} />
             </HostAppView>
         );

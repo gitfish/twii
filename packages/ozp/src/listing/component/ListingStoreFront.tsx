@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { Sync } from "@twii/common/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { IListing } from "../IListing";
 import { IListingStoreFrontModel } from "../model/IListingStoreFrontModel";
 import { ListingList } from "./ListingList";

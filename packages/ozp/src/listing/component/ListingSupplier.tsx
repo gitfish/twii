@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Sync } from "@twii/common/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
 import { IListingModel } from "../model/IListingModel";
 

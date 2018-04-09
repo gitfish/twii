@@ -1,12 +1,12 @@
 import * as React from "react";
-import { IAppProps } from "@twii/common/lib/component/IAppProps";
 import { ListingFormContainer } from "./ListingForm";
-import { HostAppView } from "@twii/common/lib/component/HostAppView";
 import { findById } from "../model/ListingFinder";
 import { ListingTitleContainer } from "./Listing";
 import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
 import { IListingModel } from "../model/IListingModel";
 import { autorun, IReactionDisposer } from "mobx";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 
 interface IListingEditAppProps extends IAppProps {
     listingId: number;

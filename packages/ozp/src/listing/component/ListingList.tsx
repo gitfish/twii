@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { IListing } from "../IListing";
 import { ListingListModel } from "../model/ListingListModel";
 import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
-import { Sync } from "@twii/common/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { IListingListModel } from "../model/IListingListModel";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";

@@ -10,13 +10,13 @@ import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBa
 import { IListingFormStyles, getStyles } from "./ListingForm.styles";
 import { IListingFormClassNames, getClassNames } from "./ListingForm.classNames";
 import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
-import { Sync } from "@twii/common/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { IImage } from "../../media/IImage";
 import { ImageField } from "../../media/component/ImageField";
 import { ListingApprovalStatus } from "../ListingApprovalStatus";
-import { Details } from "@twii/common/lib/component/Details";
-import { IDetailsStyles } from "@twii/common/lib/component/Details.styles";
-import { ValidationErrors } from "@twii/common/lib/component/ValidationErrors";
+import { Details } from "@twii/fabric-ui/lib/component/Details";
+import { IDetailsStyles } from "@twii/fabric-ui/lib/component/Details.styles";
+import { ValidationErrors } from "@twii/fabric-ui/lib/component/ValidationErrors";
 import { getPropErrorMessage } from "@twii/common/lib/ErrorUtils";
 import { ListingLinkForm } from "./ListingLinkForm";
 import { getTheme } from "@uifabric/styling";
