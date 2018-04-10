@@ -21,7 +21,7 @@ class TabsSample extends React.Component<any, ITabsSampleState> {
     }
     render() {
         return (
-            <div>
+            <div style={{ padding: 8 }}>
                 <TabBar
                   activeTabIndex={this.state.activeTabIndex}
                   onChange={evt => this.setState({activeTabIndex: evt.target.value})}

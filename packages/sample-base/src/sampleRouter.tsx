@@ -6,6 +6,12 @@ const createSampleRouter = () : Router => {
 
     const r = new Router();
     
+    r.use("/samples/opener", exactPath(req => {
+        return import("./component/Opener").then(m => {
+            return <m.OpenerApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/dashboard/stack", exactPath(req => {
         return import("./dashboard/component/DashboardSample").then(m => {
             return <m.StackSampleApp host={req.app} />;
@@ -72,6 +78,12 @@ const createSampleRouter = () : Router => {
         });
     }));
     
+    r.use("/samples/rmwc/toolbar", exactPath(req => {
+        return import("./rmwc/component/ToolbarSample").then(m => {
+            return <m.ToolbarSampleApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/blueprint/alert", exactPath(req => {
         return import("./blueprint/component/AlertSample").then(m => {
             return <m.AlertSampleApp host={req.app} />; 
@@ -111,6 +123,24 @@ const createSampleRouter = () : Router => {
     r.use("/samples/blueprint/callout", exactPath(req => {
         return import("./blueprint/component/CalloutSample").then(m => {
             return <m.CalloutSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/blueprint/collapsibleList", exactPath(req => {
+        return import("./blueprint/component/CollapsibleListSample").then(m => {
+            return <m.CollapsibleListSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/blueprint/slider", exactPath(req => {
+        return import("./blueprint/component/SliderSample").then(m => {
+            return <m.SliderSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/blueprint/tagInput", exactPath(req => {
+        return import("./blueprint/component/TagInputSample").then(m => {
+            return <m.TagInputSampleApp host={req.app} />; 
         });
     }));
     

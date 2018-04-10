@@ -1,7 +1,17 @@
 const sampleGroups = [
     {
+        key: "common",
+        title: "Common Samples",
+        items: [
+            {
+                path: "/samples/opener",
+                title: "Opener"
+            }   
+        ]
+    },
+    {
         key: "dashboard",
-        title: "Dashboard",
+        title: "Dashboard Samples",
         items: [
             {
                 path: "/samples/dashboard/stack",
@@ -58,6 +68,10 @@ const sampleGroups = [
             {
                 path: "/samples/rmwc/tabs",
                 title: "Tabs Sample"
+            },
+            {
+                path: "/samples/rmwc/toolbar",
+                title: "Toolbar Sample"
             }
         ]
     },
@@ -92,6 +106,18 @@ const sampleGroups = [
             {
                 path: "/samples/blueprint/callout",
                 title: "Callout Sample"
+            },
+            {
+                path: "/samples/blueprint/collapsibleList",
+                title: "Collapsible List Sample"
+            },
+            {
+                path: "/samples/blueprint/slider",
+                title: "Slider Sample"
+            },
+            {
+                path: "/samples/blueprint/tagInput",
+                title: "Tag Input"
             }
         ]
     }
