@@ -144,6 +144,12 @@ const createSampleRouter = () : Router => {
         });
     }));
     
+    r.use("/samples/blueprint/popover", exactPath(req => {
+        return import("./blueprint/component/PopoverSample").then(m => {
+            return <m.PopoverSampleApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/home", exactPath(req => {
         return import("./component/Home").then(m => {
             return <m.Home host={req.app} />;

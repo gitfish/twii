@@ -117,7 +117,11 @@ const sampleGroups = [
             },
             {
                 path: "/samples/blueprint/tagInput",
-                title: "Tag Input"
+                title: "Tag Input Sample"
+            },
+            {
+                path: "/samples/blueprint/popover",
+                title: "Popover Sample"
             }
         ]
     }
