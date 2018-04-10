@@ -1,4 +1,5 @@
 import * as React from "react";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { IRequest } from "@twii/router/lib/IRequest";
 import { action } from "mobx";
 import { Dashboard } from "../model/Dashboard";
@@ -17,6 +18,7 @@ interface IDashboardWrapperProps {
     saveDelay?: number;
     host?: IEventEmitter;
     styles?: IDashboardStyles;
+    router?: IRouter;
 }
 
 interface IDashboardWrapper {
@@ -30,6 +32,7 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
         this._setFromProps(this.props);
     }
     private _setFromProps(props : IDashboardWrapperProps) {
+        this.dashboard.router = props.router;
         this.dashboard.addApp = props.addApp;
         this.dashboard.setConfig(props.config);
         this.dashboard.loader = props.loader;

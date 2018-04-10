@@ -4,16 +4,10 @@ import { exactPath } from "@twii/router/lib/Routers";
 import { createSampleRouter } from "@twii/sample-base/lib/sampleRouter";
 
 const r = new Router();
-const sampleRouter = createSampleRouter();
-sampleRouter.use("/samples/dashboard", exactPath(req => {
-    return import("./component/DashboardSample").then(m => {
-        return <m.DashboardSampleApp host={req.app} />;
-    });
-}));
-r.use(sampleRouter);
+r.use(createSampleRouter());
 
 r.use((req, next) => {
-    if(req.path === "/" || req.path === "/index" || req.path === "/dashboard") {
+    if(req.path === "/" || req.path === "/index" || req.path === "/dashboards") {
         return import("./component/DashboardListApp").then(m => {
             return <m.DashboardListApp host={req.app} />;
         });

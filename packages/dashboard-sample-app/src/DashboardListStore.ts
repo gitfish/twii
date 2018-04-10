@@ -1,11 +1,11 @@
 import { DashboardList } from "@twii/dashboard/lib/model/DashboardList";
 import { DashboardStorageServiceContext } from "@twii/dashboard/lib/service/DashboardStorageServiceContext";
-import { createSampleRouter } from "@twii/sample-base/lib/sampleRouter";
+import { AppRouter } from "./AppRouter";
 
 const storageKey = "sample-dashboard-list";
 
 const DashboardListStore = new DashboardList();
-DashboardListStore.setRouter(createSampleRouter());
+DashboardListStore.setRouter(AppRouter);
 DashboardListStore.loader = () => {
     return DashboardStorageServiceContext.value.getItem(storageKey);
 };

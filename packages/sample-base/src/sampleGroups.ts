@@ -1,15 +1,29 @@
 const sampleGroups = [
     {
+        key: "dashboard",
+        title: "Dashboard",
+        items: [
+            {
+                path: "/samples/dashboard/stack",
+                title: "Stack Sample"
+            },
+            {
+                path: "/samples/dashboard/hsplit",
+                title: "HSplit Sample"
+            }
+        ]
+    },
+    {
         key: "fabric",
         title: "Fabric Samples",
         items: [
             {
                 path: "/samples/fabric/form",
-                title: "Form Samples"
+                title: "Form Sample"
             },
             {
                 path: "/samples/fabric/picker",
-                title: "Picker Samples"
+                title: "Picker Sample"
             },
             {
                 path: "/samples/fabric/personform",
@@ -17,11 +31,11 @@ const sampleGroups = [
             },
             {
                 path: "/samples/fabric/sticky",
-                title: "Sticky Samples"
+                title: "Sticky Sample"
             },
             {
                 path: "/samples/fabric/navigationview",
-                title: "Navigation View Samples"
+                title: "Navigation View Sample"
             }
         ]
     },
@@ -31,15 +45,19 @@ const sampleGroups = [
         items: [
             {
                 path: "/samples/rmwc/card",
-                title: "Card Samples"
+                title: "Card Sample"
             },
             {
                 path: "/samples/rmwc/gridlist",
-                title: "Grid List"
+                title: "Grid List Sample"
             },
             {
                 path: "/samples/rmwc/form",
-                title: "Form/Input Samples"
+                title: "Form/Input Sample"
+            },
+            {
+                path: "/samples/rmwc/tabs",
+                title: "Tabs Sample"
             }
         ]
     },
@@ -49,23 +67,31 @@ const sampleGroups = [
         items: [
             {
                 path: "/samples/blueprint/alert",
-                title: "Alert Samples"
+                title: "Alert Sample"
             },
             {
                 path: "/samples/blueprint/dialog",
-                title: "Dialog Samples"
+                title: "Dialog Sample"
             },
             {
                 path: "/samples/blueprint/contextmenu",
-                title: "Context Menu Samples"
+                title: "Context Menu Sample"
             },
             {
                 path: "/samples/blueprint/collapse",
-                title: "Collapse Samples"
+                title: "Collapse Sample"
             },
             {
                 path: "/samples/blueprint/navbar",
-                title: "Navbar Samples"
+                title: "Navbar Sample"
+            },
+            {
+                path: "/samples/blueprint/tabs",
+                title: "Tabs Sample"
+            },
+            {
+                path: "/samples/blueprint/callout",
+                title: "Callout Sample"
             }
         ]
     }

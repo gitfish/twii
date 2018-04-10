@@ -6,6 +6,18 @@ const createSampleRouter = () : Router => {
 
     const r = new Router();
     
+    r.use("/samples/dashboard/stack", exactPath(req => {
+        return import("./dashboard/component/DashboardSample").then(m => {
+            return <m.StackSampleApp host={req.app} />;
+        })
+    }));
+    
+    r.use("/samples/dashboard/hsplit", exactPath(req => {
+        return import("./dashboard/component/DashboardSample").then(m => {
+            return <m.HSplitSampleApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/fabric/form", exactPath(req => {
         return import("./fabric/component/Form").then(m => {
             return <m.FormSamplesApp host={req.app} />;
@@ -54,6 +66,12 @@ const createSampleRouter = () : Router => {
         });
     }));
     
+    r.use("/samples/rmwc/tabs", exactPath(req => {
+        return import("./rmwc/component/TabsSample").then(m => {
+            return <m.TabsSampleApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/blueprint/alert", exactPath(req => {
         return import("./blueprint/component/AlertSample").then(m => {
             return <m.AlertSampleApp host={req.app} />; 
@@ -81,6 +99,18 @@ const createSampleRouter = () : Router => {
     r.use("/samples/blueprint/navbar", exactPath(req => {
         return import("./blueprint/component/NavbarSample").then(m => {
             return <m.NavbarSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/blueprint/tabs", exactPath(req => {
+        return import("./blueprint/component/TabsSample").then(m => {
+            return <m.TabsSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/blueprint/callout", exactPath(req => {
+        return import("./blueprint/component/CalloutSample").then(m => {
+            return <m.CalloutSampleApp host={req.app} />; 
         });
     }));
     
