@@ -25,17 +25,11 @@ class ListingStoreFrontApp extends React.Component<IAppProps, any> {
         return r;
     }
     componentWillMount() {
-        this.props.host.setTitle("Shop");
+        this.props.host.setTitle("Store");
     }
     render() {
-        const items : IContextualMenuItem[] = [
-            {
-                key: "title",
-                name: "App Store"
-            }  
-        ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host}>
                 <ListingStoreFrontContainer storeFront={this.listingStoreFront}
                                             onSelectItem={this._onSelectItem}
                                             onAdd={this._onAdd}

@@ -23,15 +23,22 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
             </MessageBar>
         );
     }
+    private _onGoToStore = () => {
+        this.props.host.load({ path: "/listing/storefront" });
+    }
     render() {
-        const items : IContextualMenuItem[] = [
+        const farItems : IContextualMenuItem[] = [
             {
-                key: "title",
-                name: "Bookmarks"
+                key: "goToStore",
+                name: "Store",
+                iconProps: {
+                    iconName: "Shop"
+                },
+                onClick: this._onGoToStore
             }  
         ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host} farItems={farItems}>
                 <ListingBookmarksContainer bookmarkList={ListingBookmarkListStore} onSelectListing={this._onSelectListing} onRenderNoBookmarks={this._onRenderNoBookmarks} />
             </HostAppView>
         );

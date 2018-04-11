@@ -95,14 +95,8 @@ class ListingLaunchApp extends React.Component<IListingLaunchAppProps, any> {
         this.props.host.setTitle(`${this.props.host.params.title || ""}`);
     }
     render() {
-        const items : IContextualMenuItem[] = [
-            {
-                key: "title",
-                name: "Launching..."
-            }
-        ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host}>
                 <ListingLaunchContainer host={this.props.host} listingSupplier={new ListingModelSupplier(this.props.listingId)} />
             </HostAppView>
         );

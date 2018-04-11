@@ -21,6 +21,9 @@ class ListingApp extends React.Component<IListingAppProps, any> {
     private _onDelete = (listing) => {
         ListingDeleteStore.setValue(listing);
     }
+    private _onOpen = (listing) => {
+        this.props.host.open({ path: `/listing/${listing.id}/launch` });
+    }
     get listingSupplier() : ISyncSupplier<IListingModel> {
         return this.props.host.getState("listingSupplier", () => {
             return findById(this.props.listingId);
@@ -28,7 +31,7 @@ class ListingApp extends React.Component<IListingAppProps, any> {
     }
     componentWillMount() {
         this._titleSetDisposer = autorun(() => {
-            this.props.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? this.listingSupplier.value.title : undefined);
+            this.props.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? `${this.listingSupplier.value.title} Listing` : undefined);
         });
     }
     componentWillUnount() {
@@ -37,17 +40,24 @@ class ListingApp extends React.Component<IListingAppProps, any> {
             delete this._titleSetDisposer;
         }
     }
+    private _onClickBackToStore = () => {
+        this.props.host.load({ path: "/listing/storefront" });
+    }
     render() {
         const items : IContextualMenuItem[] = [
             {
-                key: "title",
-                name: "Listing Details"
+                key: "backToStore",
+                name: "Store",
+                iconProps: {
+                    iconName: "Shop"
+                },
+                onClick: this._onClickBackToStore
             }  
         ];
         return (
             <HostAppView host={this.props.host} items={items}>
                 <ListingDeleteDialog listingSupplier={ListingDeleteStore} />
-                <ListingContainer listingSupplier={this.listingSupplier} onEdit={this._onEdit} onDelete={this._onDelete} />
+                <ListingContainer listingSupplier={this.listingSupplier} onEdit={this._onEdit} onDelete={this._onDelete} onOpen={this._onOpen} />
             </HostAppView>
         );
     }

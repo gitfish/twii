@@ -237,27 +237,6 @@ class ListingActions extends React.Component<IListingProps, any> {
     }
 }
 
-@observer
-class ListingCommandBar extends React.Component<IListingProps, any> {
-    render() {
-        const items : IContextualMenuItem[] = [];
-        if(this.props.onBackToShop) {
-            items.push(
-                {
-                    key: "backToShop",
-                    name: "Shop",
-                    iconProps: { iconName: "Shop" },
-                    onClick: this.props.onBackToShop
-                }
-            );
-        }
-        if(items.length > 0) {
-            return <CommandBar items={items} />;
-        }
-        return null;
-    }
-}
-
 class ListingReviews extends React.Component<IListingProps, any> {
     render() {
         return <ListingReviewListContainer reviewList={getReviews(this.props.listing)} />
@@ -318,6 +297,7 @@ interface IListingContainerProps {
     listingSupplier: ISyncSupplier<IListingModel>;
     onEdit?: (listing : IListingModel) => void;
     onDelete?: (listing : IListingModel) => void;
+    onOpen?: (listing : IListingModel) => void;
     onBackToShop?: () => void;
 }
 
@@ -335,13 +315,10 @@ class ListingTitleContainer extends React.Component<IListingContainerProps, any>
 
 class ListingContainer extends React.Component<IListingContainerProps, any> {
     private _onRenderListing = (listing : IListingModel) => {
-        return [
-            <ListingCommandBar key="listing-command-bar" listing={listing} onEdit={this.props.onEdit} onBackToShop={this.props.onBackToShop} />,
-            <Listing key="listing-details" listing={listing} onEdit={this.props.onEdit} onDelete={this.props.onDelete} />
-        ];
+        return <Listing key="listing-details" listing={listing} onEdit={this.props.onEdit} onDelete={this.props.onDelete} onOpen={this.props.onOpen} />;
     }
     render() {
-        return <ListingSupplierContainer listingSupplier={this.props.listingSupplier} onRenderListing={this._onRenderListing} />
+        return <ListingSupplierContainer listingSupplier={this.props.listingSupplier} onRenderListing={this._onRenderListing} />;
     }
 }
 
