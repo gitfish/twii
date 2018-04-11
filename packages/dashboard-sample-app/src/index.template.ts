@@ -10,9 +10,10 @@ const createTemplate = (params) => {
                 <link rel="stylesheet" href="css/material-components-web.css" />
                 <link rel="stylesheet" href="css/blueprint.css" />
                 <script type="text/javascript">
+                    window["AppConfig"] = ${JSON.stringify(params.htmlWebpackPlugin.options.AppConfig)};
                     window["FabricConfig"] = {
-                        fontBaseUrl: "${params.htmlWebpackPlugin.options.fabricFontBasePath}"
-                    }
+                        fontBaseUrl: window.AppConfig.env.fabricFontBasePath
+                    };
                 </script>
             </head>
             <body>

@@ -6,10 +6,11 @@
   "scripts": {
     "clean": "node task/clean.js",
     "start": "webpack-dev-server",
+    "start-mock": "webpack-dev-server --env.configId=mock",
     "start-open": "webpack-dev-server --open",
     "build": "webpack",
     "build-watch": "webpack --progress --watch",
-    "build-watch-mock": "webpack --progress --watch --env.configName=mock",
+    "build-watch-mock": "webpack --progress --watch --env.configId=mock",
     "test": "jest"
   },
   "dependencies": {

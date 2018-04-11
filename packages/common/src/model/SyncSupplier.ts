@@ -32,10 +32,8 @@ class SyncSupplier<T = any> extends Supplier<T> implements ISyncSupplier<T> {
         if(this.sync.syncing) {
             return toPromise(this.sync);
         }
-        if(this.loader) {
-            this.sync.syncStart({ type: "load" });
-            return this._loadImpl().then(this._onLoad).catch(this._onError);
-        }
+        this.sync.syncStart({ type: "load" });
+        return this._loadImpl().then(this._onLoad).catch(this._onError);
     }
 
     @action

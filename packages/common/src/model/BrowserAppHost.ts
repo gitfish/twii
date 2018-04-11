@@ -38,7 +38,7 @@ const globalWindowAppHostResolver = (globalKey : string, pollInterval : number =
 
 
 class BrowserAppHost extends AbstractAppHost {
-    basePath : string;
+    private _publicPath : string;
     private _window : Window;
     private _windowAppHostResolver?: IWindowAppHostResolver;
     private _extension : string;
@@ -59,24 +59,37 @@ class BrowserAppHost extends AbstractAppHost {
         this._windowAppHostResolver = value;
     }
     
-    @action
-    setTitle(title : string) {
-        super.setTitle(title);
-        this.window.document.title = title;
-    }
-    
     get window() {
         return this._window;
     }
     set window(value) {
+        this.setWindow(value);
+    }
+    setWindow(value : Window) {
         this._window = value;
         if(value) {
             value[Defaults.WindowAppHostKey] = this;       
         }
     }
+    
+    get publicPath() {
+        return this._publicPath;
+    }
+    set publicPath(value) {
+        this.setPublicPath(value);
+    }
+    setPublicPath(publicPath : string) {
+        this._publicPath = publicPath;
+    }
+    
+    @action
+    setTitle(title : string) {
+        super.setTitle(title);
+        this.window.document.title = title;
+    }
 
     getUrl(request : IRequest) : string {
-        let url = PathUtils.join(PathUtils.sep, this.basePath, request && request.path ? request.path : this.path);
+        let url = PathUtils.join(PathUtils.sep, this.publicPath, request && request.path ? request.path : this.path);
         if(this._extension) {
             url += this._extension;
         }
@@ -104,11 +117,11 @@ class BrowserAppHost extends AbstractAppHost {
 
     get locationPath() {
         let path = this.window.location.pathname;
-        if(this.basePath) {
-            const basePath = stripRight(this.basePath, PathUtils.sep);
-            var basePathIdx = path.indexOf(basePath);
-            if(basePathIdx >= 0) {
-                path = path.substring(basePathIdx + basePath.length);
+        if(this.publicPath) {
+            const publicPath = stripRight(this.publicPath, PathUtils.sep);
+            var publicPathIdx = path.indexOf(publicPath);
+            if(publicPathIdx >= 0) {
+                path = path.substring(publicPathIdx + publicPath.length);
             }
         }
         const extension = PathUtils.extname(path);

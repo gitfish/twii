@@ -19,7 +19,7 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
     private _onRenderNoBookmarks = () => {
         return (
             <MessageBar messageBarType={MessageBarType.info}>
-                You haven't bookmarked anything. <AppLink host={this.props.host} request={{ path: "/listing/shop"}}>Take a look in the Shop</AppLink>.
+                You haven't bookmarked anything. <AppLink host={this.props.host} request={{ path: "/listing/storefront"}}>Take a look in the Store</AppLink>.
             </MessageBar>
         );
     }

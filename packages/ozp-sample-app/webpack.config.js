@@ -69,16 +69,24 @@ const isImageFile = (filename) => {
 };
 
 const defaultPublicPath = "/";
-const defaultFabricFontBasePath = ""; // Fabric appends /fonts/...
-const defaultFabricIconBasePath = "/icons/fabric/";
+const defaultAppEnv = {
+    fabricFontBasePath: "",
+    fabricIconBasePath: "/icons/fabric/"
+};
 
 const createConfig = (env) => {
     const publicPath = env && env.publicPath ? env.publicPath : defaultPublicPath;
-    const fabricFontBasePath = env && env.fabricFontBasePath ? env.fabricFontBasePath : defaultFabricFontBasePath;
-    const fabricIconBasepath = env && env.fabricIconBasePath ? env.fabricIconBasePath : defaultFabricIconBasePath;
+    const appEnv = Object.assign({}, defaultAppEnv, env);
     const production = env && env.production ? true : false;
-    const configName = !production && env && env.configName ? env.configName : undefined;
     const buildVersion = env && env.buildVersion ? env.buildVersion : production ? "Unknown" : "DEV";
+    
+    const AppConfig = {
+        production: production,
+        publicPath: publicPath,
+        buildVersion: buildVersion,
+        buildDate: new Date(),
+        env: appEnv
+    };
 
     const config = {
         mode: production ? "production" : "development",
@@ -133,9 +141,9 @@ const createConfig = (env) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: "Dashboard Sample",
+                title: "OZP Dashboard Sample",
                 template: "src/index.template.ts",
-                fabricFontBasePath: fabricFontBasePath
+                AppConfig: AppConfig
             }),
             new CopyWebpackPlugin([
                 { from: "../../fonts/ms", to: "fonts" },
@@ -146,23 +154,6 @@ const createConfig = (env) => {
             new WriteFilePlugin()
         ]
     };
-
-    const AppConfig = {
-        production: production,
-        basePath: publicPath,
-        fabricIconBasePath: fabricIconBasepath,
-        fabricFontBasePath: fabricFontBasePath,
-        buildVersion: buildVersion,
-        configName: configName,
-        buildDate: new Date()
-    };
-
-    config.plugins.push(
-        new webpack.DefinePlugin({
-            "process.env.NODE_ENV": JSON.stringify(production ? "production" : "development"),
-            AppConfig: JSON.stringify(AppConfig)
-        })
-    )
 
     if(production) {
         config.plugins.push(

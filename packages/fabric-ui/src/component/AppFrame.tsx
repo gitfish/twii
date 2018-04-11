@@ -3,6 +3,7 @@ import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { IAppFrameStyles, getStyles } from "./AppFrame.styles";
 import { getClassNames } from "./AppFrame.classNames";
 import { IRouter } from "@twii/router/lib/IRouter";
+import { Error } from "./Error";
 
 interface IAppFrameProps extends IAppProps {
     src: string;
@@ -13,6 +14,7 @@ interface IAppFrameProps extends IAppProps {
 
 interface IAppFrameState {
     renderFrame: boolean;
+    error?: any;
 }
 
 class AppFrame extends React.Component<IAppFrameProps, IAppFrameState> {
@@ -87,6 +89,7 @@ class AppFrame extends React.Component<IAppFrameProps, IAppFrameState> {
         try {
             this._frameRef.contentWindow.addEventListener("message", this._onMessage);
         } catch(e) {
+            this.setState({ error: e });
             console.error(e);
         }
     };
@@ -94,9 +97,12 @@ class AppFrame extends React.Component<IAppFrameProps, IAppFrameState> {
         const classNames = getClassNames(getStyles(undefined, this.props.styles), this.props.className);
         const frame = this.state.renderFrame ?
             <iframe className={classNames.frame} ref={this._onFrameRef} src={this.props.src} onLoad={this._onFrameLoaded} /> : undefined;
+        const error = this.state.error ?
+            <Error error={this.state.error} /> : undefined;
         return (
             <div className={classNames.root} ref={this._onContainerRef}>
                 {frame}
+                {error}
             </div>
         );
     }

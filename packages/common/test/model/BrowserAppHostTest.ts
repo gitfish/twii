@@ -61,12 +61,12 @@ describe("Browser App Host", () => {
         expect(host.window.location.href).toBe("http://woo/not/ready/for/that.html");
     });
 
-    test("basePath", async () => {
+    test("publicPath", async () => {
         const host = new BrowserAppHost();
         const dom = new JSDOM();
         dom.reconfigure({ url: "http://woo/blimey/not/ready/for/this.action" });
         host.window = dom.window;
-        host.basePath = "/blimey";
+        host.publicPath = "/blimey";
         const router = new Router();
         router.use("/not/ready/for/this", (req, res) => {
             return "notReadyForThis";
@@ -97,7 +97,7 @@ describe("Browser App Host", () => {
         const dom = new JSDOM();
         dom.reconfigure({ url: "http://woo/blimey/not/ready/for/this.action" });
         host.window = dom.window;
-        host.basePath = "/blimey";
+        host.publicPath = "/blimey";
         
         let resized = false;
 
@@ -123,7 +123,7 @@ describe("Browser App Host", () => {
             newDom.reconfigure({ url: `http://woo${url}` });
             return newDom.window;
         };
-        host.basePath = "/blimey";
+        host.publicPath = "/blimey";
 
         host.windowAppHostResolver = (window : Window) => {
             const r = new BrowserAppHost();

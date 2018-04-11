@@ -1,10 +1,8 @@
 // NOTE: this is the global app config type definition
 declare var AppConfig : {
     production?: boolean;
-    configName?: string;
-    basePath?: string;
-    fabricFontBasePath?: string;
-    fabricIconBasePath?: string;
+    publicPath?: string;
     buildVersion: string;
-    buildDate: Date;
+    buildDate: string;
+    env: any;
 };

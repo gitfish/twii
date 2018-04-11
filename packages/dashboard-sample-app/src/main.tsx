@@ -7,9 +7,10 @@ import { initializeIcons } from "@uifabric/icons";
 import { Fabric } from "office-ui-fabric-react/lib/Fabric";
 
 // fabric icon initialization
-initializeIcons(AppConfig.fabricIconBasePath);
+initializeIcons(AppConfig.env.fabricIconBasePath);
 
 const host = new BrowserAppHost();
+host.setPublicPath(AppConfig.publicPath);
 host.setRouter(AppRouter);
 host.setRoot(true);
 host.window = window;
