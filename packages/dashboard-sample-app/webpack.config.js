@@ -71,7 +71,7 @@ const isImageFile = (filename) => {
 const defaultPublicPath = "/";
 const defaultAppEnv = {
     fabricFontBasePath: "",
-    fabricIconBasePath: "/icons/fabric"
+    fabricIconBasePath: "/icons/fabric/"
 };
 
 const createConfig = (env) => {
@@ -84,7 +84,7 @@ const createConfig = (env) => {
         production: production,
         publicPath: publicPath,
         buildVersion: buildVersion,
-        buildDate: new Date(),
+        buildDate: new Date().toString(),
         env: appEnv
     };
 
