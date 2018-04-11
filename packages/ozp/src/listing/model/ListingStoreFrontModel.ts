@@ -3,8 +3,8 @@ import { IListing } from "../IListing";
 import { IListingStoreFrontModel } from "../model/IListingStoreFrontModel";
 import { IListingStoreFront } from "../IListingStoreFront";
 import { ListingServiceContext } from "../service/ListingServiceContext";
-import { isNotBlank } from "@twii/common/lib/StringUtils";
-import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
+import { isNotBlank } from "@pu/common/lib/StringUtils";
+import { SyncSupplier } from "@pu/common/lib/model/SyncSupplier";
 
 class ListingStoreFrontModel extends SyncSupplier<IListingStoreFront> implements IListingStoreFrontModel {
     @observable searchText : string;

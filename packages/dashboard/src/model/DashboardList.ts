@@ -5,7 +5,7 @@ import { IComponent } from "./IComponent";
 import { Component } from "./Component";
 import { Dashboard } from "./Dashboard";
 import { Stack } from "./Stack";
-import { Sync } from "@twii/common/lib/model/Sync";
+import { Sync } from "@pu/common/lib/model/Sync";
 import * as ComponentTypes from "./ComponentTypes";
 
 class DashboardList extends Component implements IDashboardList {

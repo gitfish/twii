@@ -1,8 +1,8 @@
 import { action } from "mobx";
-import { IAppHost } from "@twii/common/lib/IAppHost";
-import { AbstractAppHost } from "@twii/common/lib/model/AbstractAppHost";
-import { IRouter } from "@twii/router/lib/IRouter";
-import { IRequest } from "@twii/router/lib/IRequest";
+import { IAppHost } from "@pu/common/lib/IAppHost";
+import { AbstractAppHost } from "@pu/common/lib/model/AbstractAppHost";
+import { IRouter } from "@pu/router/lib/IRouter";
+import { IRequest } from "@pu/router/lib/IRequest";
 import { IWindow } from "./IWindow";
 
 class WindowAppHost extends AbstractAppHost {

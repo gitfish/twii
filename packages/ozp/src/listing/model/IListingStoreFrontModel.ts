@@ -1,4 +1,4 @@
-import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
+import { ISyncSupplier } from "@pu/common/lib/ISyncSupplier";
 import { IListingStoreFront } from "../IListingStoreFront";
 import { IListing } from "../IListing";
 

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Router } from "@twii/router/lib/Router";
-import { exactPath } from "@twii/router/lib/Routers";
+import { Router } from "@pu/router/lib/Router";
+import { exactPath } from "@pu/router/lib/Routers";
 
 const createSampleRouter = () : Router => {
 

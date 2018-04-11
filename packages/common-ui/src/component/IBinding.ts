@@ -1,5 +1,5 @@
-import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
-import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
+import { ISupplierFunc } from "@pu/common/lib/ISupplierFunc";
+import { IConsumerFunc } from "@pu/common/lib/IConsumerFunc";
 
 interface IBinding<T = any, V = any> {
     target: T;

@@ -1,12 +1,12 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { IDashboard } from "../model/IDashboard";
-import { BoundTextField } from "@twii/fabric-ui/lib/component/BoundTextField";
+import { BoundTextField } from "@pu/fabric-ui/lib/component/BoundTextField";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import { IDashboardAdd } from "../model/IDashboardAdd";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
-import { isBlank, isNotBlank } from "@twii/common/lib/StringUtils";
+import { isBlank, isNotBlank } from "@pu/common/lib/StringUtils";
 import { KeyCodes } from "office-ui-fabric-react/lib/Utilities";
 import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
 import { IDashboardAddStyles, getStyles } from "./DashboardAdd.styles";

@@ -1,5 +1,5 @@
 import { IComponent } from "./IComponent";
-import { ISync } from "@twii/common/lib/ISync";
+import { ISync } from "@pu/common/lib/ISync";
 
 interface IDashboard extends IComponent {
     sync: ISync;

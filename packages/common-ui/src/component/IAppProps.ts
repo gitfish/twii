@@ -1,4 +1,4 @@
-import { IAppHost } from "@twii/common/lib/IAppHost";
+import { IAppHost } from "@pu/common/lib/IAppHost";
 
 interface IAppProps {
     host: IAppHost;

@@ -1,8 +1,8 @@
 import { IBoundProps } from "./IBoundProps";
 import { IBinding } from "./IBinding";
-import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
-import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
-import { isFunction } from "@twii/common/lib/LangUtils";
+import { ISupplierFunc } from "@pu/common/lib/ISupplierFunc";
+import { IConsumerFunc } from "@pu/common/lib/IConsumerFunc";
+import { isFunction } from "@pu/common/lib/LangUtils";
 
 const setBoundValue = <V = any>(props : IBoundProps<any, V>, value : V) => {
     const binding = props.binding;

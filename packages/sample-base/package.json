@@ -1,5 +1,5 @@
 {
-    "name": "@twii/sample-base",
+    "name": "@pu/sample-base",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
@@ -9,11 +9,11 @@
       "build-watch": "tsc -w"
     },
     "dependencies": {
-      "@twii/router": "^1.0.0",
-      "@twii/common": "^1.0.0",
-      "@twii/common-ui": "^1.0.0",
-      "@twii/fabric-ui": "^1.0.0",
-      "@twii/dashboard": "^1.0.0",
+      "@pu/router": "^1.0.0",
+      "@pu/common": "^1.0.0",
+      "@pu/common-ui": "^1.0.0",
+      "@pu/fabric-ui": "^1.0.0",
+      "@pu/dashboard": "^1.0.0",
       "@uifabric/styling": "^5.22.0",
       "@uifabric/utilities": "^5.23.0",
       "core-js": "^2.5.1",

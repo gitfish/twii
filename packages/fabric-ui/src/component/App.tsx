@@ -1,9 +1,9 @@
 import * as React from "react";
-import { IAppHost } from "@twii/common/lib/IAppHost";
-import { AppHost } from "@twii/common/lib/model/AppHost";
+import { IAppHost } from "@pu/common/lib/IAppHost";
+import { AppHost } from "@pu/common/lib/model/AppHost";
 import { IAppHostProps, AppHostContainer } from "./AppHost";
-import { IRequest } from "@twii/router/lib/IRequest";
-import { IRouter } from "@twii/router/lib/IRouter";
+import { IRequest } from "@pu/router/lib/IRequest";
+import { IRouter } from "@pu/router/lib/IRouter";
 
 interface IAppContainerProps extends IRequest {
     router?: IRouter;

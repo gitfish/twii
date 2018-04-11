@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { IAppViewProps, AppView } from "./AppView";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 interface IHostAppViewProps extends IAppProps, IAppViewProps {}

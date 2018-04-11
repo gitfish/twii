@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
 import { AppView, IAppViewMenuProps } from "component/AppView";
-import { IRequest } from "@twii/router/lib/IRequest";
+import { IRequest } from "@pu/router/lib/IRequest";
 
 describe("App View Component", () => {
     test("render", () => {

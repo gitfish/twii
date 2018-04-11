@@ -1,12 +1,12 @@
 {
-  "name": "@twii/fabric-ui",
+  "name": "@pu/fabric-ui",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@twii/router": "^1.0.0",
-    "@twii/common": "^1.0.0",
-    "@twii/common-ui": "^1.0.0",
+    "@pu/router": "^1.0.0",
+    "@pu/common": "^1.0.0",
+    "@pu/common-ui": "^1.0.0",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "mobx": "^4.1.1",

@@ -4,7 +4,7 @@ import { IDashboardList } from "./IDashboardList";
 import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { Component } from "./Component";
-import { Sync } from "@twii/common/lib/model/Sync";
+import { Sync } from "@pu/common/lib/model/Sync";
 import { ComponentFactory } from "./ComponentFactory";
 import * as ComponentTypes from "./ComponentTypes";
 import { IStack } from "./IStack";

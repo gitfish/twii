@@ -1,8 +1,8 @@
-import { IRequest } from "@twii/router/lib/IRequest";
+import { IRequest } from "@pu/router/lib/IRequest";
 import { IWindowManager } from "./IWindowManager";
 import { IComponent } from "./IComponent";
-import { IAppHost } from "@twii/common/lib/IAppHost";
-import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
+import { IAppHost } from "@pu/common/lib/IAppHost";
+import { IConsumerFunc } from "@pu/common/lib/IConsumerFunc";
 
 interface IWindow extends IComponent {
     name: string;

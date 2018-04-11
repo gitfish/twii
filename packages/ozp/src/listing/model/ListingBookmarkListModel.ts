@@ -1,7 +1,7 @@
 import { action, observable } from "mobx";
 import { IListingBookmark } from "../IListingBookmark";
 import { ListingServiceContext } from "../service/ListingServiceContext";
-import { ListModel } from "@twii/common/lib/model/ListModel";
+import { ListModel } from "@pu/common/lib/model/ListModel";
 import { IListingBookmarkListModel } from "./IListingBookmarkListModel";
 
 class ListingBookmarkListModel extends ListModel<IListingBookmark> implements IListingBookmarkListModel {

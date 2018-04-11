@@ -3,8 +3,8 @@ import * as ReactTestRenderer from "react-test-renderer";
 import { AppHostView } from "component/AppHostView";
 import { AppHost } from "model/AppHost";
 import { BrowserAppHost } from "model/BrowserAppHost";
-import { IRequest } from "@twii/router/lib/IRequest";
-import { Router } from "@twii/router/lib/Router";
+import { IRequest } from "@pu/router/lib/IRequest";
+import { Router } from "@pu/router/lib/Router";
 
 describe("App Host Wrapper Component", () => {
     test("render", () => {

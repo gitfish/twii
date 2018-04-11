@@ -1,5 +1,5 @@
 import { IListingReview } from "../IListingReview";
-import { ISync } from "@twii/common/lib/ISync";
+import { ISync } from "@pu/common/lib/ISync";
 
 interface IListingReviewModel extends IListingReview {
     sync : ISync;

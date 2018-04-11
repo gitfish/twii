@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { ISync } from "@twii/common/lib/ISync";
+import { ISync } from "@pu/common/lib/ISync";
 import { Error } from "./Error";
 import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 

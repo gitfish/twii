@@ -3,7 +3,7 @@ import { IDashboardList } from "./IDashboardList";
 import { IDashboard } from "./IDashboard";
 import { Dashboard } from "./Dashboard";
 import { IComponent } from "./IComponent";
-import { isNotBlank } from "@twii/common/lib/StringUtils";
+import { isNotBlank } from "@pu/common/lib/StringUtils";
 import { IComponentRemove, IComponentRemoveOptions } from "./IComponentRemove";
 
 class ComponentRemove implements IComponentRemove {

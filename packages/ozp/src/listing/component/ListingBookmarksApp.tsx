@@ -4,9 +4,9 @@ import { ListingBookmarkListStore } from "../model/ListingBookmarkListStore";
 import { IListing } from "../IListing";
 import { launch } from "../ListingActions";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
-import { AppLink } from "@twii/common-ui/lib/component/AppLink";
-import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
+import { AppLink } from "@pu/common-ui/lib/component/AppLink";
+import { HostAppView } from "@pu/fabric-ui/lib/component/HostAppView";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 class ListingBookmarksApp extends React.Component<IAppProps, any> {

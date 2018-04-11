@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavigationView } from "@twii/fabric-ui/lib/component/NavigationView";
+import { NavigationView } from "@pu/fabric-ui/lib/component/NavigationView";
 import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";

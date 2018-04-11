@@ -143,7 +143,8 @@ const createConfig = (env) => {
             new HtmlWebpackPlugin({
                 title: "OZP Dashboard Sample",
                 template: "src/index.template.ts",
-                AppConfig: AppConfig
+                AppConfig: AppConfig,
+                chunksSortMode: "none"
             }),
             new CopyWebpackPlugin([
                 { from: "../../fonts/ms", to: "fonts" },

@@ -6,7 +6,7 @@ import { Icon, IIconProps } from "office-ui-fabric-react/lib/Icon";
 import { ContextualMenu, IContextualMenuItem, IContextualMenu, DirectionalHint } from "office-ui-fabric-react/lib/ContextualMenu";
 import { CompactError } from "./Error";
 import { css } from "@uifabric/utilities/lib/css";
-import { IRequest } from "@twii/router/lib/IRequest";
+import { IRequest } from "@pu/router/lib/IRequest";
 import { AppContainer } from "./App";
 import { INavigationViewStyles, getStyles } from "./NavigationView.styles";
 import { INavigationViewClassNames, getClassNames } from "./NavigationView.classNames";

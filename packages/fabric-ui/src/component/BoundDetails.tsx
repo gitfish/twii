@@ -1,8 +1,8 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { IDetailsProps, Details } from "./Details";
-import { IBoundProps } from "@twii/common-ui/lib/component/IBoundProps";
-import { setBoundValue, getBoundValue } from "@twii/common-ui/lib/component/BoundHelper";
+import { IBoundProps } from "@pu/common-ui/lib/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "@pu/common-ui/lib/component/BoundHelper";
 
 interface IBoundDetailsProps extends IDetailsProps, IBoundProps<any, boolean> {}
 

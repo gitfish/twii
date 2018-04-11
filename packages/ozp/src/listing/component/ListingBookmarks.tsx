@@ -2,7 +2,7 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { IListingBookmarkListModel } from "../model/IListingBookmarkListModel";
 import { IListing } from "../IListing";
-import { Sync } from "@twii/fabric-ui/lib/component/Sync";
+import { Sync } from "@pu/fabric-ui/lib/component/Sync";
 import { ListingList } from "./ListingList";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 

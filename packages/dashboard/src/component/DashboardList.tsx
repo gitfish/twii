@@ -3,13 +3,13 @@ import { observer } from "mobx-react";
 import { IDashboardList } from "../model/IDashboardList";
 import { IDashboard } from "../model/IDashboard";
 import { Dashboard } from "./Dashboard";
-import { Sync } from "@twii/fabric-ui/lib/component/Sync";
+import { Sync } from "@pu/fabric-ui/lib/component/Sync";
 import { DashboardAddPanel } from "./DashboardAdd";
 import { DashboardAddStore } from "../DashboardAddStore";
 import { DashboardRemoveDialog } from "./DashboardRemove";
 import { DashboardRemoveStore } from "../DashboardRemoveStore";
 import { ComponentGlobals } from "../ComponentGlobals";
-import { IEventTarget } from "@twii/common/lib/IEventEmitter";
+import { IEventTarget } from "@pu/common/lib/IEventEmitter";
 import { IDashboardStyles } from "./Dashboard.styles";
 
 interface IDashboardListProps {

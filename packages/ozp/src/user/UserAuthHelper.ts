@@ -1,8 +1,8 @@
-import { IRequest } from "@twii/router/lib/IRequest";
-import { IRequestHandler } from "@twii/router/lib/IRequestHandler";
+import { IRequest } from "@pu/router/lib/IRequest";
+import { IRequestHandler } from "@pu/router/lib/IRequestHandler";
 import { IUserProfile } from "./IUserProfile";
 import { UserProfileStore } from "./model/UserProfileStore";
-import * as StringUtils from "@twii/common/lib/StringUtils";
+import * as StringUtils from "@pu/common/lib/StringUtils";
 
 const isAuthorised = (reqAuthGroup : string, userProfile : IUserProfile) : boolean => {
     return StringUtils.isBlank(reqAuthGroup) ||

@@ -1,8 +1,8 @@
 import * as React from "react";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
 import { IAppFrameStyles, getStyles } from "./AppFrame.styles";
 import { getClassNames } from "./AppFrame.classNames";
-import { IRouter } from "@twii/router/lib/IRouter";
+import { IRouter } from "@pu/router/lib/IRouter";
 import { Error } from "./Error";
 
 interface IAppFrameProps extends IAppProps {

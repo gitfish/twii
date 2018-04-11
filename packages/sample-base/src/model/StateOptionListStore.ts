@@ -1,4 +1,4 @@
-import { OptionListModel } from "@twii/common/lib/model/OptionListModel";
+import { OptionListModel } from "@pu/common/lib/model/OptionListModel";
 
 const StateOptionListStore = new OptionListModel([
     { key: "ACT", text: "Australian Capital Territory" },

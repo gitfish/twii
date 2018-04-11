@@ -1,5 +1,5 @@
 {
-  "name": "@twii/dashboard",
+  "name": "@pu/dashboard",
   "version": "1.0.0",
   "description": "twii Dashboard lib",
   "main": "index.js",
@@ -12,10 +12,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@twii/router": "^1.0.0",
-    "@twii/common": "^1.0.0",
-    "@twii/common-ui": "^1.0.0",
-    "@twii/fabric-ui": "^1.0.0",
+    "@pu/router": "^1.0.0",
+    "@pu/common": "^1.0.0",
+    "@pu/common-ui": "^1.0.0",
+    "@pu/fabric-ui": "^1.0.0",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "lodash.isequal": "^4.5.0",

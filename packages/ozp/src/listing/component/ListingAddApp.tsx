@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ListingForm } from "./ListingForm";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
-import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@pu/fabric-ui/lib/component/HostAppView";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IListingModel } from "../model/IListingModel";
 import { ListingModel } from "../model/ListingModel";

@@ -4,7 +4,7 @@ import { ICalloutProps, Callout, DirectionalHint } from "office-ui-fabric-react/
 import { TextField, ITextFieldProps } from "office-ui-fabric-react/lib/TextField";
 import { KeyCodes, css } from "office-ui-fabric-react/lib/Utilities";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
-import { isNotBlank } from "@twii/common/lib/StringUtils";
+import { isNotBlank } from "@pu/common/lib/StringUtils";
 import * as moment from "moment";
 import { IMomentFieldStyles, getStyles } from "./MomentField.styles";
 import { IMomentFieldClassNames, getClassNames } from "./MomentField.classNames";

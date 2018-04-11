@@ -4,7 +4,7 @@ import { DatePicker } from "@blueprintjs/datetime/lib/esm/datePicker";
 import { TimePicker } from "@blueprintjs/datetime/lib/esm/timePicker";
 import { DateTimePicker } from "@blueprintjs/datetime/lib/esm/dateTimePicker";
 import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
-import { dateFromString, dateToString } from "@twii/common/lib/MomentUtils";
+import { dateFromString, dateToString } from "@pu/common/lib/MomentUtils";
 
 class DateInputSample extends React.Component<any, any> {
     private _formatDate = (date, locale) => {

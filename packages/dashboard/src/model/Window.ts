@@ -2,12 +2,12 @@ import { observable, action, computed, autorun } from "mobx";
 import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { IWindowManager } from "./IWindowManager";
-import { IRequest } from "@twii/router/lib/IRequest";
+import { IRequest } from "@pu/router/lib/IRequest";
 import { Component } from "./Component";
 import * as ComponentTypes from "./ComponentTypes";
 import * as qs from "qs";
 import { WindowAppHost } from "./WindowAppHost";
-import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
+import { IConsumerFunc } from "@pu/common/lib/IConsumerFunc";
 
 class Window extends Component implements IWindow {
     name : string;

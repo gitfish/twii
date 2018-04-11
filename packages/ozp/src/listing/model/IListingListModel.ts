@@ -1,5 +1,5 @@
 import { IListing } from "../IListing";
-import { IListModel } from "@twii/common/lib/model/IListModel";
+import { IListModel } from "@pu/common/lib/model/IListModel";
 import { IListingListCounts } from "../IListingListCounts";
 
 interface IListingListModel extends IListModel<IListing> {

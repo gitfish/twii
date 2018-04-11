@@ -1,5 +1,5 @@
 import * as React from "react";
-import { containsIgnoreCase } from "@twii/common/lib/StringUtils";
+import { containsIgnoreCase } from "@pu/common/lib/StringUtils";
 import { TagPicker, ITag } from "office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker";
 import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 

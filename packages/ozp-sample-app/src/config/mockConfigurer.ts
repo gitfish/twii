@@ -1,7 +1,7 @@
-import { ListingServiceContext } from "@twii/ozp/lib/listing/service/ListingServiceContext";
-import { MockListingService } from "@twii/ozp/lib/listing/service/MockListingService";
-import { UserServiceContext } from "@twii/ozp/lib/user/service/UserServiceContext";
-import { MockUserService } from "@twii/ozp/lib/user/service/MockUserService";
+import { ListingServiceContext } from "@pu/ozp/lib/listing/service/ListingServiceContext";
+import { MockListingService } from "@pu/ozp/lib/listing/service/MockListingService";
+import { UserServiceContext } from "@pu/ozp/lib/user/service/UserServiceContext";
+import { MockUserService } from "@pu/ozp/lib/user/service/MockUserService";
 
 const configure = (env : any) => {
     UserServiceContext.value = new MockUserService();

@@ -1,8 +1,8 @@
 import { observable, action, computed } from "mobx";
 import { Sync } from "./Sync";
 import { toPromise as syncToPromise } from "../SyncUtils";
-import { IRouter } from "@twii/router/lib/IRouter";
-import { IRequest } from "@twii/router/lib/IRequest";
+import { IRouter } from "@pu/router/lib/IRouter";
+import { IRequest } from "@pu/router/lib/IRequest";
 import { IAppHost } from "../IAppHost";
 import * as PathUtils from "../PathUtils";
 import * as qs from "qs";

@@ -2,13 +2,13 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { IListingModel } from "../model/IListingModel";
 import { ListingApprovalStatus } from "../ListingApprovalStatus";
-import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
+import { ISyncSupplier } from "@pu/common/lib/ISyncSupplier";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import { isExternalListing } from "../ListingHelper";
-import { AppFrame } from "@twii/fabric-ui/lib/component/AppFrame";
-import { Sync } from "@twii/fabric-ui/lib/component/Sync";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
-import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { AppFrame } from "@pu/fabric-ui/lib/component/AppFrame";
+import { Sync } from "@pu/fabric-ui/lib/component/Sync";
+import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@pu/fabric-ui/lib/component/HostAppView";
 import { ListingModelSupplier } from "../model/ListingModelSupplier";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 

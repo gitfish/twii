@@ -5,7 +5,7 @@ import { IListingLinkModel } from "../model/IListingLinkModel";
 import { getClassNames, IListingLinkFormClassNames } from "./ListingLinkForm.classNames";
 import { getStyles, IListingLinkFormStyles } from "./ListingLinkForm.styles";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
-import { getPropErrorMessage } from "@twii/common/lib/ErrorUtils";
+import { getPropErrorMessage } from "@pu/common/lib/ErrorUtils";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import { DefaultButton } from "office-ui-fabric-react/lib/Button";

@@ -1,6 +1,6 @@
 import { IWindow } from "./IWindow";
 import { IComponent } from "./IComponent";
-import { IRequest } from "@twii/router/lib/IRequest";
+import { IRequest } from "@pu/router/lib/IRequest";
 
 interface IWindowManager extends IComponent {
     windowCount : number;

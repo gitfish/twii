@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Router } from "@twii/router/lib/Router";
-import { exactPath } from "@twii/router/lib/Routers";
-import { createSampleRouter } from "@twii/sample-base/lib/sampleRouter";
+import { Router } from "@pu/router/lib/Router";
+import { exactPath } from "@pu/router/lib/Routers";
+import { createSampleRouter } from "@pu/sample-base/lib/sampleRouter";
 
 const r = new Router();
 r.use(createSampleRouter());
