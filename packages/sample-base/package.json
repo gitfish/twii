@@ -1,36 +1,35 @@
 {
-    "name": "@pu/sample-base",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "MIT",
-    "scripts": {
-      "clean": "node task/clean",
-      "build": "tsc",
-      "build-watch": "tsc -w"
-    },
-    "dependencies": {
-      "@pu/router": "^1.0.0",
-      "@pu/common": "^1.0.0",
-      "@pu/common-ui": "^1.0.0",
-      "@pu/fabric-ui": "^1.0.0",
-      "@pu/dashboard": "^1.0.0",
-      "@uifabric/styling": "^5.22.0",
-      "@uifabric/utilities": "^5.23.0",
-      "core-js": "^2.5.1",
-      "del": "^3.0.0",
-      "office-ui-fabric-react": "^5.79.0",
-      "react": "^16.3.0",
-      "react-dom": "^16.3.0",
-      "mobx": "^4.1.1",
-      "mobx-react": "^5.0.0",
-      "rmwc": "^1.4.1",
-      "@blueprintjs/core": "^2.1.1",
-      "@blueprintjs/datetime": "^2.0.2",
-      "react-transition-group": "^2.2.1"
-    },
-    "devDependencies": {
-      "@types/react": "^16.3.4",
-      "typescript": "^2.8.0"
-    }
+  "name": "@pu/sample-base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "node task/clean",
+    "build": "tsc",
+    "build-watch": "tsc -w"
+  },
+  "dependencies": {
+    "@blueprintjs/core": "^2.1.1",
+    "@blueprintjs/datetime": "^2.0.2",
+    "@pu/common": "^1.0.0",
+    "@pu/common-ui": "^1.0.0",
+    "@pu/dashboard": "^1.0.0",
+    "@pu/fabric-ui": "^1.0.0",
+    "@pu/router": "^1.0.0",
+    "@uifabric/styling": "^5.22.0",
+    "@uifabric/utilities": "^5.23.0",
+    "core-js": "^2.5.1",
+    "del": "^3.0.0",
+    "mobx": "^4.1.1",
+    "mobx-react": "^5.0.0",
+    "office-ui-fabric-react": "^5.79.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-transition-group": "^2.2.1",
+    "rmwc": "^1.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.4",
+    "typescript": "^2.8.0"
   }
-  
+}

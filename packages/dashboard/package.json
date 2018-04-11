@@ -12,10 +12,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@pu/router": "^1.0.0",
     "@pu/common": "^1.0.0",
     "@pu/common-ui": "^1.0.0",
     "@pu/fabric-ui": "^1.0.0",
+    "@pu/router": "^1.0.0",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "lodash.isequal": "^4.5.0",
@@ -29,12 +29,12 @@
     "react-dom": "^16.3.0"
   },
   "devDependencies": {
-    "@types/react": "^16.3.4",
     "@types/jest": "^21.1.8",
-    "jest": "^21.2.1",
-    "ts-jest": "^21.2.3",
+    "@types/react": "^16.3.4",
     "del": "^3.0.0",
+    "jest": "^21.2.1",
     "react-test-renderer": "^16.2.0",
+    "ts-jest": "^21.2.3",
     "typescript": "^2.8.0"
   },
   "jest": {
