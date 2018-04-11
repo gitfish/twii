@@ -149,7 +149,8 @@ const createConfig = (env) => {
                 { from: "../../fonts/ms", to: "fonts" },
                 { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" },
                 { from: "../../node_modules/material-components-web/dist/material-components-web.min.css", to: "css/material-components-web.css" },
-                { from: "../../node_modules/@blueprintjs/core/lib/css/blueprint.css", to: "css/blueprint.css" }
+                { from: "../../node_modules/@blueprintjs/core/lib/css/blueprint.css", to: "css/blueprint.css" },
+                { from: "../../node_modules/@blueprintjs/datetime/lib/css/blueprint-datetime.css", to: "css/blueprint-datetime.css" }
             ]),
             new WriteFilePlugin()
         ]

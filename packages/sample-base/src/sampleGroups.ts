@@ -122,6 +122,10 @@ const sampleGroups = [
             {
                 path: "/samples/blueprint/popover",
                 title: "Popover Sample"
+            },
+            {
+                path: "/samples/blueprint/dateInput",
+                title: "Date Input Sample"
             }
         ]
     }
