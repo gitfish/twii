@@ -49,8 +49,7 @@ class ListingLaunch extends React.Component<IListingLaunchProps, any> {
             );
         }
         
-        if(this.external) {
-            // TODO: we need to check whether this is an external js app and launch it differently if so
+        if(this.external && !this.props.host.root) {
             return <AppFrame src={listing.launch_url} host={this.props.host} />;
         }
 
@@ -60,6 +59,9 @@ class ListingLaunch extends React.Component<IListingLaunchProps, any> {
     componentDidMount() {
         if(!this.external) {
             this.props.host.load({ path: this.props.listing.launch_url });
+        } else if(this.props.host.root) {
+            // this is a bit dodgy
+            window.location.assign(this.props.listing.launch_url);
         }
     }
 
