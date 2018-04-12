@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Dropdown, IDropdownProps, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { observer } from "mobx-react";
-import { IOptionListModel } from "@pu/common/lib/model/IOptionListModel";
-import { IBoundProps } from "@pu/common-ui/lib/component/IBoundProps";
-import { setBoundValue, getBoundValue } from "@pu/common-ui/lib/component/BoundHelper";
+import { IOptionListModel } from "@twii/common/lib/model/IOptionListModel";
+import { IBoundProps } from "@twii/common-ui/lib/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "@twii/common-ui/lib/component/BoundHelper";
 
 interface IBoundDropdownProps extends IDropdownProps, IBoundProps<any, string> {
     optionList?: IOptionListModel;

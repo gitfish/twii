@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AppLink } from "@pu/common-ui/lib/component/AppLink";
+import { AppLink } from "@twii/common-ui/lib/component/AppLink";
 import { SampleHostAppView, IAppProps } from "./SampleHostAppView";
 
 class OpenerApp extends React.Component<IAppProps, any> {

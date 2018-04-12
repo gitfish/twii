@@ -1,9 +1,9 @@
 import { action, observable, computed } from "mobx";
 import { IListing } from "../IListing";
-import { ListModel } from "@pu/common/lib/model/ListModel";
+import { ListModel } from "@twii/common/lib/model/ListModel";
 import { IListingService } from "../service/IListingService";
 import { ListingServiceContext } from "../service/ListingServiceContext";
-import { isNotBlank } from "@pu/common/lib/StringUtils";
+import { isNotBlank } from "@twii/common/lib/StringUtils";
 import { IListingModel } from "./IListingModel";
 import { IListingReviewModel } from "./IListingReviewModel";
 import { ListingReviewModel } from "./ListingReviewModel";

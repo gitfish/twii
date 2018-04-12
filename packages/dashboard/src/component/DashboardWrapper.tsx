@@ -1,13 +1,13 @@
 import * as React from "react";
-import { IRouter } from "@pu/router/lib/IRouter";
-import { IRequest } from "@pu/router/lib/IRequest";
+import { IRouter } from "@twii/router/lib/IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { action } from "mobx";
 import { Dashboard } from "../model/Dashboard";
 import { IDashboard } from "../model/IDashboard";
 import { DashboardContainer } from "./Dashboard";
-import { IEventEmitter } from "@pu/common/lib/IEventEmitter";
+import { IEventEmitter } from "@twii/common/lib/IEventEmitter";
 import { IDashboardStyles, getStyles } from "./Dashboard.styles";
-import { ISupplierFunc } from "@pu/common/lib/ISupplierFunc";
+import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 
 interface IDashboardWrapperProps {
     className?: string;

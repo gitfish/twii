@@ -3,7 +3,7 @@ import { getId } from "office-ui-fabric-react/lib/Utilities";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { Image } from "office-ui-fabric-react/lib/Image";
 import { IImage } from "../IImage";
-import { FileField } from "@pu/fabric-ui/lib/component/FileField";
+import { FileField } from "@twii/fabric-ui/lib/component/FileField";
 
 interface IImageFieldProps {
     image?: IImage;

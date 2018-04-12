@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import { Label } from "office-ui-fabric-react/lib/Label";
-import { IError } from "@pu/common/lib/IError";
+import { IError } from "@twii/common/lib/IError";
 import { IValidationErrorsStyles, getStyles } from "./ValidationErrors.styles";
 import { IValidationErrorsClassNames, getClassNames } from "./ValidationErrors.className";
 

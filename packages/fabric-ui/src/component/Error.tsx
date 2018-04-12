@@ -1,5 +1,5 @@
 import * as React from "react";
-import { isString, isObject } from "@pu/common/lib/LangUtils";
+import { isString, isObject } from "@twii/common/lib/LangUtils";
 import { getClassNames } from "./Error.classNames";
 import { IErrorStyles, getStyles } from "./Error.styles";
 import { TooltipHost } from "office-ui-fabric-react/lib/Tooltip";

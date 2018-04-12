@@ -1,10 +1,10 @@
 {
-  "name": "@pu/common",
+  "name": "@twii/common",
   "description": "twii Common lib",
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "@pu/router": "^1.0.0",
+    "@twii/router": "^1.0.0",
     "lodash.isfunction": "^3.0.8",
     "mobx": "^4.1.1",
     "moment": "^2.21.0",

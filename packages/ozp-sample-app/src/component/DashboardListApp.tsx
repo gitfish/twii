@@ -1,14 +1,14 @@
 import * as React from "react";
 import { observer } from "mobx-react"; 
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
-import { HostAppView } from "@pu/fabric-ui/lib/component/HostAppView";
-import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
-import { DashboardListContainer } from "@pu/dashboard/lib/component/DashboardList";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { DashboardListContainer } from "@twii/dashboard/lib/component/DashboardList";
 import { DashboardListStore } from "../model/DashboardListStore";
 import { getTheme } from "@uifabric/styling";
-import { addDashboard } from "@pu/dashboard/lib/DashboardActions";
-import { createCommandBarMenuItem } from "@pu/dashboard/lib/component/DashboardMenuHelper";
-import { createDashboardListLayoutItem } from "@pu/dashboard/lib/component/DashboardLayoutMenuHelper";
+import { addDashboard } from "@twii/dashboard/lib/DashboardActions";
+import { createCommandBarMenuItem } from "@twii/dashboard/lib/component/DashboardMenuHelper";
+import { createDashboardListLayoutItem } from "@twii/dashboard/lib/component/DashboardLayoutMenuHelper";
 
 @observer
 class DashboardListApp extends React.Component<IAppProps, any> {

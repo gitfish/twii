@@ -4,14 +4,14 @@ import { IDashboard } from "./IDashboard";
 import { IWindow } from "./IWindow";
 import { ComponentIdSequence } from "../ComponentIdSequence";
 import { isFunction } from "lodash.isfunction";
-import { IRouter } from "@pu/router/lib/IRouter";
-import { IRequest } from "@pu/router/lib/IRequest";
-import { EventEmitter } from "@pu/common/lib/EventEmitter";
+import { IRouter } from "@twii/router/lib/IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { EventEmitter } from "@twii/common/lib/EventEmitter";
 import { ComponentGlobals } from "../ComponentGlobals";
 import { isEqual } from "lodash.isequal";
-import { IConsumerFunc } from "@pu/common/lib/IConsumerFunc";
-import { IPredicateFunc } from "@pu/common/lib/IPredicateFunc";
-import { ISupplierFunc } from "@pu/common/lib/ISupplierFunc";
+import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
+import { IPredicateFunc } from "@twii/common/lib/IPredicateFunc";
+import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 
 abstract class Component extends EventEmitter {
     private _id : string;

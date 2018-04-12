@@ -7,8 +7,8 @@ import { Label } from "office-ui-fabric-react/lib/Label";
 import { List } from "office-ui-fabric-react/lib/List";
 import { getId, css } from "office-ui-fabric-react/lib/Utilities";
 import { KeyCodes } from "office-ui-fabric-react/lib/Utilities";
-import { IOption } from "@pu/common/lib/IOption";
-import { containsIgnoreCase } from "@pu/common/lib/StringUtils";
+import { IOption } from "@twii/common/lib/IOption";
+import { containsIgnoreCase } from "@twii/common/lib/StringUtils";
 import { IComboBoxStyles, getStyles } from "./ComboBox.styles";
 import { IComboBoxClassNames, getClassNames } from "./ComboBox.classNames";
 

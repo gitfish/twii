@@ -1,10 +1,10 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { ComboBox, IComboBoxProps } from "./ComboBox";
-import { IOption } from "@pu/common/lib/IOption";
-import { IOptionListModel } from "@pu/common/lib/model/IOptionListModel";
-import { IBoundProps } from "@pu/common-ui/lib/component/IBoundProps";
-import { setBoundValue, getBoundValue } from "@pu/common-ui/lib/component/BoundHelper";
+import { IOption } from "@twii/common/lib/IOption";
+import { IOptionListModel } from "@twii/common/lib/model/IOptionListModel";
+import { IBoundProps } from "@twii/common-ui/lib/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "@twii/common-ui/lib/component/BoundHelper";
 
 interface IBoundComboBoxProps extends IComboBoxProps, IBoundProps<any, string> {
     optionList?: IOptionListModel;

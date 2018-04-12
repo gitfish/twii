@@ -1,2 +1,2 @@
-# @pu/sample-base
+# @twii/sample-base
 pu sample models, components etc

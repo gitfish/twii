@@ -1,6 +1,6 @@
 import * as React from "react";
-import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
-import { HostAppView } from "@pu/fabric-ui/lib/component/HostAppView";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { ListingListModel } from "../model/ListingListModel";
 import { IListing } from "../IListing";
 import { ListingListPage } from "./ListingListPage";

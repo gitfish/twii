@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { IWindow } from "../model/IWindow";
-import { AppHostContainer } from "@pu/fabric-ui/lib/component/AppHost";
+import { AppHostContainer } from "@twii/fabric-ui/lib/component/AppHost";
 import { IWindowPortalStyles, getStyles } from "./WindowPortal.styles";
 import { getClassNames } from "./WindowPortal.classNames";
 import { dispatchWindowResize } from "./DOMHelper";

@@ -1,6 +1,6 @@
 import { IListingModel } from "./IListingModel";
 import { ListingModel } from "./ListingModel";
-import { SyncSupplier } from "@pu/common/lib/model/SyncSupplier";
+import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
 import { ListingServiceContext } from "../service/ListingServiceContext";
 
 class ListingModelSupplier extends SyncSupplier<IListingModel> {

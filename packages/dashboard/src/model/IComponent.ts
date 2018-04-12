@@ -1,10 +1,10 @@
 import { IDashboard } from "./IDashboard";
-import { IRouter } from "@pu/router/lib/IRouter";
-import { IRequest } from "@pu/router/lib/IRequest";
-import { IEventEmitter } from "@pu/common/lib/IEventEmitter";
-import { IConsumerFunc } from "@pu/common/lib/IConsumerFunc";
-import { IPredicateFunc } from "@pu/common/lib/IPredicateFunc";
-import { ISupplierFunc } from "@pu/common/lib/ISupplierFunc";
+import { IRouter } from "@twii/router/lib/IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { IEventEmitter } from "@twii/common/lib/IEventEmitter";
+import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
+import { IPredicateFunc } from "@twii/common/lib/IPredicateFunc";
+import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 
 interface IComponent extends IEventEmitter {
     id: string;

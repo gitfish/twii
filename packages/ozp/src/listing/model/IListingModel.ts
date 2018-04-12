@@ -3,9 +3,9 @@ import { ListingApprovalStatus } from "../ListingApprovalStatus";
 import { IListingBookmark } from "../IListingBookmark";
 import { IImage } from "../../media/IImage";
 import { IListingLinkModel } from "./IListingLinkModel";
-import { ISync } from "@pu/common/lib/ISync";
-import { IError } from "@pu/common/lib/IError";
-import { IStateManager } from "@pu/common/lib/IStateManager";
+import { ISync } from "@twii/common/lib/ISync";
+import { IError } from "@twii/common/lib/IError";
+import { IStateManager } from "@twii/common/lib/IStateManager";
 
 interface IListingModel extends IListing, IStateManager {
     validationErrors: IError[];

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { DashboardWrapper } from "@pu/dashboard/lib/component/DashboardWrapper";
-import { IDashboardStyles } from "@pu/dashboard/lib/component/Dashboard.styles";
+import { DashboardWrapper } from "@twii/dashboard/lib/component/DashboardWrapper";
+import { IDashboardStyles } from "@twii/dashboard/lib/component/Dashboard.styles";
 import { getTheme } from "@uifabric/styling";
 import { createSampleRouter } from "../../sampleRouter";
 import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";

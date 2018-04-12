@@ -1,5 +1,5 @@
 {
-  "name": "@pu/sample-base",
+  "name": "@twii/sample-base",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,11 +11,11 @@
   "dependencies": {
     "@blueprintjs/core": "^2.1.1",
     "@blueprintjs/datetime": "^2.0.2",
-    "@pu/common": "^1.0.0",
-    "@pu/common-ui": "^1.0.0",
-    "@pu/dashboard": "^1.0.0",
-    "@pu/fabric-ui": "^1.0.0",
-    "@pu/router": "^1.0.0",
+    "@twii/common": "^1.0.0",
+    "@twii/common-ui": "^1.0.0",
+    "@twii/dashboard": "^1.0.0",
+    "@twii/fabric-ui": "^1.0.0",
+    "@twii/router": "^1.0.0",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "core-js": "^2.5.1",

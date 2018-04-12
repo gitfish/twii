@@ -1,7 +1,7 @@
 import { AbstractAppHost } from "./AbstractAppHost";
 import { IEventEmitter } from "../IEventEmitter";
 import { EventEmitter } from "../EventEmitter";
-import { IRequest } from "@pu/router/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 
 class AppHost extends AbstractAppHost {
     protected _events : IEventEmitter = new EventEmitter();

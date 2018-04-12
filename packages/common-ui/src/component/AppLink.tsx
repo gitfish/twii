@@ -1,6 +1,6 @@
 import * as React from "react";
-import { IAppHost } from "@pu/common/lib/IAppHost";
-import { IRequest } from "@pu/router/lib/IRequest";
+import { IAppHost } from "@twii/common/lib/IAppHost";
+import { IRequest } from "@twii/router/lib/IRequest";
 
 interface IAppLinkProps {
     host: IAppHost;

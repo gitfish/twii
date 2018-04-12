@@ -1,7 +1,7 @@
 import * as React from "react";
-import { IRequest } from "@pu/router/lib/IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { SampleHostAppView, IAppProps } from "./SampleHostAppView";
-import { AppLink } from "@pu/common-ui/lib/component/AppLink";
+import { AppLink } from "@twii/common-ui/lib/component/AppLink";
 import { List } from "office-ui-fabric-react/lib/List";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { getTheme } from "@uifabric/styling";

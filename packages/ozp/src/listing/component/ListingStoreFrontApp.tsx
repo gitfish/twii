@@ -2,8 +2,8 @@ import * as React from "react";
 import { IListing } from "../IListing";
 import { ListingStoreFrontContainer } from "./ListingStoreFront";
 import { ListingStoreFrontModel } from "../model/ListingStoreFrontModel";
-import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
-import { HostAppView } from "@pu/fabric-ui/lib/component/HostAppView";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 class ListingStoreFrontApp extends React.Component<IAppProps, any> {

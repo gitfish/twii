@@ -1,10 +1,10 @@
 {
-  "name": "@pu/common-ui",
+  "name": "@twii/common-ui",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@pu/common": "^1.0.0",
+    "@twii/common": "^1.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
   },

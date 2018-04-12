@@ -2,7 +2,7 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { Overlay, IOverlayProps } from "office-ui-fabric-react/lib/Overlay";
 import { Spinner } from "office-ui-fabric-react/lib/Spinner";
-import { ISync } from "@pu/common/lib/ISync";
+import { ISync } from "@twii/common/lib/ISync";
 import { ISyncOverlayStyles, getStyles } from "./SyncOverlay.styles";
 import { ISyncOverlayClassNames, getClassNames } from "./SyncOverlay.classNames";
 

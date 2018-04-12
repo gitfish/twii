@@ -1,4 +1,4 @@
-import { IListModel } from "@pu/common/lib/model/IListModel";
+import { IListModel } from "@twii/common/lib/model/IListModel";
 import { IListingBookmark } from "../IListingBookmark";
 
 interface IListingBookmarkListModel extends IListModel<IListingBookmark> {

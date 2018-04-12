@@ -3,7 +3,7 @@ import { IDashboardList } from "./IDashboardList";
 import { IDashboard } from "./IDashboard";
 import { Dashboard } from "./Dashboard";
 import { IDashboardAdd, IDashboardAddOptions } from "./IDashboardAdd";
-import { isNotBlank } from "@pu/common/lib/StringUtils";
+import { isNotBlank } from "@twii/common/lib/StringUtils";
 
 class DashboardAdd implements IDashboardAdd {
     @observable active : boolean = false;

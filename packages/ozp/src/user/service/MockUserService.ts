@@ -13,7 +13,7 @@ class MockUserService implements IUserService {
             bio: "Mock User Bio",
             user: {
                 username: "mock",
-                email: "mock@pu.test",
+                email: "mock@twii.test",
                 groups: [
                     {
                         name: "admin"

@@ -1,6 +1,6 @@
 import { IListingLink } from "../IListingLink";
 import { IListingModel } from "./IListingModel";
-import { IError } from "@pu/common/lib/IError";
+import { IError } from "@twii/common/lib/IError";
 
 interface IListingLinkModel extends IListingLink {
     validationErrors: IError[];

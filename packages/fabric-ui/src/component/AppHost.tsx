@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { Sync } from "./Sync";
 import { Error } from "./Error";
 import { SyncOverlay } from "./SyncOverlay";

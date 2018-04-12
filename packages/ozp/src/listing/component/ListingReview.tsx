@@ -3,7 +3,7 @@ import { IListingReview } from "../IListingReview";
 import { getClassNames, IListingReviewClassNames } from "./ListingReview.classNames";
 import { getStyles, IListingReviewStyles } from "./ListingReview.styles";
 import { Rating } from "office-ui-fabric-react/lib/Rating";
-import { timestampIO } from "@pu/common/lib/MomentDataUtils";
+import { timestampIO } from "@twii/common/lib/MomentDataUtils";
 
 interface IListingReviewProps {
     review: IListingReview;

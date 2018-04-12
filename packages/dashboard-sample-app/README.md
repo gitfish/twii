@@ -1,2 +1,2 @@
-# @pu/dashboard-sample-app
+# @twii/dashboard-sample-app
 pu dashboard sample web app

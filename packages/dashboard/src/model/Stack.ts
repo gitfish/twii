@@ -5,9 +5,9 @@ import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { Window } from "./Window";
 import { IWindowManager } from "./IWindowManager";
-import { IRequest } from "@pu/router/lib/IRequest";
-import { isFunction } from "@pu/common/lib/LangUtils";
-import { ISupplierFunc } from "@pu/common/lib/ISupplierFunc";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { isFunction } from "@twii/common/lib/LangUtils";
+import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 import * as ComponentTypes from "./ComponentTypes";
 
 /**

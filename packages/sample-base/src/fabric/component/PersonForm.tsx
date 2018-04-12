@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Person } from "../../model/Person";
-import { BoundTextField } from "@pu/fabric-ui/lib/component/BoundTextField";
-import { BoundDropdown } from "@pu/fabric-ui/lib/component/BoundDropdown";
-import { BoundMomentField } from "@pu/fabric-ui/lib/component/BoundMomentField";
-import { BoundCheckbox } from "@pu/fabric-ui/lib/component/BoundCheckbox";
+import { BoundTextField } from "@twii/fabric-ui/lib/component/BoundTextField";
+import { BoundDropdown } from "@twii/fabric-ui/lib/component/BoundDropdown";
+import { BoundMomentField } from "@twii/fabric-ui/lib/component/BoundMomentField";
+import { BoundCheckbox } from "@twii/fabric-ui/lib/component/BoundCheckbox";
 import { AddressForm } from "./AddressForm";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";

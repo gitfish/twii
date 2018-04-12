@@ -18,8 +18,8 @@ import { IListingStoreFront } from "../IListingStoreFront";
 import { IListingActivity } from "../IListingActivity";
 import { IUserProfile } from "../../user/IUserProfile";
 import { IImage } from "../../media/IImage";
-import { wordsToCamelCase } from "@pu/common/lib/StringUtils";
-import { IBasicAuthCredentials } from "@pu/common/lib/IBasicAuthCredentials";
+import { wordsToCamelCase } from "@twii/common/lib/StringUtils";
+import { IBasicAuthCredentials } from "@twii/common/lib/IBasicAuthCredentials";
 
 const handleError = (error : any) => {
     if(error.response && error.response.status === 400) {

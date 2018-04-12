@@ -1,11 +1,11 @@
 import * as React from "react";
 import { autorun, IReactionDisposer } from "mobx";
-import { IAppProps } from "@pu/common-ui/lib/component/IAppProps";
-import { HostAppView } from "@pu/fabric-ui/lib/component/HostAppView";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { ListingContainer, ListingTitleContainer, ListingDeleteDialog } from "./Listing";
 import { findById } from "../model/ListingFinder";
 import { ListingDeleteStore } from "../model/ListingDeleteStore";
-import { ISyncSupplier } from "@pu/common/lib/ISyncSupplier";
+import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
 import { IListingModel } from "../model/IListingModel";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 

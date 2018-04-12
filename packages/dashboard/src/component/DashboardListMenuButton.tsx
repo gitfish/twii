@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { IDashboardList } from "../model/IDashboardList";
 import { DefaultButton } from "office-ui-fabric-react/lib/Button";
 import { IContextualMenuProps } from "office-ui-fabric-react/lib/ContextualMenu";
-import { Sync } from "@pu/fabric-ui/lib/component/Sync";
+import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { createMenuItems } from "./DashboardMenuHelper";
 
 interface IDashboardListMenuButtonProps {

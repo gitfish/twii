@@ -1,6 +1,6 @@
 import { IEventEmitter } from "./IEventEmitter";
-import { IRequest } from "@pu/router/lib/IRequest";
-import { IRouter } from "@pu/router/lib/IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { ISync } from "./ISync";
 import { IStateManager } from "./IStateManager";
 

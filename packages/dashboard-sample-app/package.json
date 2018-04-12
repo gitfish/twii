@@ -1,5 +1,5 @@
 {
-  "name": "@pu/dashboard-sample-app",
+  "name": "@twii/dashboard-sample-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,12 +14,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@pu/common": "^1.0.0",
-    "@pu/common-ui": "^1.0.0",
-    "@pu/dashboard": "^1.0.0",
-    "@pu/fabric-ui": "^1.0.0",
-    "@pu/router": "^1.0.0",
-    "@pu/sample-base": "^1.0.0",
+    "@twii/common": "^1.0.0",
+    "@twii/common-ui": "^1.0.0",
+    "@twii/dashboard": "^1.0.0",
+    "@twii/fabric-ui": "^1.0.0",
+    "@twii/router": "^1.0.0",
+    "@twii/sample-base": "^1.0.0",
     "@uifabric/icons": "^5.7.0",
     "core-js": "^2.5.1",
     "mobx": "^4.1.1",

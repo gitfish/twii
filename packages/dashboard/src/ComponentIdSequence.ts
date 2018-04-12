@@ -1,4 +1,4 @@
-import { Sequence } from "@pu/common/lib/Id";
+import { Sequence } from "@twii/common/lib/Id";
 
 const ComponentIdSequence = new Sequence("db-comp-");
 

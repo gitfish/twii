@@ -1,5 +1,5 @@
-import { DashboardList } from "@pu/dashboard/lib/model/DashboardList";
-import { DashboardStorageServiceContext } from "@pu/dashboard/lib/service/DashboardStorageServiceContext";
+import { DashboardList } from "@twii/dashboard/lib/model/DashboardList";
+import { DashboardStorageServiceContext } from "@twii/dashboard/lib/service/DashboardStorageServiceContext";
 import { AppRouter } from "../AppRouter";
 
 const storageKey = "ozp-dashboard-list";

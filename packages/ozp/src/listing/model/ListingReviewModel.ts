@@ -4,7 +4,7 @@ import { IListingReview } from "../IListingReview";
 import { IListingReviewModel } from "./IListingReviewModel";
 import { IUserProfile } from "../../user/IUserProfile";
 import { ListingServiceContext } from "../service/ListingServiceContext";
-import { Sync } from "@pu/common/lib/model/Sync";
+import { Sync } from "@twii/common/lib/model/Sync";
 
 class ListingReviewModel implements IListingReviewModel {
     @observable sync = new Sync();

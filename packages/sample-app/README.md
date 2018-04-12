@@ -1,2 +1,2 @@
-# @pu/sample-app
+# @twii/sample-app
 pu sample web app

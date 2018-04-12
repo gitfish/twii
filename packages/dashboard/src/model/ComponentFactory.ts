@@ -1,5 +1,5 @@
-import { Router } from "@pu/router/lib/Router";
-import { ISupplierFunc } from "@pu/common/lib/ISupplierFunc";
+import { Router } from "@twii/router/lib/Router";
+import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 import { IComponent } from "./IComponent";
 import { window, stack, list, vsplit, hsplit } from "./ComponentTypes";
 

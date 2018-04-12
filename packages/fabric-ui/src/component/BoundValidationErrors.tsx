@@ -1,9 +1,9 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IError } from "@pu/common/lib/IError";
+import { IError } from "@twii/common/lib/IError";
 import { IValidationErrorsProps, ValidationErrors } from "./ValidationErrors";
-import { IBoundProps } from "@pu/common-ui/lib/component/IBoundProps";
-import { getBoundValue } from "@pu/common-ui/lib/component/BoundHelper";
+import { IBoundProps } from "@twii/common-ui/lib/component/IBoundProps";
+import { getBoundValue } from "@twii/common-ui/lib/component/BoundHelper";
 
 interface IBoundValidationErrorsProps extends IValidationErrorsProps, IBoundProps<any, IError[]> {}
 
