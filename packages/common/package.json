@@ -1,7 +1,7 @@
 {
   "name": "@twii/common",
   "description": "twii Common lib",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "dependencies": {
     "@twii/router": "^1.0.1",
