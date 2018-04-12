@@ -1,7 +1,7 @@
 {
   "name": "@twii/sample-app",
   "description": "twii Application Sample using common libs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,10 +13,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@twii/common": "^1.0.1",
-    "@twii/common-ui": "^1.0.1",
+    "@twii/common": "^1.0.2",
+    "@twii/common-ui": "^1.0.2",
     "@twii/router": "^1.0.1",
-    "@twii/sample-base": "^1.0.1",
+    "@twii/sample-base": "^1.0.2",
     "@uifabric/icons": "^5.7.0",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
