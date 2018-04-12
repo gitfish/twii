@@ -1,2 +1,2 @@
 # @twii/common
-pu common lib
+twii common lib

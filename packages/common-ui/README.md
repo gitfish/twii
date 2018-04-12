@@ -1,2 +1,2 @@
 # @twii/common-ui
-pu common ui lib
+twii common ui lib

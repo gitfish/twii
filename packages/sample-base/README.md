@@ -1,2 +1,2 @@
 # @twii/sample-base
-pu sample models, components etc
+twii sample models, components etc

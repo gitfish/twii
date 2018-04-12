@@ -1,2 +1,2 @@
 # @twii/dashboard
-pu dashboard lib
+twii dashboard lib

@@ -1,2 +1,2 @@
 # @twii/ozp
-pu ozp client lib
+twii ozp client lib

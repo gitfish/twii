@@ -1,2 +1,2 @@
 # @twii/dashboard-sample-app
-pu dashboard sample web app
+twii dashboard sample web app

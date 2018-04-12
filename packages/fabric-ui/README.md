@@ -1,2 +1,2 @@
 # @twii/fabric-ui
-pu fabric based lib
+twii fabric based lib
