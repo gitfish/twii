@@ -6,7 +6,7 @@ import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView"
 class CalloutSample extends React.Component<any, any> {
     render() {
         return (
-            <div>
+            <div style={{ padding: 8 }}>
                 <Callout intent={Intent.NONE} icon="blank" title="None Callout">
                     None Callout Content
                 </Callout>
@@ -38,9 +38,7 @@ class CalloutSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <CalloutSample />
-                </div>
+                <CalloutSample />
             </SampleHostAppView>
         );
     }

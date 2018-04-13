@@ -24,6 +24,12 @@ const createSampleRouter = () : Router => {
         });
     }));
     
+    r.use("/samples/dashboard/vsplit", exactPath(req => {
+        return import("./dashboard/component/DashboardSample").then(m => {
+            return <m.VSplitSampleApp host={req.app} />; 
+        });
+    }));
+    
     r.use("/samples/fabric/form", exactPath(req => {
         return import("./fabric/component/Form").then(m => {
             return <m.FormSamplesApp host={req.app} />;
@@ -153,6 +159,30 @@ const createSampleRouter = () : Router => {
     r.use("/samples/blueprint/dateInput", exactPath(req => {
         return import("./blueprint/component/DateInputSample").then(m => {
             return <m.DateInputSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/blueprint/table", exactPath(req => {
+        return import("./blueprint/component/TableSample").then(m => {
+            return <m.TableSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/antd/layout", exactPath(req => {
+        return import("./antd/component/LayoutSample").then(m => {
+            return <m.LayoutSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/antd/button", exactPath(req => {
+        return import("./antd/component/ButtonSample").then(m => {
+            return <m.ButtonSampleApp host={req.app} />; 
+        });
+    }));
+    
+    r.use("/samples/phosphor/dockpanel", exactPath(req => {
+        return import("./phosphor/component/DockPanelSample").then(m => {
+            return <m.DockPanelSampleApp host={req.app} />;
         });
     }));
     

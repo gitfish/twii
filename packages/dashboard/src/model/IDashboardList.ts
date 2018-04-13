@@ -1,10 +1,10 @@
 import { IDashboard } from "./IDashboard";
 import { IComponent } from "./IComponent";
-import { ISync } from "@twii/common/lib/ISync";
+import { IMutableSync } from "@twii/common/lib/IMutableSync";
 import { IRequest } from "@twii/router/lib/IRequest";
 
 interface IDashboardList extends IComponent {
-    sync: ISync;
+    sync: IMutableSync;
     active: IDashboard;
     activeIndex: number;
     dashboards : IDashboard[];

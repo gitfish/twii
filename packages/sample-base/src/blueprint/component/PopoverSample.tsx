@@ -6,12 +6,14 @@ import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView"
 class PopoverSample extends React.Component<any, any> {
     render() {
         return (
-            <Popover>
-                <Button>Popover Target</Button>
-                <div>
-                    Popover content
-                </div>
-            </Popover>
+            <div style={{ padding: 8 }}>
+                <Popover>
+                    <Button>Popover Target</Button>
+                    <div>
+                        Popover content
+                    </div>
+                </Popover>
+            </div>
         );
     }
 }
@@ -23,9 +25,7 @@ class PopoverSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <PopoverSample />
-                </div>
+                <PopoverSample />
             </SampleHostAppView>
         );
     }

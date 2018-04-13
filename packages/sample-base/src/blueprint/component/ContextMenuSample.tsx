@@ -9,7 +9,7 @@ import { MenuDivider } from "@blueprintjs/core/lib/esm/components/menu/menuDivid
 class ContextMenuSample extends React.Component<any, any> {
     render() {
         return (
-            <div>Contextual Menu Target</div>
+            <div style={{ padding: 8 }}>Contextual Menu Target</div>
         );
     }
     private _onClickSave = () => {
@@ -35,9 +35,7 @@ class ContextMenuSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <ContextMenuSample />
-                </div>
+                <ContextMenuSample />
             </SampleHostAppView>
         );
     }

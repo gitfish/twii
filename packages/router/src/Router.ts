@@ -17,9 +17,6 @@ const notFoundHandler : IRequestHandler = (req : IRequest) => {
 };
 
 const uselessRouter : IRouter = {
-    isPathMapped(path : string) {
-        return false;
-    },
     handleRequest(req : IRequest, next?: IRequestHandler) {
         return Promise.resolve(next ? next(req) : notFoundHandler(req));
     }
@@ -29,9 +26,6 @@ class RequestHandlerRouter implements IRouter {
     private _requestHandler : IRequestHandler;
     constructor(requestHandler : IRequestHandler) {
         this._requestHandler = requestHandler;
-    }
-    isPathMapped(path : string) {
-        return false;
     }
     handleRequest(req : IRequest, next?: IRequestHandler) {
         return Promise.resolve(this._requestHandler(req, next));
@@ -52,18 +46,6 @@ class PathRouter implements IRouter {
         this._pathTemplate = new PathTemplate(path, { end: false });
         this._router = createRouter(router);
     }
-    isPathMapped(path : string) {
-        const testResult = this._pathTemplate.test(path);
-        if(testResult.match) {
-            const matchedPath = this._pathTemplate.toPath(testResult.params);
-            const nextPath = path.substring(matchedPath.length);
-            if(!nextPath) {
-                return true;
-            }
-            return this._router.isPathMapped(nextPath);
-        }
-        return false;
-    }
     handleRequest(req : IRequest, next?: IRequestHandler) {
         const testPath = req.basePath ? req.path.substring(req.basePath.length) : req.path;
         const testResult = this._pathTemplate.test(testPath);
@@ -82,16 +64,6 @@ class Router implements IRouter, IRouterManager {
     private _root : IRouterEntry;
     private _last : IRouterEntry;
     defaultHandler : IRequestHandler;
-    isPathMapped(path : string) {
-        let e = this._root;
-        while(e) {
-            if(e.r.isPathMapped(path)) {
-                return true;
-            }
-            e = e.next;
-        }
-        return false;
-    }
     use(pathOrRouter: string | IRouter | IRequestHandler, router?: IRouter | IRequestHandler) : void {
         let r : IRouter;
         if(isString(pathOrRouter)) {

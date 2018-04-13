@@ -10,6 +10,7 @@ interface IAppLinkProps {
     onClick?: () => void;
     style?: React.CSSProperties;
     open?: boolean;
+    onHostOpened?: (host : IAppHost) => void;
 }
 
 class AppLink extends React.Component<IAppLinkProps, undefined> {
@@ -19,7 +20,11 @@ class AppLink extends React.Component<IAppLinkProps, undefined> {
             this.props.onClick();
         } else {
             if(this.props.open) {
-                this.props.host.open(this.props.request);
+                this.props.host.open(this.props.request).then(openedHost => {
+                    if(this.props.onHostOpened) {
+                        this.props.onHostOpened(openedHost);
+                    }        
+                });
             } else {
                 this.props.host.load(this.props.request);
             }

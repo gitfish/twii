@@ -34,7 +34,8 @@ class StackSample extends React.Component<IAppProps, any> {
                 right: 20,
                 bottom: 20,
                 left: 20,
-                border: `1px solid ${getTheme().palette.themeDark}`
+                border: `1px solid ${getTheme().palette.themeDark}`,
+                background: getTheme().palette.themeDark
             }
         };
         return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} addApp={{ path: "/samples/home" }} />;
@@ -71,7 +72,46 @@ class HSplitSample extends React.Component<IAppProps, any> {
                 right: 20,
                 bottom: 20,
                 left: 20,
-                border: `1px solid ${getTheme().palette.themeDark}`
+                border: `1px solid ${getTheme().palette.themeDark}`,
+                background: getTheme().palette.themeDark
+            }
+        };
+        return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} />;
+    }
+}
+
+class VSplitSample extends React.Component<IAppProps, any> {
+    render() {
+        const dashboardConfig = {
+            type: "dashboard",
+            component: {
+                type: "vsplit",
+                offset: 0.5,
+                top: {
+                    component: {
+                        type: "window",
+                        path: "/samples/fabric/form"
+                    }
+                },
+                bottom: {
+                    component: {
+                        type: "window",
+                        path: "/samples/fabric/picker"
+                    }
+                }
+            }
+        };
+        const customStyles : IDashboardStyles = {
+            root: {
+                backgroundColor: getTheme().palette.neutralLighter
+            },
+            content: {
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20,
+                border: `1px solid ${getTheme().palette.themeDark}`,
+                background: getTheme().palette.themeDark
             }
         };
         return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} />;
@@ -104,4 +144,17 @@ class HSplitSampleApp extends React.Component<IAppProps, any> {
     }
 }
 
-export { StackSampleApp, HSplitSampleApp }
+class VSplitSampleApp extends React.Component<IAppProps, any> {
+    componentWillMount() {
+        this.props.host.setTitle("VSplit Sample");
+    }
+    render() {
+        return (
+            <SampleHostAppView host={this.props.host}>
+                <VSplitSample host={this.props.host} />
+            </SampleHostAppView>
+        );
+    }
+}
+
+export { StackSampleApp, HSplitSampleApp, VSplitSampleApp }

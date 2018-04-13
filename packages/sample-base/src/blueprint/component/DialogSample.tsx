@@ -22,7 +22,7 @@ class DialogSamples extends React.Component<any, IDialogSamplesState> {
     }
     render() {
         return (
-            <div>
+            <div style={{ padding: 8 }}>
                 <Button onClick={this._onClickOpenDialog} disabled={this.state.open}>Show Dialog</Button>
                 <Dialog isOpen={this.state.open} onClose={this._onDialogClose} title="Sample Dialog">
                     Hello, this is a dialog
@@ -39,9 +39,7 @@ class DialogSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <DialogSamples />
-                </div>
+                <DialogSamples />
             </SampleHostAppView>
         );
     }

@@ -16,7 +16,9 @@ class TagInputSample extends React.Component<any, ITagInputSampleState> {
     }
     render() {
         return (
-            <TagInput values={this.state.values} onChange={this._onChange} />
+            <div style={{ padding: 8 }}>
+                <TagInput values={this.state.values} onChange={this._onChange} />
+            </div>
         );
     }
 }
@@ -28,9 +30,7 @@ class TagInputSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <TagInputSample />
-                </div>
+                <TagInputSample />
             </SampleHostAppView>
         );
     }

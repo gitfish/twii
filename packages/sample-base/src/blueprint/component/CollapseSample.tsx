@@ -18,7 +18,7 @@ class CollapseSamples extends React.Component<any, ICollapseSamplesState> {
     }
     render() {
         return (
-            <div>
+            <div style={{ padding: 8 }}>
                 <Button onClick={this._onCollapseToggle}>{this.state.open ? "Hide Content" : "Show Content"}</Button>
                 <Collapse isOpen={this.state.open}>
                     Hello, this is collapse content
@@ -35,9 +35,7 @@ class CollapseSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <CollapseSamples />
-                </div>
+                <CollapseSamples />
             </SampleHostAppView>
         );
     }

@@ -1,24 +1,15 @@
 import * as React from "react";
 import { Router } from "@twii/router/lib/Router";
 import { exactPath } from "@twii/router/lib/Routers";
+import { ConfigRouter } from "@twii/common/lib/ConfigRouter";
+import { configMap } from "@twii/ozp/lib/config/configMap";
 
 const r = new Router();
-let appliedConfigId : string;
-r.use((req, next) => {
-    let configId = req.params._config || AppConfig.env.configId;
-    if(configId && configId !== appliedConfigId) {
-        appliedConfigId = configId;
-        console.log("-- Applying Configuration: " + configId);
-        return import("./config/configs").then(m => {
-            const h = m[configId];
-            if(h) {
-                return h(AppConfig.env).then(next);
-            }
-            return next();
-        });
-    }
-    return next();
-});
+r.use(new ConfigRouter({
+    configId: AppConfig.env.configId,
+    env: AppConfig.env,
+    configMap: configMap
+}));
 r.use("/listing", exactPath(req => {
     return import("@twii/ozp/lib/listing/component/ListingListApp").then(m => {
         return <m.ListingListApp host={req.app} />; 

@@ -116,7 +116,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
 
     @action
     protected _loadError = (error : any) => {
-        console.log("Application Context Load Error");
+        console.log("App Host Load Error");
         console.warn(error);
         this.sync.syncError(error);
     }

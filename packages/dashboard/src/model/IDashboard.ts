@@ -1,8 +1,8 @@
 import { IComponent } from "./IComponent";
-import { ISync } from "@twii/common/lib/ISync";
+import { IMutableSync } from "@twii/common/lib/IMutableSync";
 
 interface IDashboard extends IComponent {
-    sync: ISync;
+    sync: IMutableSync;
     title: string;
     component : IComponent;
     blockSource: IComponent;

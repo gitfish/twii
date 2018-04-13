@@ -22,7 +22,7 @@ class AlertSamples extends React.Component<any, IAlertSamplesState> {
     }
     render() {
         return (
-            <div>
+            <div style={{ padding: 8 }}>
                 <Button onClick={this._onClickOpenAlert} disabled={this.state.open}>Show Alert</Button>
                 <Alert isOpen={this.state.open} onClose={this._onAlertClose}>
                     Hello, this is an alert
@@ -39,9 +39,7 @@ class AlertSampleApp extends React.Component<IAppProps, any> {
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <AlertSamples />
-                </div>
+                <AlertSamples />
             </SampleHostAppView>
         );
     }

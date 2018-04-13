@@ -11,22 +11,25 @@ class CollapsibleListSample extends React.Component<any, any> {
     render() {
         const dropdownTarget = <Button>Show More</Button>;
         return (
-            <CollapsibleList dropdownTarget={dropdownTarget} visibleItemRenderer={this._onRenderVisibleItem}>
-                <MenuItem text="One" />
-                <MenuItem text="Two" />
-                <MenuItem text="Three" />
-            </CollapsibleList>
+            <div style={{ padding: 8 }}>
+                <CollapsibleList dropdownTarget={dropdownTarget} visibleItemRenderer={this._onRenderVisibleItem}>
+                    <MenuItem text="One" />
+                    <MenuItem text="Two" />
+                    <MenuItem text="Three" />
+                </CollapsibleList>
+            </div>
         );
     }
 }
 
 class CollapsibleListSampleApp extends React.Component<IAppProps, any> {
+    componentWillMount() {
+        this.props.host.setTitle("Blueprint Collapsible List Sample");
+    }
     render() {
         return (
             <SampleHostAppView host={this.props.host}>
-                <div style={{ padding: 8 }}>
-                    <CollapsibleListSample />
-                </div>
+                <CollapsibleListSample />
             </SampleHostAppView>
         );
     }

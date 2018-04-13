@@ -20,6 +20,10 @@ const sampleGroups = [
             {
                 path: "/samples/dashboard/hsplit",
                 title: "HSplit Sample"
+            },
+            {
+                path: "/samples/dashboard/vsplit",
+                title: "VSplit Sample"
             }
         ]
     },
@@ -126,6 +130,34 @@ const sampleGroups = [
             {
                 path: "/samples/blueprint/dateInput",
                 title: "Date Input Sample"
+            },
+            {
+                path: "/samples/blueprint/table",
+                title: "Table Sample"
+            }
+        ]
+    },
+    {
+        key: "antd-samples",
+        title: "Ant Design of React Samples",
+        items: [
+            {
+                path: "/samples/antd/layout",
+                title: "Layout Sample"
+            },
+            {
+                path: "/samples/antd/button",
+                title: "Button Sample"
+            }
+        ]
+    },
+    {
+        key: "phosphor-samples",
+        title: "Phosphor Samples",
+        items: [
+            {
+                path: "/samples/phosphor/dockpanel",
+                title: "Dock Panel"
             }
         ]
     }

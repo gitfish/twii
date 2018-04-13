@@ -68,14 +68,15 @@ const isImageFile = (filename) => {
     return isPNGFile(filename) || isJPGFile(filename) || isGIFFile(filename);
 };
 
-const defaultPublicPath = "/";
-const defaultAppEnv = {
-    fabricFontBasePath: "",
-    fabricIconBasePath: "/icons/fabric/"
-};
+const defaultPublicPath = "/";;
 
 const createConfig = (env) => {
     const publicPath = env && env.publicPath ? env.publicPath : defaultPublicPath;
+    const defaultAppEnv = {
+        fabricFontBasePath: publicPath.endsWith("/") ? publicPath.substring(0, publicPath.length - 1) : publicPath,
+        fabricIconBasePath: `${publicPath.endsWith("/") ? publicPath.substring(0, publicPath.length - 1) : publicPath}/icons/fabric/`
+    };
+    
     const appEnv = Object.assign({}, defaultAppEnv, env);
     const production = env && env.production ? true : false;
     const buildVersion = env && env.buildVersion ? env.buildVersion : production ? "Unknown" : "DEV";
@@ -141,7 +142,7 @@ const createConfig = (env) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: "Dashboard Sample",
+                title: "Common Sample",
                 template: "src/index.template.ts",
                 AppConfig: AppConfig,
                 chunksSortMode: "none"
@@ -151,7 +152,10 @@ const createConfig = (env) => {
                 { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" },
                 { from: "../../node_modules/material-components-web/dist/material-components-web.min.css", to: "css/material-components-web.css" },
                 { from: "../../node_modules/@blueprintjs/core/lib/css/blueprint.css", to: "css/blueprint.css" },
-                { from: "../../node_modules/@blueprintjs/datetime/lib/css/blueprint-datetime.css", to: "css/blueprint-datetime.css" }
+                { from: "../../node_modules/@blueprintjs/datetime/lib/css/blueprint-datetime.css", to: "css/blueprint-datetime.css" },
+                { from: "../../node_modules/@blueprintjs/table/lib/css/table.css", to: "css/blueprint-table.css" },
+                { from: "../../node_modules/antd/dist/antd.min.css", to: "css/antd.css" },
+                { from: "../../node_modules/@phosphor/widgets/style", to: "css/phosphor" }
             ]),
             new WriteFilePlugin()
         ]
