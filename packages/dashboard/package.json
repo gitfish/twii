@@ -1,6 +1,6 @@
 {
   "name": "@twii/dashboard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "twii Dashboard lib",
   "main": "index.js",
   "scripts": {
@@ -12,10 +12,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@twii/common": "^1.0.3",
-    "@twii/common-ui": "^1.0.3",
-    "@twii/fabric-ui": "^1.0.3",
-    "@twii/router": "^1.0.1",
+    "@twii/common": "^1.0.4",
+    "@twii/common-ui": "^1.0.4",
+    "@twii/fabric-ui": "^1.0.4",
+    "@twii/router": "^1.0.4",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "lodash.isequal": "^4.5.0",

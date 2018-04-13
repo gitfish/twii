@@ -1,6 +1,6 @@
 {
   "name": "@twii/sample-base",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -12,16 +12,16 @@
     "@blueprintjs/core": "^2.1.1",
     "@blueprintjs/datetime": "^2.0.2",
     "@blueprintjs/table": "^2.0.0",
-    "@twii/common": "^1.0.3",
-    "@twii/common-ui": "^1.0.3",
-    "@twii/dashboard": "^1.0.3",
-    "@twii/fabric-ui": "^1.0.3",
-    "@twii/router": "^1.0.1",
+    "@twii/common": "^1.0.4",
+    "@twii/common-ui": "^1.0.4",
+    "@twii/dashboard": "^1.0.4",
+    "@twii/fabric-ui": "^1.0.4",
+    "@twii/phosphor-sample": "^1.0.4",
+    "@twii/router": "^1.0.4",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "antd": "^3.4.1",
     "core-js": "^2.5.1",
-    "del": "^3.0.0",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
     "office-ui-fabric-react": "^5.79.0",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.3.4",
+    "del": "^3.0.0",
     "typescript": "^2.8.0"
   }
 }
