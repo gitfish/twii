@@ -3,6 +3,9 @@
   "version": "1.0.6",
   "main": "index.js",
   "license": "MIT",
+  "keywords": [
+    "UI", "frontend", "framework"
+  ],
   "dependencies": {
     "@twii/common": "^1.0.6",
     "react": "^16.3.0",

@@ -3,6 +3,9 @@
   "version": "1.0.6",
   "main": "index.js",
   "license": "MIT",
+  "keywords": [
+    "frontend", "backend", "routing", "router", "framework"
+  ],
   "scripts": {
     "clean": "node task/clean",
     "build": "tsc",

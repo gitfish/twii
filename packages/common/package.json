@@ -3,6 +3,9 @@
   "description": "twii Common lib",
   "version": "1.0.6",
   "license": "MIT",
+  "keywords": [
+    "UI", "frontend", "framework"
+  ],
   "dependencies": {
     "@twii/router": "^1.0.6",
     "lodash.isfunction": "^3.0.8",

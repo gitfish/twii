@@ -3,6 +3,9 @@
   "version": "1.0.6",
   "description": "twii Dashboard lib",
   "main": "index.js",
+  "keywords": [
+    "UI", "frontend", "framework", "dashboard"
+  ],
   "scripts": {
     "clean": "node task/clean",
     "build": "tsc",
