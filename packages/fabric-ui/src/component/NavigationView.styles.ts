@@ -38,11 +38,11 @@ const defaultStyles = (theme : ITheme) : INavigationViewStyles => {
             justifyContent: "flex-start",
             alignItems: "center",
             transition: "width 0.2s",
-            backgroundColor: theme.palette.neutralTertiary,
+            backgroundColor: theme.palette.neutralDark,
             selectors: {
                 "&.open": {
                     width: 200,
-                    backgroundColor: theme.palette.neutralTertiary,
+                    backgroundColor: theme.palette.neutralDark,
                     boxShadow: "0 0 5px 0 rgba(0, 0, 0, 0.4)"
                 },
                 "&.inline": {
@@ -102,10 +102,10 @@ const defaultStyles = (theme : ITheme) : INavigationViewStyles => {
             cursor: "pointer",
             selectors: {
                 ":hover": {
-                    backgroundColor: theme.palette.neutralSecondary
+                    backgroundColor: theme.palette.neutralPrimary
                 },
                 "&.active": {
-                    backgroundColor: theme.palette.themeDark
+                    backgroundColor: theme.palette.neutralPrimary
                 }
             }
         },
