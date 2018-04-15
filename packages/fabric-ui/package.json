@@ -1,6 +1,6 @@
 {
   "name": "@twii/fabric-ui",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,9 +13,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/common": "^1.0.6",
-    "@twii/common-ui": "^1.0.6",
-    "@twii/router": "^1.0.6",
+    "@twii/common": "^1.0.7",
+    "@twii/common-ui": "^1.0.7",
+    "@twii/router": "^1.0.7",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "mobx": "^4.1.1",

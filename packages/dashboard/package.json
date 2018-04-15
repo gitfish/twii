@@ -1,10 +1,13 @@
 {
   "name": "@twii/dashboard",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "twii Dashboard lib",
   "main": "index.js",
   "keywords": [
-    "UI", "frontend", "framework", "dashboard"
+    "UI",
+    "frontend",
+    "framework",
+    "dashboard"
   ],
   "scripts": {
     "clean": "node task/clean",
@@ -18,10 +21,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@twii/common": "^1.0.6",
-    "@twii/common-ui": "^1.0.6",
-    "@twii/fabric-ui": "^1.0.6",
-    "@twii/router": "^1.0.6",
+    "@twii/common": "^1.0.7",
+    "@twii/common-ui": "^1.0.7",
+    "@twii/fabric-ui": "^1.0.7",
+    "@twii/router": "^1.0.7",
     "@uifabric/styling": "^5.22.0",
     "@uifabric/utilities": "^5.23.0",
     "lodash.isequal": "^4.5.0",

@@ -1,7 +1,7 @@
 {
   "name": "@twii/phosphor-sample-app",
   "description": "twii Application Sample using common libs",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -16,15 +16,15 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/router": "^1.0.6",
-    "@twii/phosphor-sample": "^1.0.6"
+    "@twii/phosphor-sample": "^1.0.7",
+    "@twii/router": "^1.0.7"
   },
   "devDependencies": {
-    "del": "^3.0.0",
     "copy-webpack-plugin": "^4.2.3",
+    "css-loader": "^0.28.11",
+    "del": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
     "source-map-loader": "^0.2.3",
-    "css-loader": "^0.28.11",
     "style-loader": "^0.20.3",
     "ts-loader": "^4.0.1",
     "typescript": "^2.8.0",

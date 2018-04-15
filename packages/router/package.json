@@ -1,10 +1,14 @@
 {
   "name": "@twii/router",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
-    "frontend", "backend", "routing", "router", "framework"
+    "frontend",
+    "backend",
+    "routing",
+    "router",
+    "framework"
   ],
   "publishConfig": {
     "access": "public"
