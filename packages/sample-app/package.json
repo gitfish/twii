@@ -12,6 +12,9 @@
     "build-watch-mock": "webpack --progress --watch --env.configName=mock",
     "test": "jest"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@twii/common": "^1.0.6",
     "@twii/common-ui": "^1.0.6",

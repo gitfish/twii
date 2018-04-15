@@ -6,6 +6,15 @@
   "keywords": [
     "UI", "frontend", "framework"
   ],
+  "scripts": {
+    "clean": "node task/clean",
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@twii/router": "^1.0.6",
     "lodash.isfunction": "^3.0.8",
@@ -22,12 +31,6 @@
     "jsdom": "^11.5.1",
     "ts-jest": "^21.2.3",
     "typescript": "^2.8.0"
-  },
-  "scripts": {
-    "clean": "node task/clean",
-    "build": "tsc",
-    "build-watch": "tsc --watch",
-    "test": "jest"
   },
   "jest": {
     "collectCoverage": true,

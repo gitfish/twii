@@ -6,6 +6,9 @@
   "keywords": [
     "frontend", "backend", "routing", "router", "framework"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "clean": "node task/clean",
     "build": "tsc",

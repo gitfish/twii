@@ -8,6 +8,9 @@
     "build": "tsc",
     "build-watch": "tsc -w"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@blueprintjs/core": "^2.1.1",
     "@blueprintjs/datetime": "^2.0.2",

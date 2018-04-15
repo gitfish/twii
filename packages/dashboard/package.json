@@ -12,6 +12,9 @@
     "build-watch": "tsc -w",
     "test": "jest"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "",
   "license": "MIT",
   "dependencies": {

@@ -3,6 +3,15 @@
   "version": "1.0.6",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "clean": "node task/clean",
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@twii/common": "^1.0.6",
     "@twii/common-ui": "^1.0.6",
@@ -25,12 +34,6 @@
     "react-test-renderer": "^16.2.0",
     "ts-jest": "^21.2.3",
     "typescript": "^2.8.0"
-  },
-  "scripts": {
-    "clean": "node task/clean",
-    "build": "tsc",
-    "build-watch": "tsc --watch",
-    "test": "jest"
   },
   "jest": {
     "collectCoverage": true,
