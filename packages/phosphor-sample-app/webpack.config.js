@@ -72,12 +72,8 @@ const defaultPublicPath = "/";;
 
 const createConfig = (env) => {
     const publicPath = env && env.publicPath ? env.publicPath : defaultPublicPath;
-    const defaultAppEnv = {
-        fabricFontBasePath: publicPath.endsWith("/") ? publicPath.substring(0, publicPath.length - 1) : publicPath,
-        fabricIconBasePath: `${publicPath.endsWith("/") ? publicPath.substring(0, publicPath.length - 1) : publicPath}/icons/fabric/`
-    };
     
-    const appEnv = Object.assign({}, defaultAppEnv, env);
+    const appEnv = Object.assign({}, env);
     const production = env && env.production ? true : false;
     const buildVersion = env && env.buildVersion ? env.buildVersion : production ? "Unknown" : "DEV";
     
@@ -92,7 +88,7 @@ const createConfig = (env) => {
     const config = {
         mode: production ? "production" : "development",
         entry: {
-            main: "./src/main.tsx"
+            main: "./src/main.ts"
         },
         output: {
             filename: production ? "[name].[chunkhash].js" : "[name].js",
@@ -123,6 +119,14 @@ const createConfig = (env) => {
                     use: [
                         { loader: "file-loader" }
                     ]
+                },
+                {
+                    test: isCssFile,
+                    use: [
+                        { loader: "style-loader" },
+                        { loader: "css-loader" }
+                    ],
+                    exclude: isNodeModuleFile
                 }
             ]
         },
@@ -142,19 +146,12 @@ const createConfig = (env) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: "Common Sample",
+                title: "Phosphor Sample",
                 template: "src/index.template.ts",
                 AppConfig: AppConfig,
                 chunksSortMode: "none"
             }),
             new CopyWebpackPlugin([
-                { from: "../../fonts/ms", to: "fonts" },
-                { from: "../../node_modules/@uifabric/icons/fonts", to: "icons/fabric" },
-                { from: "../../node_modules/material-components-web/dist/material-components-web.min.css", to: "css/material-components-web.css" },
-                { from: "../../node_modules/@blueprintjs/core/lib/css/blueprint.css", to: "css/blueprint.css" },
-                { from: "../../node_modules/@blueprintjs/datetime/lib/css/blueprint-datetime.css", to: "css/blueprint-datetime.css" },
-                { from: "../../node_modules/@blueprintjs/table/lib/css/table.css", to: "css/blueprint-table.css" },
-                { from: "../../node_modules/antd/dist/antd.min.css", to: "css/antd.css" },
                 { from: "../../node_modules/@phosphor/widgets/style", to: "css/phosphor" }
             ]),
             new WriteFilePlugin()

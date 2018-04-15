@@ -154,8 +154,7 @@ const createConfig = (env) => {
                 { from: "../../node_modules/@blueprintjs/core/lib/css/blueprint.css", to: "css/blueprint.css" },
                 { from: "../../node_modules/@blueprintjs/datetime/lib/css/blueprint-datetime.css", to: "css/blueprint-datetime.css" },
                 { from: "../../node_modules/@blueprintjs/table/lib/css/table.css", to: "css/blueprint-table.css" },
-                { from: "../../node_modules/antd/dist/antd.min.css", to: "css/antd.css" },
-                { from: "../../node_modules/@phosphor/widgets/style", to: "css/phosphor" }
+                { from: "../../node_modules/antd/dist/antd.min.css", to: "css/antd.css" }
             ]),
             new WriteFilePlugin()
         ]

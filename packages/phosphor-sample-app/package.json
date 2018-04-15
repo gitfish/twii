@@ -1,5 +1,5 @@
 {
-  "name": "@twii/sample-app",
+  "name": "@twii/phosphor-sample-app",
   "description": "twii Application Sample using common libs",
   "version": "1.0.6",
   "main": "index.js",
@@ -13,28 +13,16 @@
     "test": "jest"
   },
   "dependencies": {
-    "@twii/common": "^1.0.6",
-    "@twii/common-ui": "^1.0.6",
     "@twii/router": "^1.0.6",
-    "@twii/sample-base": "^1.0.6",
-    "@twii/dashboard": "^1.0.6",
-    "@uifabric/icons": "^5.7.0",
-    "@uifabric/styling": "^5.22.0",
-    "@uifabric/utilities": "^5.23.0",
-    "core-js": "^2.5.1",
-    "mobx": "^4.1.1",
-    "mobx-react": "^5.0.0",
-    "moment": "^2.21.0",
-    "office-ui-fabric-react": "^5.79.0",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "@twii/phosphor-sample": "^1.0.6"
   },
   "devDependencies": {
     "del": "^3.0.0",
-    "@types/react": "^16.3.4",
     "copy-webpack-plugin": "^4.2.3",
     "html-webpack-plugin": "^3.2.0",
     "source-map-loader": "^0.2.3",
+    "css-loader": "^0.28.11",
+    "style-loader": "^0.20.3",
     "ts-loader": "^4.0.1",
     "typescript": "^2.8.0",
     "webpack": "^4.5.0",

@@ -150,16 +150,6 @@ const sampleGroups = [
                 title: "Button Sample"
             }
         ]
-    },
-    {
-        key: "phosphor-samples",
-        title: "Phosphor Samples",
-        items: [
-            {
-                path: "/samples/phosphor/dockpanel",
-                title: "Dock Panel"
-            }
-        ]
     }
 ];
 

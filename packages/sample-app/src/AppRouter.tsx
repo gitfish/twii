@@ -6,6 +6,11 @@ import { createSampleRouter } from "@twii/sample-base/lib/sampleRouter";
 const r = new Router();
 const sampleRouter = createSampleRouter();
 r.use(sampleRouter);
+r.use("/dashboards", req => {
+    return import("./component/DashboardListApp").then(m => {
+        return <m.DashboardListApp host={req.app} />;
+    });
+});
 
 r.use((req, next) => {
     if(req.path === "/" || req.path === "/index" || req.path === "/home") {

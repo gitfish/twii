@@ -180,12 +180,6 @@ const createSampleRouter = () : Router => {
         });
     }));
     
-    r.use("/samples/phosphor/dockpanel", exactPath(req => {
-        return import("./phosphor/component/DockPanelSample").then(m => {
-            return <m.DockPanelSampleApp host={req.app} />;
-        });
-    }));
-    
     r.use("/samples/home", exactPath(req => {
         return import("./component/Home").then(m => {
             return <m.Home host={req.app} />;
