@@ -19,10 +19,13 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingStoreF
     }
     const DefaultStyles : IListingStoreFrontStyles = {
         root: {
-
+            
         },
         header: {
-            padding: 8
+            paddingTop: 8,
+            paddingBottom: 0,
+            paddingLeft: 16,
+            paddingRight: 16
         },
         searchInputContainer: {
             selectors: {
@@ -35,18 +38,16 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingStoreF
 
         },
         section: {
-            margin: 8,
-            boxShadow: "0 0 5px 0 rgba(0, 0, 0, 0.4)"
+            marginTop: 16
         },
         sectionHeader: {
-            padding: "4px 8px"
+            marginLeft: 16
         },
         sectionTitle: Object.assign({}, theme.fonts.large, {
             fontWeight: FontWeights.semibold
         }),
         sectionBody: {
-            overflow: "auto",
-            padding: 8
+            overflow: "auto"
         }
     };
     return concatStyleSets(DefaultStyles, customStyles);

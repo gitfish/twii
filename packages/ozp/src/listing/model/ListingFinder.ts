@@ -1,11 +1,12 @@
 import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
 import { IListingModel } from "./IListingModel";
+import { IListingModelSupplier } from "./IListingModelSupplier";
 import { ListingModelSupplier } from "./ListingModelSupplier";
 
 const deleteAfter = 2 * 60 * 1000;
 
 interface IEntry {
-    supplier: ISyncSupplier<IListingModel>;
+    supplier: IListingModelSupplier;
     timeout?: any;
 }
 
@@ -15,7 +16,7 @@ const deleteEntry = (key : number) => {
     delete entryMap[key];
 };
 
-const findById = (listingId : number) : ISyncSupplier<IListingModel> => {
+const findById = (listingId : number) : IListingModelSupplier => {
     let entry = entryMap[listingId];
     if(!entry) {
         entry = { supplier: new ListingModelSupplier(listingId) };

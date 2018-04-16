@@ -4,6 +4,7 @@ import { memoizeFunction } from "@uifabric/utilities";
 interface IListingPreviewStyles {
     root?: IStyle;
     fallback?: IStyle;
+    fallbackIcon?: IStyle;
 }
 
 const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingPreviewStyles | undefined) : IListingPreviewStyles => {
@@ -23,7 +24,12 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingPrevie
             justifyContent: "center",
             alignItems: "center",
             width: 220,
-            height: 137
+            height: 137,
+            backgroundColor: theme.palette.neutralLight,
+            color: theme.palette.themePrimary
+        },
+        fallbackIcon: {
+            
         }
     };
     return concatStyleSets(DefaultStyles, customStyles);

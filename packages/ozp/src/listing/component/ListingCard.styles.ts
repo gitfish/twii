@@ -24,12 +24,13 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingCardSt
             width: 228,
             minWidth: 228,
             height: 185,
-            margin: 8,
-            padding: 8,
+            margin: 16,
             backgroundColor: theme.palette.white,
+            boxShadow: "0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)",
+            border: "1px solid transparent",
             selectors: {
                 "&:hover": {
-                    backgroundColor: theme.palette.neutralLight
+                    border: `1px solid ${theme.palette.themeSecondary}`
                 }
             }
         },
@@ -38,16 +39,15 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingCardSt
         },
         details: {
             height: 40,
-            paddingLeft: 4,
-            paddingRight: 4,
-            paddingBottom: 4
+            paddingLeft: 8,
+            paddingRight: 8,
+            paddingBottom: 8,
+            color: theme.palette.neutralDark
         },
         title: {
-            color: theme.palette.neutralDark,
             fontWeight: FontWeights.semibold
         },
         shortDescription: {
-            color: theme.palette.neutralSecondary,
             fontWeight: FontWeights.light,
             textOverflow: "ellipsis",
             overflow: "hidden",

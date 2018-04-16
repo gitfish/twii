@@ -17,7 +17,7 @@ interface IListingPreviewProps {
 class ListingPreview extends React.Component<IListingPreviewProps, any> {
     private _classNames : IListingPreviewClassNames;
     private _renderFallback() {
-        return <div className={this._classNames.fallback}><Icon iconName="Puzzle" /></div>;
+        return <div className={this._classNames.fallback}><Icon className={this._classNames.fallbackIcon} iconName="Puzzle" /></div>;
     }
     render() {
         this._classNames = getClassNames(getStyles(undefined, this.props.styles), this.props.className);

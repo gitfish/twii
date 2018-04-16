@@ -1,12 +1,12 @@
 import * as React from "react";
-import { autorun, IReactionDisposer } from "mobx";
+import { reaction, IReactionDisposer } from "mobx";
 import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { ListingContainer, ListingTitleContainer, ListingDeleteDialog } from "./Listing";
 import { findById } from "../model/ListingFinder";
 import { ListingDeleteStore } from "../model/ListingDeleteStore";
-import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
 import { IListingModel } from "../model/IListingModel";
+import { IListingModelSupplier } from "../model/IListingModelSupplier";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 interface IListingAppProps extends IAppProps {
@@ -24,15 +24,17 @@ class ListingApp extends React.Component<IListingAppProps, any> {
     private _onOpen = (listing) => {
         this.props.host.open({ path: `/listing/${listing.id}/launch` });
     }
-    get listingSupplier() : ISyncSupplier<IListingModel> {
+    get listingSupplier() : IListingModelSupplier {
         return this.props.host.getState("listingSupplier", () => {
-            return findById(this.props.listingId);
-        });
+            return findById(this.props.listingId); 
+        }, s => s.listingId !== this.props.listingId);
     }
     componentWillMount() {
-        this._titleSetDisposer = autorun(() => {
-            this.props.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? `${this.listingSupplier.value.title} Listing` : undefined);
-        });
+        this._titleSetDisposer = reaction(
+            () => this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? `${this.listingSupplier.value.title} Listing` : undefined,
+            (title) => this.props.host.setTitle(title),
+            { fireImmediately: true }
+        );
     }
     componentWillUnount() {
         if(this._titleSetDisposer) {
