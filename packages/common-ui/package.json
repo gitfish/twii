@@ -1,6 +1,6 @@
 {
   "name": "@twii/common-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/common": "^1.0.7",
+    "@twii/common": "^1.0.8",
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
   },
