@@ -22,7 +22,7 @@ class StateManager implements IStateManager {
     @action
     getState<T = any>(key : string, factory?: ISupplierFunc<T>, shouldUpdate?: IPredicateFunc<T>) {
         let r = this._state[key];
-        if((r === undefined || shouldUpdate && shouldUpdate(r)) && factory) {
+        if((r === undefined || (shouldUpdate && shouldUpdate(r))) && factory) {
             r = factory();
             this._state[key] = r;
         }
