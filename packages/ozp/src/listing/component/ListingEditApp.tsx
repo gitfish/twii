@@ -4,6 +4,7 @@ import { findById } from "../model/ListingFinder";
 import { ListingTitleContainer } from "./Listing";
 import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
 import { IListingModel } from "../model/IListingModel";
+import { IListingModelSupplier } from "../model/IListingModelSupplier";
 import { autorun, IReactionDisposer } from "mobx";
 import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
@@ -20,10 +21,10 @@ class ListingEditApp extends React.Component<IListingEditAppProps, any> {
     private _onCancel = () => {
         this.props.host.load({ path: `/listing/${this.props.listingId}` });
     }
-    get listingSupplier() : ISyncSupplier<IListingModel> {
+    get listingSupplier() : IListingModelSupplier {
         return this.props.host.getState("listingSupplier", () => {
-            return findById(this.props.listingId);
-        });
+            return findById(this.props.listingId); 
+        }, s => s.listingId !== this.props.listingId);
     }
     componentWillMount() {
         this._titleSetDisposer = autorun(() => {

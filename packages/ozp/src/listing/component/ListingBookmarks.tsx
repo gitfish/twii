@@ -21,7 +21,7 @@ class ListingBookmarks extends React.Component<IListingBookmarksProps, any> {
         }
         return this.props.onRenderNoBookmarks ? this.props.onRenderNoBookmarks() :
             (
-                <MessageBar messageBarType={MessageBarType.info}>
+                <MessageBar messageBarType={MessageBarType.warning}>
                     You haven't bookmarked anything.
                 </MessageBar>
             );

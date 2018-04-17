@@ -65,6 +65,36 @@ class MockListingService implements IListingService {
             launch_url: "https://developer.microsoft.com/en-us/fabric#/components",
             approval_status: ListingApprovalStatus.APPROVED,
             is_enabled: true
+        },
+        {
+            id: nextListingId(),
+            unique_name: "blueprint_alert_sample",
+            title: "Blueprint Alert Sample",
+            description: "Blueprint Alert Sample",
+            description_short: "Blueprint Alert Sample",
+            launch_url: "/samples/blueprint/alert",
+            approval_status: ListingApprovalStatus.APPROVED,
+            is_enabled: true
+        },
+        {
+            id: nextListingId(),
+            unique_name: "blueprint_dialog_sample",
+            title: "Blueprint Dialog Sample",
+            description: "Blueprint Dialog Sample",
+            description_short: "Blueprint Dialog Sample",
+            launch_url: "/samples/blueprint/dialog",
+            approval_status: ListingApprovalStatus.APPROVED,
+            is_enabled: true
+        },
+        {
+            id: nextListingId(),
+            unique_name: "blueprint_contextmenu_sample",
+            title: "Blueprint Context Menu Sample",
+            description: "Blueprint Context Menu Sample",
+            description_short: "Blueprint Context Menu Sample",
+            launch_url: "/samples/blueprint/contextmenu",
+            approval_status: ListingApprovalStatus.APPROVED,
+            is_enabled: true
         }
     ];
     private _bookmarks : IListingBookmark[] = [];

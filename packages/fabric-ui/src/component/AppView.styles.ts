@@ -26,26 +26,9 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
             top: 0,
             right: 0,
             left: 0,
-            height: 28,
+            height: 40,
             // this is pretty shitty - basically trying to pave over the lack of @uifabric/styling use for command bar
             selectors: {
-                ".ms-CommandBar": {
-                    height: 28,
-                    selectors: {
-                        ".ms-CommandBarItem": {
-                            lineHeight: 28,
-                            height: 28,
-                            selectors: {
-                                ".ms-CommandBarItem-link": {
-                                    lineHeight: 28
-                                },
-                                ".ms-CommandBarItem-text": {
-                                    lineHeight: 28
-                                }
-                            }
-                        }
-                    }
-                },
                 "&.rootView": {
                     selectors: {
                         ".ms-CommandBar": {
@@ -89,7 +72,7 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
             overflow: "auto",
             selectors: {
                 "&.hasMenu": {
-                    top: 28
+                    top: 40
                 }
             }
         }

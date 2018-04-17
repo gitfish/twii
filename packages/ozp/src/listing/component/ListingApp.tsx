@@ -1,5 +1,5 @@
 import * as React from "react";
-import { reaction, IReactionDisposer } from "mobx";
+import { autorun, IReactionDisposer } from "mobx";
 import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { ListingContainer, ListingTitleContainer, ListingDeleteDialog } from "./Listing";
@@ -30,10 +30,8 @@ class ListingApp extends React.Component<IListingAppProps, any> {
         }, s => s.listingId !== this.props.listingId);
     }
     componentWillMount() {
-        this._titleSetDisposer = reaction(
-            () => this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? `${this.listingSupplier.value.title} Listing` : undefined,
-            (title) => this.props.host.setTitle(title),
-            { fireImmediately: true }
+        this._titleSetDisposer = autorun(() =>
+            this.props.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? `${this.listingSupplier.value.title} Listing` : undefined)
         );
     }
     componentWillUnount() {
@@ -42,18 +40,29 @@ class ListingApp extends React.Component<IListingAppProps, any> {
             delete this._titleSetDisposer;
         }
     }
-    private _onClickBackToStore = () => {
+    private _onGoToBookmarks = () => {
+        this.props.host.load({ path: "/listing/bookmark" });
+    }
+    private _onGoToStore = () => {
         this.props.host.load({ path: "/listing/storefront" });
     }
     render() {
         const items : IContextualMenuItem[] = [
+            {
+                key: "bookmarks",
+                name: "Bookmarks",
+                iconProps: {
+                    iconName: "DoubleBookmark"
+                },
+                onClick: this._onGoToBookmarks
+            },
             {
                 key: "backToStore",
                 name: "Store",
                 iconProps: {
                     iconName: "Shop"
                 },
-                onClick: this._onClickBackToStore
+                onClick: this._onGoToStore
             }  
         ];
         return (

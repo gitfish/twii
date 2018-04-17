@@ -5,8 +5,10 @@ import { IListingStoreFront } from "../IListingStoreFront";
 import { ListingServiceContext } from "../service/ListingServiceContext";
 import { isNotBlank } from "@twii/common/lib/StringUtils";
 import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
+import { Sync } from "@twii/common/lib/model/Sync";
 
 class ListingStoreFrontModel extends SyncSupplier<IListingStoreFront> implements IListingStoreFrontModel {
+    @observable searchSync : Sync = new Sync();
     @observable searchText : string;
     @observable searchResults : IListing[] = [];
     private _searchDelay : number = 500;
@@ -21,13 +23,13 @@ class ListingStoreFrontModel extends SyncSupplier<IListingStoreFront> implements
                 this.searchResults.push(r);
             });
         }
-        this.sync.syncEnd();
+        this.searchSync.syncEnd();
     }
 
     @action
     private _onSearchError = (error : any) => {
         this.searchResults = [];
-        this.sync.syncError(error);
+        this.searchSync.syncError(error);
     }
 
     private _searchImpl = () : Promise<any> => {
@@ -58,10 +60,10 @@ class ListingStoreFrontModel extends SyncSupplier<IListingStoreFront> implements
             }
             
             if(isNotBlank(searchText)) {
-                this.sync.syncStart({ type: "search" });
+                this.searchSync.syncStart({ type: "search" });
                 this._searchTimeout = setTimeout(this._searchImpl, this._searchDelay);
             } else {
-                this.sync.syncEnd();
+                this.searchSync.syncEnd();
             }
         }
     }

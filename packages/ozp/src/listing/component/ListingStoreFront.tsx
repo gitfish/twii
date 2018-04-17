@@ -122,7 +122,7 @@ class ListingStoreFrontSearchInput extends React.Component<IListingStoreFrontPro
         this.props.storeFront.setSearchText(newValue);
     } 
     render() {
-        return <SearchBox value={this.props.storeFront.searchText} onChange={this._onSearchChange} />
+        return <SearchBox value={this.props.storeFront.searchText} placeholder="Search Listings" onChange={this._onSearchChange} />
     }
 }
 
@@ -139,7 +139,7 @@ class ListingStoreFrontSearchResultsSection extends React.Component<IListingStor
             return (
                 <ListingStoreFrontSection
                     title={<span>Listings matching <strong>{this.props.storeFront.searchText}</strong></span>}>
-                    <Sync sync={this.props.storeFront.sync} onRenderDone={this._onRenderDone} syncLabel="Searching Listings..." />
+                    <Sync sync={this.props.storeFront.searchSync} onRenderDone={this._onRenderDone} syncLabel="Searching Listings..." />
                 </ListingStoreFrontSection>
             );
         }

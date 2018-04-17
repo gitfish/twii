@@ -36,21 +36,15 @@ class SampleHostAppView extends React.Component<IAppProps, any> {
             items.push(
                 {
                     key: "title",
-                    name: `Samples - ${this.props.host.title}`
+                    name: this.props.host.title,
+                    subMenuProps: {
+                        items: groupItems
+                    }
                 }
             );
         };
-        const farItems : IContextualMenuItem[] = [
-            {
-                key: "samples",
-                name: "Samples",
-                subMenuProps: {
-                    items: groupItems
-                }
-            }
-        ];
         return (
-            <HostAppView host={this.props.host} items={items} farItems={farItems}>
+            <HostAppView host={this.props.host} items={items}>
                 {this.props.children}
             </HostAppView>
         );

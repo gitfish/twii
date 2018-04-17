@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import { AppLink } from "@twii/common-ui/lib/component/AppLink";
 import { IAppHost } from "@twii/common/lib/IAppHost";
 import { SampleHostAppView, IAppProps } from "./SampleHostAppView";
+import { BoundTextField } from "@twii/fabric-ui/lib/component/BoundTextField";
 
 interface IOpenerAppState {
     openHosts: IAppHost[];
@@ -16,9 +17,9 @@ interface IAppHostDetailsProps {
 class AppHostDetails extends React.Component<IAppHostDetailsProps, any> {
     render() {
         return (
-            <div>
+            <div style={{ margin: 8 }}>
                 <div>Id: {this.props.host.id}</div>
-                <div>Title: {this.props.host.title}</div>
+                <BoundTextField binding={{ target: this.props.host, key: "title" }} />
             </div>
         );
     }

@@ -7,6 +7,7 @@ interface IListingCardClassNames {
     details?: string;
     title?: string;
     shortDescription?: string;
+    previewContainer?: string;
 }
 
 const getClassNames = memoizeFunction((styles : IListingCardStyles, className : string, clickable : boolean) => {
@@ -14,7 +15,8 @@ const getClassNames = memoizeFunction((styles : IListingCardStyles, className : 
         root: mergeStyles("listing-card", className, styles.root, clickable && styles.clickableRoot),
         details: mergeStyles("listing-card-details", styles.details),
         title: mergeStyles("listing-card-title", styles.title),
-        shortDescription: mergeStyles("listing-card-short-description", styles.shortDescription)
+        shortDescription: mergeStyles("listing-card-short-description", styles.shortDescription),
+        previewContainer: mergeStyles("listing-card-preview-container", styles.previewContainer)
     };
 });
 

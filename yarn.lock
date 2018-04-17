@@ -462,7 +462,14 @@
   dependencies:
     csstype "^2.0.0"
 
-"@uifabric/icons@>=5.7.0 <6.0.0", "@uifabric/icons@^5.7.0":
+"@uifabric/icons@>=5.7.1 <6.0.0", "@uifabric/icons@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@uifabric/icons/-/icons-5.7.1.tgz#31e0552586213267b3a5871426297795cdb77726"
+  dependencies:
+    "@uifabric/styling" ">=5.23.1 <6.0.0"
+    tslib "^1.7.1"
+
+"@uifabric/icons@^5.7.0":
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/@uifabric/icons/-/icons-5.7.0.tgz#b15e783d7485963d269fdac44ffea32b59484670"
   dependencies:
@@ -475,6 +482,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@uifabric/merge-styles@>=5.15.1 <6.0.0":
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/@uifabric/merge-styles/-/merge-styles-5.15.1.tgz#98ac25cf086504c8c820a0d1dc19f3f0a723b698"
+  dependencies:
+    tslib "^1.7.1"
+
 "@uifabric/styling@>=5.21.0 <6.0.0":
   version "5.21.0"
   resolved "https://registry.yarnpkg.com/@uifabric/styling/-/styling-5.21.0.tgz#9a97aeb092361ee0a56ec039d4b052be33f68f70"
@@ -484,13 +497,13 @@
     "@uifabric/utilities" ">=5.21.0 <6.0.0"
     tslib "^1.7.1"
 
-"@uifabric/styling@>=5.22.0 <6.0.0", "@uifabric/styling@^5.22.0":
-  version "5.22.0"
-  resolved "https://registry.yarnpkg.com/@uifabric/styling/-/styling-5.22.0.tgz#f19621f78ec117c50aef6215d96cd164efac8397"
+"@uifabric/styling@>=5.23.1 <6.0.0", "@uifabric/styling@^5.23.1":
+  version "5.23.1"
+  resolved "https://registry.yarnpkg.com/@uifabric/styling/-/styling-5.23.1.tgz#375eb891bb1071562297736b7630ca3e272e1cca"
   dependencies:
     "@microsoft/load-themed-styles" "^1.7.13"
-    "@uifabric/merge-styles" ">=5.14.0 <6.0.0"
-    "@uifabric/utilities" ">=5.23.0 <6.0.0"
+    "@uifabric/merge-styles" ">=5.15.1 <6.0.0"
+    "@uifabric/utilities" ">=5.24.0 <6.0.0"
     tslib "^1.7.1"
 
 "@uifabric/utilities@>=5.21.0 <6.0.0":
@@ -502,12 +515,11 @@
     prop-types "^15.5.10"
     tslib "^1.7.1"
 
-"@uifabric/utilities@>=5.23.0 <6.0.0", "@uifabric/utilities@^5.23.0":
-  version "5.23.0"
-  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-5.23.0.tgz#4e0b0bd06efeb694841c89f4b6bdb3afa906dc53"
+"@uifabric/utilities@>=5.24.0 <6.0.0", "@uifabric/utilities@^5.24.0":
+  version "5.24.0"
+  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-5.24.0.tgz#436c786e290f0456ad2534deac543b835599bd01"
   dependencies:
-    "@microsoft/load-themed-styles" "^1.7.13"
-    "@uifabric/merge-styles" ">=5.14.0 <6.0.0"
+    "@uifabric/merge-styles" ">=5.15.1 <6.0.0"
     prop-types "^15.5.10"
     tslib "^1.7.1"
 
@@ -6789,15 +6801,15 @@ obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.1.tgz#104124b6c602c6796881a042541d36db43a5264e"
 
-office-ui-fabric-react@^5.79.0:
-  version "5.79.0"
-  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-5.79.0.tgz#38a7d16a20f85ce248cdffe25d07f5432ef64f1e"
+office-ui-fabric-react@^5.82.1:
+  version "5.82.1"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-5.82.1.tgz#cb9b41efb2487632163ca901fd082fcf535e6ccf"
   dependencies:
     "@microsoft/load-themed-styles" "^1.7.13"
-    "@uifabric/icons" ">=5.7.0 <6.0.0"
-    "@uifabric/merge-styles" ">=5.14.0 <6.0.0"
-    "@uifabric/styling" ">=5.22.0 <6.0.0"
-    "@uifabric/utilities" ">=5.23.0 <6.0.0"
+    "@uifabric/icons" ">=5.7.1 <6.0.0"
+    "@uifabric/merge-styles" ">=5.15.1 <6.0.0"
+    "@uifabric/styling" ">=5.23.1 <6.0.0"
+    "@uifabric/utilities" ">=5.24.0 <6.0.0"
     prop-types "^15.5.10"
     tslib "^1.7.1"
 
@@ -7969,9 +7981,9 @@ react-day-picker@^7.0.7:
   dependencies:
     prop-types "^15.6.1"
 
-react-dom@^16.3.0:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
+react-dom@^16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -8023,9 +8035,9 @@ react-transition-group@^2.2.1:
     prop-types "^15.5.8"
     warning "^3.0.0"
 
-react@^16.3.0:
-  version "16.3.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.3.1.tgz#4a2da433d471251c69b6033ada30e2ed1202cfd8"
+react@^16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -9391,7 +9403,7 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.8.0:
+typescript@^2.8.0, typescript@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.1.tgz#6160e4f8f195d5ba81d4876f9c0cc1fbc0820624"
 

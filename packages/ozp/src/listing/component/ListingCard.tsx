@@ -35,7 +35,9 @@ class ListingCard extends React.Component<IListingCardProps, any> {
                  role={this.props.onClick ? "button" : undefined}
                  onClick={this.props.onClick ? this._onClick : undefined}
                  title={this.props.listing.description_short}>
-                <ListingPreview listing={this.props.listing} />
+                <div className={classNames.previewContainer}>
+                    <ListingPreview listing={this.props.listing} />
+                </div>
                 <div className={classNames.details}>
                     <div className={classNames.title}>{this.props.listing.title}</div>
                     <div className={classNames.shortDescription}>{this.props.listing.description_short}</div>

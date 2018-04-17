@@ -62,6 +62,7 @@ class ListingBookmarkListModel extends ListModel<IListingBookmark> implements IL
     removeBookmark(bookmark : IListingBookmark) : Promise<any> {
         if(bookmark) {
             const existing = this._findMatching(bookmark);
+            console.log("-- Existing: " + JSON.stringify(existing));
             if(existing) {
                 this.sync.syncStart({ type: "update" });
                 return ListingServiceContext.value.removeBookmark(existing).then(this._removeDone).catch(this._removeError);

@@ -5,9 +5,7 @@ interface IListingCardStyles {
     root?: IStyle;
     compactRoot?: IStyle;
     clickableRoot?: IStyle;
-    preview?: IStyle;
-    previewIconContainer?: IStyle,
-    previewImageContainer?: IStyle,
+    previewContainer?: IStyle;
     details?: IStyle;
     title?: IStyle;
     shortDescription?: IStyle;
@@ -21,8 +19,8 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingCardSt
         root: {
             display: "flex",
             flexDirection: "column",
+            position: "relative",
             width: 228,
-            minWidth: 228,
             height: 185,
             margin: 16,
             backgroundColor: theme.palette.white,
@@ -37,7 +35,21 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingCardSt
         clickableRoot: {
             cursor: "pointer"
         },
+        previewContainer: {
+            position: "absolute",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 145
+        },
         details: {
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            right: 0,
             height: 40,
             paddingLeft: 8,
             paddingRight: 8,

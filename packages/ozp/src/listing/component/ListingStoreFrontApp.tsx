@@ -17,19 +17,36 @@ class ListingStoreFrontApp extends React.Component<IAppProps, any> {
         this.props.host.load({ path: "/listing" });
     }
     get listingStoreFront() {
-        let r = this.props.host.state.listingStoreFront;
-        if(!r) {
-            r = new ListingStoreFrontModel();
-            this.props.host.setState({ listingStoreFront: r });
-        }
-        return r;
+        return this.props.host.getState("listingStoreFront", () => {
+            return new ListingStoreFrontModel(); 
+        });
+    }
+    private _onGoToBookmarks = () => {
+        this.props.host.load({ path: "/listing/bookmark" });
     }
     componentWillMount() {
         this.props.host.setTitle("Store");
     }
     render() {
+        const items : IContextualMenuItem[] = [
+            {
+                key: "bookmarks",
+                name: "Bookmarks",
+                iconProps: {
+                    iconName: "DoubleBookmark"
+                },
+                onClick: this._onGoToBookmarks
+            },
+            {
+                key: "store",
+                name: "Store",
+                iconProps: {
+                    iconName: "Shop"
+                }
+            }  
+        ];
         return (
-            <HostAppView host={this.props.host}>
+            <HostAppView host={this.props.host} items={items}>
                 <ListingStoreFrontContainer storeFront={this.listingStoreFront}
                                             onSelectItem={this._onSelectItem}
                                             onAdd={this._onAdd}

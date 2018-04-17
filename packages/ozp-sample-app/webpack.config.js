@@ -141,7 +141,7 @@ const createConfig = (env) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: "OZP Dashboard Sample",
+                title: "Ozp Sample App",
                 template: "src/index.template.ts",
                 AppConfig: AppConfig,
                 chunksSortMode: "none"

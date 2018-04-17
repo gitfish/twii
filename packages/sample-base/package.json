@@ -20,21 +20,21 @@
     "@twii/dashboard": "^1.0.8",
     "@twii/fabric-ui": "^1.0.8",
     "@twii/router": "^1.0.7",
-    "@uifabric/styling": "^5.22.0",
-    "@uifabric/utilities": "^5.23.0",
+    "@uifabric/styling": "^5.23.1",
+    "@uifabric/utilities": "^5.24.0",
     "antd": "^3.4.1",
     "core-js": "^2.5.1",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
-    "office-ui-fabric-react": "^5.79.0",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
+    "office-ui-fabric-react": "^5.82.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-transition-group": "^2.2.1",
     "rmwc": "^1.4.1"
   },
   "devDependencies": {
     "@types/react": "^16.3.4",
     "del": "^3.0.0",
-    "typescript": "^2.8.0"
+    "typescript": "^2.8.1"
   }
 }

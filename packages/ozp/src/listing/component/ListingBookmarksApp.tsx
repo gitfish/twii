@@ -18,18 +18,27 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
     }
     private _onRenderNoBookmarks = () => {
         return (
-            <MessageBar messageBarType={MessageBarType.info}>
-                You haven't bookmarked anything. <AppLink host={this.props.host} request={{ path: "/listing/storefront"}}>Take a look in the Store</AppLink>.
-            </MessageBar>
+            <div style={{ padding: 8 }}>
+                <MessageBar  messageBarType={MessageBarType.info}>
+                    You haven't bookmarked anything. <AppLink host={this.props.host} request={{ path: "/listing/storefront"}}>Take a look in the Store</AppLink>.
+                </MessageBar>
+            </div>
         );
     }
     private _onGoToStore = () => {
         this.props.host.load({ path: "/listing/storefront" });
     }
     render() {
-        const farItems : IContextualMenuItem[] = [
+        const items : IContextualMenuItem[] = [
             {
-                key: "goToStore",
+                key: "bookmarks",
+                name: "Bookmarks",
+                iconProps: {
+                    iconName: "DoubleBookmark"
+                }
+            },
+            {
+                key: "store",
                 name: "Store",
                 iconProps: {
                     iconName: "Shop"
@@ -38,7 +47,7 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
             }  
         ];
         return (
-            <HostAppView host={this.props.host} farItems={farItems}>
+            <HostAppView host={this.props.host} items={items}>
                 <ListingBookmarksContainer bookmarkList={ListingBookmarkListStore} onSelectListing={this._onSelectListing} onRenderNoBookmarks={this._onRenderNoBookmarks} />
             </HostAppView>
         );

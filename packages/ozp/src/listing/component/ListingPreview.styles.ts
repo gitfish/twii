@@ -29,7 +29,7 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingPrevie
             color: theme.palette.themePrimary
         },
         fallbackIcon: {
-            
+            fontSize: FontSizes.xxLarge
         }
     };
     return concatStyleSets(DefaultStyles, customStyles);
