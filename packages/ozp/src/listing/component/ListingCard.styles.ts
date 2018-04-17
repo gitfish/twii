@@ -17,10 +17,9 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingCardSt
     }
     const DefaultStyles : IListingCardStyles = {
         root: {
-            display: "flex",
-            flexDirection: "column",
             position: "relative",
             width: 228,
+            minWidth: 228,
             height: 185,
             margin: 16,
             backgroundColor: theme.palette.white,

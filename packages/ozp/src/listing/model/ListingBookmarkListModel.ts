@@ -46,14 +46,17 @@ class ListingBookmarkListModel extends ListModel<IListingBookmark> implements IL
         return Promise.reject({ code: "INVALID ARGUMENT", message: "No bookmark specified" });
     }
 
+    @action
     private _removeDone = (bookmark : IListingBookmark) => {
         const idx = this._findMatchingIndex(bookmark);
+        console.log()
         if(idx >= 0) {
-            this.value.splice(idx, 1);
+            this.items.splice(idx, 1);
         }
         this.sync.syncEnd();
     }
 
+    @action
     private _removeError = (error : any) => {
         this.sync.syncError(error);
     }
@@ -62,7 +65,6 @@ class ListingBookmarkListModel extends ListModel<IListingBookmark> implements IL
     removeBookmark(bookmark : IListingBookmark) : Promise<any> {
         if(bookmark) {
             const existing = this._findMatching(bookmark);
-            console.log("-- Existing: " + JSON.stringify(existing));
             if(existing) {
                 this.sync.syncStart({ type: "update" });
                 return ListingServiceContext.value.removeBookmark(existing).then(this._removeDone).catch(this._removeError);
@@ -72,8 +74,9 @@ class ListingBookmarkListModel extends ListModel<IListingBookmark> implements IL
         return Promise.reject({ code: "INVALID ARGUMENT", message: "No bookmark specified" });
     }
 
+    @action
     getBookmarkForListingId(listingId : number) : IListingBookmark {
-        return this.value ? this.value.find(b => b.listing && b.listing.id === listingId) : undefined;
+        return this.items ? this.items.find(b => b.listing && b.listing.id === listingId) : undefined;
     }
 }
 
