@@ -35,7 +35,8 @@
     "mobx-react": "^5.0.0",
     "office-ui-fabric-react": "^5.82.1",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "react-grid-layout": "^0.16.6"
   },
   "devDependencies": {
     "@types/jest": "^21.1.8",

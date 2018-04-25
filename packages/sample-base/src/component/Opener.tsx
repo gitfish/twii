@@ -17,9 +17,9 @@ interface IAppHostDetailsProps {
 class AppHostDetails extends React.Component<IAppHostDetailsProps, any> {
     render() {
         return (
-            <div style={{ margin: 8 }}>
-                <div>Id: {this.props.host.id}</div>
-                <BoundTextField binding={{ target: this.props.host, key: "title" }} />
+            <div style={{ margin: 8, padding: 8, border: "1px solid #cccccc" }}>
+                <div style={{ paddingTop: 8, paddingBottom: 8 }}>Host Id: {this.props.host.id}</div>
+                <BoundTextField label="Window Title" binding={{ target: this.props.host, key: "title" }} />
             </div>
         );
     }

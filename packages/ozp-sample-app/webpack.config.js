@@ -4,68 +4,22 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const WriteFilePlugin = require("write-file-webpack-plugin");
 
-const isNodeModuleFile = (filename) => {
-    return filename.indexOf("node_modules") >= 0;
+const containsFilter = (...values) => {
+    return (filename) => {
+        return values.some(value => {
+            return fileName.indexOf(value) >= 0;
+        });
+    }
 };
 
-const isTSFile = (filename) => {
-    return filename.endsWith(".ts") || filename.endsWith(".tsx");
-};
+const isNodeModuleFile = containsFilter("node_modules");
 
-const isJSFile = (filename) => {
-    return filename.endsWith(".js") || filename.endsWith(".jsx");
-};
-
-const isCssFile = (filename) => {
-    return filename.endsWith(".css");
-};
-
-const isSassFile = (filename) => {
-    return filename.endsWith(".scss");
-};
-
-const isWoffFile = (filename) => {
-    return filename.endsWith(".woff");
-};
-
-const isWoff2File = (filename) => {
-    return filename.endsWith(".woff2");
-}
-
-const isSvgFontFile = (filename) => {
-    return filename.endsWith(".font.svg");
-};
-
-const isTrueTypeFontFile = (filename) => {
-    return filename.endsWith(".ttf");
-};
-
-const isEOTFontFile = (filename) => {
-    return filename.endsWith(".eot");
-}
-
-const isFontFile = (filename) => {
-    return isWoffFile(filename) || isWoff2File(filename) || isSvgFontFile(filename) || isTrueTypeFontFile(filename) || isEOTFontFile(filename);
-};
-
-const isJSONFile = (filename) => {
-    return filename.endsWith(".json");
-};
-
-const isPNGFile = (filename) => {
-    return filename.endsWith(".png");
-};
-
-const isJPGFile = (filename) => {
-    return filename.endsWith(".jpg");
-};
-
-const isGIFFile = (filename) => {
-    return filename.endsWith(".gif");
-}
-
-const isImageFile = (filename) => {
-    return isPNGFile(filename) || isJPGFile(filename) || isGIFFile(filename);
+const endsWithFilter = (...extensions) => {
+    return (filename) => {
+        return extensions.some(ext => {
+            return filename.endsWith(ext);
+        });
+    };
 };
 
 const defaultPublicPath = "/";
@@ -101,24 +55,12 @@ const createConfig = (env) => {
         module: {
             rules: [
                 {
-                    enforce: "pre",
-                    test: isJSFile,
-                    loader: "source-map-loader",
-                    exclude: isNodeModuleFile
-                },
-                {
-                    enforce: "pre",
-                    test: isTSFile,
-                    loader: "source-map-loader",
-                    exclude: isNodeModuleFile
-                },
-                {
-                    test: isTSFile,
+                    test: endsWithFilter(".ts", ".tsx"),
                     loader: "ts-loader",
                     exclude: isNodeModuleFile
                 },
                 {
-                    test: isImageFile,
+                    test: endsWithFilter(".jpg", ".png", ".gif"),
                     use: [
                         { loader: "file-loader" }
                     ]
@@ -126,7 +68,7 @@ const createConfig = (env) => {
             ]
         },
         resolve: {
-            extensions: [".js", ".tsx", ".ts"],
+            extensions: [".js", ".jsx", ".tsx", ".ts"],
             modules: [
                 path.resolve(__dirname, "src"), "node_modules"
             ],
