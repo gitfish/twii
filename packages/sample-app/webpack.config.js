@@ -7,7 +7,7 @@ const WriteFilePlugin = require("write-file-webpack-plugin");
 const containsFilter = (...values) => {
     return (filename) => {
         return values.some(value => {
-            return fileName.indexOf(value) >= 0;
+            return filename.indexOf(value) >= 0;
         });
     }
 };

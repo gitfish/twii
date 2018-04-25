@@ -4,6 +4,7 @@ import { AppLink } from "@twii/common-ui/lib/component/AppLink";
 import { IAppHost } from "@twii/common/lib/IAppHost";
 import { SampleHostAppView, IAppProps } from "./SampleHostAppView";
 import { BoundTextField } from "@twii/fabric-ui/lib/component/BoundTextField";
+import { PrimaryButton } from "office-ui-fabric-react/lib/Button";
 
 interface IOpenerAppState {
     openHosts: IAppHost[];
@@ -15,11 +16,15 @@ interface IAppHostDetailsProps {
 
 @observer
 class AppHostDetails extends React.Component<IAppHostDetailsProps, any> {
+    private _onClose = () => {
+        this.props.host.close();
+    }
     render() {
         return (
             <div style={{ margin: 8, padding: 8, border: "1px solid #cccccc" }}>
                 <div style={{ paddingTop: 8, paddingBottom: 8 }}>Host Id: {this.props.host.id}</div>
                 <BoundTextField label="Window Title" binding={{ target: this.props.host, key: "title" }} />
+                <PrimaryButton onClick={this._onClose}>Close Host</PrimaryButton>
             </div>
         );
     }
