@@ -1,0 +1,30 @@
+import * as React from "react";
+import { ContextMenuTarget } from "@blueprintjs/core/lib/esm/components/context-menu/contextMenuTarget";
+import { Menu } from "@blueprintjs/core/lib/esm/components/menu/menu";
+import { MenuItem } from "@blueprintjs/core/lib/esm/components/menu/menuItem";
+import { MenuDivider } from "@blueprintjs/core/lib/esm/components/menu/menuDivider";
+
+@ContextMenuTarget
+class ContextMenuSamples extends React.Component<any, any> {
+    render() {
+        return (
+            <div style={{ padding: 8 }}>Contextual Menu Target</div>
+        );
+    }
+    private _onClickSave = () => {
+        console.log("-- Click Save");
+    }
+    private _onClickDelete = () => {
+        console.log("-- Click Delete");
+    }
+    renderContextMenu() {
+        return (
+            <Menu>
+                <MenuItem onClick={this._onClickSave} text="Save" />
+                <MenuItem onClick={this._onClickDelete} text="Delete" />
+            </Menu>
+        );
+    }
+}
+
+export { ContextMenuSamples, ContextMenuSamples as default }

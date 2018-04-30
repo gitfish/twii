@@ -12,9 +12,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@blueprintjs/core": "^2.1.1",
-    "@blueprintjs/datetime": "^2.0.2",
-    "@blueprintjs/table": "^2.0.0",
+    "@twii/blueprint-samples": "^1.1.0",
     "@twii/common": "^1.1.0",
     "@twii/common-ui": "^1.1.0",
     "@twii/dashboard": "^1.1.0",
@@ -26,14 +24,14 @@
     "core-js": "^2.5.1",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
-    "office-ui-fabric-react": "^5.82.1",
+    "office-ui-fabric-react": "^5.91.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-transition-group": "^2.2.1",
     "rmwc": "^1.4.1"
   },
   "devDependencies": {
-    "@types/react": "^16.3.4",
+    "@types/react": "^16.3.13",
     "del": "^3.0.0",
     "typescript": "^2.8.1"
   }

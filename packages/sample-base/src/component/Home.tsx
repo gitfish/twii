@@ -5,7 +5,7 @@ import { AppLink } from "@twii/common-ui/lib/component/AppLink";
 import { List } from "office-ui-fabric-react/lib/List";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { getTheme } from "@uifabric/styling";
-import { sampleGroups } from "../sampleGroups";
+import { samples } from "../samples";
 
 interface ISampleAppTileProps extends IAppProps {
     request: IRequest;
@@ -41,7 +41,7 @@ class Home extends React.Component<IAppProps, any> {
                     <div style={{ padding: 8 }}>
                         <h2>Samples Home</h2>
                         <div>
-                            {sampleGroups.map(group => {
+                            {samples.map(group => {
                                 return (
                                     <div key={group.key}>
                                         <h3>{group.title}</h3>

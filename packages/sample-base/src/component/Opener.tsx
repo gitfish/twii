@@ -30,32 +30,41 @@ class AppHostDetails extends React.Component<IAppHostDetailsProps, any> {
     }
 }
 
-class OpenerApp extends React.Component<IAppProps, any> {
+class Opener extends React.Component<IAppProps, any> {
     constructor(props : IAppProps) {
         super(props);
         this.state = { openHosts: [] };
     }
-    componentWillMount() {
-        this.props.host.setTitle("Opener");
-    }
     private _onHostOpened = (host : IAppHost) => {
+        host.addEventListener("close", () => {
+            this._onHostClosed(host);
+        });
         const openHosts = [host].concat(this.state.openHosts);
         this.setState({ openHosts: openHosts });
     }
+    private _onHostClosed = (host : IAppHost) => {
+        console.log("-- Host Closed: " + host.id);
+        const openHosts = [].concat(this.state.openHosts);
+        const idx = openHosts.indexOf(host);
+        if(idx >= 0) {
+            openHosts.splice(idx, 1);
+            this.setState({ openHosts: openHosts });
+        }
+    }
     render() {
         return (
-            <SampleHostAppView host={this.props.host}>
+            <div>
                 <div style={{ padding: 8 }}>
-                    <AppLink host={this.props.host} request={{ path: "/samples/opener" }} open onHostOpened={this._onHostOpened}>Open Another Opener</AppLink>
+                    <AppLink host={this.props.host} request={{ path: "/samples/common/opener" }} open onHostOpened={this._onHostOpened}>Open Another Opener</AppLink>
                 </div>
                 <div>
                     {this.state.openHosts.map(h => {
                        return <AppHostDetails key={h.id} host={h} />; 
                     })}
                 </div>
-            </SampleHostAppView>
+            </div>
         );
     }
 }
 
-export { OpenerApp }
+export { Opener, Opener as default }

@@ -1,0 +1,26 @@
+{
+  "name": "@twii/fabric-ui-samples",
+  "version": "1.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "node task/clean",
+    "build": "tsc",
+    "build-watch": "tsc --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "@twii/common-ui": "^1.1.0",
+    "office-ui-fabric-react": "^5.91.0",
+    "@twii/fabric-ui": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.13",
+    "typescript": "^2.8.1",
+    "del": "^3.0.0"
+  }
+}

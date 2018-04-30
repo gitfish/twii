@@ -2,8 +2,8 @@ import * as React from "react";
 import { DashboardWrapper } from "@twii/dashboard/lib/component/DashboardWrapper";
 import { IDashboardStyles } from "@twii/dashboard/lib/component/Dashboard.styles";
 import { getTheme } from "@uifabric/styling";
+import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { createSampleRouter } from "../../sampleRouter";
-import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 
 const dashboardRouter = createSampleRouter();
 
@@ -16,7 +16,7 @@ class StackSample extends React.Component<IAppProps, any> {
                 windows: [
                     {
                         type: "window",
-                        path: "/samples/fabric/form"
+                        path: "/samples/fabric/textfield"
                     },
                     {
                         type: "window",
@@ -52,7 +52,7 @@ class HSplitSample extends React.Component<IAppProps, any> {
                 left: {
                     component: {
                         type: "window",
-                        path: "/samples/fabric/form"
+                        path: "/samples/fabric/textfield"
                     }
                 },
                 right: {
@@ -90,7 +90,7 @@ class VSplitSample extends React.Component<IAppProps, any> {
                 top: {
                     component: {
                         type: "window",
-                        path: "/samples/fabric/form"
+                        path: "/samples/fabric/textfield"
                     }
                 },
                 bottom: {
@@ -118,43 +118,4 @@ class VSplitSample extends React.Component<IAppProps, any> {
     }
 }
 
-class StackSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("Stack Sample");
-    }
-    render() {
-        return (
-            <SampleHostAppView host={this.props.host}>
-                <StackSample host={this.props.host} />
-            </SampleHostAppView>
-        );
-    }
-}
-
-class HSplitSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("HSplit Sample");
-    }
-    render() {
-        return (
-            <SampleHostAppView host={this.props.host}>
-                <HSplitSample host={this.props.host} />
-            </SampleHostAppView>
-        );
-    }
-}
-
-class VSplitSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("VSplit Sample");
-    }
-    render() {
-        return (
-            <SampleHostAppView host={this.props.host}>
-                <VSplitSample host={this.props.host} />
-            </SampleHostAppView>
-        );
-    }
-}
-
-export { StackSampleApp, HSplitSampleApp, VSplitSampleApp }
+export { StackSample, HSplitSample, VSplitSample }

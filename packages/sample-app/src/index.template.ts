@@ -14,7 +14,6 @@ const createTemplate = (params) => {
                 <link rel="stylesheet" href="${AppConfig.publicPath}css/blueprint-datetime.css" />
                 <link rel="stylesheet" href="${AppConfig.publicPath}css/blueprint-table.css" />
                 <link rel="stylesheet" href="${AppConfig.publicPath}css/antd.css" />
-                <link rel="stylesheet" href="${AppConfig.publicPath}css/phosphor/index.css" />
                 <script type="text/javascript">
                     window["AppConfig"] = ${JSON.stringify(AppConfig)};
                     window["FabricConfig"] = {
