@@ -1,5 +1,5 @@
 {
-  "name": "@twii/blueprint-samples",
+  "name": "@twii/antd-samples",
   "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,12 +13,9 @@
   },
   "dependencies": {
     "@twii/common": "^1.1.0",
-    "@blueprintjs/core": "^2.2.1",
-    "@blueprintjs/datetime": "^2.0.2",
-    "@blueprintjs/table": "^2.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-transition-group": "^2.2.1"
+    "antd": "^3.4.1"
   },
   "devDependencies": {
     "@types/react": "^16.3.13",

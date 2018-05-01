@@ -71,30 +71,40 @@ const samples : ISample[] = [
                 moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/NavigationView")
             }
         ]
-    }/*,
+    },
     {
         key: "rmwc-samples",
         title: "RMWC Samples",
         items: [
             {
+                key: "rmwcCard",
                 path: "/samples/rmwc/card",
-                title: "Card Sample"
+                title: "Card Sample",
+                moduleLoader: () => import("@twii/rmwc-samples/lib/component/CardSamples")
             },
             {
+                key: "rmwcGridList",
                 path: "/samples/rmwc/gridlist",
-                title: "Grid List Sample"
+                title: "Grid List Sample",
+                moduleLoader: () => import("@twii/rmwc-samples/lib/component/GridListSample")
             },
             {
+                key: "rmwcForm",
                 path: "/samples/rmwc/form",
-                title: "Form/Input Sample"
+                title: "Form/Input Sample",
+                moduleLoader: () => import("@twii/rmwc-samples/lib/component/FormSamples")
             },
             {
+                key: "rmwcTabs",
                 path: "/samples/rmwc/tabs",
-                title: "Tabs Sample"
+                title: "Tabs Sample",
+                moduleLoader: () => import("@twii/rmwc-samples/lib/component/TabsSample")
             },
             {
+                key: "rwmcToolbar",
                 path: "/samples/rmwc/toolbar",
-                title: "Toolbar Sample"
+                title: "Toolbar Sample",
+                moduleLoader: () => import("@twii/rmwc-samples/lib/component/ToolbarSample")
             }
         ]
     },
@@ -103,74 +113,115 @@ const samples : ISample[] = [
         title: "Blueprint Samples",
         items: [
             {
+                key: "blueprintAlert",
                 path: "/samples/blueprint/alert",
-                title: "Alert Sample"
+                title: "Blueprint Alert Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/AlertSamples")
             },
             {
+                key: "blueprintDialog",
                 path: "/samples/blueprint/dialog",
-                title: "Dialog Sample"
+                title: "Blueprint Dialog Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/DialogSamples")
             },
             {
+                key: "blueprintContextMenu",
                 path: "/samples/blueprint/contextmenu",
-                title: "Context Menu Sample"
+                title: "Blueprint Context Menu Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/ContextMenuSamples")
             },
             {
+                key: "blueprintCollapse",
                 path: "/samples/blueprint/collapse",
-                title: "Collapse Sample"
+                title: "Blueprint Collapse Menu Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/CollapseSamples")
             },
             {
+                key: "blueprintNavbar",
                 path: "/samples/blueprint/navbar",
-                title: "Navbar Sample"
+                title: "Blueprint Navbar Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/NavbarSamples")
             },
             {
+                key: "blueprintTabs",
                 path: "/samples/blueprint/tabs",
-                title: "Tabs Sample"
+                title: "Blueprint Tabs Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/TabsSamples")
             },
             {
+                key: "blueprintCallout",
                 path: "/samples/blueprint/callout",
-                title: "Callout Sample"
+                title: "Blueprint Callout Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/CalloutSamples")
             },
             {
-                path: "/samples/blueprint/collapsibleList",
-                title: "Collapsible List Sample"
-            },
-            {
+                key: "blueprintSlider",
                 path: "/samples/blueprint/slider",
-                title: "Slider Sample"
+                title: "Blueprint Slider Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/SliderSamples")
             },
             {
+                key: "blueprintTagInput",
                 path: "/samples/blueprint/tagInput",
-                title: "Tag Input Sample"
+                title: "Blueprint Tag Input Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/TagInputSamples")
             },
             {
+                key: "blueprintPopover",
                 path: "/samples/blueprint/popover",
-                title: "Popover Sample"
+                title: "Popover Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/PopoverSamples")
             },
             {
+                key: "blueprintDateInput",
                 path: "/samples/blueprint/dateInput",
-                title: "Date Input Sample"
+                title: "Date Input Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/DateInputSamples")
             },
             {
+                key: "blueprintTable",
                 path: "/samples/blueprint/table",
-                title: "Table Sample"
+                title: "Table Sample",
+                moduleLoader: () => import("@twii/blueprint-samples/lib/component/TableSamples")
             }
         ]
     },
     {
         key: "antd-samples",
-        title: "Ant Design of React Samples",
+        title: "Ant Design Samples",
         items: [
             {
+                key: "antdLayout",
                 path: "/samples/antd/layout",
-                title: "Layout Sample"
+                title: "Antd Layout Sample",
+                moduleLoader: () => import("@twii/antd-samples/lib/component/LayoutSample")
             },
             {
+                key: "antdButton",
                 path: "/samples/antd/button",
-                title: "Button Sample"
+                title: "Antd Button Sample",
+                moduleLoader: () => import("@twii/antd-samples/lib/component/ButtonSample")
+            }
+        ]
+    },
+    {
+        key: "atlaskit-samples",
+        title: "AtlasKit Samples",
+        items: [
+            {
+                key: "atlasKitAvatar",
+                path: "/samples/atlaskit/avatar",
+                title: "AtlasKit Avatar Sample",
+                moduleLoader: () => import("@twii/atlaskit-samples/lib/component/AvatarSamples")
+            },
+            {
+                key: "atlasKitBadge",
+                path: "/samples/atlaskit/badge",
+                title: "AtlasKit Badge Sample",
+                moduleLoader: () => import("@twii/atlaskit-samples/lib/component/BadgeSamples")
             }
         ]
     }
-    */
 ];
 
 export { samples }

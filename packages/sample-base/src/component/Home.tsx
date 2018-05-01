@@ -31,12 +31,9 @@ class SampleAppTile extends React.Component<ISampleAppTileProps, any> {
 }
 
 class Home extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("Samples Home");
-    }
     render() {
         return (
-            <SampleHostAppView host={this.props.host}>
+            <SampleHostAppView host={this.props.host} title="Samples Home">
                 <div>
                     <div style={{ padding: 8 }}>
                         <h2>Samples Home</h2>

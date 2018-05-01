@@ -2,7 +2,6 @@ import * as React from "react";
 import Layout from "antd/lib/layout/index";
 import Menu from "antd/lib/menu/index";
 import Breadcrumb from "antd/lib/breadcrumb/index";
-import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 
 const { Header, Content, Footer } = Layout;
 
@@ -39,17 +38,4 @@ class LayoutSample extends React.Component<any, any> {
     }
 }
 
-class LayoutSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("Antd Laytout Sample");
-    }
-    render() {
-        return (
-            <SampleHostAppView host={this.props.host}>
-                <LayoutSample />
-            </SampleHostAppView>
-        );
-    }
-}
-
-export { LayoutSampleApp }
+export { LayoutSample, LayoutSample as default }

@@ -7,7 +7,6 @@ import {
   ToolbarMenuIcon,
   ToolbarIcon
 } from "rmwc/Toolbar";
-import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 
 
 class ToolbarSample extends React.Component<any, any> {
@@ -53,17 +52,4 @@ class ToolbarSample extends React.Component<any, any> {
     }
 }
 
-class ToolbarSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("RMWC Toolbar Samples");
-    }
-    render() {
-        return (
-            <SampleHostAppView host={this.props.host}>
-                <ToolbarSample />
-            </SampleHostAppView>
-        );
-    }
-}
-
-export { ToolbarSampleApp }
+export { ToolbarSample, ToolbarSample as default }

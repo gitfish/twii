@@ -1,6 +1,5 @@
 import * as React from "react";
 import { TabBar, Tab, TabIcon, TabIconText, TabBarScroller } from "rmwc/Tabs";
-import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 
 interface ITabsSampleState {
     activeTabIndex: number;
@@ -72,17 +71,4 @@ class TabsSample extends React.Component<any, ITabsSampleState> {
     }
 }
 
-class TabsSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("RMWC Tabs Samples");
-    }
-    render() {
-        return (
-            <SampleHostAppView host={this.props.host}>
-                <TabsSample />
-            </SampleHostAppView>
-        );
-    }
-}
-
-export { TabsSampleApp }
+export { ITabsSampleState, TabsSample, TabsSample as default }

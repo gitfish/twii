@@ -1,5 +1,4 @@
 import * as React from "react";
-import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 import { TextField, TextFieldIcon, TextFieldHelperText } from "rmwc/TextField";
 import { Select } from "rmwc/Select";
 import { Slider } from "rmwc/Slider";
@@ -203,38 +202,33 @@ class CheckboxSamples extends React.Component<any, ICheckboxSamplesState> {
     }
 }
 
-class FormSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("RMWC Form Samples");
-    }
+class FormSamples extends React.Component<any, any> {
     render() {
         return (
-            <SampleHostAppView host={this.props.host}>
+            <div style={{ padding: 8 }}>
+                <h2>Text Field Samples</h2>
                 <div style={{ padding: 8 }}>
-                    <h2>Text Field Samples</h2>
-                    <div style={{ padding: 8 }}>
-                        <TextFieldSamples />
-                    </div>
-                    <h2>Select Samples</h2>
-                    <div style={{ padding: 8 }}>
-                        <SelectSamples />
-                    </div>
-                    <h2>Slider Samples</h2>
-                    <div style={{ padding: 8 }}>
-                        <SliderSamples />
-                    </div>
-                    <h2>Switch Samples</h2>
-                    <div style={{ padding: 8 }}>
-                        <SwitchSamples />
-                    </div>
-                    <h2>Checkbox Samples</h2>
-                    <div style={{ padding: 8 }}>
-                        <CheckboxSamples />
-                    </div>
+                    <TextFieldSamples />
                 </div>
-            </SampleHostAppView>
+                <h2>Select Samples</h2>
+                <div style={{ padding: 8 }}>
+                    <SelectSamples />
+                </div>
+                <h2>Slider Samples</h2>
+                <div style={{ padding: 8 }}>
+                    <SliderSamples />
+                </div>
+                <h2>Switch Samples</h2>
+                <div style={{ padding: 8 }}>
+                    <SwitchSamples />
+                </div>
+                <h2>Checkbox Samples</h2>
+                <div style={{ padding: 8 }}>
+                    <CheckboxSamples />
+                </div>
+            </div>
         );
     }
 }
 
-export { FormSampleApp }
+export { FormSamples, FormSamples as default }

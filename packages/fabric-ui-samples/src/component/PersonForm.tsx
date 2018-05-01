@@ -26,14 +26,15 @@ class PersonForm extends React.Component<IPersonFormProps, any> {
     }
 }
 
-class PersonFormSamples extends React.Component<IPersonFormProps, any> {
+class PersonFormSamples extends React.Component<any, any> {
+    private _person = new Person();
     render() {
         return (
             <div className="person-form-samples" style={{ padding: 8 }}>
                 <h2>Person Form Samples</h2>
-                <PersonForm person={this.props.person} />
+                <PersonForm person={this._person} />
                 <hr/>
-                <PersonForm person={this.props.person} />
+                <PersonForm person={this._person} />
             </div>
         )
     }

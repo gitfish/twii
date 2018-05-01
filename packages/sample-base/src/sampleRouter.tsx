@@ -20,7 +20,12 @@ const registerSample = (sample : ISample, router : IRouterManager) => {
 
 const createSampleRouter = () : Router => {
     const r = new Router();
-    
+    r.use("/samples/home", req => {
+        return import("./component/Home").then(m => {
+            return <m.Home host={req.app} />;
+        });
+    });
+
     samples.forEach(sample => {
         registerSample(sample, r);
     });

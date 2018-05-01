@@ -1,5 +1,5 @@
 {
-  "name": "@twii/blueprint-samples",
+  "name": "@twii/atlaskit-samples",
   "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,12 +13,17 @@
   },
   "dependencies": {
     "@twii/common": "^1.1.0",
-    "@blueprintjs/core": "^2.2.1",
-    "@blueprintjs/datetime": "^2.0.2",
-    "@blueprintjs/table": "^2.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-transition-group": "^2.2.1"
+    "@atlaskit/avatar": "^10.0.3",
+    "@atlaskit/badge": "^7.1.0",
+    "@atlaskit/banner": "^5.0.0",
+    "@atlaskit/blanket": "^5.0.0",
+    "@atlaskit/breadcrumbs": "^4.0.0",
+    "@atlaskit/button": "^7.0.2",
+    "@atlaskit/calendar": "^5.0.0",
+    "@atlaskit/checkbox": "^2.0.0",
+    "@atlaskit/theme": "^3.1.0"
   },
   "devDependencies": {
     "@types/react": "^16.3.13",

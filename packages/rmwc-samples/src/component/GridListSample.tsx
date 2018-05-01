@@ -1,5 +1,4 @@
 import * as React from "react";
-import { SampleHostAppView, IAppProps } from "../../component/SampleHostAppView";
 import {
   GridList,
   GridTile,
@@ -70,17 +69,4 @@ class GridListSample extends React.Component<any, IGridListSampleState> {
   }
 }
 
-class GridListSampleApp extends React.Component<IAppProps, any> {
-    componentWillMount() {
-        this.props.host.setTitle("RMWC Grid List Samples");
-    }
-    render() {
-        return (
-            <SampleHostAppView host={this.props.host}>
-                <GridListSample />
-            </SampleHostAppView>
-        );
-    }
-}
-
-export { GridListSampleApp }
+export { IGridListSampleState, GridListSample, GridListSample as default }

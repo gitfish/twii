@@ -16,10 +16,14 @@ class SampleHostAppView extends React.Component<ISampleHostAppViewProps, any> {
     private _onClickItem = (e, item) => {
         this.props.host.load({ path: item.path, replace: true });
     }
+    private _updateHostTitle(props : ISampleHostAppViewProps) {
+        props.host.setTitle(props.title || "");
+    }
     componentWillMount() {
-        if(this.props.title) {
-            this.props.host.setTitle(this.props.title);
-        }
+        this._updateHostTitle(this.props);
+    }
+    componentWillReceiveProps(nextProps : ISampleHostAppViewProps) {
+        this._updateHostTitle(nextProps);
     }
     render() {
         const groupItems = samples.map(g => {
