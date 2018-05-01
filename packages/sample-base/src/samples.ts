@@ -211,14 +211,26 @@ const samples : ISample[] = [
             {
                 key: "atlasKitAvatar",
                 path: "/samples/atlaskit/avatar",
-                title: "AtlasKit Avatar Sample",
+                title: "AtlasKit Avatar Samples",
                 moduleLoader: () => import("@twii/atlaskit-samples/lib/component/AvatarSamples")
             },
             {
                 key: "atlasKitBadge",
                 path: "/samples/atlaskit/badge",
-                title: "AtlasKit Badge Sample",
+                title: "AtlasKit Badge Samples",
                 moduleLoader: () => import("@twii/atlaskit-samples/lib/component/BadgeSamples")
+            },
+            {
+                key: "atlasKitBanner",
+                path: "/samples/atlaskit/banner",
+                title: "AtlasKit Banner Samples",
+                moduleLoader: () => import("@twii/atlaskit-samples/lib/component/BannerSamples")
+            },
+            {
+                key: "atlasKitButton",
+                path: "/samples/atlaskit/button",
+                title: "AtlasKit Button Samples",
+                moduleLoader: () => import("@twii/atlaskit-samples/lib/component/ButtonSamples")
             }
         ]
     }

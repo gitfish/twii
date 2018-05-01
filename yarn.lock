@@ -113,7 +113,7 @@
     prop-types "^15.5.10"
     styled-components "1.4.6 - 3"
 
-"@atlaskit/icon@^11.0.0":
+"@atlaskit/icon@^11.0.0", "@atlaskit/icon@^11.0.1":
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-11.0.1.tgz#893922221d8b4028ee93c936b5fb9420512544fb"
   dependencies:
@@ -132,7 +132,7 @@
     styled-components "1.4.6 - 3"
     uuid "^3.1.0"
 
-"@atlaskit/layer-manager@^3.0.3":
+"@atlaskit/layer-manager@^3.0.1", "@atlaskit/layer-manager@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@atlaskit/layer-manager/-/layer-manager-3.0.3.tgz#a46dd575f3a7635ac6a46f2d629a15a2ac354d44"
   dependencies:
@@ -148,6 +148,22 @@
   dependencies:
     react-scrolllock "^2.0.2"
     styled-components "1.4.6 - 3"
+
+"@atlaskit/modal-dialog@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@atlaskit/modal-dialog/-/modal-dialog-4.0.3.tgz#6b14e38f4ed3d39dbc47670ec1e7a7e185b362c3"
+  dependencies:
+    "@atlaskit/blanket" "^5.0.0"
+    "@atlaskit/button" "^7.0.0"
+    "@atlaskit/icon" "^11.0.0"
+    "@atlaskit/layer-manager" "^3.0.1"
+    "@atlaskit/theme" "^3.0.0"
+    focusin "^2.0.0"
+    prop-types "^15.5.10"
+    raf-schd "^2.1.0"
+    react-transition-group "^2.2.1"
+    styled-components "1.4.6 - 3"
+    tabbable "^1.1.0"
 
 "@atlaskit/spinner@^5.0.0":
   version "5.0.0"
@@ -7872,6 +7888,10 @@ querystringify@~1.0.0:
 quick-lru@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
+
+raf-schd@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/raf-schd/-/raf-schd-2.1.1.tgz#0b59964cee2e96b7dd46ffaeb5c08740f3a5e7ab"
 
 randomatic@^1.1.3:
   version "1.1.7"
