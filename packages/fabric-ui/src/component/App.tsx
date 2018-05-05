@@ -21,7 +21,7 @@ class AppContainer extends React.Component<IAppContainerProps, any> implements I
         super(props);
         this._host = new AppHost();
         this._host.router = this.props.router;
-        this._host.setRequest(props);
+        this._host.setDefaultRequest(props);
     }
     get host() : IAppHost {
         return this._host;
