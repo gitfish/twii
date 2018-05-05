@@ -1,6 +1,6 @@
 {
   "name": "@twii/sample-base",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -12,16 +12,16 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/common": "^1.1.0",
-    "@twii/common-ui": "^1.1.0",
-    "@twii/dashboard": "^1.1.0",
-    "@twii/fabric-ui": "^1.1.0",
-    "@twii/router": "^1.1.0",
-    "@twii/blueprint-samples": "^1.1.0",
-    "@twii/antd-samples": "^1.1.0",
-    "@twii/rmwc-samples": "^1.1.0",
-    "@twii/fabric-ui-samples": "^1.1.0",
-    "@twii/atlaskit-samples": "^1.1.0",
+    "@twii/antd-samples": "^1.2.0",
+    "@twii/atlaskit-samples": "^1.2.0",
+    "@twii/blueprint-samples": "^1.2.0",
+    "@twii/common": "^1.2.0",
+    "@twii/common-ui": "^1.2.0",
+    "@twii/dashboard": "^1.2.0",
+    "@twii/fabric-ui": "^1.2.0",
+    "@twii/fabric-ui-samples": "^1.2.0",
+    "@twii/rmwc-samples": "^1.2.0",
+    "@twii/router": "^1.2.0",
     "core-js": "^2.5.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"

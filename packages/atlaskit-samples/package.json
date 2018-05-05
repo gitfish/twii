@@ -1,6 +1,6 @@
 {
   "name": "@twii/atlaskit-samples",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -12,9 +12,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/common": "^1.1.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
     "@atlaskit/avatar": "^10.0.3",
     "@atlaskit/badge": "^7.1.0",
     "@atlaskit/banner": "^5.0.0",
@@ -25,11 +22,14 @@
     "@atlaskit/checkbox": "^2.0.0",
     "@atlaskit/icon": "^11.0.1",
     "@atlaskit/modal-dialog": "^4.0.3",
-    "@atlaskit/theme": "^3.1.0"
+    "@atlaskit/theme": "^3.1.0",
+    "@twii/common": "^1.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
     "@types/react": "^16.3.13",
-    "typescript": "^2.8.3",
-    "del": "^3.0.0"
+    "del": "^3.0.0",
+    "typescript": "^2.8.3"
   }
 }

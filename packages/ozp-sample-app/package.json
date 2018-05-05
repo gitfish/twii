@@ -1,6 +1,6 @@
 {
   "name": "@twii/ozp-sample-app",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -17,13 +17,13 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/common": "^1.1.0",
-    "@twii/common-ui": "^1.1.0",
-    "@twii/dashboard": "^1.1.0",
-    "@twii/fabric-ui": "^1.1.0",
-    "@twii/ozp": "^1.1.0",
-    "@twii/router": "^1.1.0",
-    "@twii/sample-base": "^1.1.0",
+    "@twii/common": "^1.2.0",
+    "@twii/common-ui": "^1.2.0",
+    "@twii/dashboard": "^1.2.0",
+    "@twii/fabric-ui": "^1.2.0",
+    "@twii/ozp": "^1.2.0",
+    "@twii/router": "^1.2.0",
+    "@twii/sample-base": "^1.2.0",
     "@uifabric/icons": "^5.7.1",
     "core-js": "^2.5.1",
     "mobx": "^4.2.0",
