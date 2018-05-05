@@ -120,9 +120,8 @@ class BrowserAppHost extends AbstractAppHost {
 
     protected _init(request?: IRequest) : Promise<any> {
         this._extension = PathUtils.extname(this.window.location.pathname);
-        this.setRequest(request || this.defaultRequest);
         this.window.addEventListener("popstate", this._onPopState);
-        return this._loadImpl();
+        return super._init(request);
     }
 
     open(request: IRequest) : Promise<IAppHost> {

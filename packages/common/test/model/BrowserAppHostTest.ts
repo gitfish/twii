@@ -1,4 +1,4 @@
-import { BrowserAppHost, globalWindowAppHostResolver } from "model/BrowserAppHost";
+import { BrowserAppHost, Defaults } from "model/BrowserAppHost";
 import { Router } from "@twii/router/lib/Router";
 import * as qs from "qs";
 import { JSDOM } from "jsdom";
@@ -9,6 +9,12 @@ describe("Browser App Host", () => {
         const dom = new JSDOM();
         dom.reconfigure({ url: "http://woo/not/ready/for/this?one=1&two=2" });
         host.window = dom.window;
+        const router = new Router();
+        router.use(() => {
+            return "handleall";
+        });
+        host.router = router;
+        host.load();
         
         expect(host.path).toBe("/not/ready/for/this");
         expect(host.params.one).toBe("1");
@@ -20,6 +26,12 @@ describe("Browser App Host", () => {
         const dom = new JSDOM();
         dom.reconfigure({ url: "http://woo/dodgy/route/c" });
         host.window = dom.window;
+        const router = new Router();
+        router.use(() => {
+            return "handleall";
+        });
+        host.router = router;
+        host.load();
 
         let url = host.getUrl({ path: "/route/a" });
 
@@ -121,15 +133,14 @@ describe("Browser App Host", () => {
         host.window.open = (url, windowName, windowFeatures) => {
             const newDom = new JSDOM();
             newDom.reconfigure({ url: `http://woo${url}` });
-            return newDom.window;
+            const newWindow = newDom.window;
+            const newHost = new BrowserAppHost();
+            newHost.window = newWindow;
+            newHost.publicPath = "/blimey";
+            newWindow[Defaults.windowAppHostKey] = newHost;
+            return newWindow;
         };
         host.publicPath = "/blimey";
-
-        host.windowAppHostResolver = (window : Window) => {
-            const r = new BrowserAppHost();
-            r.window = window;
-            return r;
-        };
 
         const router = new Router();
         router.use("/not/ready/for/this", (req, res) => {
@@ -146,22 +157,5 @@ describe("Browser App Host", () => {
         expect(newHost.window).toBeTruthy();
 
         expect(newHost.window.location.href).toBe("http://woo/blimey/i/know/how/to/eat.action")
-    });
-
-    test("global app host resolve", async () => {
-        const dom = new JSDOM();
-        const window = dom.window;
-
-        const globalAppHostKey = "_TEST_APP_HOST_";
-
-        const windowAppHostResolver = globalWindowAppHostResolver(globalAppHostKey, 120, 720);
-
-        setTimeout(() => {
-            window[globalAppHostKey] = new BrowserAppHost();
-        }, 480);
-
-        const r = await windowAppHostResolver(window);
-
-        expect(r).toBeTruthy();
     });
 });

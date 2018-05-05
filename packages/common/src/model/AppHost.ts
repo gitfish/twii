@@ -5,6 +5,17 @@ import { IRequest } from "@twii/router/lib/IRequest";
 
 class AppHost extends AbstractAppHost {
     protected _events : IEventEmitter = new EventEmitter();
+    private _defaultRequest : IRequest;
+
+    get defaultRequest() : IRequest {
+        return Object.assign({}, this._defaultRequest);
+    }
+    set defaultRequest(value : IRequest) {
+        this.setDefaultRequest(value);
+    }
+    setDefaultRequest(defaultRequest : IRequest) {
+        this._defaultRequest = defaultRequest;
+    }
 
     open(request: IRequest) {
         const url = this.getUrl(request);

@@ -35,7 +35,7 @@ describe("App Host", () => {
             return "notReadyForThat";
         });
         host.router = router;
-        host.setRequest({ path: "/not/ready/for/this"});
+        host.setDefaultRequest({ path: "/not/ready/for/this"});
         expect(host.initialized).toBeFalsy();
 
         await host.load();
@@ -92,7 +92,7 @@ describe("App Host", () => {
         });
         host.setRouter(router);
 
-        host.setRequest({ path: "/not/ready/for/this"});
+        host.setDefaultRequest({ path: "/not/ready/for/this"});
         expect(host.initialized).toBeFalsy();
 
         await host.load();
