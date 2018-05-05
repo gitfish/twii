@@ -1,4 +1,4 @@
-import { AbstractAppHost } from "./AbstractAppHost";
+import { AbstractAppHost, nextId } from "./AbstractAppHost";
 import { action } from "mobx";
 import { IAppHost } from "../IAppHost";
 import { IRequest } from "@twii/router/lib/IRequest";
@@ -7,40 +7,17 @@ import { computed } from "mobx";
 import * as PathUtils from "../PathUtils";
 import * as qs from "qs";
 import { stripRight } from "../StringUtils";
+import { next } from "../Id";
 
 const Defaults = {
-    WindowAppHostKey: "__app_host__"
+    windowAppHostKey: "__app_host_dodgy_global__",
+    resolveHostMaxWait: 20000,
+    resolvePollInterval: 120
 };
-
-interface IWindowAppHostResolver {
-    (window : Window, sourceHost?: IAppHost) : Promise<IAppHost> | IAppHost;
-}
-
-const globalWindowAppHostResolver = (globalKey : string, pollInterval : number = 120, maxWait = 20000) : IWindowAppHostResolver => {
-    return (window : Window, sourceHost : IAppHost) => {
-        return new Promise((resolve, reject) => {
-            let interval;
-            const startTs = new Date().getTime();
-            interval = setInterval(() => {
-                if(window[globalKey]) {
-                    resolve(window[globalKey] as IAppHost);
-                    clearInterval(interval);
-                }
-                const currentTs = new Date().getTime();
-                if(currentTs - startTs > maxWait) {
-                    clearInterval(interval);
-                    reject("Unable to get new app host instance");
-                }
-            }, pollInterval > 0 ? pollInterval : 120);
-        });
-    }
-};
-
 
 class BrowserAppHost extends AbstractAppHost {
     private _publicPath : string;
     private _window : Window;
-    private _windowAppHostResolver?: IWindowAppHostResolver;
     private _extension : string;
 
     get root() {
@@ -49,14 +26,6 @@ class BrowserAppHost extends AbstractAppHost {
 
     get extension() {
         return this._extension;
-    }
-    
-    get windowAppHostResolver() : IWindowAppHostResolver {
-        return this._windowAppHostResolver || globalWindowAppHostResolver(Defaults.WindowAppHostKey);
-    }
-    
-    set windowAppHostResolver(value) {
-        this._windowAppHostResolver = value;
     }
     
     get window() {
@@ -68,7 +37,7 @@ class BrowserAppHost extends AbstractAppHost {
     setWindow(value : Window) {
         this._window = value;
         if(value) {
-            value[Defaults.WindowAppHostKey] = this;       
+            value[Defaults.windowAppHostKey] = this;       
         }
     }
     
@@ -162,12 +131,24 @@ class BrowserAppHost extends AbstractAppHost {
     }
 
     open(request: IRequest) : Promise<IAppHost> {
-        if(!this.windowAppHostResolver) {
-            Promise.reject({ code: "INVALID_STATE", message: "No Window App Host Resolver configured"});
-        }
         const url = this.getUrl(request);
-        const w = this.window.open(url, request ? request.windowName || request.path : "", request ? request.windowFeatures : undefined);
-        return Promise.resolve(this.windowAppHostResolver(w, this));
+        const newWindow = this.window.open(url, request ? request.windowName : undefined, request ? request.windowFeatures : undefined);
+        return new Promise((resolve, reject) => {
+            let interval;
+            const startTs = new Date().getTime();
+            interval = setInterval(() => {
+                const newHost = newWindow[Defaults.windowAppHostKey] as BrowserAppHost;
+                if(newHost) {
+                    resolve(newHost);
+                    clearInterval(interval);
+                }
+                const currentTs = new Date().getTime();
+                if(currentTs - startTs > Defaults.resolveHostMaxWait) {
+                    clearInterval(interval);
+                    reject("Unable to get new app host instance");
+                }
+            }, Defaults.resolvePollInterval);
+        });
     }
 
     close() {
@@ -191,8 +172,6 @@ class BrowserAppHost extends AbstractAppHost {
 }
 
 export {
-    IWindowAppHostResolver,
-    globalWindowAppHostResolver,
     BrowserAppHost,
     Defaults
 }

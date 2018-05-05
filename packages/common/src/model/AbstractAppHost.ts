@@ -13,8 +13,12 @@ import { StateManager } from "./StateManager";
 
 const IdPrefix = "app-host-";
 
+const nextId = () => {
+    return Id.next(IdPrefix);
+};
+
 abstract class AbstractAppHost extends StateManager implements IAppHost {
-    private _id = Id.next(IdPrefix);
+    private _id : string;
     private _router : IRouter;
     
     @observable private _title : string;
@@ -25,7 +29,16 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     @observable protected _root : boolean = false;
 
     get id() {
+        if(!this._id) {
+            this._id = nextId();
+        }
         return this._id;
+    }
+    set id(value) {
+        this.setId(value);
+    }
+    setId(id : string) {
+        this._id = id;
     }
  
     @computed
@@ -215,4 +228,4 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     }
 }
 
-export { AbstractAppHost }
+export { AbstractAppHost, nextId }

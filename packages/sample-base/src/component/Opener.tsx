@@ -36,14 +36,13 @@ class Opener extends React.Component<IAppProps, any> {
         this.state = { openHosts: [] };
     }
     private _onHostOpened = (host : IAppHost) => {
-        host.addEventListener("close", () => {
+        host.addEventListener("beforeunload", () => {
             this._onHostClosed(host);
         });
         const openHosts = [host].concat(this.state.openHosts);
         this.setState({ openHosts: openHosts });
     }
     private _onHostClosed = (host : IAppHost) => {
-        console.log("-- Host Closed: " + host.id);
         const openHosts = [].concat(this.state.openHosts);
         const idx = openHosts.indexOf(host);
         if(idx >= 0) {
@@ -58,8 +57,8 @@ class Opener extends React.Component<IAppProps, any> {
                     <AppLink host={this.props.host} request={{ path: "/samples/common/opener" }} open onHostOpened={this._onHostOpened}>Open Another Opener</AppLink>
                 </div>
                 <div>
-                    {this.state.openHosts.map(h => {
-                       return <AppHostDetails key={h.id} host={h} />; 
+                    {this.state.openHosts.map((h, idx) => {
+                       return <AppHostDetails key={idx} host={h} />; 
                     })}
                 </div>
             </div>

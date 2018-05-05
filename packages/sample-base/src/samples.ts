@@ -59,6 +59,12 @@ const samples : ISample[] = [
                 moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/Picker")
             },
             {
+                key: "fabricCalendar",
+                path: "/samples/fabric/calendar",
+                title: "Fabric Calendar Samples",
+                moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/Calendar")
+            },
+            {
                 key: "fabricPersonForm",
                 path: "/samples/fabric/personform",
                 title: "Fabric Person Form (Bound Fields)",

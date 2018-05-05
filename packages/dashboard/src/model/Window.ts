@@ -194,6 +194,7 @@ class Window extends Component implements IWindow {
 
     @action
     close() {
+        this.emit({ type: "beforeunload" });
         this.emit({ type: "beforeclose" });
         if(this.onClose) {
             this.onClose(this);
@@ -202,6 +203,7 @@ class Window extends Component implements IWindow {
             this.dashboard.destroyPortal(this);
         }
         this.removeFromParent();
+        this.emit({ type: "unload" });
         this.emit({ type: "close" });
     }
 
