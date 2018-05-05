@@ -36,7 +36,7 @@ class ListingListApp extends React.Component<IAppProps, any> {
             }  
         ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
                 <ListingListPage listings={this.listings} onSelectItem={this._onSelectItem} compact={true} wrapping={true} onAdd={this._onAdd} onShowStore={this._onShowStore} />
             </HostAppView>
         );

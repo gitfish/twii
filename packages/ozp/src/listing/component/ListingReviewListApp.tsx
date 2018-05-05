@@ -33,7 +33,7 @@ class ListingReviewListApp extends React.Component<IListingReviewListAppProps, a
             }  
         ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
                 <ListingSupplierContainer listingSupplier={this.listingSupplier} onRenderListing={this._onRenderListing} />
             </HostAppView>
         );

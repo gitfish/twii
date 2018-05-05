@@ -30,7 +30,7 @@
     "jsdom": "^11.5.1",
     "react-test-renderer": "^16.2.0",
     "ts-jest": "^21.2.3",
-    "typescript": "^2.8.0"
+    "typescript": "^2.8.3"
   },
   "jest": {
     "collectCoverage": true,

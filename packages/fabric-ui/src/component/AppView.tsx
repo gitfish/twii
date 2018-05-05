@@ -2,12 +2,11 @@ import * as React from "react";
 import { IAppViewStyles, getStyles } from "./AppView.styles";
 import { IAppViewClassNames, getClassNames } from "./AppView.classNames";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
-import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import { CommandBar, ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
 import { css } from "@uifabric/utilities/lib/css";
 
 interface IAppViewProps {
-    items?: IContextualMenuItem[];
-    farItems?: IContextualMenuItem[];
+    commandBarProps?: ICommandBarProps;
     root?: boolean;
     styles?: IAppViewStyles;
     className?: string;
@@ -16,14 +15,16 @@ interface IAppViewProps {
 class AppView extends React.Component<IAppViewProps, any> {
     private _classNames : IAppViewClassNames;
     protected get hasMenu() {
-        return (this.props.items && this.props.items.length > 0) ||
-               (this.props.farItems && this.props.farItems.length > 0) ? true : false;
+        const props = this.props.commandBarProps;
+        return props &&
+                ((props.items && props.items.length > 0) ||
+                (props.farItems && props.farItems.length > 0));
     }
     protected _renderMenu() : React.ReactNode {
         if(this.hasMenu) {
             return (
                 <div className={css(this._classNames.menuContainer, { rootView: this.props.root })}>
-                    <CommandBar items={this.props.items} farItems={this.props.farItems} />
+                    <CommandBar {...this.props.commandBarProps} />
                 </div>
             );
         }

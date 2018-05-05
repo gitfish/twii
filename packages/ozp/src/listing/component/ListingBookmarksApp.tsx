@@ -47,7 +47,7 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
             }  
         ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
                 <ListingBookmarksContainer bookmarkList={ListingBookmarkListStore} onSelectListing={this._onSelectListing} onRenderNoBookmarks={this._onRenderNoBookmarks} />
             </HostAppView>
         );

@@ -59,7 +59,7 @@ class SampleHostAppView extends React.Component<ISampleHostAppViewProps, any> {
             );
         };
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
                 {this.props.children}
             </HostAppView>
         );

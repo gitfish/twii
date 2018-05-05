@@ -22,11 +22,11 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     private _router : IRouter;
     
     @observable private _title : string;
-    @observable protected _req : IRequest;
     @observable sync = new Sync();
     @observable.ref view : any;
-    @observable protected _initialized : boolean = false;
     @observable protected _root : boolean = false;
+    @observable private _request : IRequest;
+    @observable protected _initialized : boolean = false;
 
     get id() {
         if(!this._id) {
@@ -148,9 +148,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     }
 
     protected _init(request?: IRequest) : Promise<any> {
-        if(request) {
-            this.setRequest(request);
-        }
+        this.setRequest(request || this.defaultRequest);
         return this._loadImpl();
     }
 
@@ -174,9 +172,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
         }
 
         const currentUrl = this.url;
-        if(request) {
-            this.setRequest(request);
-        }
+        this.setRequest(request || this.defaultRequest);
         const url = this.getUrl(this.request);
 
         if(url !== currentUrl) {
@@ -194,24 +190,27 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
 
     @computed
     get request() : IRequest {
-        return this._req || this.defaultRequest;
+        return Object.assign({}, this._request);
     }
     set request(value) {
         this.setRequest(value);
     }
 
     @action
-    setRequest(request : IRequest) {
-        this._req = request;
+    protected setRequest(request : IRequest) {
+        this._request = request;
     }
 
-    @computed
+    @action
+    clearRequest() {
+        this._request = undefined;
+    }
+
     get path() {
         const r = this.request;
         return r ? r.path : undefined;
     }
 
-    @computed
     get params() {
         const r = this.request;
         return Object.assign({}, r ? r.query : undefined, r ? r.params : undefined);

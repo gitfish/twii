@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "del": "^3.0.0",
-    "typescript": "^2.8.1"
+    "typescript": "^2.8.3"
   }
 }

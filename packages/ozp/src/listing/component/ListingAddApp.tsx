@@ -30,7 +30,7 @@ class ListingAddApp extends React.Component<IListingAddAppProps, any> {
             { key: "title", name: "Add New Listing" }
         ];
         return (
-            <HostAppView host={this.props.host} className="listing-add-applet" items={items}>
+            <HostAppView host={this.props.host} className="listing-add-applet" commandBarProps={{ items: items }}>
                 <ListingForm listing={new ListingModel()} onAfterSave={this._onAfterSave} onCancel={this._onCancel} />
             </HostAppView>
         );

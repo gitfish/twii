@@ -66,7 +66,7 @@ class ListingApp extends React.Component<IListingAppProps, any> {
             }  
         ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
                 <ListingDeleteDialog listingSupplier={ListingDeleteStore} />
                 <ListingContainer listingSupplier={this.listingSupplier} onEdit={this._onEdit} onDelete={this._onDelete} onOpen={this._onOpen} />
             </HostAppView>

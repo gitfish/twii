@@ -46,7 +46,7 @@ class ListingStoreFrontApp extends React.Component<IAppProps, any> {
             }  
         ];
         return (
-            <HostAppView host={this.props.host} items={items}>
+            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
                 <ListingStoreFrontContainer storeFront={this.listingStoreFront}
                                             onSelectItem={this._onSelectItem}
                                             onAdd={this._onAdd}

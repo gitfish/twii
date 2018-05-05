@@ -79,8 +79,8 @@ class BrowserAppHost extends AbstractAppHost {
     setInitialized(initialized : boolean) {
         this._initialized = initialized;
         if(!initialized) {
-            this.setRequest(undefined);
-            this.window.removeEventListener("popstate", this._handlePopState);
+            this.clearRequest();
+            this.window.removeEventListener("popstate", this._onPopState);
         }
     }
 
@@ -109,11 +109,9 @@ class BrowserAppHost extends AbstractAppHost {
     }
 
     @action
-    protected _handlePopState = (e : PopStateEvent) => {
-        if(e.state && e.state.id === this.id) {
-            this._req = undefined;
-            this._loadImpl();
-        }
+    protected _onPopState = (e : PopStateEvent) => {
+        this.setRequest(this.defaultRequest);
+        this._loadImpl();
     }
 
     protected _pushHistory(url : string) {
@@ -122,11 +120,8 @@ class BrowserAppHost extends AbstractAppHost {
 
     protected _init(request?: IRequest) : Promise<any> {
         this._extension = PathUtils.extname(this.window.location.pathname);
-        if(request) {
-            this.setRequest(request);
-        }
-        this.window.addEventListener("popstate", this._handlePopState);
-        this.window.history.replaceState({ id: this.id }, null, this.url);
+        this.setRequest(request || this.defaultRequest);
+        this.window.addEventListener("popstate", this._onPopState);
         return this._loadImpl();
     }
 
