@@ -20,13 +20,13 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
         return (
             <div style={{ padding: 8 }}>
                 <MessageBar  messageBarType={MessageBarType.info}>
-                    You haven't bookmarked anything. <AppLink host={this.props.host} request={{ path: "/listing/storefront"}}>Take a look in the Store</AppLink>.
+                    You haven't bookmarked anything. <AppLink host={this.props.host} request={{ path: "/ozone/listing/storefront"}}>Take a look in the Store</AppLink>.
                 </MessageBar>
             </div>
         );
     }
     private _onGoToStore = () => {
-        this.props.host.load({ path: "/listing/storefront" });
+        this.props.host.load({ path: "/ozone/listing/storefront" });
     }
     render() {
         const items : IContextualMenuItem[] = [

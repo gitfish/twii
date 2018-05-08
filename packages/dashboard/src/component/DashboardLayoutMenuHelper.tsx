@@ -2,75 +2,45 @@ import * as React from "react";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IDashboard } from "../model/IDashboard";
 import { IDashboardList } from "../model/IDashboardList";
+import { IIconProps } from "office-ui-fabric-react/lib/Icon";
+import { IDashboardLayoutItem, DashboardLayoutRegistry } from "./DashboardLayoutRegistry";
 
-const onListClick = (e : React.MouseEvent<HTMLElement>, item : IContextualMenuItem) => {
-    item.dashboard.listLayout();
+const onClickDashboardLayoutItem = (e : React.MouseEvent<HTMLButtonElement>, item : IContextualMenuItem) => {
+    item.applyLayout(item.dashboard);
 };
 
-const onTabsClick = (e : React.MouseEvent<HTMLElement>, item : IContextualMenuItem) => {
-    item.dashboard.stackLayout();
+const createDashboardLayoutMenuItem = (dashboard : IDashboard, item : IDashboardLayoutItem) : IContextualMenuItem => {
+    return {
+        key: item.key,
+        name: item.name,
+        iconProps: item.iconProps,
+        dashboard: dashboard,
+        applyLayout: item.applyLayout,
+        canCheck: true,
+        checked: item.isLayoutApplied(dashboard),
+        onClick: onClickDashboardLayoutItem
+    };
 };
 
-const onTwoColumnSplitClick = (e : React.MouseEvent<HTMLElement>, item : IContextualMenuItem) => {
-    item.dashboard.twoColumnSplitLayout();
+const createDashboardLayoutMenuItems = (dashboard : IDashboard, items : IDashboardLayoutItem[] = DashboardLayoutRegistry.itemsView) : IContextualMenuItem[] => {
+    const isAnyLayoutApplied = items.some(item => item.isLayoutApplied(dashboard));
+    const r = items.map(item => {
+        return createDashboardLayoutMenuItem(dashboard, item);
+    });
+    r.push({
+        dashboard: dashboard,
+        key: "other",
+        name: "Custom",
+        iconProps: { iconName: "ViewDashboard" },
+        checked: !isAnyLayoutApplied,
+        canCheck: true,
+        disabled: true
+    });
+    return r;
 };
 
-const onThreeColumnSplitClick = (e : React.MouseEvent<HTMLElement>, item : IContextualMenuItem) => {
-    item.dashboard.threeColumnSplitLayout();
-};
-
-const createDashboardLayoutItems = (dashboard : IDashboard) : IContextualMenuItem[] => {
-    return [
-        {
-            dashboard: dashboard,
-            key: "list",
-            name: "Basic",
-            iconProps: { iconName: "CollapseMenu" },
-            onClick: onListClick,
-            checked: dashboard.isListLayout,
-            canCheck: true
-        },
-        {
-            dashboard: dashboard,
-            key: "stack",
-            name: "Tabs",
-            iconProps: { iconName: "Redeploy" },
-            onClick: onTabsClick,
-            checked: dashboard.isStackLayout,
-            canCheck: true
-        },
-        {
-            dashboard: dashboard,
-            key: "twoColumnSplit",
-            name: "Two Columns",
-            iconProps: { iconName: "DoubleColumn" },
-            onClick: onTwoColumnSplitClick,
-            checked: dashboard.isTwoColumnSplitLayout,
-            canCheck: true
-        },
-        {
-            dashboard: dashboard,
-            key: "threeColumnSplit",
-            name: "Three Columns",
-            iconProps: { iconName: "TripleColumn" },
-            onClick: onThreeColumnSplitClick,
-            checked: dashboard.isThreeColumnSplitLayout,
-            canCheck: true
-        },
-        {
-            dashboard: dashboard,
-            key: "other",
-            name: "Custom",
-            iconProps: { iconName: "ViewDashboard" },
-            checked: dashboard.isOtherLayout,
-            canCheck: true,
-            disabled: true
-        }
-    ];
-};
-
-const createDashboardLayoutSectionItem = (dashboard : IDashboard) : IContextualMenuItem => {
-    const layoutItems : IContextualMenuItem[] = createDashboardLayoutItems(dashboard);
+const createDashboardLayoutMenuSection = (dashboard : IDashboard, items : IDashboardLayoutItem[] = DashboardLayoutRegistry.itemsView) : IContextualMenuItem => {
+    const layoutItems : IContextualMenuItem[] = createDashboardLayoutMenuItems(dashboard, items);
     return {
         key: "layoutSectionItem",
         itemType: ContextualMenuItemType.Section,
@@ -82,8 +52,8 @@ const createDashboardLayoutSectionItem = (dashboard : IDashboard) : IContextualM
     };
 };
 
-const createDashboardLayoutItem = (dashboard : IDashboard) : IContextualMenuItem => {
-    const layoutSectionItem = createDashboardLayoutSectionItem(dashboard);
+const createDashboardMenu = (dashboard : IDashboard, items : IDashboardLayoutItem[] = DashboardLayoutRegistry.itemsView) : IContextualMenuItem => {
+    const layoutSectionItem = createDashboardLayoutMenuSection(dashboard, items);
     const current = layoutSectionItem.sectionProps.items.find(item => item.checked);
     return {
         key: "dashboardLayout",
@@ -95,8 +65,8 @@ const createDashboardLayoutItem = (dashboard : IDashboard) : IContextualMenuItem
     };
 };
 
-const createDashboardSettingsItem = (dashboard : IDashboard, name?: string) : IContextualMenuItem => {
-    const layoutSectionItem = createDashboardLayoutSectionItem(dashboard);
+const createDashboardSettingsItem = (name: string, dashboard : IDashboard, items : IDashboardLayoutItem[] = DashboardLayoutRegistry.itemsView) : IContextualMenuItem => {
+    const layoutSectionItem = createDashboardLayoutMenuSection(dashboard, items);
     return {
         key: "dashboardSettings",
         name: name,
@@ -107,16 +77,17 @@ const createDashboardSettingsItem = (dashboard : IDashboard, name?: string) : IC
     }
 };
 
-const createDashboardListLayoutItem = (dashboardList : IDashboardList) : IContextualMenuItem => {
+const createDashboardListMenu = (dashboardList : IDashboardList, items : IDashboardLayoutItem[] = DashboardLayoutRegistry.itemsView) : IContextualMenuItem => {
     const sync = dashboardList.sync;
     const active = dashboardList.active;
-    return !sync.syncing && active ? createDashboardLayoutItem(active) : undefined;
+    return !sync.syncing && active ? createDashboardMenu(active, items) : undefined;
 };
 
 export {
-    createDashboardLayoutItems,
-    createDashboardLayoutSectionItem,
+    createDashboardLayoutMenuItems,
+    createDashboardLayoutMenuSection,
     createDashboardSettingsItem,
-    createDashboardLayoutItem,
-    createDashboardListLayoutItem
+    createDashboardLayoutMenuItem,
+    createDashboardMenu,
+    createDashboardListMenu
 }

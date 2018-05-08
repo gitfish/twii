@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "clean": "node task/clean.js",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
+    "start-mock": "webpack-dev-server --env.configId=mock",
     "build": "webpack",
     "build-watch": "webpack --progress --watch",
     "build-watch-mock": "webpack --progress --watch --env.configName=mock",
@@ -21,6 +22,7 @@
     "@twii/dashboard": "^1.2.0",
     "@twii/router": "^1.2.0",
     "@twii/sample-base": "^1.2.0",
+    "@twii/ozone": "^1.2.0",
     "@uifabric/icons": "^5.7.0",
     "@uifabric/styling": "^5.23.1",
     "@uifabric/utilities": "^5.24.0",
@@ -28,7 +30,7 @@
     "mobx": "^4.2.0",
     "mobx-react": "^5.1.2",
     "moment": "^2.21.0",
-    "office-ui-fabric-react": "^5.91.0",
+    "office-ui-fabric-react": "^5.96.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },

@@ -1,6 +1,6 @@
 {
-  "name": "@twii/ozp",
-  "description": "twii Ozone Platform Client",
+  "name": "@twii/ozone",
+  "description": "twii Ozone Client",
   "version": "1.2.0",
   "main": "index.js",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "axios": "0.18.0",
     "mobx": "^4.2.0",
     "mobx-react": "^5.1.2",
-    "office-ui-fabric-react": "^5.91.0",
+    "office-ui-fabric-react": "^5.96.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },

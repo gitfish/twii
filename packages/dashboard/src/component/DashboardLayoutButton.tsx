@@ -10,13 +10,14 @@ import { IDashboardListProps } from "./IDashboardListProps";
 import { Sync } from "@twii/fabric-ui/lib/component/Sync";
 import { CompactError } from "@twii/fabric-ui/lib/component/Error";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
-import { createDashboardLayoutSectionItem } from "./DashboardLayoutMenuHelper";
+import { createDashboardLayoutMenuSection } from "./DashboardLayoutMenuHelper";
+import { DashboardLayoutRegistry } from "./DashboardLayoutRegistry";
 
 @observer
 class DashboardLayoutButton extends React.Component<IDashboardProps, any> {
     render() {
         if(this.props.dashboard) {
-            const layoutSectionItem = createDashboardLayoutSectionItem(this.props.dashboard);
+            const layoutSectionItem = createDashboardLayoutMenuSection(this.props.dashboard);
             const current = layoutSectionItem.sectionProps.items.find(item => item.checked);
             const menuProps : IContextualMenuProps = {
                 items: [layoutSectionItem]

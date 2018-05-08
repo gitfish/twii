@@ -9,6 +9,7 @@ import { ComponentFactory } from "./ComponentFactory";
 import * as ComponentTypes from "./ComponentTypes";
 import { IStack } from "./IStack";
 import { ISplit, IHSplit, IVSplit } from "./ISplit";
+import { IDashboardLayout } from "./IDashboardLayout";
 
 class Dashboard extends Component implements IDashboard {
     @observable sync = new Sync();
@@ -74,6 +75,11 @@ class Dashboard extends Component implements IDashboard {
                 this._component.parent = this;
             }
         }
+    }
+
+    @computed
+    get windows() : IWindow[] {
+        return this.findAll(c => c.type === ComponentTypes.window) as IWindow[];
     }
 
     @computed
@@ -242,229 +248,9 @@ class Dashboard extends Component implements IDashboard {
         return this.component && this.component.type === "list";
     }
 
-    @computed
-    get stackLayoutAvailable() {
-        return this.component && this.component.type !== "stack";
-    }
-
-    @action
-    private _stackLayoutImpl = (m) => {
-        // find all windows
-        const windows = this.findAll(c => c.type === "window");
-        // find active
-        const active = this.findFirst(c => c.type === "window" && (c as IWindow).active);
-        const stack = new m.Stack();
-        this.setComponent(stack);
-        windows.forEach(w => {
-            stack.add(w, false);
-        });
-        if(active) {
-            stack.setActive(active);
-        } else {
-            stack.setActiveIndex(0);
-        }
-    }
-
-    @action
-    stackLayout() : Promise<any> {
-        if(this.stackLayoutAvailable) {
-            return import("./Stack").then(this._stackLayoutImpl);
-        }
-        return Promise.resolve();
-    }
-
-    @computed
-    get listLayoutAvailable() {
-        return this.component && this.component.type !== "list";
-    }
-
-    @action
-    private _listLayoutImpl = (m) => {
-        // find all windows
-        const windows = this.findAll(c => c.type === "window");
-        // find active
-        const active = this.findFirst(c => c.type === "window" && (c as IWindow).active);
-        const list = new m.List();
-        this.setComponent(list);
-        windows.forEach(w => {
-            list.add(w, false);
-        });
-        if(active) {
-            list.setActive(active);
-        } else {
-            list.setActiveIndex(0);
-        }
-    }
-
-    @action
-    listLayout() : Promise<any> {
-        if(this.listLayoutAvailable) {
-            return import("./List").then(this._listLayoutImpl);
-        }
-        return Promise.resolve();
-    }
-
-    @computed
-    get isRowSplitLayout() {
-        return this.component && this.component.type === "vsplit";
-    }
-
-    @computed
-    get isColumnSplitLayout() {
-        return this.component && this.component.type === "hsplit";
-    }
-
-    @computed
-    get columnCount() {
-        return this.isColumnSplitLayout ? (this.component as IHSplit).columnCount : 1;
-    }
-
-    @computed
-    get isTwoColumnSplitLayout() {
-        return this.isColumnSplitLayout && this.columnCount === 2;
-    }
-
-    @computed
-    get twoColumnSplitLayoutAvailable() {
-        return this.component && (!this.isColumnSplitLayout || this.columnCount !== 2);
-    }
-
-    // these layout shortcuts should probably move into a helper class / model and we need to make the layouts pluggable/configurable
-    @action
-    private _columnSplitLayout = (handler: (ColSplit : any, Container : any) => void) => {
-        const firstContainer = this.findFirst(c => c.type === "list" || c.type === "stack");
-        let colSplitType;
-        const vsplitPromise = import("./Split").then(m => {
-            colSplitType = m.HSplit;
-        });
-        let containerType;
-        const containerPromise = import("./Stack").then(m => containerType = m.Stack);
-        
-        return Promise.all([
-            vsplitPromise,
-            containerPromise
-        ]).then(() => {
-            handler(colSplitType, containerType);
-        });
-    }
-
-    @action
-    private _twoColumnSplitlayoutImpl = (ColSplit, Container) => {
-        const windows = this.findAll(c => c.type === "window");
-        // create the new containers
-        const containers = [
-            new Container(),
-            new Container()
-        ];
-        const split = new ColSplit();
-        split.setLeft(containers[0]);
-        split.setRight(containers[1]);
-        this.setComponent(split);
-        if(windows.length > 0) {
-            const containerQuota = Math.ceil(windows.length / containers.length);
-            let containerIdx = 0;
-            let c;
-            windows.forEach(w => {
-                c = containers[containerIdx];
-                if(c.windowCount === containerQuota) {
-                    containerIdx ++;
-                    c = containers[containerIdx];
-                }
-                c.add(w, false);
-            });
-        }
-        containers.forEach(c => {
-            if(c.windowCount > 0) {
-                c.setActiveIndex(0);
-            } else {
-                c.addNew();
-            }
-        });
-    }
-
-    @action
-    twoColumnSplitLayout() : Promise<any> {
-        if(this.twoColumnSplitLayoutAvailable) {
-            this._columnSplitLayout(this._twoColumnSplitlayoutImpl);
-        }
-        return Promise.resolve();
-    }
-
-    @computed
-    get isThreeColumnSplitLayout() {
-        return this.isColumnSplitLayout && this.columnCount === 3;
-    }
-
-    @computed
-    get threeColumnSplitLayoutAvailable() {
-        return this.component && (!this.isColumnSplitLayout || this.columnCount !== 3);
-    }
-
-    // NOTE: need to create generic methods for column and row splitting by count
-    @action
-    private _threeColumnSplitlayoutImpl = (ColSplit, Container) => {
-        const windows = this.findAll(c => c.type === "window");
-        // create the new containers
-        const containers = [
-            new Container(),
-            new Container(),
-            new Container()
-        ];
-        const outerSplit = new ColSplit();
-        outerSplit.setOffset(0.33);
-        const innerSplit = new ColSplit();
-        outerSplit.setLeft(containers[0]);
-        outerSplit.setRight(innerSplit);
-        innerSplit.setLeft(containers[1]);
-        innerSplit.setRight(containers[2]);
-        this.setComponent(outerSplit);
-        if(windows.length > 0) {
-            const containerQuota = Math.ceil(windows.length / containers.length);
-            let containerIdx = 0;
-            let c;
-            windows.forEach(w => {
-                c = containers[containerIdx];
-                if(c.windowCount === containerQuota) {
-                    containerIdx ++;
-                    c = containers[containerIdx];
-                }
-                c.add(w, false);
-            });
-        }
-        containers.forEach(c => {
-            if(c.windowCount > 0) {
-                c.setActiveIndex(0);
-            } else {
-                c.addNew();
-            }
-        });
-    }
-
-    @action
-    threeColumnSplitLayout() : Promise<any> {
-        if(this.threeColumnSplitLayoutAvailable) {
-            this._columnSplitLayout(this._threeColumnSplitlayoutImpl);
-        }
-        return Promise.resolve();
-    }
-
-    @computed
-    get isOtherLayout() {
-        return this.component && 
-                !this.isStackLayout && 
-                !this.isListLayout && 
-                !this.isTwoColumnSplitLayout && 
-                !this.isThreeColumnSplitLayout;
-    }
-
-    @computed
-    get splittable() {
-        return this.isListLayout || this.isStackLayout;
-    }
-
     @action
     splitLeft(newComp?: IComponent) : Promise<any> {
-        if(this.splittable) {
+        if(this.component && this.component.type === ComponentTypes.stack) {
             return (this.component as IStack).splitLeft(newComp);
         }
         return Promise.resolve();
@@ -472,7 +258,7 @@ class Dashboard extends Component implements IDashboard {
 
     @action
     splitRight(newComp?: IComponent) : Promise<any> {
-        if(this.splittable) {
+        if(this.component && this.component.type === ComponentTypes.stack) {
             return (this.component as IStack).splitRight(newComp);
         }
         return Promise.resolve();
@@ -480,7 +266,7 @@ class Dashboard extends Component implements IDashboard {
 
     @action
     splitTop(newComp : IComponent) : Promise<any> {
-        if(this.splittable) {
+        if(this.component && this.component.type === ComponentTypes.stack) {
             return (this.component as IStack).splitTop(newComp);
         }
         return Promise.resolve();
@@ -488,7 +274,7 @@ class Dashboard extends Component implements IDashboard {
     
     @action
     splitBottom(newComp : IComponent) : Promise<any> {
-        if(this.splittable) {
+        if(this.component && this.component.type === ComponentTypes.stack) {
             return (this.component as IStack).splitBottom(newComp);
         }
         return Promise.resolve();

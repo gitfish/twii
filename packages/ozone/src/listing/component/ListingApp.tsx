@@ -16,13 +16,13 @@ interface IListingAppProps extends IAppProps {
 class ListingApp extends React.Component<IListingAppProps, any> {
     private _titleSetDisposer : IReactionDisposer;
     private _onEdit = (listing) => {
-        this.props.host.load({ path: `/listing/${listing.id}/edit` });
+        this.props.host.load({ path: `/ozone/listing/${listing.id}/edit` });
     }
     private _onDelete = (listing) => {
         ListingDeleteStore.setValue(listing);
     }
     private _onOpen = (listing) => {
-        this.props.host.open({ path: `/listing/${listing.id}/launch` });
+        this.props.host.open({ path: `/ozone/listing/${listing.id}/launch` });
     }
     get listingSupplier() : IListingModelSupplier {
         return this.props.host.getState("listingSupplier", () => {
@@ -41,10 +41,10 @@ class ListingApp extends React.Component<IListingAppProps, any> {
         }
     }
     private _onGoToBookmarks = () => {
-        this.props.host.load({ path: "/listing/bookmark" });
+        this.props.host.load({ path: "/ozone/listing/bookmark" });
     }
     private _onGoToStore = () => {
-        this.props.host.load({ path: "/listing/storefront" });
+        this.props.host.load({ path: "/ozone/listing/storefront" });
     }
     render() {
         const items : IContextualMenuItem[] = [

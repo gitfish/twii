@@ -8,13 +8,13 @@ import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 class ListingListApp extends React.Component<IAppProps, any> {
     private _onSelectItem = (item : IListing) => {
-        this.props.host.load({ path: `/listing/${item.id}` });
+        this.props.host.load({ path: `/ozone/listing/${item.id}` });
     }
     private _onShowStore = () => {
-        this.props.host.load({ path: "/listing/shop" });
+        this.props.host.load({ path: "/ozone/listing/shop" });
     }
     private _onAdd = () => {
-        this.props.host.load({ path: "/listing/add", query: { from: "list" } });
+        this.props.host.load({ path: "/ozone/listing/add", query: { from: "list" } });
     }
     get listings() {
         let listings = this.props.host.state.listings;

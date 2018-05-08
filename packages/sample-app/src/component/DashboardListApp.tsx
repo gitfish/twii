@@ -8,7 +8,7 @@ import { DashboardListStore } from "../model/DashboardListStore";
 import { getTheme } from "@uifabric/styling";
 import { addDashboard } from "@twii/dashboard/lib/DashboardActions";
 import { createCommandBarMenuItem } from "@twii/dashboard/lib/component/DashboardMenuHelper";
-import { createDashboardListLayoutItem } from "@twii/dashboard/lib/component/DashboardLayoutMenuHelper";
+import { createDashboardListMenu } from "@twii/dashboard/lib/component/DashboardLayoutMenuHelper";
 
 @observer
 class DashboardListApp extends React.Component<IAppProps, any> {
@@ -20,7 +20,7 @@ class DashboardListApp extends React.Component<IAppProps, any> {
             createCommandBarMenuItem(DashboardListStore)
         ];
         const farItems : IContextualMenuItem[] = [];
-        const layoutItem = createDashboardListLayoutItem(DashboardListStore);
+        const layoutItem = createDashboardListMenu(DashboardListStore);
         if(layoutItem) {
             farItems.push(layoutItem);
         };

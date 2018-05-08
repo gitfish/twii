@@ -15,7 +15,6 @@ interface IConfigMap {
 }
 
 interface IConfigRouterOptions {
-    configId : string;
     env?: any;
     configMap: IConfigMap;
 }
@@ -26,17 +25,15 @@ interface IConfigRouterOptions {
  * An instance of ConfigRouter is typically placed early in your app/router configuration (as just about everything else depends on configuration)
  */
 class ConfigRouter implements IRouter {
-    private _configId : string;
     private _env : any;
     private _configMap : IConfigMap;
     private _currentConfigId : string;
     constructor(opts : IConfigRouterOptions) {
-        this._configId = opts.configId;
         this._env = opts.env || {};
         this._configMap = opts.configMap;
     }
     handleRequest(req : IRequest, next: IRequestHandler) : Promise<any> {
-        let configId = req.params["_configId"] || this._configId;
+        let configId = req.params["_configId"] || this._env.configId || this._env.configName;
         if(!configId) {
             configId = Defaults.configId;
         }

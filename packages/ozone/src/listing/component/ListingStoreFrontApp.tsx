@@ -8,13 +8,13 @@ import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 class ListingStoreFrontApp extends React.Component<IAppProps, any> {
     private _onSelectItem = (listing : IListing) => {
-        this.props.host.load({ path: `/listing/${listing.id}`});
+        this.props.host.load({ path: `/ozone/listing/${listing.id}`});
     }
     private _onAdd = () => {
-        this.props.host.load({ path: "/listing/add" });
+        this.props.host.load({ path: "/ozone/listing/add" });
     }
     private _onShowAllListings = () => {
-        this.props.host.load({ path: "/listing" });
+        this.props.host.load({ path: "/ozone/listing" });
     }
     get listingStoreFront() {
         return this.props.host.getState("listingStoreFront", () => {
@@ -22,7 +22,7 @@ class ListingStoreFrontApp extends React.Component<IAppProps, any> {
         });
     }
     private _onGoToBookmarks = () => {
-        this.props.host.load({ path: "/listing/bookmark" });
+        this.props.host.load({ path: "/ozone/listing/bookmark" });
     }
     componentWillMount() {
         this.props.host.setTitle("Store");

@@ -16,10 +16,10 @@ interface IListingEditAppProps extends IAppProps {
 class ListingEditApp extends React.Component<IListingEditAppProps, any> {
     private _titleSetDisposer : IReactionDisposer;
     private _onAfterSave = () => {
-        this.props.host.load({ path: `/listing/${this.props.listingId}` });
+        this.props.host.load({ path: `/ozone/listing/${this.props.listingId}` });
     }
     private _onCancel = () => {
-        this.props.host.load({ path: `/listing/${this.props.listingId}` });
+        this.props.host.load({ path: `/ozone/listing/${this.props.listingId}` });
     }
     get listingSupplier() : IListingModelSupplier {
         return this.props.host.getState("listingSupplier", () => {
