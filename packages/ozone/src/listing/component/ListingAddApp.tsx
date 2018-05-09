@@ -2,7 +2,6 @@ import * as React from "react";
 import { ListingForm } from "./ListingForm";
 import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
-import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IListingModel } from "../model/IListingModel";
 import { ListingModel } from "../model/ListingModel";
 import { findById } from "../model/ListingFinder";
@@ -23,14 +22,11 @@ class ListingAddApp extends React.Component<IListingAddAppProps, any> {
         }
     }
     componentWillMount() {
-        this.props.host.setTitle("Add New Listing");
+        this.props.host.setTitle("Add Listing");
     }
     render() {
-        const items : IContextualMenuItem[] = [
-            { key: "title", name: "Add New Listing" }
-        ];
         return (
-            <HostAppView host={this.props.host} className="listing-add-applet" commandBarProps={{ items: items }}>
+            <HostAppView host={this.props.host} className="listing-add-applet">
                 <ListingForm listing={new ListingModel()} onAfterSave={this._onAfterSave} onCancel={this._onCancel} />
             </HostAppView>
         );
