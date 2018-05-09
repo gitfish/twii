@@ -31,18 +31,21 @@ class AppHostDetails extends React.Component<IAppHostDetailsProps, any> {
 }
 
 class Opener extends React.Component<IAppProps, any> {
+    private _beforeUnloadHandler;
     constructor(props : IAppProps) {
         super(props);
         this.state = { openHosts: [] };
     }
     private _onHostOpened = (host : IAppHost) => {
-        host.addEventListener("beforeunload", () => {
+        this._beforeUnloadHandler = () => {
             this._onHostClosed(host);
-        });
+        };
+        host.addEventListener("beforeunload", this._beforeUnloadHandler);
         const openHosts = [host].concat(this.state.openHosts);
         this.setState({ openHosts: openHosts });
     }
     private _onHostClosed = (host : IAppHost) => {
+        host.removeEventListener("beforeunload", this._beforeUnloadHandler);
         const openHosts = [].concat(this.state.openHosts);
         const idx = openHosts.indexOf(host);
         if(idx >= 0) {

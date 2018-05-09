@@ -47,7 +47,7 @@ const getStyles = memoizeFunction((theme?: ITheme, customStyles?: IListingStoreF
             fontWeight: FontWeights.semibold
         }),
         sectionBody: {
-            overflow: "auto"
+            
         }
     };
     return concatStyleSets(DefaultStyles, customStyles);

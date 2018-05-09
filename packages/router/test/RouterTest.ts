@@ -5,24 +5,49 @@ import { exactPath } from "Routers";
 describe("Router Test", () => {
 
     test("global handler", async () => {
-        const app = new Router();
+        const r = new Router();
         let globalInvoked = false;
-        app.use((req, next) => {
+        r.use((req, next) => {
             globalInvoked = true;
             next(req);
         });
 
         let pathInvoked = false;
-        app.use("/sample", (req) => {
+        r.use("/sample", (req) => {
             pathInvoked = true;
             return "sample";
         });
 
-        const r = await app.handleRequest({ path: "/sample" });
+        const result = await r.handleRequest({ path: "/sample" });
 
         expect(globalInvoked).toBeTruthy();
         expect(pathInvoked).toBeTruthy();
-        expect(r).toBe("sample");
+        expect(result).toBe("sample");
+    });
+
+    test("global handler with promise", async () => {
+        const r = new Router();
+        let globalInvoked = false;
+        r.use((req, next) => {
+            globalInvoked = true;
+            return new Promise((resolve, reject) => {
+                setTimeout(resolve, 2000);
+            }).then(() => {
+                next();  
+            });
+        });
+
+        let pathInvoked = false;
+        r.use("/sample", (req) => {
+            pathInvoked = true;
+            return "sample";
+        });
+
+        const result = await r.handleRequest({ path: "/sample" });
+
+        expect(globalInvoked).toBeTruthy();
+        expect(pathInvoked).toBeTruthy();
+        expect(result).toBe("sample");
     });
 
     test("simple path - multiple handlers", async () => {

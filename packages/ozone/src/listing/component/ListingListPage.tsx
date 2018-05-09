@@ -3,17 +3,16 @@ import { observer } from "mobx-react";
 import { IListingListContainerProps, ListingListContainer } from "./ListingList";
 import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
 import { IListingListPageStyles, getStyles } from "./ListingListPage.styles";
-import { UserAuthContainer } from "../../user/component/UserAuthContainer";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { getClassNames } from "./ListingListPage.classNames";
+import { UserAdminContainer } from "../../user/component/UserAuthContainer";
 
 interface IListingListPageProps extends IListingListContainerProps {
     styles?: IListingListPageStyles;
     className?: string;
     onAdd?: () => void;
     onShowStore?: () => void;
-    adminGroup?: string;
 }
 
 @observer
@@ -59,10 +58,7 @@ class ListingListAdminCommandBarContainer extends React.Component<IListingListPa
         return <ListingListAdminCommandBar {...this.props} />;
     }
     render() {
-        if(this.props.adminGroup) {
-            return <UserAuthContainer requiredAuthGroup={this.props.adminGroup} onRenderUser={this._onRenderAuth} />;
-        }
-        return null;
+        return <UserAdminContainer onRenderUser={this._onRenderAuth} />;
     }
 }
 

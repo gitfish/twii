@@ -1,8 +1,10 @@
 import * as React from "react";
 import { Router } from "@twii/router/lib/Router";
 import { exactPath } from "@twii/router/lib/Routers";
+import { requiresUserProfile } from "./user/UserAuthRouters";
 
 const r = new Router();
+r.use(requiresUserProfile);
 r.use("/ozone/bookmarks", exactPath(req => {
     return import("./listing/component/ListingBookmarksApp").then(m => {
         return <m.ListingBookmarksApp host={req.app} />; 
@@ -15,7 +17,7 @@ r.use("/ozone/listings", exactPath(req => {
 }));
 r.use("/ozone/store", exactPath(req => {
     return import("./listing/component/ListingStoreFrontApp").then(m => {
-        return <m.ListingStoreFrontApp host={req.app} />; 
+        return <m.ListingStoreFrontApp host={req.host} userProfile={req.userProfile} />; 
     });
 }));
 r.use("/ozone/listings/add", exactPath(req => {

@@ -127,7 +127,13 @@ class MockListingService implements IListingService {
         return Promise.reject({ code: "INVALID_ARGUMENT", key: "id", message: "Listing id not provided"});
     }
     getListings(request?: IListingListRequest) : Promise<IListingListResponse> {
-        return Promise.resolve(null);
+        return Promise.resolve({
+            listings: this._listings.map(listing => Object.assign({}, listing)),
+            counts: {
+                total: this._listings.length,
+                enabled: this._listings.filter(l => l.is_enabled).length
+            }
+        });
     }
     searchListings(request?: IListingSearchRequest) : Promise<IListing[]> {
         return Promise.resolve(null);
@@ -160,12 +166,16 @@ class MockListingService implements IListingService {
         return Promise.reject({ code: "NOT_FOUND", message: "Bookmark not found"});
     }
     getStoreFront() : Promise<IListingStoreFront> {
-        const r = this._listings.map(l => Object.assign({}, l));
-        return Promise.resolve({
-            featured: r,
-            most_popular: r,
-            recent: r,
-            recommended: r
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const r = this._listings.map(l => Object.assign({}, l));
+                resolve({
+                    featured: r,
+                    most_popular: r,
+                    recent: r,
+                    recommended: r
+                });
+            }, 1000);
         });
     }
     getListingReviews(request : IListingReviewListRequest) : Promise<IListingReview[]> {

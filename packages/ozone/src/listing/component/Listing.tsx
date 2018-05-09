@@ -14,7 +14,7 @@ import { Rating } from "office-ui-fabric-react/lib/Rating";
 import { DefaultButton, PrimaryButton, IButtonProps, IconButton } from "office-ui-fabric-react/lib/Button";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import { ListingPreview } from "./ListingPreview";
-import { UserAuthContainer } from "../../user/component/UserAuthContainer";
+import { UserAuthContainer, UserAdminContainer } from "../../user/component/UserAuthContainer";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { ListingSupplierContainer } from "./ListingSupplier";
@@ -97,7 +97,6 @@ class ListingBookmarkAction extends React.Component<IListingBookmarkActionProps,
 
 interface IListingAdminActionsProps {
     listing: IListingModel;
-    adminGroup?: string;
     onEdit?: (listing : IListingModel) => void;
     onDelete?: (listing : IListingModel) => void;
 }
@@ -170,10 +169,9 @@ class ListingAdminActions extends React.Component<IListingAdminActionsProps, any
         return null;
     }
     render() {
-        if(this.props.adminGroup) {
-            return <UserAuthContainer requiredAuthGroup={this.props.adminGroup} onRenderUser={this._onRenderAuth} />
-        }
-        return null;
+        return (
+            <UserAdminContainer onRenderUser={this._onRenderAuth} />
+        );
     }
 }
 
@@ -231,7 +229,7 @@ class ListingActions extends React.Component<IListingProps, any> {
                 <ListingBookmarkAction listing={this.props.listing} bookmarkList={ListingBookmarkListStore} />
                 <ListingOpenAction listing={this.props.listing} onOpen={this.props.onOpen} />
                 <ListingOwnerEditAction listing={this.props.listing} onEdit={this.props.onEdit} />
-                <ListingAdminActions listing={this.props.listing} adminGroup={this.props.adminGroup} onEdit={this.props.onEdit} onDelete={this.props.onDelete} />
+                <ListingAdminActions listing={this.props.listing} onEdit={this.props.onEdit} onDelete={this.props.onDelete} />
             </div>
         );
     }

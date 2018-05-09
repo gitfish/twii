@@ -138,7 +138,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     protected _loadImpl() : Promise<any> {
         this.sync.syncStart();
         if(this.router) {
-            const req : IRequest = Object.assign({}, this.request, { app: this });
+            const req : IRequest = Object.assign({}, this.request, { app: this, host: this });
             // NOTE: merging query into params
             req.params = Object.assign({}, req.query, req.params);
             return Promise.resolve(this.router.handleRequest(req)).then(this._loadDone).catch(this._loadError);

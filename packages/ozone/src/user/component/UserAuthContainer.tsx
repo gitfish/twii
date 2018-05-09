@@ -3,10 +3,10 @@ import { isAuthorised } from "../UserAuthHelper";
 import { UserProfileStore } from "../model/UserProfileStore";
 import { IUserProfile } from "../IUserProfile";
 import { IUserContainerProps, UserContainer } from "./UserContainer";
+import { UserAdminContext } from "../UserAdminContext";
 
 interface IUserAuthContainerProps extends IUserContainerProps {
-    requiredAuthGroup?: string;
-    isAuthorised?: (userProfile : IUserProfile) => boolean;
+    isAuthorised: (userProfile : IUserProfile) => boolean;
     onRenderNotAuthorised?: (userProfile : IUserProfile) => React.ReactNode;
 }
 
@@ -15,14 +15,7 @@ class UserAuthContainer extends React.Component<IUserAuthContainerProps, any> {
         UserProfileStore.load();
     }
     private _onRenderUser = (userProfile : IUserProfile) => {
-        let authd = false;
-        if(this.props.isAuthorised) {
-            authd = this.props.isAuthorised(userProfile);
-        } else {
-            authd = isAuthorised(this.props.requiredAuthGroup, userProfile);
-        }
-
-        if(authd) {
+        if(this.props.isAuthorised(userProfile)) {
             return this.props.onRenderUser(userProfile);
         }
         return this.props.onRenderNotAuthorised ? this.props.onRenderNotAuthorised(userProfile) : null;
@@ -32,4 +25,24 @@ class UserAuthContainer extends React.Component<IUserAuthContainerProps, any> {
     }
 }
 
-export { IUserAuthContainerProps, UserAuthContainer }
+interface IUserAdminContainerProps extends IUserContainerProps {
+    onRenderNonAdmin?: (userProfile : IUserProfile) => React.ReactNode;
+}
+
+class UserAdminContainer extends React.Component<IUserAdminContainerProps, any> {
+    render() {
+        return (
+            <UserAuthContainer
+                    {...this.props}
+                    isAuthorised={UserAdminContext.value}
+                    onRenderNotAuthorised={this.props.onRenderNonAdmin} />
+        );
+    }
+}
+
+export {
+    IUserAuthContainerProps,
+    UserAuthContainer,
+    IUserAdminContainerProps,
+    UserAdminContainer
+}

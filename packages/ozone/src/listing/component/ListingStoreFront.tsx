@@ -8,7 +8,7 @@ import { IListingStoreFrontStyles, getStyles } from "./ListingStoreFront.styles"
 import { getClassNames } from "./ListingStoreFront.classNames";
 import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import { UserAuthContainer } from "../../user/component/UserAuthContainer";
+import { UserAuthContainer, UserAdminContainer } from "../../user/component/UserAuthContainer";
 import { isNotBlank } from "@twii/common/lib/StringUtils";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
@@ -48,7 +48,7 @@ class ListingStoreFrontFeaturedSection extends React.Component<IListingStoreFron
     private _onRenderDone = () => {
         const featured = this.props.storeFront.value ? this.props.storeFront.value.featured : undefined;
         if(featured && featured.length > 0) {
-            return <ListingList listings={featured} compact={true} onSelectItem={this.props.onSelectItem} />;
+            return <ListingList listings={featured} compact wrapping onSelectItem={this.props.onSelectItem} />;
         }
         return <MessageBar messageBarType={MessageBarType.info}>No Featured Listings available</MessageBar>;
     }
@@ -66,7 +66,7 @@ class ListingStoreFrontMostPopularSection extends React.Component<IListingStoreF
     private _onRenderDone = () => {
         const mostPopular = this.props.storeFront.value ? this.props.storeFront.value.most_popular : undefined;
         if(mostPopular && mostPopular.length > 0) {
-            return <ListingList listings={mostPopular} compact={true} onSelectItem={this.props.onSelectItem} />;
+            return <ListingList listings={mostPopular} compact wrapping onSelectItem={this.props.onSelectItem} />;
         }
         return <MessageBar messageBarType={MessageBarType.info}>No Most Popular Listings available</MessageBar>;
     }
@@ -84,7 +84,7 @@ class ListingStoreFrontRecommendedSection extends React.Component<IListingStoreF
     private _onRenderDone = () => {
         const recommended = this.props.storeFront.value ? this.props.storeFront.value.recommended : undefined;
         if(recommended && recommended.length > 0) {
-            return <ListingList listings={recommended} compact={true} onSelectItem={this.props.onSelectItem} />;
+            return <ListingList listings={recommended} compact wrapping onSelectItem={this.props.onSelectItem} />;
         }
         return <MessageBar messageBarType={MessageBarType.info}>No Recommended Listings available</MessageBar>;
     }
@@ -102,7 +102,7 @@ class ListingStoreFrontRecentSection extends React.Component<IListingStoreFrontP
     private _onRenderDone = () => {
         const recent = this.props.storeFront.value ? this.props.storeFront.value.recent : undefined;
         if(recent && recent.length > 0) {
-            return <ListingList listings={recent} compact={true} onSelectItem={this.props.onSelectItem} />;
+            return <ListingList listings={recent} compact wrapping onSelectItem={this.props.onSelectItem} />;
         }
         return <MessageBar messageBarType={MessageBarType.info}>No Recent Listings available</MessageBar>;
     }
@@ -147,55 +147,6 @@ class ListingStoreFrontSearchResultsSection extends React.Component<IListingStor
     }
 }
 
-@observer
-class ListingStoreFrontAdminCommandBar extends React.Component<IListingStoreFrontProps, any> {
-    private _onClickRefresh = () => {
-        this.props.storeFront.refresh();
-    }
-    render() {
-        const items : IContextualMenuItem[] = [];
-        const farItems : IContextualMenuItem[] = [];
-        if(this.props.onAdd) {
-            items.push({
-                key: "addListing",
-                name: "Add Listing",
-                iconProps: { iconName: "Add" },
-                onClick: this.props.onAdd
-            });
-        }
-        if(this.props.onShowAllListings) {
-            farItems.push({
-                key: "showAll",
-                name: "Show All",
-                onClick: this.props.onShowAllListings
-            });
-        }
-        farItems.push({
-            key: "refresh",
-            name: "Refresh",
-            iconProps: { iconName: "Refresh"},
-            onClick: this._onClickRefresh,
-            disabled: this.props.storeFront.sync.syncing
-        })
-        if(items.length > 0 || farItems.length > 0) {
-            return <CommandBar items={items} farItems={farItems} />;
-        }
-        return null;
-    }
-}
-
-class ListingStoreFrontAdminCommandBarContainer extends React.Component<IListingStoreFrontProps, any> {
-    private _onRenderAuth = () => {
-        return <ListingStoreFrontAdminCommandBar {...this.props} />;
-    }
-    render() {
-        if(this.props.adminGroup) {
-            return <UserAuthContainer requiredAuthGroup={this.props.adminGroup} onRenderUser={this._onRenderAuth} />;
-        }
-        return null;
-    }
-}
-
 class ListingStoreFront extends React.Component<IListingStoreFrontProps, any> {
     private _onClickAdd = () => {
         this.props.onAdd();
@@ -205,7 +156,6 @@ class ListingStoreFront extends React.Component<IListingStoreFrontProps, any> {
         const classNames = getClassNames(styles);
         return (
             <div className={classNames.root}>
-                <ListingStoreFrontAdminCommandBarContainer {...this.props} />
                 <div className={classNames.header}>
                     <div className={classNames.searchInputContainer}>
                         <ListingStoreFrontSearchInput {...this.props} />
