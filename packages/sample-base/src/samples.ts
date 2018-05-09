@@ -15,6 +15,22 @@ const samples : ISample[] = [
         ]
     },
     {
+        key: "ozone",
+        title: "Ozone",
+        items: [
+            {
+                key: "bookmarks",
+                title: "Ozone Bookmarks",
+                path: "/ozone/bookmarks"
+            },
+            {
+                key: "storefront",
+                title: "Ozone Store",
+                path: "/ozone/store"
+            }
+        ]
+    },
+    {
         key: "dashboard",
         //path: "/samples/dashboard",
         title: "Dashboard Samples",

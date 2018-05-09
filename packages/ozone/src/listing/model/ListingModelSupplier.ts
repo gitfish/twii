@@ -5,12 +5,12 @@ import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
 import { ListingServiceContext } from "../service/ListingServiceContext";
 
 class ListingModelSupplier extends SyncSupplier<IListingModel> implements IListingModelSupplier {
-    private _listingId : number;
-    constructor(listingId : number) {
+    private _listingId : string | number;
+    constructor(listingId : string | number) {
         super();
         this._listingId = listingId;
     }
-    get listingId() : number {
+    get listingId() : string | number {
         return this._listingId;
     }
     protected _loadImpl() {

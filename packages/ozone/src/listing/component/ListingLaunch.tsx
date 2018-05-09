@@ -89,7 +89,7 @@ class ListingLaunchContainer extends React.Component<IListingLaunchContainerProp
 }
 
 interface IListingLaunchAppProps extends IAppProps {
-    listingId: number;
+    listingId: string;
 }
 
 class ListingLaunchApp extends React.Component<IListingLaunchAppProps, any> {

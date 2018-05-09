@@ -10,19 +10,19 @@ import { IListingModelSupplier } from "../model/IListingModelSupplier";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 
 interface IListingAppProps extends IAppProps {
-    listingId: number;
+    listingId: string;
 }
 
 class ListingApp extends React.Component<IListingAppProps, any> {
     private _titleSetDisposer : IReactionDisposer;
     private _onEdit = (listing) => {
-        this.props.host.load({ path: `/ozone/listing/${listing.id}/edit` });
+        this.props.host.load({ path: `/ozone/listings/${listing.id}/edit` });
     }
     private _onDelete = (listing) => {
         ListingDeleteStore.setValue(listing);
     }
     private _onOpen = (listing) => {
-        this.props.host.open({ path: `/ozone/listing/${listing.id}/launch` });
+        this.props.host.open({ path: `/ozone/listings/${listing.id}/launch` });
     }
     get listingSupplier() : IListingModelSupplier {
         return this.props.host.getState("listingSupplier", () => {
@@ -41,10 +41,10 @@ class ListingApp extends React.Component<IListingAppProps, any> {
         }
     }
     private _onGoToBookmarks = () => {
-        this.props.host.load({ path: "/ozone/listing/bookmark" });
+        this.props.host.load({ path: "/ozone/bookmarks" });
     }
     private _onGoToStore = () => {
-        this.props.host.load({ path: "/ozone/listing/storefront" });
+        this.props.host.load({ path: "/ozone/store" });
     }
     render() {
         const items : IContextualMenuItem[] = [

@@ -9,7 +9,7 @@ const exactPath = (handler : IRequestHandler, opts?: IExactPathOptions) : IReque
         if(req.basePath === req.path || (opts && opts.allowTrailingSlash && req.path === `${req.basePath}/`)) {
             return handler(req, next);
         }
-        return next();
+        next();
     };
 };
 

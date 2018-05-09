@@ -68,6 +68,7 @@ class SampleHostAppView extends React.Component<ISampleHostAppViewProps, any> {
 
 const sampleAppHandler = (sample : ISample) : IRequestHandler => {
     return (req => {
+        console.log("-- Sample App Handler: " + sample.path);
         return sample.moduleLoader().then(m => {
             const componentType = m[sample.moduleComponent || "default"];
             return (

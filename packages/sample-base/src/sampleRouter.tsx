@@ -7,7 +7,8 @@ import { ISample } from "./ISample";
 import { IRouterManager } from "../../router/lib/IRouterManager";
 
 const registerSample = (sample : ISample, router : IRouterManager) => {
-    if(sample.path) {
+    if(sample.path && sample.moduleLoader) {
+        console.log("-- Registering Sample: " + sample.key);
         router.use(sample.path, exactPath(sampleAppHandler(sample)));
     }
 
@@ -20,11 +21,11 @@ const registerSample = (sample : ISample, router : IRouterManager) => {
 
 const createSampleRouter = () : Router => {
     const r = new Router();
-    r.use("/samples/home", req => {
+    r.use("/samples", exactPath(req => {
         return import("./component/Home").then(m => {
             return <m.Home host={req.app} />;
         });
-    });
+    }));
 
     samples.forEach(sample => {
         registerSample(sample, r);

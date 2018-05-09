@@ -13,13 +13,13 @@ interface IListingAddAppProps extends IAppProps {
 
 class ListingAddApp extends React.Component<IListingAddAppProps, any> {
     private _onAfterSave = (listing : IListingModel) => {
-        this.props.host.load({ path: `/ozone/listing/${listing.id}`});
+        this.props.host.load({ path: `/ozone/listings/${listing.id}`});
     }
     private _onCancel = () => {
         if(this.props.from === "list") {
-            this.props.host.load({ path: "/ozone/listing" });
+            this.props.host.load({ path: "/ozone/listings" });
         } else {
-            this.props.host.load({ path: "/ozone/listing/storefront" });
+            this.props.host.load({ path: "/ozone/store" });
         }
     }
     componentWillMount() {

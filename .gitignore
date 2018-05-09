@@ -1,4 +1,6 @@
 node_modules/
 lib/
 dist/
+__coverage__/
+lerna-debug.log
 yarn-error.log

@@ -10,16 +10,16 @@ import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 
 interface IListingEditAppProps extends IAppProps {
-    listingId: number;
+    listingId: string;
 }
 
 class ListingEditApp extends React.Component<IListingEditAppProps, any> {
     private _titleSetDisposer : IReactionDisposer;
     private _onAfterSave = () => {
-        this.props.host.load({ path: `/ozone/listing/${this.props.listingId}` });
+        this.props.host.load({ path: `/ozone/listings/${this.props.listingId}` });
     }
     private _onCancel = () => {
-        this.props.host.load({ path: `/ozone/listing/${this.props.listingId}` });
+        this.props.host.load({ path: `/ozone/listings/${this.props.listingId}` });
     }
     get listingSupplier() : IListingModelSupplier {
         return this.props.host.getState("listingSupplier", () => {

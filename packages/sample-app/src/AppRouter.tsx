@@ -11,6 +11,10 @@ r.use(new ConfigRouter({
     env: AppConfig.env,
     configMap: configMap
 }));
+r.use((req, next) => {
+    console.log("-- Sample App Router Request: " + JSON.stringify(req));
+    return next();
+});
 r.use(OzoneRouter);
 const sampleRouter = createSampleRouter();
 r.use(sampleRouter);

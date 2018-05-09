@@ -124,6 +124,9 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
         },
         tab: tab,
         addAction: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             backgroundColor: theme.palette.themeSecondary,
             color: theme.palette.white,
             outline: "none",

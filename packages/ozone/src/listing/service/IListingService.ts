@@ -6,7 +6,7 @@ import { IListingFeedback } from "../IListingFeedback";
 import { IListingActivity } from "../IListingActivity";
 
 interface IListingByIdRequest {
-    listingId: number;
+    listingId: string | number;
 }
 
 interface IListingRequest extends IListingByIdRequest {}

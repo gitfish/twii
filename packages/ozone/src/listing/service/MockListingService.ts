@@ -30,7 +30,7 @@ const nextListingBookmarkid = () : number => {
     return r;
 }
 
-const listingNotFound = (listingId : number) : Promise<any> => {
+const listingNotFound = (listingId : string | number) : Promise<any> => {
     return Promise.reject({ code: "NOT_FOUND", message: `Unable to find listing by id: ${listingId}`});
 };
 
@@ -99,7 +99,7 @@ class MockListingService implements IListingService {
     ];
     private _bookmarks : IListingBookmark[] = [];
     getListing(request : IListingRequest) : Promise<IListing> {
-        const r = this._listings.find(l => l.id === request.listingId);
+        const r = this._listings.find(l => String(l.id) === String(request.listingId));
         return r ? Promise.resolve(Object.assign({}, r)) : listingNotFound(request.listingId);
     }
     saveListing(request : IListing) : Promise<IListing> {

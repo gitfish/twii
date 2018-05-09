@@ -10,21 +10,25 @@ interface IEntry {
     timeout?: any;
 }
 
-const entryMap : { [key : number] : IEntry } = {};
+const entryMap : { [key : string] : IEntry } = {};
 
-const deleteEntry = (key : number) => {
+const setEntry = (key : string, entry : IEntry) => {
+    entryMap[key] = entry;
+};
+
+const deleteEntry = (key : string) => {
     delete entryMap[key];
 };
 
-const findById = (listingId : number) : IListingModelSupplier => {
+const findById = (listingId : string | number) : IListingModelSupplier => {
     let entry = entryMap[listingId];
     if(!entry) {
         entry = { supplier: new ListingModelSupplier(listingId) };
-        entryMap[listingId] = entry;
-
+        setEntry(String(listingId), entry);
+        
         // add our deletion timeout
         entry.timeout = setTimeout(() => {
-            deleteEntry(listingId);
+            deleteEntry(String(listingId));
         }, deleteAfter);
     }
     entry.supplier.load();
