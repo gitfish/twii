@@ -1,45 +1,16 @@
 import * as React from "react";
 import { Router } from "@twii/router/lib/Router";
-import { exactPath } from "@twii/router/lib/Routers";
 import { requiresUserProfile } from "./user/UserAuthRouters";
+import { componentRouter } from "@twii/common-ui/lib/componentRouter";
 
 const r = new Router();
 r.use(requiresUserProfile);
-r.use("/ozone/bookmarks", exactPath(req => {
-    return import("./listing/component/ListingBookmarksApp").then(m => {
-        return <m.ListingBookmarksApp host={req.app} />; 
-    });
-}));
-r.use("/ozone/listings", exactPath(req => {
-    return import("./listing/component/ListingListApp").then(m => {
-        return <m.ListingListApp host={req.app} />; 
-    });  
-}));
-r.use("/ozone/store", exactPath(req => {
-    return import("./listing/component/ListingStoreFrontApp").then(m => {
-        return <m.ListingStoreFrontApp host={req.host} userProfile={req.userProfile} />; 
-    });
-}));
-r.use("/ozone/listings/add", exactPath(req => {
-    return import("./listing/component/ListingAddApp").then(m => {
-        return <m.ListingAddApp host={req.app} />;
-    });
-}));
-
-r.use("/ozone/listings/:listingId", exactPath(req => {
-    return import("./listing/component/ListingApp").then(m => {
-        return <m.ListingApp host={req.app} listingId={req.params.listingId} />;
-    });
-}));
-r.use("/ozone/listings/:listingId/launch", exactPath(req => {
-    return import("./listing/component/ListingLaunch").then(m => {
-        return <m.ListingLaunchApp host={req.app} listingId={req.params.listingId} />; 
-    });
-}));
-r.use("/ozone/listings/:listingId/edit", exactPath(req => {
-    return import("./listing/component/ListingEditApp").then(m => {
-        return <m.ListingEditApp host={req.app} listingId={req.params.listingId} />;
-    });
-}));
+r.use("/ozone/bookmarks", componentRouter(() => import("./listing/component/ListingBookmarksApp")));
+r.use("/ozone/listings", componentRouter(() => import("./listing/component/ListingListApp")));
+r.use("/ozone/store", componentRouter(() => import("./listing/component/ListingStoreFrontApp")));
+r.use("/ozone/listings/add", componentRouter(() => import("./listing/component/ListingAddApp")));
+r.use("/ozone/listings/:listingId", componentRouter(() => import("./listing/component/ListingApp")));
+r.use("/ozone/listings/:listingId/launch", componentRouter(() => import("./listing/component/ListingLaunch")));
+r.use("/ozone/listings/:listingId/edit", componentRouter(() => import("./listing/component/ListingEditApp")));
 
 export { r as OzoneRouter }

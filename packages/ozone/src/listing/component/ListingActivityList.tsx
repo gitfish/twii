@@ -9,6 +9,7 @@ import { IListingActivityListStyles, getStyles } from "./ListingActivityList.sty
 import { DetailsList, DetailsRow, IColumn, IGroup, IGroupDividerProps, DetailsListLayoutMode, SelectionMode } from "office-ui-fabric-react/lib/DetailsList";
 import { ListingActivityAction } from "../ListingActivityAction";
 import { timestampIO } from "@twii/common/lib/MomentDataUtils";
+import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 
 interface IListingActivityListProps {
     activityList: IListingActivityListModel;
@@ -77,14 +78,23 @@ class ListingActivityListItems extends React.Component<IListingActivityListInter
                 items.push(cd);
             });
         });
-        return <DetailsList
-                    groupProps={{ onRenderHeader: this._onRenderActivityHeader, showEmptyGroups: true }}
-                    groups={groups}
-                    items={items}
-                    columns={ActivityColumns}
-                    layoutMode={DetailsListLayoutMode.fixedColumns}
-                    selectionMode={SelectionMode.none}
-                    onShouldVirtualize={this._onShouldVirtualize} />
+        if(items.length > 0) {
+            return <DetailsList
+                        groupProps={{ onRenderHeader: this._onRenderActivityHeader, showEmptyGroups: true }}
+                        groups={groups}
+                        items={items}
+                        columns={ActivityColumns}
+                        layoutMode={DetailsListLayoutMode.fixedColumns}
+                        selectionMode={SelectionMode.none}
+                        onShouldVirtualize={this._onShouldVirtualize} />
+        }
+        return (
+            <div style={{ padding: 8 }}>
+                <MessageBar messageBarType={MessageBarType.info}>
+                    No listing acitivites available
+                </MessageBar>
+            </div>
+        );
     }
 }
 

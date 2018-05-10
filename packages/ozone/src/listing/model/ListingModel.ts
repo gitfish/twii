@@ -355,7 +355,10 @@ class ListingModel extends StateManager implements IListingModel {
         return this._saveImages().then(() => {
             const request : IListing = Object.assign({}, this.data, { approval_status: approvalStatus });
             return this.listingService.saveListing(request);
-        }).then(this._onSaveDone).catch(this._onSyncError);
+        }).then(this._onSaveDone).catch(err => {
+            this._onSyncError(err)
+            return Promise.reject(err);
+        });
     }
     
     @action

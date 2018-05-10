@@ -16,6 +16,12 @@ class MockUserService implements IUserService {
                 email: "mock@twii.test",
                 groups: [
                     {
+                        name: "user"
+                    },
+                    {
+                        name: "developer"
+                    },
+                    {
                         name: "admin"
                     }
                 ]

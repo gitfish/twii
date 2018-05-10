@@ -4,17 +4,18 @@ import { ListingBookmarkListStore } from "../model/ListingBookmarkListStore";
 import { IListing } from "../IListing";
 import { launch } from "../ListingActions";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { AppLink } from "@twii/common-ui/lib/component/AppLink";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
+import { createPlaceItems } from "./ListingMenuHelper";
+import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
 
-class ListingBookmarksApp extends React.Component<IAppProps, any> {
+class ListingBookmarksApp extends React.Component<IOzoneAppProps, any> {
     private _onSelectListing = (listing : IListing) => {
         launch(this.props.host, listing);
     }
     componentWillMount() {
-        this.props.host.setTitle("Add Widget");
+        this.props.host.setTitle("Bookmarks");
     }
     private _onRenderNoBookmarks = () => {
         return (
@@ -25,26 +26,20 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
             </div>
         );
     }
-    private _onGoToStore = () => {
-        this.props.host.load({ path: "/ozone/store" });
-    }
     render() {
+        const placeItems = createPlaceItems(this.props);
+        const checkedItem = placeItems.find(item => item.checked);
+        
+        const placeMenu : IContextualMenuItem = {
+            key: "place",
+            name: checkedItem.name,
+            iconProps: checkedItem.iconProps,
+            subMenuProps: {
+                items: placeItems
+            }
+        };
         const items : IContextualMenuItem[] = [
-            {
-                key: "bookmarks",
-                name: "Bookmarks",
-                iconProps: {
-                    iconName: "DoubleBookmark"
-                }
-            },
-            {
-                key: "store",
-                name: "Store",
-                iconProps: {
-                    iconName: "Shop"
-                },
-                onClick: this._onGoToStore
-            }  
+            placeMenu
         ];
         return (
             <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
@@ -54,4 +49,7 @@ class ListingBookmarksApp extends React.Component<IAppProps, any> {
     }
 }
 
-export { ListingBookmarksApp }
+export {
+    ListingBookmarksApp,
+    ListingBookmarksApp as default
+}

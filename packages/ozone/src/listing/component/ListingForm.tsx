@@ -24,7 +24,8 @@ import { getTheme } from "@uifabric/styling";
 interface IListingEditorProps {
     listing: IListingModel;
     onCancel?: () => void;
-    onAfterSave?: (listing : IListingModel) => void;
+    onSave?: (listing : IListingModel) => void;
+    onSubmitForApproval?: (listing : IListingModel) => void;
     styles?: IListingFormStyles;
 }
 
@@ -188,13 +189,7 @@ class ListingEditor extends React.Component<IListingEditorProps, any> {
 @observer
 class ListingSaveAction extends React.Component<IListingEditorProps, any> {
     private _onClick = () => {
-        this.props.listing.save().then(() => {
-            if(!this.props.listing.saveSync.error && this.props.onAfterSave) {
-                this.props.onAfterSave(this.props.listing);
-            }
-        }).catch(() => {
-            // we don't do anything here - the error should be reported on the model
-        });
+        this.props.onSave(this.props.listing);
     }
     private _onRenderSyncIcon = () => {
         return <Spinner size={SpinnerSize.small} />;
@@ -213,11 +208,14 @@ class ListingSaveAction extends React.Component<IListingEditorProps, any> {
 @observer
 class ListingSubmitAction extends React.Component<IListingEditorProps, any> {
     private _onClick = () => {
+        /*
         this.props.listing.submitForApproval().then(() => {
             if(!this.props.listing.saveSync.error && this.props.onAfterSave) {
                 this.props.onAfterSave(this.props.listing);
             }
         });
+        */
+        this.props.onSubmitForApproval(this.props.listing);
     }
     private _onRenderSyncIcon = () => {
         return <Spinner size={SpinnerSize.small} />;
@@ -259,9 +257,9 @@ class ListingActions extends React.Component<IListingEditorProps, any> {
         const styles = getStyles(undefined, this.props.styles);
         return (
             <div className={getClassNames(styles).actions}>
-                <ListingCancelAction {...this.props} />
-                <ListingSaveAction {...this.props} />
-                <ListingSubmitAction {...this.props} />
+                {this.props.onCancel ? <ListingCancelAction {...this.props} /> : undefined}
+                {this.props.onSave ? <ListingSaveAction {...this.props} /> : undefined}
+                {this.props.onSubmitForApproval ? <ListingSubmitAction {...this.props} /> : undefined}
             </div>
         );
     }
@@ -304,13 +302,17 @@ class ListingForm extends React.Component<IListingEditorProps, any> {
 
 interface IListingFormContainerProps {
     listingSupplier: ISyncSupplier<IListingModel>;
-    onAfterSave?: (listing : IListingModel) => void;
+    onSave?: (listing : IListingModel) => void;
+    onSubmitForApproval?: (listing : IListingModel) => void;
     onCancel?: () => void;
 }
 
 class ListingFormContainer extends React.Component<IListingFormContainerProps, any> {
     private _onRenderDone = () => {
-        return <ListingForm listing={this.props.listingSupplier.value} onCancel={this.props.onCancel} onAfterSave={this.props.onAfterSave} />;
+        return <ListingForm listing={this.props.listingSupplier.value}
+                            onCancel={this.props.onCancel}
+                            onSave={this.props.onSave}
+                            onSubmitForApproval={this.props.onSubmitForApproval} />;
     }
     render() {
         return <Sync sync={this.props.listingSupplier.sync} onRenderDone={this._onRenderDone} />

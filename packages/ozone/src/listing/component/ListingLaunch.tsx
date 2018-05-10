@@ -11,6 +11,7 @@ import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { ListingModelSupplier } from "../model/ListingModelSupplier";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
+import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
 
 interface IListingLaunchProps extends IAppProps {
     listing: IListingModel;
@@ -88,21 +89,23 @@ class ListingLaunchContainer extends React.Component<IListingLaunchContainerProp
     }
 }
 
-interface IListingLaunchAppProps extends IAppProps {
-    listingId: string;
-}
-
-class ListingLaunchApp extends React.Component<IListingLaunchAppProps, any> {
+class ListingLaunchApp extends React.Component<IOzoneAppProps, any> {
     componentWillMount() {
         this.props.host.setTitle(`${this.props.host.params.title || ""}`);
+    }
+    get listingId() {
+        return this.props.params.listingId;
     }
     render() {
         return (
             <HostAppView host={this.props.host}>
-                <ListingLaunchContainer host={this.props.host} listingSupplier={new ListingModelSupplier(this.props.listingId)} />
+                <ListingLaunchContainer host={this.props.host} listingSupplier={new ListingModelSupplier(this.listingId)} />
             </HostAppView>
         );
     }
 }
 
-export { IListingLaunchAppProps, ListingLaunchApp }
+export {
+    ListingLaunchApp,
+    ListingLaunchApp as default
+}

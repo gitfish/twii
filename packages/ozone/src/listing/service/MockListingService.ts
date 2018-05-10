@@ -43,6 +43,7 @@ class MockListingService implements IListingService {
             description: "Github",
             description_short: "Github",
             launch_url: "http://www.github.com",
+            security_marking: "developer",
             approval_status: ListingApprovalStatus.APPROVED,
             is_enabled: true
         },
@@ -53,6 +54,7 @@ class MockListingService implements IListingService {
             description: "React",
             description_short: "React",
             launch_url: "https://reactjs.org",
+            security_marking: "developer",
             approval_status: ListingApprovalStatus.APPROVED,
             is_enabled: true
         },
@@ -62,6 +64,7 @@ class MockListingService implements IListingService {
             title: "Office UI Fabric React",
             description: "Office UI Fabric React",
             description_short: "Office UI Fabric React",
+            security_marking: "developer",
             launch_url: "https://developer.microsoft.com/en-us/fabric#/components",
             approval_status: ListingApprovalStatus.APPROVED,
             is_enabled: true
@@ -73,6 +76,7 @@ class MockListingService implements IListingService {
             description: "Blueprint Alert Sample",
             description_short: "Blueprint Alert Sample",
             launch_url: "/samples/blueprint/alert",
+            security_marking: "developer",
             approval_status: ListingApprovalStatus.APPROVED,
             is_enabled: true
         },
@@ -83,6 +87,7 @@ class MockListingService implements IListingService {
             description: "Blueprint Dialog Sample",
             description_short: "Blueprint Dialog Sample",
             launch_url: "/samples/blueprint/dialog",
+            security_marking: "developer",
             approval_status: ListingApprovalStatus.APPROVED,
             is_enabled: true
         },
@@ -93,6 +98,7 @@ class MockListingService implements IListingService {
             description: "Blueprint Context Menu Sample",
             description_short: "Blueprint Context Menu Sample",
             launch_url: "/samples/blueprint/contextmenu",
+            security_marking: "developer",
             approval_status: ListingApprovalStatus.APPROVED,
             is_enabled: true
         }

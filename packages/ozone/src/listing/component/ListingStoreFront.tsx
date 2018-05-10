@@ -122,7 +122,7 @@ class ListingStoreFrontSearchInput extends React.Component<IListingStoreFrontPro
         this.props.storeFront.setSearchText(newValue);
     } 
     render() {
-        return <SearchBox value={this.props.storeFront.searchText} placeholder="Search Listings" onChange={this._onSearchChange} />
+        return <SearchBox value={this.props.storeFront.searchText} placeholder="Search Store" onChange={this._onSearchChange} />
     }
 }
 

@@ -46,4 +46,10 @@ class PathTemplate {
     }
 }
 
-export { PathTemplate };
+const matches = (value : string, pattern : string) : boolean => {
+    const template = new PathTemplate(pattern);
+    const mr = template.test(value);
+    return mr.match;
+};
+
+export { PathTemplate, matches };

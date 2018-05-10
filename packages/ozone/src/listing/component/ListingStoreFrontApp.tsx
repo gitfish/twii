@@ -8,6 +8,7 @@ import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
 import { UserAdminContext } from "../../user/UserAdminContext";
+import { createPlaceMenu } from "./ListingMenuHelper";
 
 @observer
 class ListingStoreFrontApp extends React.Component<IOzoneAppProps, any> {
@@ -17,9 +18,6 @@ class ListingStoreFrontApp extends React.Component<IOzoneAppProps, any> {
     private _onAdd = () => {
         this.props.host.load({ path: "/ozone/listings/add" });
     }
-    private _onShowAllListings = () => {
-        this.props.host.load({ path: "/ozone/listings" });
-    }
     private _onRefresh = () =>{
         this.listingStoreFront.refresh();
     }
@@ -28,53 +26,12 @@ class ListingStoreFrontApp extends React.Component<IOzoneAppProps, any> {
             return new ListingStoreFrontModel(); 
         });
     }
-    private _onGoToBookmarks = () => {
-        this.props.host.load({ path: "/ozone/bookmarks" });
-    }
     componentWillMount() {
         this.props.host.setTitle("Store");
     }
     render() {
-        const locationItems : IContextualMenuItem[] = [
-            {
-                key: "bookmarks",
-                name: "Bookmarks",
-                iconProps: {
-                    iconName: "DoubleBookmark"
-                },
-                onClick: this._onGoToBookmarks,
-                canCheck: true
-            },
-            {
-                key: "store",
-                name: "Store",
-                iconProps: {
-                    iconName: "Shop"
-                },
-                canCheck: true,
-                checked: true
-            }
-        ];
-        if(UserAdminContext.value(this.props.userProfile)) {
-            locationItems.push({
-                key: "allListings",
-                name: "All Listings",
-                iconProps: {
-                    iconName: "ViewAll"
-                },
-                onClick: this._onShowAllListings,
-                canCheck: true
-            })
-        }
-        const locationItem : IContextualMenuItem = {
-            key: "location",
-            name: "Store",
-            subMenuProps: {
-                items: locationItems
-            }
-        };
         const items : IContextualMenuItem[] = [
-            locationItem,
+            createPlaceMenu(this.props),
             {
                 key: "add",
                 name: "Add Listing",
@@ -104,4 +61,7 @@ class ListingStoreFrontApp extends React.Component<IOzoneAppProps, any> {
     }
 }
 
-export { ListingStoreFrontApp }
+export {
+    ListingStoreFrontApp,
+    ListingStoreFrontApp as default
+}

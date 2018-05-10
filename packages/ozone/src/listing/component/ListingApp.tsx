@@ -1,6 +1,6 @@
 import * as React from "react";
+import { observer } from "mobx-react";
 import { autorun, IReactionDisposer } from "mobx";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
 import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
 import { ListingContainer, ListingTitleContainer, ListingDeleteDialog } from "./Listing";
 import { findById } from "../model/ListingFinder";
@@ -8,12 +8,11 @@ import { ListingDeleteStore } from "../model/ListingDeleteStore";
 import { IListingModel } from "../model/IListingModel";
 import { IListingModelSupplier } from "../model/IListingModelSupplier";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
+import { createPlaceMenu, createPlaceItems, createPlaceItem, createListingPlaceItem } from "./ListingMenuHelper";
+import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
 
-interface IListingAppProps extends IAppProps {
-    listingId: string;
-}
-
-class ListingApp extends React.Component<IListingAppProps, any> {
+@observer
+class ListingApp extends React.Component<IOzoneAppProps, any> {
     private _titleSetDisposer : IReactionDisposer;
     private _onEdit = (listing) => {
         this.props.host.load({ path: `/ozone/listings/${listing.id}/edit` });
@@ -24,10 +23,16 @@ class ListingApp extends React.Component<IListingAppProps, any> {
     private _onOpen = (listing) => {
         this.props.host.open({ path: `/ozone/listings/${listing.id}/launch` });
     }
+    private _onRefresh = () => {
+        this.listingSupplier.refresh();
+    }
+    get listingId() {
+        return this.props.params.listingId;
+    }
     get listingSupplier() : IListingModelSupplier {
         return this.props.host.getState("listingSupplier", () => {
-            return findById(this.props.listingId); 
-        }, s => s.listingId !== this.props.listingId);
+            return findById(this.listingId); 
+        }, s => s.listingId !== this.listingId);
     }
     componentWillMount() {
         this._titleSetDisposer = autorun(() =>
@@ -40,33 +45,36 @@ class ListingApp extends React.Component<IListingAppProps, any> {
             delete this._titleSetDisposer;
         }
     }
-    private _onGoToBookmarks = () => {
-        this.props.host.load({ path: "/ozone/bookmarks" });
-    }
-    private _onGoToStore = () => {
-        this.props.host.load({ path: "/ozone/store" });
-    }
     render() {
+        const placeItems = createPlaceItems(this.props);
+        const listingDetailsItem = createListingPlaceItem({
+            key: "listingDetails",
+            host: this.props.host,
+            path: this.props.host.path,
+            listingSupplier: this.listingSupplier,
+            onRenderTitle: s => `${s.value.title} - Details`
+        });
+        placeItems.unshift({
+            key: "sep",
+            name: "-"
+        });
+        placeItems.unshift(listingDetailsItem);
         const items : IContextualMenuItem[] = [
+            createPlaceMenu(this.props, placeItems)
+        ];
+        const farItems : IContextualMenuItem[] = [
             {
-                key: "bookmarks",
-                name: "Bookmarks",
+                key: "refresh",
+                name: "Refresh",
                 iconProps: {
-                    iconName: "DoubleBookmark"
+                    iconName: "Refresh"
                 },
-                onClick: this._onGoToBookmarks
-            },
-            {
-                key: "backToStore",
-                name: "Store",
-                iconProps: {
-                    iconName: "Shop"
-                },
-                onClick: this._onGoToStore
-            }  
+                onClick: this._onRefresh,
+                disabled: this.listingSupplier.sync.syncing
+            }
         ];
         return (
-            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
+            <HostAppView host={this.props.host} commandBarProps={{ items: items, farItems: farItems }}>
                 <ListingDeleteDialog listingSupplier={ListingDeleteStore} />
                 <ListingContainer listingSupplier={this.listingSupplier} onEdit={this._onEdit} onDelete={this._onDelete} onOpen={this._onOpen} />
             </HostAppView>
@@ -74,5 +82,8 @@ class ListingApp extends React.Component<IListingAppProps, any> {
     }
 }
 
-export { IListingAppProps, ListingApp }
+export {
+    ListingApp,
+    ListingApp as default
+}
 
