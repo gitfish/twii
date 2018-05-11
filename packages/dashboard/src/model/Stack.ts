@@ -9,15 +9,14 @@ import { IRequest } from "@twii/router/lib/IRequest";
 import { isFunction } from "@twii/common/lib/LangUtils";
 import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 import * as ComponentTypes from "./ComponentTypes";
+import { WindowManager } from "./WindowManager";
 
 /**
  * Stack - a bunch/stack of windows
  */
-class Stack extends Component implements IStack {
+class Stack extends WindowManager implements IStack {
     private _type : string;
-    @observable private _closeDisabled = false;
     @observable private _activeIndex : number;
-    @observable windows : IWindow[] = [];
 
     constructor() {
         super();
@@ -34,23 +33,6 @@ class Stack extends Component implements IStack {
     
     get type() {
         return ComponentTypes.stack;
-    }
-
-    @computed
-    get windowCount() {
-        return this.windows ? this.windows.length : 0;
-    }
-
-    @computed
-    get closeDisabled() {
-        return this._closeDisabled || (this.dashboard && this.dashboard.closeDisabled);
-    }
-    set closeDisabled(value) {
-        this.setCloseDisabled(value);
-    }
-    @action
-    setCloseDisabled(closeDisabled : boolean) {
-        this._closeDisabled = closeDisabled;
     }
     
     @computed
@@ -92,104 +74,15 @@ class Stack extends Component implements IStack {
     }
 
     @action
-    add(win : IWindow, makeActive: boolean = true) {
-        if(win) {
-            if(win.parent !== this) {
-                win.removeFromParent();
-                win.parent = this;
-            } else {
-                const itemIdx = this.windows.indexOf(win);
-                this.windows.splice(itemIdx, 1);
-            }
-            this.windows.push(win);
-            if(makeActive) {
-                this.setActive(win);
-            }
-        }
-    }
-
-    @action
-    open(request : IRequest) {
-        let win;
-        if(request && request.replace && request.name) {
-            const db = this.dashboard;
-            win = db.findFirst(w => {
-                return w.type === "window" ? (w as Window).name === request.name : false;
-            });
-        }
-        if(!win) {
-            win = new Window();
-            if(request) {
-                win.name = request.name;
-                win.setPath(request.path);
-                win.setParams(request.params);
-                win.setQuery(request.query);
-                if(request.title) {
-                    win.setTitle(request.title);
-                }
-                if(request.transient !== undefined) {
-                    win.setTransient(request.transient);
-                }
-            }
-            this.add(win, request && request.makeActive !== undefined ? request.makeActive : true);
-        } else {
-            win.load(request);
-        }
-        return Promise.resolve(win);
-    }
-
-    @action
-    addNew() {
-        if(this.addApp) {
-            return this.open(isFunction(this.addApp) ? (this.addApp as ISupplierFunc<IRequest>)() : this.addApp);
-        }
-        return Promise.resolve();
-    }
-
-    @action
-    insertAt(item : IWindow, index : number) {
-        if(item && index >= 0 && index < this.windows.length) {
-            let refStackItem = this.windows[index];
-            let insertIdx : number = -1;
-            if(item.parent !== this) {
-                item.removeFromParent();
-                item.parent = this;
-                insertIdx = index;
-            } else {
-                const itemIdx = this.windows.indexOf(item);
-                if(itemIdx >= 0 && itemIdx !== index) {
-                    this.windows.splice(itemIdx, 1);
-                    insertIdx = this.windows.indexOf(refStackItem);
-                }
-            }
-
-            if(insertIdx >= 0) {
-                this.windows.splice(insertIdx, 0, item);
-            }
-        } else {
-            this.add(item);
-        }
-    }
-
-    @action
-    dropWindow(refWindow?: IWindow) {
-        const drag = this.dashboard ? this.dashboard.drag : undefined;
-        if(drag) {
-            const win = drag as IWindow;
-            if(refWindow) {
-                if(drag.parent === this) {
-                    const dragIdx = this.windows.indexOf(win);
-                    const refIdx = this.windows.indexOf(refWindow);
-                    this.insertAt(win, dragIdx > refIdx ? refIdx : refIdx + 1);
-                } else {
-                    this.insertBefore(win, refWindow);
-                }
-            } else {
-                this.add(win, false);
-            }
+    add(win : IWindow, opts?: any) {
+        super.add(win, opts);
+        if(opts && opts.makeActive) {
             this.setActive(win);
-            this.dashboard.clearDrag();
         }
+    }
+
+    protected _windowDropped(win) {
+        this.setActive(win);
     }
 
     @action
@@ -198,7 +91,7 @@ class Stack extends Component implements IStack {
         return import("./Split").then(m => {
             const split = new m.HSplit();
             const newStack = new Stack();
-            newStack.setCloseDisabled(this._closeDisabled);
+            newStack.setCloseDisabled(this.closeDisabled);
             split.setLeft(newStack);
             this.parent.replace(split, this);
             if(newComp) {
@@ -216,7 +109,7 @@ class Stack extends Component implements IStack {
         return import("./Split").then(m => {
             const split = new m.HSplit();
             const newStack = new Stack();
-            newStack.setCloseDisabled(this._closeDisabled);
+            newStack.setCloseDisabled(this.closeDisabled);
             split.setRight(newStack);
             this.parent.replace(split, this);
             if(newComp) {
@@ -234,7 +127,7 @@ class Stack extends Component implements IStack {
         return import("./Split").then(m => {
             const split = new m.VSplit();
             const newStack = new Stack();
-            newStack.setCloseDisabled(this._closeDisabled);
+            newStack.setCloseDisabled(this.closeDisabled);
             split.setTop(newStack);
             this.parent.replace(split, this);
             if(newComp) {
@@ -252,7 +145,7 @@ class Stack extends Component implements IStack {
         return import("./Split").then(m => {
             const split = new m.VSplit();
             const newStack = new Stack();
-            newStack.setCloseDisabled(this._closeDisabled);
+            newStack.setCloseDisabled(this.closeDisabled);
             split.setBottom(newStack);
             this.parent.replace(split, this);
             if(newComp) {
@@ -264,30 +157,13 @@ class Stack extends Component implements IStack {
         });
     }
 
-    @action
-    insertBefore(item : IWindow, refItem?: IWindow) {
-        if(!refItem) {
-            this.add(item);
-        } else if(item) {
-            this.insertAt(item, this.windows.indexOf(refItem));
-        }
-    }
-
-    @action
-    replace(newItem : IComponent, oldItem : IComponent) : void {
-        if(newItem && oldItem && oldItem.parent === this) {
-            this.insertBefore(newItem as IWindow, oldItem as IWindow);
-            oldItem.removeFromParent();
-        }
-    }
-
     @computed
     get config() {
         return {
             type: this.type,
             activeIndex: this.activeIndex,
             windows: this.windows.filter(w => !w.transient).map(w => w.config),
-            closeDisabled: this._closeDisabled
+            closeDisabled: this.closeDisabled
         };
     }
 
@@ -298,7 +174,7 @@ class Stack extends Component implements IStack {
         if(config && config.windows && config.windows.length > 0) {
             windowPromise = Promise.all(config.windows.map(wc => {
                 const w = new Window();
-                this.add(w, false);
+                this.add(w);
                 return w.setConfig(wc);
             }));
         } else {
@@ -326,54 +202,6 @@ class Stack extends Component implements IStack {
                 }
             }
         }
-    }
-
-    @action
-    private _replaceWithListModuleLoaded = (m) => {
-        const active = this.active;
-        const list = new m.List();
-        list.setCloseDisabled(this._closeDisabled);
-        this.parent.replace(list, this);
-        while(this.windows.length > 0) {
-            list.add(this.windows[0], false);
-        }
-        list.setActive(active);
-        if(active) {
-            list.setPendingScrollTo(active);
-        }
-    }
-
-    protected _visitChildren(callback) {
-        this.windows.forEach(w => w.visit(callback));
-    }
-
-    protected _findFirstChild(predicate) {
-        let r;
-        this.windows.some(w => {
-            r = w.findFirst(predicate);
-            return r ? true : false;
-        });
-        return r;
-    }
-
-    protected _findAllChildren(predicate) : IComponent[] {
-        let r = [];
-        let wr;
-        this.windows.forEach(w => {
-            wr = w.findAll(predicate);
-            if(wr && wr.length > 0) {
-                r = r.concat(wr);
-            }
-        });
-        return r;
-    }
-
-    @action
-    close() {
-        while(this.windowCount > 0) {
-            this.windows[0].close();
-        }
-        this.removeFromParent();
     }
 }
 

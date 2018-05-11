@@ -5,12 +5,8 @@ import { IRequest } from "@twii/router/lib/IRequest";
 interface IWindowManager extends IComponent {
     windowCount : number;
     windows: IWindow[];
-    activeIndex: number;
-    setActiveIndex(activeIndex : number) : void;
-    active : IWindow;
-    add(win : IWindow, makeActive?: boolean) : void;
-    addNew() : void;
-    setActive(win : IWindow) : void;
+    add(win : IWindow, opts? : any) : void;
+    addNew(opts?: any) : void;
     dropWindow(refWindow?: IWindow) : void;
     open(request : IRequest) : Promise<IWindow>;
     closeDisabled : boolean;

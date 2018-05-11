@@ -81,7 +81,7 @@ class Dashboard extends React.Component<IDashboardProps, any> {
             <div id={this.props.dashboard.id} className={css(classNames.root, { hidden: this.props.hidden })}>
                 <DashboardBlockOverlay {...this.props} classNames={classNames} />
                 <ComponentRemoveDialog remove={ComponentRemoveStore} />
-                <div className="dashboard-portal-root" ref={this._onPortalRootRef}></div>
+                <div className={classNames.portalRoot} style={{ position: "relative" }} ref={this._onPortalRootRef}></div>
                 <div className={classNames.content}>
                     {content}
                 </div>

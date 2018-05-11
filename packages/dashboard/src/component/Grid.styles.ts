@@ -1,13 +1,9 @@
 import { IStyle, ITheme, getTheme, concatStyleSets, FontWeights, FontSizes } from "@uifabric/styling";
 import { memoizeFunction } from "@uifabric/utilities";
 
-interface IListStyles {
+interface IGridStyles {
     root?: IStyle;
-    header?: IStyle;
-    action?: IStyle;
-    nearActionBar?: IStyle;
-    farActionBar?: IStyle;
-    body?: IStyle;
+    cell?: IStyle;
     window?: IStyle;
     windowHeader?: IStyle;
     windowTitleContainer?: IStyle;
@@ -15,90 +11,33 @@ interface IListStyles {
     windowActionBar?: IStyle;
     windowAction?: IStyle;
     windowBody?: IStyle;
-    appender?: IStyle;
 }
 
-const getStyles = memoizeFunction((theme : ITheme, customStyles?: IListStyles) => {
+const getStyles = memoizeFunction((theme : ITheme, customStyles?: IGridStyles) => {
     if(!theme) {
         theme = getTheme();
     }
 
-    const DefaultStyles : IListStyles = {
+    const DefaultStyles : IGridStyles = {
         root: {
             position: "absolute",
             top: 0,
             right: 0,
             bottom: 0,
-            left: 0
-        },
-        header: {
-            position: "absolute",
-            top: 0,
-            right: 0,
             left: 0,
-            height: 28,
-            backgroundColor: theme.palette.neutralLight,
-            color: theme.palette.themeDarker,
-            borderBottom: `1px solid ${theme.palette.themeDarker}`
+            overflow: "auto"
         },
-        action: {
-            color: theme.palette.themeDarker
-        },
-        nearActionBar: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            backgroundColor: theme.palette.neutralLight,
-            selectors: {
-                ".add-action": {
-                    backgroundColor: theme.palette.themeTertiary,
-                    color: theme.palette.white,
-                    selectors: {
-                        ":hover": {
-                            backgroundColor: theme.palette.themeSecondary,
-                        }
-                    }
-                }
-            }
-        },
-        farActionBar: {
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            backgroundColor: theme.palette.neutralLight
-        },
-        body: {
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            overflow: "auto",
-            //backgroundColor: DefaultPalette.white,
-            selectors: {
-                "&.has-header": {
-                    top: 29
-                },
-                "$window+$window": {
-                    marginTop: 0
-                }
-            }
+        cell: {
+            position: "absolute"
         },
         window: {
-            position: "relative",
-            marginLeft: 5,
-            marginRight: 5,
-            marginTop: 5,
-            marginBottom: 5,
+            position: "absolute",
+            top: 8,
+            right: 8,
+            bottom: 8,
+            left: 8,
             boxShadow: `0 0 ${5}px 0 rgba(0, 0, 0, 0.4)`,
+            backgroundColor: theme.palette.white,
             selectors: {
                 "&.content-hidden": {
                     height: 28
@@ -114,7 +53,7 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IListStyles) =
             justifyContent: "flex-start",
             cursor: "pointer",
             overflow: "hidden",
-            backgroundColor: theme.palette.themeDarker,
+            backgroundColor: theme.palette.themeDarkAlt,
             color: theme.palette.white,
             height: 28
         },
@@ -175,29 +114,14 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IListStyles) =
         windowBody: {
             position: "absolute",
             top: 28,
-            left: 0,
-            bottom: 0,
-            right: 0,
+            left: 1,
+            bottom: 1,
+            right: 1,
             backgroundColor: theme.palette.white,
             selectors: {
                 "&.content-hidden": {
                     height: 0,
                     overflow: "hidden"
-                }
-            }
-        },
-        appender: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-            border: "1px solid transparent",
-            lineHeight: FontSizes.large,
-            margin: 5,
-            height: 28,
-            selectors: {
-                ":hover": {
-                    border: `1px dashed ${theme.palette.neutralSecondary}`
                 }
             }
         }
@@ -206,4 +130,4 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IListStyles) =
     return concatStyleSets(DefaultStyles, customStyles);
 });
 
-export { IListStyles, getStyles }
+export { IGridStyles, getStyles }

@@ -36,7 +36,7 @@ const DashboardLayoutRegistry = new ListModel<IDashboardLayoutItem>([
         iconProps: { iconName: "TripleColumn" },
         applyLayout: ThreeColumnLayout.applyLayout,
         isLayoutApplied: ThreeColumnLayout.isLayoutApplied
-    }/*,
+    },
     {
         key: "grid",
         name: "Grid",
@@ -44,7 +44,6 @@ const DashboardLayoutRegistry = new ListModel<IDashboardLayoutItem>([
         applyLayout: GridLayout.applyLayout,
         isLayoutApplied: GridLayout.isLayoutApplied
     }
-    */
 ]);
 
 export { IDashboardLayoutItem, DashboardLayoutRegistry }

@@ -5,6 +5,7 @@ interface IDashboardStyles {
     root?: IStyle;
     overlay?: IStyle;
     content?: IStyle;
+    portalRoot?: IStyle;
 }
 
 const defaultStyles = (theme : ITheme) : IDashboardStyles => {
@@ -42,6 +43,9 @@ const defaultStyles = (theme : ITheme) : IDashboardStyles => {
             right: 5,
             bottom: 5,
             left: 5
+        },
+        portalRoot: {
+            position: "relative"
         }
     }
 };

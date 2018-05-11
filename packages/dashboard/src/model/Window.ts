@@ -8,6 +8,7 @@ import * as ComponentTypes from "./ComponentTypes";
 import * as qs from "qs";
 import { WindowAppHost } from "./WindowAppHost";
 import { IConsumerFunc } from "@twii/common/lib/IConsumerFunc";
+import { IStack } from "./IStack";
 
 class Window extends Component implements IWindow {
     name : string;
@@ -19,6 +20,7 @@ class Window extends Component implements IWindow {
     @observable private _contentHidden : boolean = false;
     @observable private _closeDisabled = false;
     @observable private _transient : boolean = false;
+    @observable private _layout : any;
 
     constructor() {
         super();
@@ -71,6 +73,18 @@ class Window extends Component implements IWindow {
     @action
     setQuery(query : any) {
         this._query = query;
+    }
+
+    @computed
+    get layout() {
+        return Object.assign({}, this._layout);
+    }
+    set layout(value) {
+        this.setLayout(value);
+    }
+    @action
+    setLayout(layout : any) {
+        this._layout = layout;
     }
 
     @computed
@@ -135,7 +149,7 @@ class Window extends Component implements IWindow {
     @computed
     get manager() : IWindowManager {
         const parent = this.parent;
-        return parent && (parent.type === ComponentTypes.stack || parent.type === ComponentTypes.list) ? parent as IWindowManager : undefined;
+        return parent && (parent.type === ComponentTypes.stack || parent.type === ComponentTypes.grid) ? parent as IWindowManager : undefined;
     }
 
     get type() {
@@ -145,14 +159,17 @@ class Window extends Component implements IWindow {
     @computed
     get active() {
         const manager = this.manager;
-        return manager ? manager.active === this : false;
+        if(manager && manager.type === ComponentTypes.stack) {
+            return (manager as IStack).active === this;
+        }
+        return false;
     }
 
     @action
     activate() {
         const manager = this.manager;
-        if(manager) {
-            manager.setActive(this);
+        if(manager && manager.type === ComponentTypes.stack) {
+            (manager as IStack).setActive(this);
         }
     }
 
@@ -164,7 +181,8 @@ class Window extends Component implements IWindow {
             params: this._params,
             query: this._query,
             closeDisabled: this._closeDisabled,
-            contentHidden: this._contentHidden
+            contentHidden: this._contentHidden,
+            layout: this._layout
         };
     }
 
@@ -176,6 +194,7 @@ class Window extends Component implements IWindow {
         this.setParams(config ? config.params : undefined);
         this.setQuery(config ? config.query : undefined);
         this.setContentHidden(config ? config.contentHidden : undefined);
+        this.setLayout(config ? config.layout : undefined);
         return Promise.resolve();
     }
 

@@ -230,7 +230,7 @@ class StackTabPanel extends React.Component<IStackWindowProps, any> {
 @observer
 class StackAddAction extends React.Component<IStackProps, any> {
     private _onClick = () => {
-        this.props.stack.addNew();
+        this.props.stack.addNew({ makeActive: true });
     }
     render() {
         if(this.props.stack.addApp) {
@@ -403,7 +403,7 @@ class StackDragOverlay extends React.Component<IStackProps, IStackDragOverlaySta
         });
     }
     private _dropAdd = () => {
-        this.props.stack.add(this.props.stack.dashboard.drag as IWindow);
+        this.props.stack.add(this.props.stack.dashboard.drag as IWindow, { makeActive: true });
     }
     private _setDropZoneAdd() {
         this._dropHandler = this._dropAdd;

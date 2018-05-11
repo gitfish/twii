@@ -38,7 +38,7 @@ class StackSample extends React.Component<IAppProps, any> {
                 background: getTheme().palette.themeDark
             }
         };
-        return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} addApp={{ path: "/samples/home" }} />;
+        return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} addApp={{ path: "/samples" }} />;
     }
 }
 

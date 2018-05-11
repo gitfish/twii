@@ -9,6 +9,7 @@ interface IWindow extends IComponent {
     path: string;
     params : any;
     query : any;
+    layout: any;
     title: string;
     onClose : IConsumerFunc<IWindow>
     closeDisabled : boolean;
@@ -20,6 +21,7 @@ interface IWindow extends IComponent {
     setParams(params : any) : void;
     setQuery(query : any) : void;
     setTitle(title : string) : void;
+    setLayout(layout : any) : void;
     setCloseDisabled(closeDisabled : boolean) : void;
     activate() : void;
     setContentHidden(hidden : boolean) : void;

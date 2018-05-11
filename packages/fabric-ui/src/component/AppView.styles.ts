@@ -27,6 +27,7 @@ const defaultStyles = (theme : ITheme) : IAppViewStyles => {
             right: 0,
             left: 0,
             height: 40,
+            zIndex: 20000,
             // this is pretty shitty - basically trying to pave over the lack of @uifabric/styling use for command bar
             selectors: {
                 "&.rootView": {

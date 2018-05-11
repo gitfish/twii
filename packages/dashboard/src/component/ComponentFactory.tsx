@@ -7,8 +7,8 @@ import { HSplit } from "./HSplit";
 import { VSplit } from "./VSplit";
 import { IWindow } from "../model/IWindow";
 import { ProjectedWindowPortal } from "./WindowPortal";
-import { List } from "./List";
 import { Grid } from "./Grid";
+import { IGrid } from "../model/IGrid";
 
 interface IComponentFactory {
     (comp : IComponent) : React.ReactNode;
@@ -34,12 +34,8 @@ const WindowComponentFactory = (comp : IComponent) => {
     return <ProjectedWindowPortal window={comp as IWindow} />;
 };
 
-const ListComponentFactory = (comp : IComponent) => {
-    return <List stack={comp as IStack} />;
-};
-
 const GridComponentFactory = (comp : IComponent) => {
-    return <Grid stack={comp as IStack} />;
+    return <Grid grid={comp as IGrid} />;
 };
 
 const ComponentFactoryMap : ITypeComponentFactoryMap = {
@@ -47,7 +43,6 @@ const ComponentFactoryMap : ITypeComponentFactoryMap = {
     hsplit: HSplitComponentFactory,
     vsplit: VSplitComponentFactory,
     window: WindowComponentFactory,
-    list: ListComponentFactory,
     grid: GridComponentFactory
 };
 

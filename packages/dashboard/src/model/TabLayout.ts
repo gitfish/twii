@@ -12,7 +12,7 @@ const applyLayout =  async (dashboard : IDashboard) => {
         const stack = new Stack();
         dashboard.setComponent(stack);
         windows.forEach(w => {
-            stack.add(w, false);
+            stack.add(w);
         });
         if(active) {
             stack.setActive(active);

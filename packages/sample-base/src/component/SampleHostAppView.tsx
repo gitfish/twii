@@ -47,17 +47,15 @@ class SampleHostAppView extends React.Component<ISampleHostAppViewProps, any> {
             return groupItem;
         });
         const items : IContextualMenuItem[] = [];
-        if(this.props.host.root) {
-            items.push(
-                {
-                    key: "title",
-                    name: this.props.host.title,
-                    subMenuProps: {
-                        items: groupItems
-                    }
+        items.push(
+            {
+                key: "title",
+                name: this.props.host.title,
+                subMenuProps: {
+                    items: groupItems
                 }
-            );
-        };
+            }
+        );
         return (
             <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
                 {this.props.children}
@@ -68,7 +66,6 @@ class SampleHostAppView extends React.Component<ISampleHostAppViewProps, any> {
 
 const sampleAppHandler = (sample : ISample) : IRequestHandler => {
     return (req => {
-        console.log("-- Sample App Handler: " + sample.path);
         return sample.moduleLoader().then(m => {
             const componentType = m[sample.moduleComponent || "default"];
             return (

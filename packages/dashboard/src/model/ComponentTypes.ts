@@ -3,7 +3,6 @@ import { IComponent } from "./IComponent";
 const dashboard = "dashboard";
 const dashboardList = "dashboardList";
 const stack = "stack";
-const list = "list";
 const grid = "grid";
 const hsplit = "hsplit";
 const vsplit = "vsplit";
@@ -17,7 +16,6 @@ export {
     dashboard, 
     dashboardList,
     stack,
-    list,
     grid,
     hsplit,
     vsplit,

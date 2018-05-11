@@ -1,7 +1,7 @@
 import { Router } from "@twii/router/lib/Router";
 import { ISupplierFunc } from "@twii/common/lib/ISupplierFunc";
 import { IComponent } from "./IComponent";
-import { window, stack, list, vsplit, hsplit } from "./ComponentTypes";
+import { window, stack, vsplit, hsplit, grid } from "./ComponentTypes";
 
 interface IComponentFactory {
     (type : string) : Promise<IComponent>;
@@ -23,12 +23,6 @@ const StackSupplier = () => {
     });
 };
 
-const ListSupplier = () => {
-    return import("./List").then(m => {
-        return new m.List();
-    });
-};
-
 const VSplitSupplier = () => {
     return import("./Split").then(m => {
         return new m.VSplit();
@@ -41,12 +35,18 @@ const HSplitSupplier = () => {
     });
 };
 
+const GridSupplier = () => {
+    return import("./Grid").then(m => {
+        return new m.Grid();
+    });
+};
+
 const TypeComponentSupplierMap : ITypeComponentSupplierMap = {};
 TypeComponentSupplierMap[window] = WindowSupplier;
 TypeComponentSupplierMap[stack] = StackSupplier;
-TypeComponentSupplierMap[list] = ListSupplier;
 TypeComponentSupplierMap[hsplit] = HSplitSupplier;
 TypeComponentSupplierMap[vsplit] = VSplitSupplier;
+TypeComponentSupplierMap[grid] = GridSupplier;
 
 const ComponentFactory : IComponentFactory = (type : string) => {
     const s = TypeComponentSupplierMap[type];
