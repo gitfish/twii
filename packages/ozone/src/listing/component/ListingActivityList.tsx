@@ -91,7 +91,7 @@ class ListingActivityListItems extends React.Component<IListingActivityListInter
         return (
             <div style={{ padding: 8 }}>
                 <MessageBar messageBarType={MessageBarType.info}>
-                    No listing acitivites available
+                    No Activities available
                 </MessageBar>
             </div>
         );

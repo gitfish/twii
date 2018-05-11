@@ -1,5 +1,5 @@
 import { IGrid } from "./IGrid";
-import { observable, computed, action } from "mobx";
+import { observable, computed, action, autorun } from "mobx";
 import * as ComponentTypes from "./ComponentTypes";
 import { IWindow } from "./IWindow";
 import { Window } from "./Window";
@@ -11,10 +11,10 @@ import { IComponent } from "./IComponent";
 import { WindowManager } from "./WindowManager";
 
 class Grid extends WindowManager implements IGrid {
-    @observable private _rows : number = 32;
-    @observable private _columns : number = 32;
+    @observable private _columns : number = 2;
     @observable private _width : number = 0;
     @observable private _height : number = 0;
+    @observable private _defaultCellHeight : number = 320;
 
     constructor() {
         super();
@@ -27,21 +27,6 @@ class Grid extends WindowManager implements IGrid {
 
     get type() {
         return ComponentTypes.grid;
-    }
-
-    @computed
-    get rows() {
-        return this._rows;
-    }
-    set rows(value) {
-        this.setRows(value);
-    }
-
-    @action
-    setRows(rows : number) {
-        if(!isNaN(rows) && rows > 0) {
-            this._rows = rows;
-        }
     }
 
     @computed
@@ -90,29 +75,36 @@ class Grid extends WindowManager implements IGrid {
     }
 
     @action
+    relayout() {
+        this.layout(this.width, this.height);
+    }
+
+    protected _windowsModified() {
+        this.relayout();
+    }
+
+    @action
     layout(width : number, height : number) {
         this.setDimensions(width, height);
         if(this.windowCount > 0) {
-            const windowWidth = Math.floor(this.columns / 2);
-            const windowHeight = Math.floor(this.rows / 1.3);
             // go through each of the windows and allocated grid coords and size
-            let x = 0;
-            let y = 0;
+            let col = 0;
+            let offset = 0;
+            let maxHeightForRow : number = 0;
             this.windows.forEach(w => {
-                let args = w.layout ? w.layout.grid : undefined;
-                if(!args) {
-                    args = {
-                        x: x,
-                        y: y,
-                        width: windowWidth,
-                        height: windowHeight
-                    };
-                    w.setLayout({ grid: args });
+                const args = {
+                    col: col,
+                    offset: offset,
+                    height: this.defaultCellHeight
+                };
+                w.setLayout({ grid: args });
+                col ++;
+                if(args.height > maxHeightForRow) {
+                    maxHeightForRow = args.height;
                 }
-                x += args.width;
-                if(x >= this.columns) {
-                    x = 0;
-                    y += windowHeight;
+                if(col >= this.columns) {
+                    col = 0;
+                    offset += maxHeightForRow;
                 }
             });
         }
@@ -124,15 +116,22 @@ class Grid extends WindowManager implements IGrid {
     }
 
     @computed
-    get cellHeight() {
-        return Math.floor(this.height / this.rows);
+    get defaultCellHeight() {
+        return this._defaultCellHeight;
+    }
+    set defaultCellHeight(value) {
+        this.setDefaultCellHeight(value);
+    }
+    
+    @action
+    setDefaultCellHeight(defaultCellHeight : number) {
+        this._defaultCellHeight = defaultCellHeight;
     }
 
     @computed
     get config() {
         return {
             type: this.type,
-            rows: this.rows,
             columns: this.columns,
             windows: this.windows.filter(w => !w.transient).map(w => w.config),
             closeDisabled: this.closeDisabled
@@ -153,7 +152,6 @@ class Grid extends WindowManager implements IGrid {
             windowPromise = Promise.resolve();
         }
         return windowPromise.then(action(() => {
-            this.setRows(config ? config.rows : undefined);
             this.setColumns(config ? config.columns : undefined);
             this.setCloseDisabled(config ? config.closeDisabled : undefined);
         }));

@@ -67,25 +67,30 @@ class GridWindowActionBar extends React.Component<IGridWindowProps, any> {
     }
 }
 
-class GridWindowHeader extends React.Component<IGridWindowProps, any> {
-    private _onMouseDown = () => {
-        
+@observer
+class GridWindow extends React.Component<IGridWindowProps, any> {
+    private _canDrag : boolean = false;
+    private _onHeaderMouseDown = (e : React.MouseEvent<HTMLElement>) => {
+        this._canDrag = true;
     }
-    private _onClick = () => {
-        
+    private _onMouseUp = (e : React.MouseEvent<HTMLElement>) => {
+        this._canDrag = false;
     }
     private _onDragStart = (e : React.DragEvent<HTMLElement>) => {
         const db = this.props.grid.dashboard;
-        if(db) {
+        if(db && this._canDrag) {
             e.stopPropagation();
             const transferText = String(JSON.stringify(this.props.window.config));
             e.dataTransfer.setData("text", transferText);
             window.setTimeout(() => {
                 db.setDrag(this.props.window);
             }, 1);
+        } else {
+            e.preventDefault();
         }
     }
     private _onDragEnd = (e : React.DragEvent<HTMLElement>) => {
+        this._canDrag = false;
         const db = this.props.grid.dashboard;
         if(db) {
             db.clearDrag();
@@ -107,43 +112,35 @@ class GridWindowHeader extends React.Component<IGridWindowProps, any> {
     private _onDrop = (e : React.DragEvent<HTMLElement>) => {
         e.stopPropagation();
         e.preventDefault();
+        this._canDrag = false;
         this.props.grid.dropWindow(this.props.window);
     }
-    render() {
+    private _renderHeader() : React.ReactNode {
         return (
             <div className={this.props.classNames.windowHeader}
                 draggable={true}
-                onMouseDown={this._onMouseDown}
-                onClick={this._onClick}
-                 onDragStart={this._onDragStart}
-                 onDragEnd={this._onDragEnd}
-                 onDragOver={this._onDragOver}
-                 onDrop={this._onDrop}>
+                onMouseDown={this._onHeaderMouseDown}>
                 <GridWindowTitle {...this.props} />
                 <GridWindowActionBar {...this.props} />
             </div>
         );
     }
-}
-
-@observer
-class GridWindowBody extends React.Component<IGridWindowProps, any> {
-    render() {
+    private _renderBody() : React.ReactNode {
         return (
             <div className={css(this.props.classNames.windowBody, { "content-hidden": this.props.window.contentHidden})}>
                 <ProjectedWindowPortal window={this.props.window} className="list-window-portal" listenToPosition={true} />
             </div>
         );
     }
-}
-
-@observer
-class GridWindow extends React.Component<IGridWindowProps, any> {
     render() {
         return (
-            <div className={css(this.props.classNames.window, "pane", { "content-hidden": this.props.window.contentHidden })}>
-                <GridWindowHeader {...this.props} />
-                <GridWindowBody {...this.props} />
+            <div className={css(this.props.classNames.window)}
+                onDragStart={this._onDragStart}
+                onDragEnd={this._onDragEnd}
+                onDragOver={this._onDragOver}
+                onDrop={this._onDrop}>
+                {this._renderHeader()}
+                {this._renderBody()}
             </div>
         );
     }
@@ -162,29 +159,33 @@ class Grid extends React.Component<IGridProps, any> {
     }
     private _onResize = () => {
         if(this._ref) {
-            const b = this._ref.getBoundingClientRect();
-            this.props.grid.setDimensions(b.width, b.height);
+            const clientWidth = this._ref.clientWidth;
+            const clientHeight = this._ref.clientHeight;
+            this.props.grid.setDimensions(clientWidth, clientHeight);
         }
     }
     private _onLayout = () => {
         if(this._ref) {
-            const b = this._ref.getBoundingClientRect();
-            this.props.grid.layout(b.width, b.height);
+            const clientWidth = this._ref.clientWidth;
+            const clientHeight = this._ref.clientHeight;
+            this.props.grid.layout(clientWidth, clientHeight);
         }
     }
     componentDidMount() {
         this._onLayout();
         this.props.grid.addEventListener("resize", this._onResize)
     }
+    componentWillUnmount() {
+        this.props.grid.removeEventListener("resize", this._onResize);
+    }
     private _renderGridCell = (window : IWindow) => {
-        const l = window.layout ? window.layout.grid : { x: 0, y: 0, width: 0, height: 0 };
-        console.log("-- Layout: " + JSON.stringify(l));
-        const cellTop = l.y * this.props.grid.cellHeight;
-        const cellLeft = l.x * this.props.grid.cellWidth;
-        const cellWidth = l.width * this.props.grid.cellWidth;
-        const cellHeight = l.height * this.props.grid.cellHeight;
+        const l = window.layout ? window.layout.grid : { height: 0 };
+        const top = l.offset;
+        const left = l.col * this.props.grid.cellWidth;
+        const width = this.props.grid.cellWidth;
+        const height = l.height;
         return (
-            <div key={window.id} className={this._classNames.cell} style={{ top: cellTop, left: cellLeft, width: cellWidth, height: cellHeight }}>
+            <div key={window.id} className={this._classNames.cell} style={{ top: top, left: left, width: width, height: height }}>
                 <GridWindow grid={this.props.grid} window={window} classNames={this._classNames} />
             </div>
         );

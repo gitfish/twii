@@ -188,18 +188,10 @@ class Stack extends WindowManager implements IStack {
 
     @action
     remove(node : IComponent) {
-        const idx = this.windows.indexOf(node as IWindow);
-        if(idx >= 0) {
-            const w = this.windows[idx];
-            w.parent = undefined;
-            this.windows.splice(idx, 1);
-
-            if(this.windows.length === 0) {
-                this.removeFromParent();
-            } else if(this.windows.length > 0) {
-                if(this.activeIndex >= this.windows.length) {
-                    this.setActiveIndex(this.windows.length - 1);
-                }
+        super.remove(node);
+        if(this.windows.length > 0) {
+            if(this.activeIndex >= this.windows.length) {
+                this.setActiveIndex(this.windows.length - 1);
             }
         }
     }

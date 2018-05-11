@@ -114,9 +114,9 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IGridStyles) =
         windowBody: {
             position: "absolute",
             top: 28,
-            left: 1,
-            bottom: 1,
-            right: 1,
+            left: 0,
+            bottom: 0,
+            right: 0,
             backgroundColor: theme.palette.white,
             selectors: {
                 "&.content-hidden": {

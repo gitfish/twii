@@ -21,6 +21,10 @@ class WindowManager extends Component implements IWindowManager {
         return this.windows ? this.windows.length : 0
     }
 
+    protected _windowsModified() {
+        // does nothing by default
+    }
+
     @action
     add(win : IWindow, opts?: any) : void {
         if(win) {
@@ -32,6 +36,7 @@ class WindowManager extends Component implements IWindowManager {
                 this.windows.splice(itemIdx, 1);
             }
             this.windows.push(win);
+            this._windowsModified();
         }
     }
     
@@ -49,6 +54,7 @@ class WindowManager extends Component implements IWindowManager {
 
     @action
     insertAt(item : IWindow, index : number) {
+        console.log("-- Insert At: " + index);
         if(item && index >= 0 && index < this.windows.length) {
             let refStackItem = this.windows[index];
             let insertIdx : number = -1;
@@ -66,6 +72,7 @@ class WindowManager extends Component implements IWindowManager {
 
             if(insertIdx >= 0) {
                 this.windows.splice(insertIdx, 0, item);
+                this._windowsModified();
             }
         } else {
             this.add(item);
@@ -101,7 +108,9 @@ class WindowManager extends Component implements IWindowManager {
             if(refWindow) {
                 if(drag.parent === this) {
                     const dragIdx = this.windows.indexOf(win);
+                    console.log("-- Drag Idx: " + dragIdx);
                     const refIdx = this.windows.indexOf(refWindow);
+                    console.log("-- Ref Idx: " + refIdx);
                     this.insertAt(win, dragIdx > refIdx ? refIdx : refIdx + 1);
                 } else {
                     this.insertBefore(win, refWindow);
@@ -180,6 +189,20 @@ class WindowManager extends Component implements IWindowManager {
             }
         });
         return r;
+    }
+
+    @action
+    remove(node : IComponent) {
+        const idx = this.windows.indexOf(node as IWindow);
+        if(idx >= 0) {
+            const w = this.windows[idx];
+            w.parent = undefined;
+            this.windows.splice(idx, 1);
+
+            if(this.windows.length === 0) {
+                this.removeFromParent();
+            }
+        }
     }
 
     @action
