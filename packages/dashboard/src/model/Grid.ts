@@ -105,6 +105,7 @@ class Grid extends WindowManager implements IGrid {
                 if(col >= this.columns) {
                     col = 0;
                     offset += maxHeightForRow;
+                    maxHeightForRow = 0;
                 }
             });
         }
