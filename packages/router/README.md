@@ -4,6 +4,7 @@ twii router lib
 Generic promise-based router lib inspired by express
 
 ```typescript
+import { Router } from "@twii/router/lib/Router";
 const sample = async () => {
     const r = new Router();
     r.use((req, next) => {
