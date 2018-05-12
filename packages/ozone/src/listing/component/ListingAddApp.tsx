@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ListingForm } from "./ListingForm";
-import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { HostAppView } from "@twii/core-ui-fabric/lib/component/HostAppView";
 import { IListingModel } from "../model/IListingModel";
 import { ListingModel } from "../model/ListingModel";
 import { findById } from "../model/ListingFinder";

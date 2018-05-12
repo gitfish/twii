@@ -66,31 +66,31 @@ const samples : ISample[] = [
                 key: "fabricTextField",
                 path: "/samples/fabric/textfield",
                 title: "Fabric Text Field Samples",
-                moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/TextField")
+                moduleLoader: () => import("@twii/core-ui-fabric-samples/lib/component/TextField")
             },
             {
                 key: "fabricPicker",
                 path: "/samples/fabric/picker",
                 title: "Fabric Picker Samples",
-                moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/Picker")
+                moduleLoader: () => import("@twii/core-ui-fabric-samples/lib/component/Picker")
             },
             {
                 key: "fabricCalendar",
                 path: "/samples/fabric/calendar",
                 title: "Fabric Calendar Samples",
-                moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/Calendar")
+                moduleLoader: () => import("@twii/core-ui-fabric-samples/lib/component/Calendar")
             },
             {
                 key: "fabricPersonForm",
                 path: "/samples/fabric/personform",
                 title: "Fabric Person Form (Bound Fields)",
-                moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/PersonForm")
+                moduleLoader: () => import("@twii/core-ui-fabric-samples/lib/component/PersonForm")
             },
             {
                 key: "fabricNavigationView",
                 path: "/samples/fabric/navigationview",
                 title: "Fabric Navigation View Sample",
-                moduleLoader: () => import("@twii/fabric-ui-samples/lib/component/NavigationView")
+                moduleLoader: () => import("@twii/core-ui-fabric-samples/lib/component/NavigationView")
             }
         ]
     },

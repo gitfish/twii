@@ -1,9 +1,9 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { AppLink } from "@twii/common-ui/lib/component/AppLink";
-import { IAppHost } from "@twii/common/lib/IAppHost";
+import { AppLink } from "@twii/core-ui/lib/component/AppLink";
+import { IAppHost } from "@twii/core/lib/IAppHost";
 import { SampleHostAppView, IAppProps } from "./SampleHostAppView";
-import { BoundTextField } from "@twii/fabric-ui/lib/component/BoundTextField";
+import { BoundTextField } from "@twii/core-ui-fabric/lib/component/BoundTextField";
 import { PrimaryButton } from "office-ui-fabric-react/lib/Button";
 
 interface IOpenerAppState {

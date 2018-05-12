@@ -1,7 +1,7 @@
-import { Context } from "@twii/common/lib/Context";
-import { IPredicateFunc } from "@twii/common/lib/IPredicateFunc";
+import { Context } from "@twii/core/lib/Context";
+import { IPredicateFunc } from "@twii/core/lib/IPredicateFunc";
 import { IUserProfile } from "./IUserProfile";
-import { equalsIgnoreCase } from "@twii/common/lib/StringUtils";
+import { equalsIgnoreCase } from "@twii/core/lib/StringUtils";
 
 const defaultAdminCheck = (userProfile : IUserProfile) => {
     return userProfile.user && userProfile.user.groups && userProfile.user.groups.some(g => {

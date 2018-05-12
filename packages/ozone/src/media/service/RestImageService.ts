@@ -1,8 +1,8 @@
 import axios from "axios";
 import { IImage } from "../IImage";
 import { IImageService, IGetImagesRequest } from "./IImageService";
-import { extname } from "@twii/common/lib/PathUtils";
-import { IBasicAuthCredentials } from "@twii/common/lib/IBasicAuthCredentials";
+import { extname } from "@twii/core/lib/PathUtils";
+import { IBasicAuthCredentials } from "@twii/core/lib/IBasicAuthCredentials";
 
 const Defaults = {
     baseUrl: "/api",

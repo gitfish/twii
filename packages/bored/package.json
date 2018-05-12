@@ -1,0 +1,73 @@
+{
+  "name": "@twii/bored",
+  "version": "1.2.0",
+  "description": "twii dashboard lib",
+  "main": "index.js",
+  "keywords": [
+    "UI",
+    "frontend",
+    "framework",
+    "dashboard"
+  ],
+  "scripts": {
+    "clean": "node task/clean",
+    "build": "tsc",
+    "build-watch": "tsc -w",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@twii/core": "^1.2.0",
+    "@twii/core-ui": "^1.2.0",
+    "@twii/core-ui-fabric": "^1.2.0",
+    "@twii/router": "^1.2.0",
+    "@uifabric/styling": "^5.23.1",
+    "@uifabric/utilities": "^5.24.0",
+    "lodash.isequal": "^4.5.0",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isstring": "^4.0.1",
+    "mobx": "^4.2.0",
+    "mobx-react": "^5.1.2",
+    "office-ui-fabric-react": "^5.96.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.8",
+    "@types/react": "^16.3.13",
+    "@types/react-grid-layout": "^0.16.4",
+    "del": "^3.0.0",
+    "jest": "^21.2.1",
+    "react-test-renderer": "^16.2.0",
+    "ts-jest": "^21.2.3",
+    "typescript": "^2.8.3"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts?(x)",
+      "!src/**/*.d.ts?(x)"
+    ],
+    "coverageDirectory": "__coverage__",
+    "transform": {
+      ".(ts|tsx)": "./node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/**/*Test.ts?(x)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
+  }
+}

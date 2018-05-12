@@ -1,5 +1,5 @@
 import { IUserProfile } from "./IUserProfile";
-import { isBlank} from "@twii/common/lib/StringUtils";
+import { isBlank} from "@twii/core/lib/StringUtils";
 
 const isAuthorised = (reqAuthGroup : string, userProfile : IUserProfile) : boolean => {
     return isBlank(reqAuthGroup) ||

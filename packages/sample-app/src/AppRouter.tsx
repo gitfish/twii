@@ -2,7 +2,7 @@ import * as React from "react";
 import { Router } from "@twii/router/lib/Router";
 import { exactPath } from "@twii/router/lib/Routers";
 import { createSampleRouter } from "@twii/sample-base/lib/sampleRouter";
-import { ConfigRouter } from "@twii/common/lib/ConfigRouter";
+import { ConfigRouter } from "@twii/core/lib/ConfigRouter";
 import { configMap } from "@twii/ozone/lib/config/configMap";
 import { OzoneRouter } from "@twii/ozone/lib/OzoneRouter";
 

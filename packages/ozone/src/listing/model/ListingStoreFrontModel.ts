@@ -3,9 +3,9 @@ import { IListing } from "../IListing";
 import { IListingStoreFrontModel } from "../model/IListingStoreFrontModel";
 import { IListingStoreFront } from "../IListingStoreFront";
 import { ListingServiceContext } from "../service/ListingServiceContext";
-import { isNotBlank } from "@twii/common/lib/StringUtils";
-import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
-import { Sync } from "@twii/common/lib/model/Sync";
+import { isNotBlank } from "@twii/core/lib/StringUtils";
+import { SyncSupplier } from "@twii/core/lib/model/SyncSupplier";
+import { Sync } from "@twii/core/lib/model/Sync";
 
 class ListingStoreFrontModel extends SyncSupplier<IListingStoreFront> implements IListingStoreFrontModel {
     @observable searchSync : Sync = new Sync();

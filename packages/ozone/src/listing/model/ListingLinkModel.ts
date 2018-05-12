@@ -1,9 +1,9 @@
 import { IListingModel } from "./IListingModel";
 import { IListingLink } from "../IListingLink";
 import { IListingLinkModel } from "./IListingLinkModel";
-import { IError } from "@twii/common/lib/IError";
+import { IError } from "@twii/core/lib/IError";
 import { observable, action, computed } from "mobx";
-import { isBlank } from "@twii/common/lib/StringUtils";
+import { isBlank } from "@twii/core/lib/StringUtils";
 
 class ListingLinkModel implements IListingLinkModel {
     @observable private _listing : IListingModel;

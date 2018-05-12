@@ -14,9 +14,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/common": "^1.2.0",
-    "@twii/common-ui": "^1.2.0",
-    "@twii/fabric-ui": "^1.2.0",
+    "@twii/core": "^1.2.0",
+    "@twii/core-ui": "^1.2.0",
+    "@twii/core-ui-fabric": "^1.2.0",
     "@twii/router": "^1.2.0",
     "axios": "0.18.0",
     "mobx": "^4.2.0",

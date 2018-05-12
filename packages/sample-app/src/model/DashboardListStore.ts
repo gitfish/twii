@@ -1,5 +1,5 @@
-import { DashboardList } from "@twii/dashboard/lib/model/DashboardList";
-import { StorageServiceContext } from "@twii/dashboard/lib/service/StorageServiceContext";
+import { DashboardList } from "@twii/bored/lib/model/DashboardList";
+import { StorageServiceContext } from "@twii/bored/lib/service/StorageServiceContext";
 import { AppRouter } from "../AppRouter";
 
 const storageKey = "sample-dashboard-list";

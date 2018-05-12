@@ -1,4 +1,4 @@
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { IAppProps } from "@twii/core-ui/lib/component/IAppProps";
 import { IUserProfile } from "../../user/IUserProfile";
 
 interface IOzoneAppProps extends IAppProps {

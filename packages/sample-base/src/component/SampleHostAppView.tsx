@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { HostAppView } from "@twii/core-ui-fabric/lib/component/HostAppView";
+import { IAppProps } from "@twii/core-ui/lib/component/IAppProps";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { samples } from "../samples";
 import { IRequestHandler } from "@twii/router/lib/IRequestHandler";

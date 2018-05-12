@@ -1,4 +1,4 @@
-import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
+import { ISyncSupplier } from "@twii/core/lib/ISyncSupplier";
 import { IListingModel } from "./IListingModel";
 
 interface IListingModelSupplier extends ISyncSupplier<IListingModel> {

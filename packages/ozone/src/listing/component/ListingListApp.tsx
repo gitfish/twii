@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { HostAppView } from "@twii/core-ui-fabric/lib/component/HostAppView";
 import { ListingListModel } from "../model/ListingListModel";
 import { IListing } from "../IListing";
 import { ListingListPage } from "./ListingListPage";

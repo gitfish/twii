@@ -1,8 +1,8 @@
 import * as React from "react";
-import { DashboardWrapper } from "@twii/dashboard/lib/component/DashboardWrapper";
-import { IDashboardStyles } from "@twii/dashboard/lib/component/Dashboard.styles";
+import { DashboardWrapper } from "@twii/bored/lib/component/DashboardWrapper";
+import { IDashboardStyles } from "@twii/bored/lib/component/Dashboard.styles";
 import { getTheme } from "@uifabric/styling";
-import { IAppProps } from "@twii/common-ui/lib/component/IAppProps";
+import { IAppProps } from "@twii/core-ui/lib/component/IAppProps";
 import { createSampleRouter } from "../../sampleRouter";
 
 const dashboardRouter = createSampleRouter();

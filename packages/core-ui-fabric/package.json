@@ -1,0 +1,62 @@
+{
+  "name": "@twii/core-ui-fabric",
+  "description": "core ui stuff based on fabric",
+  "version": "1.2.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "node task/clean",
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@twii/core": "^1.2.0",
+    "@twii/core-ui": "^1.2.0",
+    "@twii/router": "^1.2.0",
+    "@uifabric/styling": "^5.23.1",
+    "@uifabric/utilities": "^5.24.0",
+    "mobx": "^4.2.0",
+    "mobx-react": "^5.1.2",
+    "moment": "^2.21.0",
+    "office-ui-fabric-react": "^5.96.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "@types/react": "^16.3.13",
+    "del": "^3.0.0",
+    "jest": "^22.1.4",
+    "jsdom": "^11.5.1",
+    "react-test-renderer": "^16.2.0",
+    "ts-jest": "^21.2.3",
+    "typescript": "^2.8.3"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts?(x)",
+      "!src/**/*.d.ts?(x)"
+    ],
+    "coverageDirectory": "__coverage__",
+    "transform": {
+      ".(ts|tsx)": "../../node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/**/*Test.ts?(x)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
+  }
+}

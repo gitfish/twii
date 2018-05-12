@@ -1,4 +1,4 @@
-import { Context } from "@twii/common/lib/Context";
+import { Context } from "@twii/core/lib/Context";
 import { IUserService } from "./IUserService";
 import { RestUserService } from "./RestUserService";
 

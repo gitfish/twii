@@ -17,9 +17,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/common": "^1.2.0",
-    "@twii/common-ui": "^1.2.0",
-    "@twii/dashboard": "^1.2.0",
+    "@twii/core": "^1.2.0",
+    "@twii/core-ui": "^1.2.0",
+    "@twii/bored": "^1.2.0",
     "@twii/router": "^1.2.0",
     "@twii/sample-base": "^1.2.0",
     "@twii/ozone": "^1.2.0",

@@ -1,5 +1,5 @@
 import { IListingModel } from "./IListingModel";
-import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
+import { SyncSupplier } from "@twii/core/lib/model/SyncSupplier";
 
 const ListingDeleteStore = new SyncSupplier<IListingModel>();
 

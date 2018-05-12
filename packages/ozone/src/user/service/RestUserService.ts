@@ -2,7 +2,7 @@ import axios from "axios";
 import { IUserProfile } from "../IUserProfile";
 import { IUser } from "../IUser";
 import { IUserService, IGetUsersRequest } from "./IUserService";
-import { IBasicAuthCredentials } from "@twii/common/lib/IBasicAuthCredentials";
+import { IBasicAuthCredentials } from "@twii/core/lib/IBasicAuthCredentials";
 
 const Defaults = {
     baseUrl: "/api",

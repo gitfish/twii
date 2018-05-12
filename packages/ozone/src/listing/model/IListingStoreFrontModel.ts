@@ -1,5 +1,5 @@
-import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
-import { ISync } from "@twii/common/lib/ISync";
+import { ISyncSupplier } from "@twii/core/lib/ISyncSupplier";
+import { ISync } from "@twii/core/lib/ISync";
 import { IListingStoreFront } from "../IListingStoreFront";
 import { IListing } from "../IListing";
 

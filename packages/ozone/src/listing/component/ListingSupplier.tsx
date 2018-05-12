@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Sync } from "@twii/fabric-ui/lib/component/Sync";
-import { ISyncSupplier } from "@twii/common/lib/ISyncSupplier";
+import { Sync } from "@twii/core-ui-fabric/lib/component/Sync";
+import { ISyncSupplier } from "@twii/core/lib/ISyncSupplier";
 import { IListingModel } from "../model/IListingModel";
 
 class IListingSupplierProps {

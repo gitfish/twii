@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { BrowserAppHost } from "@twii/common/lib/model/BrowserAppHost";
+import { BrowserAppHost } from "@twii/core/lib/model/BrowserAppHost";
 import { AppRouter } from "./AppRouter";
-import { AppHostContainer } from "@twii/fabric-ui/lib/component/AppHost";
+import { AppHostContainer } from "@twii/core-ui-fabric/lib/component/AppHost";
 import { initializeIcons } from "@uifabric/icons";
 import { Fabric } from "office-ui-fabric-react/lib/Fabric";
 

@@ -1,7 +1,7 @@
 import { IListingModel } from "./IListingModel";
 import { ListingModel } from "./ListingModel";
 import { IListingModelSupplier } from "./IListingModelSupplier";
-import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
+import { SyncSupplier } from "@twii/core/lib/model/SyncSupplier";
 import { ListingServiceContext } from "../service/ListingServiceContext";
 
 class ListingModelSupplier extends SyncSupplier<IListingModel> implements IListingModelSupplier {

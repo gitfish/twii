@@ -2,7 +2,7 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { IListingReviewListModel } from "../model/IListingReviewListModel";
 import { IListingReview } from "../IListingReview";
-import { Sync } from "@twii/fabric-ui/lib/component/Sync";
+import { Sync } from "@twii/core-ui-fabric/lib/component/Sync";
 import { List } from "office-ui-fabric-react/lib/List";
 import { ListingReview } from "./ListingReview";
 import { getClassNames } from "./ListingReviewList.classNames";

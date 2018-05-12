@@ -1,0 +1,27 @@
+{
+  "name": "@twii/core-ui-fabric-samples",
+  "description": "samples using the core ui fabric stuff",
+  "version": "1.2.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "node task/clean",
+    "build": "tsc",
+    "build-watch": "tsc --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@twii/core-ui": "^1.2.0",
+    "@twii/core-ui-fabric": "^1.2.0",
+    "office-ui-fabric-react": "^5.96.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.13",
+    "del": "^3.0.0",
+    "typescript": "^2.8.3"
+  }
+}

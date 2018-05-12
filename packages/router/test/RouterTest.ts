@@ -25,6 +25,25 @@ describe("Router Test", () => {
         expect(result).toBe("sample");
     });
 
+    test("request modification example", async () => {
+        const r = new Router();
+        r.use((req, next) => {
+            req.userId = "103";
+            next();
+        });
+        r.use("/contacts/:contactId", exactPath(req => {
+            return `Contact ${req.params.contactId} - ${req.userId}`;
+        }));
+        r.use("/accounts/:accountId", exactPath(req => {
+            return `Account ${req.params.accountId} - ${req.userId}`;
+        }));
+
+        let result = await r.handleRequest({ path: "/contacts/9231" });
+        expect(result).toBe("Contact 9231 - 103");
+        result = await r.handleRequest({ path: "/accounts/0302" });
+        expect(result).toBe("Account 0302 - 103");
+    });
+
     test("global handler with promise", async () => {
         const r = new Router();
         let globalInvoked = false;

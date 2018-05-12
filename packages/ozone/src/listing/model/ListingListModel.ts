@@ -1,11 +1,11 @@
 import { action, observable, computed } from "mobx";
 import { IListing } from "../IListing";
 import { IListingListModel } from "./IListingListModel";
-import { ListModel } from "@twii/common/lib/model/ListModel";
+import { ListModel } from "@twii/core/lib/model/ListModel";
 import { IListingService, IListingListResponse, IListingListRequest } from "../service/IListingService";
 import { ListingServiceContext } from "../service/ListingServiceContext";
 import { IListingListCounts } from "../IListingListCounts";
-import { isNotBlank } from "@twii/common/lib/StringUtils";
+import { isNotBlank } from "@twii/core/lib/StringUtils";
 
 class ListingListModel extends ListModel<IListing> implements IListingListModel {
     private _listingService : IListingService;

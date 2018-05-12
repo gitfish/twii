@@ -1,4 +1,4 @@
-import { SyncSupplier } from "@twii/common/lib/model/SyncSupplier";
+import { SyncSupplier } from "@twii/core/lib/model/SyncSupplier";
 import { UserServiceContext } from "../service/UserServiceContext";
 import { IUserProfile } from "../IUserProfile";
 

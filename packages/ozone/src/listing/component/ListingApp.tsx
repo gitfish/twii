@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { autorun, IReactionDisposer } from "mobx";
-import { HostAppView } from "@twii/fabric-ui/lib/component/HostAppView";
+import { HostAppView } from "@twii/core-ui-fabric/lib/component/HostAppView";
 import { ListingContainer, ListingTitleContainer, ListingDeleteDialog } from "./Listing";
 import { findById } from "../model/ListingFinder";
 import { ListingDeleteStore } from "../model/ListingDeleteStore";

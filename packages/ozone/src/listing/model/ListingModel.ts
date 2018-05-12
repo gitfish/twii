@@ -4,16 +4,16 @@ import { IUserProfile } from "../../user/IUserProfile";
 import { observable, action, computed } from "mobx";
 import { IListingService } from "../service/IListingService";
 import { ListingServiceContext } from "../service/ListingServiceContext";
-import { Sync } from "@twii/common/lib/model/Sync";
+import { Sync } from "@twii/core/lib/model/Sync";
 import { ListingApprovalStatus } from "../ListingApprovalStatus";
 import { IImage } from "../../media/IImage";
 import { ImageServiceContext } from "../../media/service/ImageServiceContext";
 import { IScreenShot } from "../../media/IScreenShot";
-import { isBlank } from "@twii/common/lib/StringUtils";
-import { IError } from "@twii/common/lib/IError";
+import { isBlank } from "@twii/core/lib/StringUtils";
+import { IError } from "@twii/core/lib/IError";
 import { ListingLinkModel } from "./ListingLinkModel";
-import { StateManager } from "@twii/common/lib/model/StateManager";
-import * as PathUtils from "@twii/common/lib/PathUtils";
+import { StateManager } from "@twii/core/lib/model/StateManager";
+import * as PathUtils from "@twii/core/lib/PathUtils";
 
 class ListingModel extends StateManager implements IListingModel {
     private _lastData : IListing;

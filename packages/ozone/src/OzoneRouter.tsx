@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Router } from "@twii/router/lib/Router";
 import { requiresUserProfile } from "./user/UserAuthRouters";
-import { componentRouter } from "@twii/common-ui/lib/componentRouter";
+import { componentRouter } from "@twii/core-ui/lib/componentRouter";
 
 const r = new Router();
 r.use(requiresUserProfile);

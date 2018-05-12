@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
-import { IAppHost } from "@twii/common/lib/IAppHost";
+import { IAppHost } from "@twii/core/lib/IAppHost";
 import { IUserProfile } from "../../user/IUserProfile";
 import { UserAdminContext } from "../../user/UserAdminContext";
 import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
