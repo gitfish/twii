@@ -6,3 +6,4 @@ __coverage__/
 .travis.yml
 tsconfig.json
 yarn.lock
+yarn-error.log
