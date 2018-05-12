@@ -1,6 +1,6 @@
 {
   "name": "@twii/rmwc-samples",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -12,7 +12,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/core": "^2.0.0",
+    "@twii/core": "^2.0.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "rmwc": "^1.4.1"
