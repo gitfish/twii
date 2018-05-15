@@ -3,6 +3,8 @@ import { IComponent } from "./IComponent";
 import { IRequest } from "@twii/router/lib/IRequest";
 
 interface IWindowManager extends IComponent {
+    first : IWindow;
+    last : IWindow;
     windowCount : number;
     windows: IWindow[];
     add(win : IWindow, opts? : any) : void;

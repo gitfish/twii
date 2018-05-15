@@ -4,8 +4,6 @@ import { memoizeFunction } from "@uifabric/utilities";
 interface IDashboardStyles {
     root?: IStyle;
     overlay?: IStyle;
-    content?: IStyle;
-    portalRoot?: IStyle;
 }
 
 const defaultStyles = (theme : ITheme) : IDashboardStyles => {
@@ -17,6 +15,7 @@ const defaultStyles = (theme : ITheme) : IDashboardStyles => {
             bottom: 0,
             left: 0,
             background: "transparent",
+            overflow: "hidden",
             selectors: {
                 "&.hidden": {
                     top: -1,
@@ -36,16 +35,6 @@ const defaultStyles = (theme : ITheme) : IDashboardStyles => {
                     cursor: "ns-resize"
                 }
             }
-        },
-        content: {
-            position: "absolute",
-            top: 5,
-            right: 5,
-            bottom: 5,
-            left: 5
-        },
-        portalRoot: {
-            position: "relative"
         }
     }
 };

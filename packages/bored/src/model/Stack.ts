@@ -17,24 +17,32 @@ import { WindowManager } from "./WindowManager";
 class Stack extends WindowManager implements IStack {
     private _type : string;
     @observable private _activeIndex : number;
+    @observable private _headerHeight : number = 28;
+    private _setViewportDispoer : IReactionDisposer;
 
     constructor() {
         super();
-        this.addEventListener("resize", this._onResize);
-    }
-
-    notifyResizeWindows() : void {
-        this.windows.forEach(w => w.emit({ type: "resize" }));
-    }
-
-    private _onResize = () => {
-        this.notifyResizeWindows();
+        this._setViewportDispoer = autorun(this._setWindowViewports);
     }
     
     get type() {
         return ComponentTypes.stack;
     }
     
+    @computed
+    get headerHeight() {
+        return this._headerHeight;
+    }
+    set headerHeight(value) {
+        this.setHeaderHeight(value);
+    }
+    @action
+    setHeaderHeight(headerHeight : number) {
+        if(headerHeight >= 0 && headerHeight !== this._headerHeight) {
+            this._headerHeight = headerHeight;
+        }
+    }
+
     @computed
     get activeIndex() {
         return this._activeIndex || 0;
@@ -48,16 +56,6 @@ class Stack extends WindowManager implements IStack {
         if(activeIndex !== this._activeIndex) {
             this._activeIndex = activeIndex;
         }
-    }
-
-    @computed
-    get first() {
-        return this.windowCount > 0 ? this.windows[0] : undefined;
-    }
-
-    @computed
-    get last() {
-        return this.windowCount > 0 ? this.windows[this.windows.length - 1] : undefined;
     }
 
     @computed
@@ -194,6 +192,15 @@ class Stack extends WindowManager implements IStack {
                 this.setActiveIndex(this.windows.length - 1);
             }
         }
+    }
+
+    private _setWindowViewports = () => {
+        const childY = this.y + this.headerHeight;
+        const childHeight = this.height - this.headerHeight;
+        const active = this.active;
+        this.windows.forEach(w => {
+            w.setViewport(this.x, childY, w === active ? this.width : 0, w === active ? childHeight : 0);
+        });
     }
 }
 

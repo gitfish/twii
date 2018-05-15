@@ -26,7 +26,7 @@ class DashboardListApp extends React.Component<IAppProps, any> {
         };
         return (
             <HostAppView host={this.props.host} commandBarProps={{ items: items, farItems: farItems }}>
-                <DashboardListContainer dashboardList={DashboardListStore} host={this.props.host} dashboardStyles={{ root: { background: getTheme().palette.neutralTertiary }, content: { top: 0, right: 0, bottom: 0, left: 0 } }} />
+                <DashboardListContainer dashboardList={DashboardListStore} host={this.props.host} />
             </HostAppView>
         );
     }

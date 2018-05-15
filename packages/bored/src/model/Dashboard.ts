@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction, IReactionDisposer } from "mobx";
+import { observable, action, computed, autorun, reaction, IReactionDisposer } from "mobx";
 import { IDashboard } from "./IDashboard";
 import { IDashboardList } from "./IDashboardList";
 import { IComponent } from "./IComponent";
@@ -10,11 +10,21 @@ import * as ComponentTypes from "./ComponentTypes";
 import { IStack } from "./IStack";
 import { ISplit, IHSplit, IVSplit } from "./ISplit";
 import { IDashboardLayout } from "./IDashboardLayout";
+import { IWindowManager } from "./IWindowManager";
+import { IPortalManager } from "./IPortalManager";
+import { IPortal } from "./IPortal";
 
 class Dashboard extends Component implements IDashboard {
     @observable sync = new Sync();
     @observable private _title : string;
     @observable private _closeDisabled: boolean;
+    @observable.ref private _portalManager : IPortalManager;
+    private _setViewportDisposer : IReactionDisposer;
+    
+    constructor() {
+        super();
+        this._setViewportDisposer = autorun(this._setComponentViewport);
+    }
     
     private _saveDelay: number = 1000;
     loader : () => Promise<any> | any;
@@ -26,17 +36,6 @@ class Dashboard extends Component implements IDashboard {
     @observable.ref private _blockSource : IComponent;
 
     private _portalRoot : HTMLElement;
-
-    constructor() {
-        super();
-        this.addEventListener("resize", this._onResize);
-    }
-
-    private _onResize = () => {
-        if(this._component) {
-            this._component.emit({ type: "resize" });
-        }
-    }
 
     get type() {
         return ComponentTypes.dashboard;
@@ -166,6 +165,7 @@ class Dashboard extends Component implements IDashboard {
 
     @action
     setConfig(value) {
+        this.sync.syncStart();
         this.setTitle(value ? value.title : undefined);
         this.setCloseDisabled(value ? value.closeDisabled : undefined);
         return this.setComponentConfig(value ? value.component : undefined).then(() => {
@@ -303,42 +303,24 @@ class Dashboard extends Component implements IDashboard {
         if(this._component) {
             this._component.close();
         }
-        delete this._portalRoot;
     }
 
-    get portalRoot() : HTMLElement {
-        return this._portalRoot;
-    }
-    set portalRoot(portalRoot : HTMLElement) {
-        this._portalRoot = portalRoot;
-    }
-
-    private _getPortalId(source : IComponent) : string {
-        return `${source.id}-portal`;
-    }
-
-    getPortal(source : IComponent) : HTMLElement {
-        if(this.portalRoot) {
-            const portalId = this._getPortalId(source);
-            let el = document.getElementById(portalId);
-            if(!el) {
-                el = document.createElement("div");
-                el.id = portalId;
-                const s = el.style;
-                s.position = "fixed";
-                s.zIndex = "1";
-                this.portalRoot.appendChild(el);
-            }
-            return el;
+    protected _setComponentViewport = () => {
+        if(this._component) {
+            this._component.setViewport(0, 0, this.width, this.height);
         }
     }
 
-    destroyPortal(source : IComponent) {
-        const portalId = this._getPortalId(source);
-        const el = document.getElementById(portalId);
-        if(el && el.parentNode) {
-            el.parentNode.removeChild(el);
-        }
+    @computed
+    get portalManager() {
+        return this._portalManager;
+    }
+    set portalManager(value) {
+        this._portalManager = value;
+    }
+    @action
+    setPortalManager(portalManager : IPortalManager) {
+        this._portalManager = portalManager;
     }
 }
 

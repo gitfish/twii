@@ -13,24 +13,71 @@ import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IPredicateFunc } from "@twii/core/lib/IPredicateFunc";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 
-abstract class Component extends EventEmitter {
+abstract class Component {
     private _id : string;
     @observable.ref parent : IComponent;
     @observable.ref private _addApp : IRequest | ISupplierFunc<IRequest>;
     @observable.ref private _router : IRouter;
+    @observable private _x : number = 0;
+    @observable private _y : number = 0;
+    @observable private _width : number = 0;
+    @observable private _height : number = 0;
     type : string;
 
-    constructor() {
-        super();
-        this._id = ComponentIdSequence.next();
-    }
-
     get id() {
+        if(!this._id) {
+            this._id = ComponentIdSequence.next();
+        }
         return this._id;
     }
 
-    get top() {
-        return this.parent ? this.parent.top : this;
+    get isWindowManager() {
+        return false;
+    }
+
+    @computed
+    get root() {
+        return this.parent ? this.parent.root : this;
+    }
+
+    @computed
+    get x() {
+        return this._x;
+    }
+
+    @computed
+    get y() {
+        return this._y;
+    }
+
+    @computed
+    get width() {
+        return this._width;
+    }
+
+    @computed
+    get height() {
+        return this._height;
+    }
+
+    @action
+    resize(width : number, height : number) {
+        if((width >= 0 && width !== this._width) || (height >= 0 && height !== this._height)) {
+            this._width = width;
+            this._height = height;
+        }
+    }
+
+    @action
+    position(x : number, y : number) {
+        this._x = x;
+        this._y = y;
+    }
+
+    @action
+    setViewport(x : number, y : number, width : number, height : number) {
+        this.position(x, y);
+        this.resize(width, height);
     }
 
     @computed

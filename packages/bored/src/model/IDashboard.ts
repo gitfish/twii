@@ -2,6 +2,8 @@ import { IComponent } from "./IComponent";
 import { IMutableSync } from "@twii/core/lib/IMutableSync";
 import { IDashboardLayout } from "./IDashboardLayout";
 import { IWindow } from "./IWindow";
+import { IWindowManager } from "./IWindowManager";
+import { IPortalManager } from "./IPortalManager";
 
 interface IDashboard extends IComponent {
     sync: IMutableSync;
@@ -11,6 +13,7 @@ interface IDashboard extends IComponent {
     drag: IComponent;
     closeDisabled : boolean;
     windows : IWindow[];
+    portalManager : IPortalManager;
     
     setTitle(title : string) : void;
     setComponent(component : IComponent) : void;
@@ -21,11 +24,8 @@ interface IDashboard extends IComponent {
     setBlockSource(blockSource : IComponent) : void;
     clearBlockSource() : void;
     setCloseDisabled(closeDisabled : boolean) : void;
+    setPortalManager(portalManager : IPortalManager) : void;
     clear() : void;
-
-    portalRoot : HTMLElement;
-    getPortal(source : IComponent) : HTMLElement;
-    destroyPortal(source : IComponent) : void;
 }
 
 export { IDashboard }

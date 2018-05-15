@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction, IReactionDisposer } from "mobx";
+import { observable, action, computed, autorun, reaction, IReactionDisposer } from "mobx";
 import { IDashboardList } from "./IDashboardList";
 import { IDashboard } from "./IDashboard";
 import { IComponent } from "./IComponent";
@@ -18,14 +18,11 @@ class DashboardList extends Component implements IDashboardList {
     loader : () => Promise<any>;
     saver : (data : any) => Promise<any>;
     private _configSaveDisposer : IReactionDisposer;
+    private _setViewportDisposer : IReactionDisposer;
 
     constructor() {
         super();
-        this.addEventListener("resize", this._onResize);
-    }
-
-    private _onResize = () => {
-        this.dashboards.forEach(db => db.emit({ type: "resize" }));
+        this._setViewportDisposer = autorun(this._setDashboardViewports);
     }
 
     get type() {
@@ -244,6 +241,13 @@ class DashboardList extends Component implements IDashboardList {
     @action
     clear() {
         this.close();
+    }
+
+    protected _setDashboardViewports = () => {
+        const active = this.active;
+        this.dashboards.forEach(db => {
+            db.setViewport(0, 0, db === active ? this.width : 0, db === active ? this.height : 0);
+        });
     }
 }
 

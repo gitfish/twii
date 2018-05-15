@@ -5,15 +5,17 @@ import { IEventEmitter } from "@twii/core/lib/IEventEmitter";
 import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IPredicateFunc } from "@twii/core/lib/IPredicateFunc";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
+import { IViewport } from "./IViewport";
 
-interface IComponent extends IEventEmitter {
+interface IComponent extends IViewport {
     id: string;
     type: string;
     parent: IComponent;
-    top: IComponent;
     dashboard: IDashboard;
+    root: IComponent;
     config : any;
     router: IRouter;
+    isWindowManager: boolean;
     setRouter(router : IRouter) : void;
     addApp: IRequest | ISupplierFunc<IRequest>;
     setAddApp(addApp : IRequest | ISupplierFunc<IRequest>) : void;
@@ -25,6 +27,26 @@ interface IComponent extends IEventEmitter {
     findFirst(predicate : IPredicateFunc<IComponent>) : IComponent;
     findAll(predicate : IPredicateFunc<IComponent>) : IComponent[];
     close() : void;
+    /**
+     * Resize the viewport
+     * @param width
+     * @param height 
+     */
+    resize(width : number, height : number) : void;
+    /**
+     * Position the viewport
+     * @param x
+     * @param y 
+     */
+    position(x : number, y : number) : void;
+    /**
+     * Sets the viewport relative to the dashboard
+     * @param x
+     * @param y 
+     * @param width 
+     * @param height 
+     */
+    setViewport(x : number, y: number, width : number, height : number) : void;
 }
 
 export { IComponent }

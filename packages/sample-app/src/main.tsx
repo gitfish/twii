@@ -5,6 +5,7 @@ import { AppRouter } from "./AppRouter";
 import { AppHostContainer } from "@twii/core-ui-fabric/lib/component/AppHost";
 import { initializeIcons } from "@uifabric/icons";
 import { Fabric } from "office-ui-fabric-react/lib/Fabric";
+import "core-js";
 
 // fabric icon initialization
 initializeIcons(AppConfig.env.fabricIconBasePath);

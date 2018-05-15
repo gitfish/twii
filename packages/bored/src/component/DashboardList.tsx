@@ -11,10 +11,14 @@ import { DashboardRemoveStore } from "../DashboardRemoveStore";
 import { ComponentGlobals } from "../ComponentGlobals";
 import { IEventTarget } from "@twii/core/lib/IEventEmitter";
 import { IDashboardStyles } from "./Dashboard.styles";
+import { IDashboardListStyles, getStyles } from "./DashboardList.styles";
+import { IDashboardListClassNames, getClassNames } from "./DashboardList.classNames";
 
 interface IDashboardListProps {
     dashboardList: IDashboardList;
     host?: IEventTarget;
+    styles?: IDashboardListStyles;
+    className?: string;
     dashboardStyles?: IDashboardStyles;
 }
 
@@ -24,12 +28,13 @@ class DashboardList extends React.Component<IDashboardListProps, any> {
         this.props.dashboardList.close();
     }
     render() {
+        const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
         const active = this.props.dashboardList.active;
         const dashboards = this.props.dashboardList.dashboards.map(db => {
             return <Dashboard key={db.id} hidden={db !== active} dashboard={db} host={this.props.host} styles={this.props.dashboardStyles} />
         });
         return (
-            <div className="dashboard-list">
+            <div className={classNames.root}>
                 <DashboardAddPanel add={DashboardAddStore} />
                 <DashboardRemoveDialog remove={DashboardRemoveStore} />
                 {dashboards}

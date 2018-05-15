@@ -34,19 +34,24 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
     private _setFromProps(props : IDashboardWrapperProps) {
         this.dashboard.router = props.router;
         this.dashboard.addApp = props.addApp;
-        this.dashboard.setConfig(props.config);
         this.dashboard.loader = props.loader;
         this.dashboard.saver = props.saver;
         this.dashboard.saveDelay = props.saveDelay;
     }
+    private _load(props : IDashboardWrapperProps) {
+        if(props.loader) {
+            this.dashboard.load();
+        } else if(props.config) {
+            this.dashboard.setConfig(this.props.config);
+        }
+    }
     componentWillReceiveProps(nextProps) {
         this.dashboard.close();
         this._setFromProps(nextProps);
+        this._load(nextProps);
     }
     componentWillMount() {
-        if(this.props.loader) {
-            this.dashboard.load();
-        }
+        this._load(this.props);
     }
     componentWillUnmount() {
         this.dashboard.close();

@@ -3,6 +3,8 @@ import { IWindowManager } from "./IWindowManager";
 import { IComponent } from "./IComponent";
 import { IAppHost } from "@twii/core/lib/IAppHost";
 import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
+import { IEventEmitter } from "@twii/core/lib/IEventEmitter";
+import { IPortal } from "./IPortal";
 
 interface IWindow extends IComponent {
     name: string;
@@ -29,7 +31,6 @@ interface IWindow extends IComponent {
     load(request : IRequest) : Promise<any>;
     open(request : IRequest) : Promise<IWindow>;
     setTransient(transient : boolean) : void;
-    portal: HTMLElement;
 }
 
 export { IWindow }

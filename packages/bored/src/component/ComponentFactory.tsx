@@ -6,7 +6,6 @@ import { IHSplit, IVSplit } from "../model/ISplit";
 import { HSplit } from "./HSplit";
 import { VSplit } from "./VSplit";
 import { IWindow } from "../model/IWindow";
-import { ProjectedWindowPortal } from "./WindowPortal";
 import { Grid } from "./Grid";
 import { IGrid } from "../model/IGrid";
 
@@ -30,10 +29,6 @@ const VSplitComponentFactory = (comp : IComponent) => {
     return <VSplit vsplit={comp as IVSplit} />;
 };
 
-const WindowComponentFactory = (comp : IComponent) => {
-    return <ProjectedWindowPortal window={comp as IWindow} />;
-};
-
 const GridComponentFactory = (comp : IComponent) => {
     return <Grid grid={comp as IGrid} />;
 };
@@ -42,7 +37,6 @@ const ComponentFactoryMap : ITypeComponentFactoryMap = {
     stack: StackComponentFactory,
     hsplit: HSplitComponentFactory,
     vsplit: VSplitComponentFactory,
-    window: WindowComponentFactory,
     grid: GridComponentFactory
 };
 

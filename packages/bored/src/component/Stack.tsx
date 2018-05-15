@@ -10,7 +10,6 @@ import { css } from "office-ui-fabric-react/lib/Utilities";
 import { setSingleChild } from "./DOMHelper";
 import { getStyles, IStackStyles } from "./Stack.styles";
 import { getClassNames, IStackClassNames } from "./Stack.classNames";
-import { ProjectedWindowPortal } from "./WindowPortal";
 
 interface IStackProps {
     stack: IStack;
@@ -221,7 +220,6 @@ class StackTabPanel extends React.Component<IStackWindowProps, any> {
                  style={style}
                  role="tabpanel"
                  id={`${this.props.window.id}-tab-panel`}>
-                 <ProjectedWindowPortal window={this.props.window} className="stack-window-portal" />
             </div>
         );
     }

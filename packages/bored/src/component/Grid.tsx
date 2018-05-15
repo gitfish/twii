@@ -7,9 +7,9 @@ import { IGridClassNames, getClassNames } from "./Grid.classNames";
 import * as GridLayout from "react-grid-layout";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { css } from "@uifabric/utilities";
-import { ProjectedWindowPortal } from "./WindowPortal";
 import { IGrid } from "../model/IGrid";
 import { ThemeSettingName } from "@uifabric/styling";
+import { Icon } from "office-ui-fabric-react/lib/Icon";
 
 interface IGridProps {
     grid: IGrid;
@@ -128,7 +128,7 @@ class GridWindow extends React.Component<IGridWindowProps, any> {
     private _renderBody() : React.ReactNode {
         return (
             <div className={css(this.props.classNames.windowBody, { "content-hidden": this.props.window.contentHidden})}>
-                <ProjectedWindowPortal window={this.props.window} className="list-window-portal" listenToPosition={true} />
+                {/*<ProjectedWindowPortal window={this.props.window} className="list-window-portal" listenToPosition={true} />*/}
             </div>
         );
     }
@@ -146,6 +146,19 @@ class GridWindow extends React.Component<IGridWindowProps, any> {
     }
 }
 
+class GridAddAction extends React.Component<IGridProps, any> {
+    private _onClick = () => {
+        this.props.grid.addNew();
+    }
+    render() {
+        return (
+            <button type="button" style={{ padding: 8 }} onClick={this._onClick}>
+                <Icon iconName="Add" />
+            </button>
+        );
+    }
+}
+
 @observer
 class Grid extends React.Component<IGridProps, any> {
     private _classNames : IGridClassNames;
@@ -156,27 +169,6 @@ class Grid extends React.Component<IGridProps, any> {
     }
     private _onRef = (ref : HTMLDivElement) => {
         this._ref = ref;
-    }
-    private _onResize = () => {
-        if(this._ref) {
-            const clientWidth = this._ref.clientWidth;
-            const clientHeight = this._ref.clientHeight;
-            this.props.grid.setDimensions(clientWidth, clientHeight);
-        }
-    }
-    private _onLayout = () => {
-        if(this._ref) {
-            const clientWidth = this._ref.clientWidth;
-            const clientHeight = this._ref.clientHeight;
-            this.props.grid.layout(clientWidth, clientHeight);
-        }
-    }
-    componentDidMount() {
-        this._onLayout();
-        this.props.grid.addEventListener("resize", this._onResize)
-    }
-    componentWillUnmount() {
-        this.props.grid.removeEventListener("resize", this._onResize);
     }
     private _renderGridCell = (window : IWindow) => {
         const l = window.layout ? window.layout.grid : { height: 0 };
@@ -191,20 +183,16 @@ class Grid extends React.Component<IGridProps, any> {
         );
     }
     private _onRootScroll = () => {
-        this.props.grid.emit({ type: "resize" });
+        // TODO
     }
     render() {
         this._classNames = getClassNames(getStyles(null, this.props.styles));
-
         const cells = this.props.grid.width > 0 && this.props.grid.height > 0 ? this.props.grid.windows.map(this._renderGridCell) : undefined;
         return (
             <div className={this._classNames.root} ref={this._onRef} onScroll={this._onRootScroll}>
                 {cells}
             </div>
         );
-    }
-    componentDidUpdate() {
-        this.props.grid.emit({ type: "resize" });
     }
 }
 

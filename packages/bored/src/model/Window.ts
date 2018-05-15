@@ -1,4 +1,4 @@
-import { observable, action, computed, autorun } from "mobx";
+import { observable, action, computed, autorun, IReactionDisposer } from "mobx";
 import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
 import { IWindowManager } from "./IWindowManager";
@@ -9,6 +9,8 @@ import * as qs from "qs";
 import { WindowAppHost } from "./WindowAppHost";
 import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IStack } from "./IStack";
+import { IPortal } from "./IPortal";
+import { IPortalManager } from "./IPortalManager";
 
 class Window extends Component implements IWindow {
     name : string;
@@ -21,16 +23,12 @@ class Window extends Component implements IWindow {
     @observable private _closeDisabled = false;
     @observable private _transient : boolean = false;
     @observable private _layout : any;
+    private _setViewportDisposer : IReactionDisposer;
 
     constructor() {
         super();
         this._appHost = new WindowAppHost(this);
-        this.addEventListener("resize", this._onResizeInternal);
-    }
-
-    private _onResizeInternal = () => {
-        // this is to ensure that the bound view gets first bite at the cherry
-        this.emit({ type: "resizeview" });
+        this._setViewportDisposer = autorun(this._setPortalViewport);
     }
 
     @computed
@@ -116,13 +114,9 @@ class Window extends Component implements IWindow {
     }
     @action
     setContentHidden(contentHidden : boolean) {
-        if(contentHidden !== this.contentHidden) {
-            this._contentHidden = contentHidden;
-            if(this.parent) {
-                this.parent.emit({ type: "resize" });
-            }
-        }
+        this._contentHidden = contentHidden;
     }
+
     @action
     toggleContent() {
         this.setContentHidden(!this.contentHidden);
@@ -211,23 +205,33 @@ class Window extends Component implements IWindow {
         return this.appHost.load(request);
     }
 
+    @computed
+    get portalManager() : IPortalManager {
+        return this.dashboard ? this.dashboard.portalManager : undefined;
+    }
+
     @action
     close() {
-        this.emit({ type: "beforeunload" });
-        this.emit({ type: "beforeclose" });
+        this._appHost.emit({ type: "beforeunload" });
+        this._appHost.emit({ type: "beforeclose" });
         if(this.onClose) {
             this.onClose(this);
         }
-        if(this.dashboard) {
-            this.dashboard.destroyPortal(this);
+        const portalManager = this.portalManager;
+        if(portalManager) {
+            portalManager.destroyPortal(this);
         }
         this.removeFromParent();
-        this.emit({ type: "unload" });
-        this.emit({ type: "close" });
+        this._appHost.emit({ type: "unload" });
+        this._appHost.emit({ type: "close" });
     }
 
-    get portal() {
-        return this.dashboard ? this.dashboard.getPortal(this) : undefined;
+    private _setPortalViewport = () => {
+        const portalManager = this.portalManager;
+        if(portalManager) {
+            const { x, y, width, height } = this;
+            portalManager.getPortal(this).setViewport(x, y, width, height);
+        }
     }
 }
 

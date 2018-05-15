@@ -4,9 +4,12 @@ import { AbstractAppHost } from "@twii/core/lib/model/AbstractAppHost";
 import { IRouter } from "@twii/router/lib/IRouter";
 import { IRequest } from "@twii/router/lib/IRequest";
 import { IWindow } from "./IWindow";
+import { IEventEmitter } from "@twii/core/lib/IEventEmitter";
+import { EventEmitter } from "@twii/core/lib/EventEmitter";
 
 class WindowAppHost extends AbstractAppHost {
     private _window : IWindow;
+    protected _events = new EventEmitter();
     
     constructor(window : IWindow) {
         super();
@@ -50,15 +53,15 @@ class WindowAppHost extends AbstractAppHost {
     }
 
     addEventListener(type, handler) : void {
-        this._window.addEventListener(type, handler);
+        this._events.addEventListener(type, handler);
     }
 
     removeEventListener(type, handler) : void {
-        this._window.addEventListener(type, handler);
+        this._events.addEventListener(type, handler);
     }
 
     emit(event) : void {
-        this._window.emit(event);
+        this._events.emit(event);
     }
 }
 

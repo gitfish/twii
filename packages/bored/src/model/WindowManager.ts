@@ -17,12 +17,22 @@ class WindowManager extends Component implements IWindowManager {
     }
 
     @computed
+    get first() {
+        return this.windowCount > 0 ? this.windows[0] : undefined;
+    }
+
+    @computed
+    get last() {
+        return this.windowCount > 0 ? this.windows[this.windows.length - 1] : undefined;
+    }
+
+    @computed
     get windowCount() : number {
         return this.windows ? this.windows.length : 0
     }
 
-    protected _windowsModified() {
-        // does nothing by default
+    get isWindowManager() {
+        return true;
     }
 
     @action
@@ -36,7 +46,6 @@ class WindowManager extends Component implements IWindowManager {
                 this.windows.splice(itemIdx, 1);
             }
             this.windows.push(win);
-            this._windowsModified();
         }
     }
     
@@ -54,7 +63,6 @@ class WindowManager extends Component implements IWindowManager {
 
     @action
     insertAt(item : IWindow, index : number) {
-        console.log("-- Insert At: " + index);
         if(item && index >= 0 && index < this.windows.length) {
             let refStackItem = this.windows[index];
             let insertIdx : number = -1;
@@ -72,7 +80,6 @@ class WindowManager extends Component implements IWindowManager {
 
             if(insertIdx >= 0) {
                 this.windows.splice(insertIdx, 0, item);
-                this._windowsModified();
             }
         } else {
             this.add(item);

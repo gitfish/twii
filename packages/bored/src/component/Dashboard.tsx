@@ -12,6 +12,10 @@ import { css } from "office-ui-fabric-react/lib/Utilities";
 import { IDashboardStyles, getStyles } from "./Dashboard.styles";
 import { getClassNames, IDashboardClassNames } from "./Dashboard.classNames";
 import * as ComponentTypes from "../model/ComponentTypes";
+import { IWindow } from "../model/IWindow";
+import { AppContainerPortal } from "./AppContainerPortal";
+import { IPortalManager } from "../model/IPortalManager";
+import { AppContainerPortalManager } from "./AppContainerPortalManager";
 
 interface IDashboardProps {
     dashboard: IDashboard;
@@ -42,9 +46,17 @@ class DashboardBlockOverlay extends React.Component<IDashboardPropsInternal, any
 
 @observer
 class Dashboard extends React.Component<IDashboardProps, any> {
+    private _ref : HTMLDivElement;
+    private _onRef = (ref : HTMLDivElement) => {
+        this._ref = ref;
+    }
+    private _resizeToViewport() {
+        const bounds = this._ref.getBoundingClientRect();
+        this.props.dashboard.resize(bounds.width, bounds.height);
+    }
     private _onHostResize = () => {
         if(!ComponentGlobals.ignoreResize) {
-            this.props.dashboard.emit({ type: "resize" });
+            this._resizeToViewport();
         }
     }
     private _addHostListener(host : IEventTarget) {
@@ -58,8 +70,9 @@ class Dashboard extends React.Component<IDashboardProps, any> {
         }
     }
     componentDidMount() {
+        this.props.dashboard.setPortalManager(new AppContainerPortalManager(this._ref));
         this._addHostListener(this.props.host);
-        this.props.dashboard.emit({ type: "resize" });
+        this._resizeToViewport();
     }
     componentWillUnmount() {
         this._removeHostListener(this.props.host);
@@ -69,27 +82,27 @@ class Dashboard extends React.Component<IDashboardProps, any> {
             this._removeHostListener(this.props.host);
             this._addHostListener(nextProps.host);
         }
-    }
-    private _onPortalRootRef = (ref : HTMLDivElement) => {
-        this.props.dashboard.portalRoot = ref;
+        if(nextProps.dashboard !== this.props.dashboard) {
+            const currentPortalManager = this.props.dashboard.portalManager;
+            if(currentPortalManager) {
+                currentPortalManager.destroy();
+            }
+            this.props.dashboard.setPortalManager(new AppContainerPortalManager(this._ref));
+        }
     }
     render() {
         const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
         const component = this.props.dashboard.component;
         let content = ComponentFactory(component);
         return (
-            <div id={this.props.dashboard.id} className={css(classNames.root, { hidden: this.props.hidden })}>
+            <div id={this.props.dashboard.id}
+                 className={css(classNames.root, { hidden: this.props.hidden })}
+                 ref={this._onRef}>
                 <DashboardBlockOverlay {...this.props} classNames={classNames} />
                 <ComponentRemoveDialog remove={ComponentRemoveStore} />
-                <div className={classNames.portalRoot} style={{ position: "relative" }} ref={this._onPortalRootRef}></div>
-                <div className={classNames.content}>
-                    {content}
-                </div>
+                {content}
             </div>
         );
-    }
-    componentDidUpdate() {
-        this.props.dashboard.emit({ type: "resize" });
     }
 }
 

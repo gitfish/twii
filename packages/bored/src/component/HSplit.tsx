@@ -6,6 +6,7 @@ import { IHSplit } from "../model/ISplit";
 import { IHSplitStyles, getStyles } from "./HSplit.styles";
 import { IHSplitClassNames, getClassNames } from "./HSplit.classNames";
 import { css } from "@uifabric/utilities";
+import { Icon } from "office-ui-fabric-react/lib/Icon";
 
 interface IHSplitProps {
     hsplit: IHSplit;
@@ -19,7 +20,7 @@ class HSplit extends React.Component<IHSplitProps, any> {
     private _leftPaneRef : HTMLElement;
     private _splitterRef : HTMLElement;
     private _rightPaneRef : HTMLElement;
-    private _offsetReactionDisposer : IReactionDisposer;
+    private _layoutDisposer : IReactionDisposer;
     private _resize(e : MouseEvent) {
         const minItemWidth = this.props.hsplit.minItemWidth;
         const bounds = this._ref.getBoundingClientRect();
@@ -55,56 +56,30 @@ class HSplit extends React.Component<IHSplitProps, any> {
     private _onSplitterRef = (ref : HTMLElement) => {
         this._splitterRef = ref;
     }
-    private _onLeftPaneRef = (ref : HTMLElement) => {
-        this._leftPaneRef = ref;
-    }
-    private _onRightPaneRef = (ref : HTMLElement) => {
-        this._rightPaneRef = ref;
-    }
-    private _onResize = () => {
-        const bounds = this._ref.getBoundingClientRect();
-        const splitterBounds = this._splitterRef.getBoundingClientRect();
-        const leftWidth = Math.floor(bounds.width * this.props.hsplit.offset);
-        const rightWidth = bounds.width - leftWidth - splitterBounds.width;
-        this._leftPaneRef.style.width = `${leftWidth}px`;
-        this._splitterRef.style.left = this._leftPaneRef.style.width;
-        this._rightPaneRef.style.width = `${rightWidth}px`;
-        if(this.props.hsplit.left) {
-            this.props.hsplit.left.emit({ type: "resize" });
-        }
-        if(this.props.hsplit.right) {
-            this.props.hsplit.right.emit({ type: "resize" });
-        }
-    }
-    componentDidMount() {
-        this._offsetReactionDisposer = autorun(this._onResize);
-        this.props.hsplit.addEventListener("resize", this._onResize);
-    }
-    componentWillUnmount() {
-        if(this._offsetReactionDisposer) {
-            this._offsetReactionDisposer();
-            delete this._offsetReactionDisposer;
-        }
-        this.props.hsplit.removeEventListener("resize", this._onResize);
-    }
     render() {
-        const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
-        let left = this.props.hsplit.left;
-        let right = this.props.hsplit.right;
-        let leftContent = ComponentFactory(left);
-        let rightContent = ComponentFactory(right);
+        const { hsplit, styles, className } = this.props;
+        const classNames = getClassNames(getStyles(null, styles), className);
+        let leftContent = ComponentFactory(hsplit.left);
+        let rightContent = ComponentFactory(hsplit.right);
         
         return (
             <div className={classNames.root} ref={this._onRef}>
-                <div className={classNames.leftPane} ref={this._onLeftPaneRef} style={{ width: "50%" }}>
+                <div className={classNames.leftPane}
+                    style={{ width: hsplit.leftWidth }}>
                     <div className={classNames.leftContent}>
                         {leftContent}
                     </div>
                 </div>
-                <div className={css(classNames.splitter, { active: this.props.hsplit.splitActive })} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
-                    <div className={css(classNames.splitterContent, { active: this.props.hsplit.splitActive })}></div>
+                <div className={css(classNames.splitter, { active: hsplit.splitActive })}
+                    onMouseDown={this._onSplitterMouseDown}
+                    style={{ left: hsplit.leftWidth, width: hsplit.splitterWidth }}
+                    ref={this._onSplitterRef}>
+                    <div className={css(classNames.splitterContent, { active: hsplit.splitActive })}>
+                        <Icon iconName="GripperBarVertical" className="hsplit-icon" />
+                    </div>
                 </div>
-                <div className={classNames.rightPane} ref={this._onRightPaneRef} style={{ width: "50%" }}>
+                <div className={classNames.rightPane}
+                     style={{ width: hsplit.rightWidth }}>
                     <div className={classNames.rightContent}>
                         {rightContent}
                     </div>

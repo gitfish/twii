@@ -1,4 +1,4 @@
-import { observable, action, computed, autorun } from "mobx";
+import { observable, action, computed, autorun, IReactionDisposer } from "mobx";
 import { Component } from "./Component";
 import { IComponent } from "./IComponent";
 import { ISplit, IHSplit, IVSplit } from "./ISplit";
@@ -14,20 +14,6 @@ class Split extends Component implements ISplit {
     @observable private _first : IComponent;
     @observable private _second : IComponent;
     @observable private _splitActive : boolean = false;
-
-    constructor() {
-        super();
-        this.addEventListener("resize", this._onResize);
-    }
-
-    private _onResize = () => {
-        if(this._first) {
-            this._first.emit({ type: "resize" });
-        }
-        if(this._second) {
-            this._second.emit({ type: "resize" });
-        }
-    }
 
     @computed
     get splitActive() {
@@ -214,6 +200,13 @@ class Split extends Component implements ISplit {
 
 class HSplit extends Split implements IHSplit {
     @observable private _minItemWidth : number = 30;
+    @observable private _splitterWidth : number = 5;
+    private _setViewportDisposer : IReactionDisposer;
+
+    constructor() {
+        super();
+        this._setViewportDisposer = autorun(this._setPaneViewports);
+    }
 
     get type() {
         return ComponentTypes.hsplit;
@@ -226,10 +219,23 @@ class HSplit extends Split implements IHSplit {
     set minItemWidth(value) {
         this.setMinItemWidth(value);
     }
-
     @action
     setMinItemWidth(minItemWidth : number) {
         this._minItemWidth = minItemWidth;
+    }
+
+    @computed
+    get splitterWidth() {
+        return this._splitterWidth;
+    }
+    set splitterWidth(value) {
+        this.setSplitterWidth(value);
+    }
+    @action
+    setSplitterWidth(splitterWidth : number) {
+        if(splitterWidth > 0) {
+            this._splitterWidth = splitterWidth;
+        }
     }
 
     @computed
@@ -239,17 +245,23 @@ class HSplit extends Split implements IHSplit {
     set left(value : IComponent) {
         this.setLeft(value);
     }
-
     @action
     setLeft(left : IComponent) {
         this.setFirst(left);
     }
 
     @computed
+    get leftWidth() {
+        return Math.floor(this.offset * this.width);
+    }
+
+    @computed
     get leftConfig() {
         return this.firstConfig;
     }
-    
+    set leftConfig(value) {
+        this.setLeftConfig(value);
+    }
     @action
     setLeftConfig(config : any) {
         return this.setFirstConfig(config);
@@ -259,21 +271,26 @@ class HSplit extends Split implements IHSplit {
     get right() {
         return this.second;
     }
-
     set right(value : IComponent) {
         this.setRight(value);
+    }
+    @action
+    setRight(right : IComponent) {
+        this.setSecond(right);
+    }
+
+    @computed
+    get rightWidth() {
+        return this.width - this.leftWidth - this.splitterWidth;
     }
 
     @computed
     get rightConfig() {
         return this.secondConfig;
     }
-
-    @action
-    setRight(right : IComponent) {
-        this.setSecond(right);
+    set rightConfig(value) {
+        this.setRightConfig(value);
     }
-
     @action
     setRightConfig(config : any) {
         this.setSecondConfig(config);
@@ -307,10 +324,27 @@ class HSplit extends Split implements IHSplit {
         const rightCount = right && right.type === ComponentTypes.hsplit ? (right as IHSplit).columnCount : 1;
         return leftCount + rightCount;
     }
+
+    private _setPaneViewports = () => {
+        if(this.left) {
+            this.left.setViewport(this.x, this.y, this.leftWidth, this.height);
+        }
+        if(this.right) {
+            this.right.setViewport(this.x + this.leftWidth + this.splitterWidth, this.y, this.rightWidth, this.height);
+        }
+    }
 }
 
 class VSplit extends Split implements IVSplit {
     @observable private _minItemHeight : number = 30;
+    @observable private _splitterHeight : number = 5;
+
+    private _setViewportDisposer : IReactionDisposer;
+
+    constructor() {
+        super();
+        this._setViewportDisposer = autorun(this._setPaneViewports);
+    }
 
     get type() {
         return ComponentTypes.vsplit;
@@ -323,10 +357,26 @@ class VSplit extends Split implements IVSplit {
     set minItemHeight(value) {
         this.setMinItemHeight(value);
     }
-
     @action
     setMinItemHeight(minItemHeight : number) {
         this._minItemHeight = minItemHeight;
+    }
+
+    @computed
+    get splitterHeight() {
+        return this._splitterHeight;
+    }
+    set splitterHeight(value) {
+        this.setSplitterHeight(value);
+    }
+    @action
+    setSplitterHeight(splitterHeight : number) {
+        this._splitterHeight = splitterHeight;
+    }
+
+    @computed
+    get topHeight() {
+        return Math.floor(this.height * this.offset);
     }
 
     @computed
@@ -356,24 +406,29 @@ class VSplit extends Split implements IVSplit {
     get bottom() {
         return this.second;
     }
-
     set bottom(value : IComponent) {
         this.setBottom(value);
+    }
+    @action
+    setBottom(bottom : IComponent) {
+        this.setSecond(bottom);
     }
 
     @computed
     get bottomConfig() {
         return this.secondConfig;
     }
-
-    @action
-    setBottom(bottom : IComponent) {
-        this.setSecond(bottom);
+    set bottomConfig(value) {
+        this.setBottomConfig(value);
     }
-
     @action
     setBottomConfig(config : any) {
         return this.setSecondConfig(config);
+    }
+
+    @computed
+    get bottomHeight() {
+        return this.height - this.topHeight - this.splitterHeight;
     }
 
     @computed
@@ -403,6 +458,15 @@ class VSplit extends Split implements IVSplit {
         const topCount = top && top.type === ComponentTypes.vsplit ? (top as IVSplit).rowCount : 1;
         const bottomCount = bottom && bottom.type === ComponentTypes.vsplit ? (bottom as IVSplit).rowCount : 1;
         return topCount + bottomCount;
+    }
+
+    private _setPaneViewports = () => {
+        if(this.top) {
+            this.top.setViewport(this.x, this.y, this.width, this.topHeight);
+        }
+        if(this.bottom) {
+            this.bottom.setViewport(this.x, this.y + this.topHeight + this.splitterHeight, this.width, this.bottomHeight);
+        }
     }
 }
 

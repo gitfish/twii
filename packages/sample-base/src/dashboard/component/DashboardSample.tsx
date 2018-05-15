@@ -27,18 +27,14 @@ class StackSample extends React.Component<IAppProps, any> {
         };
         const customStyles : IDashboardStyles = {
             root: {
-                backgroundColor: getTheme().palette.neutralLighter
-            },
-            content: {
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20,
-                border: `1px solid ${getTheme().palette.themeDark}`,
-                background: getTheme().palette.themeDark
+                border: `1px solid ${getTheme().palette.themeDark}`
             }
         };
-        return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} addApp={{ path: "/samples" }} />;
+        return (
+            <div style={{ position: "absolute", top: 20, right: 20, bottom: 20, left: 20 }}>
+                <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} addApp={{ path: "/samples" }} />
+            </div>
+        );
     }
 }
 
@@ -65,18 +61,14 @@ class HSplitSample extends React.Component<IAppProps, any> {
         };
         const customStyles : IDashboardStyles = {
             root: {
-                backgroundColor: getTheme().palette.neutralLighter
-            },
-            content: {
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20,
-                border: `1px solid ${getTheme().palette.themeDark}`,
-                background: getTheme().palette.themeDark
+                border: `1px solid ${getTheme().palette.themeDark}`
             }
         };
-        return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} />;
+        return (
+            <div style={{ position: "absolute", top: 20, right: 20, bottom: 20, left: 20 }}>
+                <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} />
+            </div>
+        );
     }
 }
 
@@ -103,18 +95,14 @@ class VSplitSample extends React.Component<IAppProps, any> {
         };
         const customStyles : IDashboardStyles = {
             root: {
-                backgroundColor: getTheme().palette.neutralLighter
-            },
-            content: {
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20,
-                border: `1px solid ${getTheme().palette.themeDark}`,
-                background: getTheme().palette.themeDark
+                border: `1px solid ${getTheme().palette.themeDark}`
             }
         };
-        return <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} />;
+        return (
+            <div style={{ position: "absolute", top: 10, right: 10, bottom: 10, left: 10 }}>
+                <DashboardWrapper host={this.props.host} config={dashboardConfig} styles={customStyles} router={dashboardRouter} />
+            </div>
+        );
     }
 }
 

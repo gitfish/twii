@@ -13,6 +13,9 @@ interface ISplit extends IComponent {
 
 interface IHSplit extends ISplit {
     minItemWidth: number;
+    leftWidth: number;
+    rightWidth: number;
+    splitterWidth: number;
     left: IComponent;
     right: IComponent;
     setLeft(left : IComponent) : void;
@@ -22,7 +25,10 @@ interface IHSplit extends ISplit {
 }
 
 interface IVSplit extends ISplit {
-    minItemHeight : number;
+    minItemHeight: number;
+    topHeight: number;
+    bottomHeight: number;
+    splitterHeight: number;
     top: IComponent;
     bottom: IComponent;
     setTop(top : IComponent) : void;

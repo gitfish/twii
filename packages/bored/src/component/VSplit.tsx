@@ -6,6 +6,7 @@ import { IVSplitStyles, getStyles } from "./VSplit.styles";
 import { IVSplitClassNames, getClassNames } from "./VSplit.classNames";
 import { ComponentFactory } from "./ComponentFactory";
 import { css } from "@uifabric/utilities";
+import { Icon } from "office-ui-fabric-react/lib/Icon";
 
 interface IVSplitProps {
     vsplit: IVSplit;
@@ -55,55 +56,30 @@ class VSplit extends React.Component<IVSplitProps, any> {
     private _onSplitterRef = (ref : HTMLElement) => {
         this._splitterRef = ref;
     }
-    private _onTopPaneRef = (ref : HTMLElement) => {
-        this._topPaneRef = ref;
-    }
-    private _onBottomPaneRef = (ref : HTMLElement) => {
-        this._bottomPaneRef = ref;
-    }
-    private _onResize = () => {
-        const bounds = this._ref.getBoundingClientRect();
-        const splitterBounds = this._splitterRef.getBoundingClientRect();
-        const topHeight = Math.floor(bounds.height * this.props.vsplit.offset);
-        const bottomHeight = bounds.height - topHeight - splitterBounds.height;
-        this._topPaneRef.style.height = `${topHeight}px`;
-        this._splitterRef.style.top = this._topPaneRef.style.height;
-        this._bottomPaneRef.style.height = `${bottomHeight}px`;
-        if(this.props.vsplit.top) {
-            this.props.vsplit.top.emit({ type: "resize" });
-        }
-        if(this.props.vsplit.bottom) {
-            this.props.vsplit.bottom.emit({ type: "resize" });
-        }
-    }
-    componentDidMount() {
-        this._offsetReactionDisposer = autorun(this._onResize);
-        this.props.vsplit.addEventListener("resize", this._onResize);
-    }
-    componentWillUnmount() {
-        if(this._offsetReactionDisposer) {
-            this._offsetReactionDisposer();
-            delete this._offsetReactionDisposer;
-        }
-        this.props.vsplit.removeEventListener("resize", this._onResize);
-    }
     render() {
-        const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
-        let top = this.props.vsplit.top;
-        let bottom = this.props.vsplit.bottom;
-        let topContent = ComponentFactory(top);
-        let bottomContent = ComponentFactory(bottom);
+        const { vsplit, styles, className } = this.props;
+        const classNames = getClassNames(getStyles(null, styles), className);
+        
+        let topContent = ComponentFactory(vsplit.top);
+        let bottomContent = ComponentFactory(vsplit.bottom);
         return (
             <div className={classNames.root} ref={this._onRef}>
-                <div className={classNames.topPane} ref={this._onTopPaneRef} style={{ height: "50%" }}>
+                <div className={classNames.topPane}
+                     style={{ height: vsplit.topHeight }}>
                     <div className={classNames.topContent}>
                         {topContent}
                     </div>
                 </div>
-                <div className={css(classNames.splitter, { active: this.props.vsplit.splitActive })} onMouseDown={this._onSplitterMouseDown} ref={this._onSplitterRef}>
-                    <div className={css(classNames.splitterContent, { active: this.props.vsplit.splitActive })}></div>
+                <div className={css(classNames.splitter, { active: vsplit.splitActive })}
+                     onMouseDown={this._onSplitterMouseDown}
+                     style={{ top: vsplit.topHeight, height: vsplit.splitterHeight }}
+                     ref={this._onSplitterRef}>
+                    <div className={css(classNames.splitterContent, { active: vsplit.splitActive })}>
+                        <Icon iconName="GripperBarHorizontal" className="vsplit-icon" />
+                    </div>
                 </div>
-                <div className={classNames.bottomPane} ref={this._onBottomPaneRef} style={{ height: "50%" }}>
+                <div className={classNames.bottomPane}
+                     style={{ height: vsplit.bottomHeight }}>
                     <div className={classNames.bottomContent}>
                         {bottomContent}
                     </div>

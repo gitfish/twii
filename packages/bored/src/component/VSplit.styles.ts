@@ -1,4 +1,4 @@
-import { IStyle, ITheme, getTheme, concatStyleSets } from "@uifabric/styling";
+import { IStyle, ITheme, getTheme, concatStyleSets, FontSizes } from "@uifabric/styling";
 import { memoizeFunction } from "@uifabric/utilities";
 
 interface IVSplitStyles {
@@ -36,7 +36,17 @@ const defaultStyles = (theme : ITheme) : IVSplitStyles => {
             right: 0,
             bottom: 0,
             left: 0,
-            overflow: "hidden"
+            overflow: "hidden",
+            backgroundColor: theme.palette.neutralTertiaryAlt,
+            color: theme.palette.themeDark,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            selectors: {
+                ".vsplit-icon": {
+                    fontSize: FontSizes.mini
+                }
+            }
         },
         topPane: {
             position: "absolute",
