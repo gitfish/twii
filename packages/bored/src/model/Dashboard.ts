@@ -62,7 +62,9 @@ class Dashboard extends Component implements IDashboard {
     get component() {
         return this._component;
     }
-
+    set component(value) {
+        this.setComponent(value);
+    }
     @action
     setComponent(component : IComponent) {
         if(component !== this._component) {
