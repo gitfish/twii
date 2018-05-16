@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { AppLink } from "component/AppLink";
+import { AppLink } from "./AppLink";
 import { AppHost } from "@twii/core/lib/model/AppHost";
 import { Router } from "@twii/router/lib/Router";
 

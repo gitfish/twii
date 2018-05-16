@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { HostAppView } from "component/HostAppView";
-import { AppHost } from "model/AppHost";
-import { BrowserAppHost } from "model/BrowserAppHost";
+import { HostAppView } from "./HostAppView";
+import { AppHost } from "@twii/core/lib/model/AppHost";
+import { BrowserAppHost } from "@twii/core/lib/model/BrowserAppHost";
 import { IRequest } from "@twii/router/lib/IRequest";
 import { Router } from "@twii/router/lib/Router";
 
@@ -13,7 +13,7 @@ describe("Host App View Component", () => {
             return "Test Woo";
         });
         const host = new AppHost();
-        host.setRequest({ path: "/test/woo" });
+        host.defaultRequest = { path: "/test/woo" };
         host.router = router;
 
         let r = ReactTestRenderer.create(
@@ -29,7 +29,7 @@ describe("Host App View Component", () => {
             return "Test Woo";
         });
         const host = new BrowserAppHost();
-        host.setRequest({ path: "/test/woo" });
+        host.request = { path: "/test/woo" };
         host.router = router;
 
         let r = ReactTestRenderer.create(

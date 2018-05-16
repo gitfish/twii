@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { AppHostContainer } from "component/AppHost";
-import { AppHost } from "model/AppHost";
+import { AppHostContainer } from "./AppHost";
+import { AppHost } from "@twii/core/lib/model/AppHost";
 import { Router } from "@twii/router/lib/Router";
-import { toPromise } from "SyncUtils";
+import { toPromise } from "@twii/core/lib/SyncUtils";
 
 describe("App Host Container Component", () => {
     test("render", async () => {
@@ -12,13 +12,10 @@ describe("App Host Container Component", () => {
             return "Test Woo";
         });
         const host = new AppHost();
-        host.setRequest({ path: "/test/woo" });
+        host.defaultRequest = { path: "/test/woo" };
         host.router = router;
-        const defaultStateRenderer = () => {
-            return "Default State";
-        };
         let r = ReactTestRenderer.create(
-            <AppHostContainer host={host} noLoadOnMount={true} onRenderDefault={defaultStateRenderer} />
+            <AppHostContainer host={host} noLoadOnMount={true} />
         );
         const instance = r.getInstance();
 
@@ -29,7 +26,7 @@ describe("App Host Container Component", () => {
         await toPromise(host.sync);
 
         r = ReactTestRenderer.create(
-            <AppHostContainer host={host} noLoadOnMount={true} onRenderDefault={defaultStateRenderer} />
+            <AppHostContainer host={host} noLoadOnMount={true} />
         );
 
         out = r.toJSON();

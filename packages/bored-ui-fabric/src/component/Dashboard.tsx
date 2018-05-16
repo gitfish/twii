@@ -51,8 +51,10 @@ class Dashboard extends React.Component<IDashboardProps, any> {
         this._ref = ref;
     }
     private _resizeToViewport() {
-        const bounds = this._ref.getBoundingClientRect();
-        this.props.dashboard.resize(bounds.width, bounds.height);
+        if(this._ref) {
+            const bounds = this._ref.getBoundingClientRect();
+            this.props.dashboard.resize(bounds.width, bounds.height);
+        }
     }
     private _onHostResize = () => {
         if(!ComponentGlobals.ignoreResize) {

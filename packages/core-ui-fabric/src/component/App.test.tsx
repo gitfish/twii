@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { AppContainer } from "component/App";
-import { AppHostContainer } from "component/AppHost";
+import { AppContainer } from "./App";
+import { AppHostContainer } from "./AppHost";
 import { Router } from "@twii/router/lib/Router";
-import { toPromise } from "SyncUtils";
+import { toPromise } from "@twii/core/lib/SyncUtils";
 
 describe("App Container Component", () => {
     test("render", async () => {
