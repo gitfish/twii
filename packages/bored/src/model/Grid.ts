@@ -118,8 +118,15 @@ class Grid extends WindowManager implements IGrid {
     }
 
     private _setWindowViewports = () => {
+        let x = this.x;
+        let y = this.y;
+        const windowColumns = 4;
+        const windowRows = 3;
         this.windows.forEach(w => {
-            w.setViewport(this.x, this.y, 0, 0);
+            const width = windowColumns * this.cellWidth;
+            const height = windowRows * this.cellHeight;
+            w.setViewport(x, y, width, height);
+            x += width;
         });
     }
 }
