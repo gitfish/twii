@@ -1,5 +1,6 @@
 src/
 test/
+*.test.*
 task/
 __coverage__/
 .gitignore

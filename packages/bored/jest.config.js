@@ -9,7 +9,7 @@ module.exports = {
       ".(ts|tsx)": "../../node_modules/ts-jest/preprocessor.js"
     },
     testMatch: [
-      "**/test/**/*Test.ts?(x)"
+      "**/src/**/*.test.*"
     ],
     moduleFileExtensions: [
       "ts",

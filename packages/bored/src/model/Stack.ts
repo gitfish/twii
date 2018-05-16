@@ -74,7 +74,7 @@ class Stack extends WindowManager implements IStack {
     @action
     add(win : IWindow, opts?: any) {
         super.add(win, opts);
-        if(opts && opts.makeActive) {
+        if((opts && opts.makeActive) || this.windows.length === 1) {
             this.setActive(win);
         }
     }
@@ -163,6 +163,9 @@ class Stack extends WindowManager implements IStack {
             windows: this.windows.filter(w => !w.transient).map(w => w.config),
             closeDisabled: this.closeDisabled
         };
+    }
+    set config(value) {
+        this.setConfig(value);
     }
 
     @action
