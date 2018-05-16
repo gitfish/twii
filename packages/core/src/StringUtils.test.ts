@@ -1,5 +1,5 @@
-import * as StringUtils from "StringUtils";
-import { isAlpha, isAlphaNumeric, isDigit } from "StringFilters";
+import * as StringUtils from "./StringUtils";
+import { isAlpha, isAlphaNumeric, isDigit } from "./StringFilters";
 
 describe("String Utilities", () => {
     test("forEach()", () => {

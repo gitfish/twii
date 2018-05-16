@@ -1,6 +1,6 @@
-import { ILogEntry, CollectingLoggingService } from "service/CollectingLoggingService";
-import { ControlledLoggingService } from "service/ControlledLoggingService";
-import { alwaysTrue, alwaysFalse } from "Suppliers";
+import { ILogEntry, CollectingLoggingService } from "./CollectingLoggingService";
+import { ControlledLoggingService } from "./ControlledLoggingService";
+import { alwaysTrue, alwaysFalse } from "../Suppliers";
 
 describe("Controlled Logging Service", () => {
     test("active", () => {

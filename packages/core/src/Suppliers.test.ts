@@ -1,4 +1,4 @@
-import * as Suppliers from "Suppliers";
+import * as Suppliers from "./Suppliers";
 
 describe("Suppliers", () => {
     test("constant", () => {

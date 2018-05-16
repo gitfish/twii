@@ -1,6 +1,6 @@
-import { SyncSupplier } from "model/SyncSupplier";
+import { SyncSupplier } from "./SyncSupplier";
 
-describe("Supplier Model", () => {
+describe("Sync Supplier Test", () => {
     test("all", () => {
         const m = new SyncSupplier<string>();
         expect(m.sync).toBeTruthy();

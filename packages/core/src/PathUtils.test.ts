@@ -1,4 +1,4 @@
-import * as PathUtils from "PathUtils";
+import * as PathUtils from "./PathUtils";
 
 describe("Path Utilities", () => {
     test("join()", () => {

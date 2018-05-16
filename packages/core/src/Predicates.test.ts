@@ -1,4 +1,4 @@
-import { not, and, or } from "Predicates";
+import { not, and, or } from "./Predicates";
 
 describe("Predicates", () => {
     test("not", () => {

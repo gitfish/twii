@@ -1,5 +1,5 @@
-import { toPromise } from "SyncUtils";
-import { Sync } from "model/Sync";
+import { toPromise } from "./SyncUtils";
+import { Sync } from "./model/Sync";
 
 describe("SynUtils", () => {
     test("toPromise", async () => {

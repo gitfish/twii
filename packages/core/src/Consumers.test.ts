@@ -1,5 +1,5 @@
-import { useless } from "Consumers";
-import { IConsumerFunc } from "IConsumerFunc";
+import { useless } from "./Consumers";
+import { IConsumerFunc } from "./IConsumerFunc";
 
 describe("Consumers", () => {
     test("useless", () => {

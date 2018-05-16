@@ -1,4 +1,4 @@
-import { ILogEntry, CollectingLoggingService } from "service/CollectingLoggingService";
+import { ILogEntry, CollectingLoggingService } from "./CollectingLoggingService";
 
 describe("Collecting Logging Service", () => {
     test("collection", () => {

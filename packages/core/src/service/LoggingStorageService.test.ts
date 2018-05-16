@@ -1,6 +1,6 @@
-import { LoggingStorageService } from "service/LoggingStorageService";
-import { TransientStorageService } from "service/TransientStorageService";
-import { CollectingLoggingService } from "service/CollectingLoggingService";
+import { LoggingStorageService } from "./LoggingStorageService";
+import { TransientStorageService } from "./TransientStorageService";
+import { CollectingLoggingService } from "./CollectingLoggingService";
 
 describe("Logging Storage Service", () => {
     test("logging", async () => {
@@ -8,7 +8,8 @@ describe("Logging Storage Service", () => {
         const logger = new CollectingLoggingService();
         const storage = new LoggingStorageService({
             target: target,
-            logger: logger
+            logger: logger,
+            prefix: "test"
         });
 
         await storage.setItem("woo", "Woo");

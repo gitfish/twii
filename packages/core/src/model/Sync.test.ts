@@ -1,4 +1,4 @@
-import { Sync } from "model/Sync";
+import { Sync } from "./Sync";
 
 describe("Sync Model", () => {
     test("standard", () => {

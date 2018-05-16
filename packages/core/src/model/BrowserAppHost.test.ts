@@ -1,4 +1,4 @@
-import { BrowserAppHost, Defaults } from "model/BrowserAppHost";
+import { BrowserAppHost, Defaults } from "./BrowserAppHost";
 import { Router } from "@twii/router/lib/Router";
 import * as qs from "qs";
 import { JSDOM } from "jsdom";
@@ -151,7 +151,7 @@ describe("Browser App Host", () => {
 
         await host.load();
 
-        const newHost = await host.open({ path: "i/know/how/to/eat" });
+        const newHost = await host.open({ path: "i/know/how/to/eat" }) as BrowserAppHost;
 
         expect(newHost).toBeTruthy();
         expect(newHost.window).toBeTruthy();
