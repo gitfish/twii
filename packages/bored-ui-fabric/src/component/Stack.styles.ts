@@ -22,88 +22,6 @@ interface IStackStyles {
 }
 
 const defaultStyles = (theme : ITheme) : IStackStyles => {
-    const action : IStyle = {
-        color: theme.palette.white,
-        height: 28,
-        width: 28,
-        lineHeight: 28,
-        background: "transparent",
-        border: "none",
-        outline: "none",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        selectors: {
-            "&.close-action": {
-                selectors: {
-                    ":hover": {
-                        color: theme.palette.white,
-                        backgroundColor: theme.palette.redDark
-                    }
-                }
-            }
-        }
-    };
-
-    const tab : IStyle = {
-        position: "relative",
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        overflow: "hidden",
-        backgroundColor: theme.palette.themeSecondary,
-        color: theme.palette.white,
-        cursor: "pointer",
-        height: 24,
-        marginLeft: 4,
-        transition: "background-color 0.3s ease",
-        selectors: {
-            "&.active": {
-                backgroundColor: theme.palette.neutralLighter,
-                color: theme.palette.themeDarkAlt,
-                selectors: {
-                    ":hover": {
-                        backgroundColor: theme.palette.neutralLighter
-                    }
-                }
-            },
-            ":hover": {
-                backgroundColor: theme.palette.themeTertiary
-            }
-        }
-    };
-
-    const tabAction : IStyle = {
-        color: theme.palette.white,
-        height: 16,
-        width: 16,
-        lineHeight: 16,
-        marginLeft: "4px",
-        marginRight: "4px",
-        padding: "0px",
-        outline: "none",
-        border: "none",
-        background: "transparent",
-        cursor: "pointer",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        selectors: {
-            "&.active": {
-                color: theme.palette.themeDarkAlt
-            },
-            "&.close-action": {
-                selectors: {
-                    ":hover": {
-                        color: theme.palette.white,
-                        backgroundColor: theme.palette.redDark
-                    }
-                }
-            }
-        }
-    };
-
     return {
         root: {
             position: "absolute",
@@ -118,30 +36,56 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             right: 0,
             left: 0,
             height: 28,
-            backgroundColor: theme.palette.themeDarkAlt,
+            backgroundColor: theme.palette.neutralTertiary,
             color: theme.palette.white,
             overflow: "hidden"
         },
-        tab: tab,
+        tab: {
+            position: "relative",
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            overflow: "hidden",
+            backgroundColor: theme.palette.neutralTertiary,
+            color: theme.palette.neutralSecondary,
+            cursor: "pointer",
+            height: 28,
+            marginLeft: 2,
+            transition: "background-color 0.3s ease",
+            selectors: {
+                "&.active": {
+                    backgroundColor: theme.palette.neutralLighter,
+                    color: theme.palette.neutralPrimary,
+                    selectors: {
+                        ":hover": {
+                            backgroundColor: theme.palette.neutralLighter
+                        }
+                    }
+                },
+                ":hover": {
+                    backgroundColor: theme.palette.neutralTertiaryAlt
+                }
+            }
+        },
         addAction: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: theme.palette.themeSecondary,
-            color: theme.palette.white,
+            backgroundColor: theme.palette.neutralTertiary,
+            color: theme.palette.neutralPrimary,
             outline: "none",
             border: "none",
-            height: 24,
-            width: 24,
-            marginLeft: 4,
+            height: 28,
+            width: 28,
+            marginLeft: 2,
             cursor: "pointer",
             transition: "background-color 0.3s ease",
             selectors: {
                 ":hover": {
-                    backgroundColor: theme.palette.themeTertiary
+                    backgroundColor: theme.palette.neutralTertiaryAlt
                 },
                 "& .stack-add-action-icon": {
-                    color: theme.palette.white,
+                    color: theme.palette.neutralPrimary,
                     fontSize: theme.fonts.small.fontSize
                 }
             }
@@ -167,7 +111,35 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             overflow: "hidden",
             whiteSpace: "nowrap"
         }),
-        tabAction: tabAction,
+        tabAction: {
+            color: theme.palette.neutralPrimary,
+            height: 16,
+            width: 16,
+            lineHeight: 16,
+            marginLeft: "4px",
+            marginRight: "4px",
+            padding: "0px",
+            outline: "none",
+            border: "none",
+            background: "transparent",
+            cursor: "pointer",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            selectors: {
+                "&.active": {
+                    color: theme.palette.neutralPrimary
+                },
+                "&.close-action": {
+                    selectors: {
+                        ":hover": {
+                            color: theme.palette.white,
+                            backgroundColor: theme.palette.redDark
+                        }
+                    }
+                }
+            }
+        },
         tabActionIcon: {
             lineHeight: 8,
             fontSize: 8,
@@ -184,7 +156,29 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
         tabPanel: {
 
         },
-        action: action,
+        action: {
+            color: theme.palette.neutralPrimary,
+            height: 28,
+            width: 28,
+            lineHeight: 28,
+            background: "transparent",
+            border: "none",
+            outline: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            selectors: {
+                "&.close-action": {
+                    selectors: {
+                        ":hover": {
+                            color: theme.palette.white,
+                            backgroundColor: theme.palette.redDark
+                        }
+                    }
+                }
+            }
+        },
         actionIcon: {
             fontSize: theme.fonts.small.fontSize,
             fontWeight: FontWeights.regular
@@ -193,7 +187,7 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            backgroundColor: theme.palette.themeDarkAlt
+            backgroundColor: theme.palette.neutralTertiary
         },
         body: {
             position: "absolute",
