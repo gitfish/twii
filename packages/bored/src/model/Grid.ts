@@ -1,5 +1,5 @@
 import { IGrid } from "./IGrid";
-import { observable, computed, action, autorun } from "mobx";
+import { observable, computed, action, autorun, IReactionDisposer } from "mobx";
 import * as ComponentTypes from "./ComponentTypes";
 import { IWindow } from "./IWindow";
 import { Window } from "./Window";
@@ -11,11 +11,61 @@ import { IComponent } from "./IComponent";
 import { WindowManager } from "./WindowManager";
 
 class Grid extends WindowManager implements IGrid {
-    @observable private _columns : number = 2;
-    @observable private _defaultCellHeight : number = 320;
+    @observable private _cellWidth : number = 80;
+    @observable private _cellHeight : number = 80;
+    @observable private _rows : number = 30;
+    @observable private _columns : number = 30;
+    private _setViewportDisposer : IReactionDisposer;
+
+    constructor() {
+        super();
+        this._setViewportDisposer = autorun(this._setWindowViewports);
+    }
 
     get type() {
         return ComponentTypes.grid;
+    }
+
+    @computed
+    get cellWidth() {
+        return this._cellWidth;
+    }
+    set cellWidth(value) {
+        this.setCellWidth(value);
+    }
+    @action
+    setCellWidth(cellWidth : number) {
+        if(cellWidth > 0) {
+            this._cellWidth = cellWidth;
+        }
+    }
+
+    @computed
+    get cellHeight() {
+        return this._cellHeight;
+    }
+    set cellHeight(value) {
+        this.setCellHeight(value);
+    }
+    @action
+    setCellHeight(cellHeight : number) {
+        if(cellHeight > 0) {
+            this._cellHeight = cellHeight;
+        }
+    }
+
+    @computed
+    get rows() {
+        return this._rows;
+    }
+    set rows(value) {
+        this.setRows(value);
+    }
+    @action
+    setRows(rows : number) {
+        if(rows > 0) {
+            this._rows = rows;
+        }
     }
 
     @computed
@@ -25,71 +75,20 @@ class Grid extends WindowManager implements IGrid {
     set columns(value) {
         this.setColumns(value);
     }
-
     @action
     setColumns(columns : number) {
-        if(!isNaN(columns) && columns > 0) {
+        if(columns > 0) {
             this._columns = columns;
         }
-    }
-
-    /*
-    @action
-    relayout() {
-        this.layout(this.width, this.height);
-    }
-
-    @action
-    layout(width : number, height : number) {
-        this.setDimensions(width, height);
-        if(this.windowCount > 0) {
-            // go through each of the windows and allocated grid coords and size
-            let col = 0;
-            let offset = 0;
-            let maxHeightForRow : number = 0;
-            this.windows.forEach(w => {
-                const args = {
-                    col: col,
-                    offset: offset,
-                    height: this.defaultCellHeight
-                };
-                w.setLayout({ grid: args });
-                col ++;
-                if(args.height > maxHeightForRow) {
-                    maxHeightForRow = args.height;
-                }
-                if(col >= this.columns) {
-                    col = 0;
-                    offset += maxHeightForRow;
-                    maxHeightForRow = 0;
-                }
-            });
-        }
-    }
-    */
-
-    @computed
-    get cellWidth() {
-        return Math.floor(this.width / this.columns);
-    }
-
-    @computed
-    get defaultCellHeight() {
-        return this._defaultCellHeight;
-    }
-    set defaultCellHeight(value) {
-        this.setDefaultCellHeight(value);
-    }
-    
-    @action
-    setDefaultCellHeight(defaultCellHeight : number) {
-        this._defaultCellHeight = defaultCellHeight;
     }
 
     @computed
     get config() {
         return {
             type: this.type,
+            cellWidth: this.cellWidth,
+            celllHeight: this.cellHeight,
+            rows: this.rows,
             columns: this.columns,
             windows: this.windows.filter(w => !w.transient).map(w => w.config),
             closeDisabled: this.closeDisabled
@@ -110,9 +109,18 @@ class Grid extends WindowManager implements IGrid {
             windowPromise = Promise.resolve();
         }
         return windowPromise.then(action(() => {
+            this.setCellWidth(config ? config.cellWidth : undefined);
+            this.setCellHeight(config ? config.cellHeight : undefined);
+            this.setRows(config ? config.rows : undefined);
             this.setColumns(config ? config.columns : undefined);
             this.setCloseDisabled(config ? config.closeDisabled : undefined);
         }));
+    }
+
+    private _setWindowViewports = () => {
+        this.windows.forEach(w => {
+            w.setViewport(this.x, this.y, 0, 0);
+        });
     }
 }
 

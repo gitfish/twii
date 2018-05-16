@@ -3,14 +3,10 @@ import { memoizeFunction } from "@uifabric/utilities";
 
 interface IGridStyles {
     root?: IStyle;
+    rowContainer?: IStyle;
+    row?: IStyle;
     cell?: IStyle;
-    window?: IStyle;
-    windowHeader?: IStyle;
-    windowTitleContainer?: IStyle;
-    windowTitle?: IStyle;
-    windowActionBar?: IStyle;
-    windowAction?: IStyle;
-    windowBody?: IStyle;
+    cellContent?: IStyle;
 }
 
 const getStyles = memoizeFunction((theme : ITheme, customStyles?: IGridStyles) => {
@@ -27,103 +23,24 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IGridStyles) =
             left: 0,
             overflow: "auto"
         },
+        rowContainer: {
+            position: "absolute",
+            top: 2,
+            left: 2
+        },
+        row: {
+            display: "flex"
+        },
         cell: {
-            position: "absolute"
+            position: "relative"
         },
-        window: {
+        cellContent: {
             position: "absolute",
-            top: 8,
-            right: 8,
-            bottom: 8,
-            left: 8,
-            boxShadow: `0 0 ${5}px 0 rgba(0, 0, 0, 0.4)`,
-            backgroundColor: theme.palette.white,
-            selectors: {
-                "&.content-hidden": {
-                    height: 28
-                }
-            }
-        },
-        windowHeader: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            display: "flex",
-            justifyContent: "flex-start",
-            cursor: "pointer",
-            overflow: "hidden",
-            backgroundColor: theme.palette.themeDarkAlt,
-            color: theme.palette.white,
-            height: 28
-        },
-        windowTitleContainer: {
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            overflow: "hidden",
-            paddingLeft: 8,
-            paddingRight: 8
-        },
-        windowTitle: {
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            whiteSpace: "nowrap"
-        },
-        windowAction: {
-            color: theme.palette.white,
-            height: "16px",
-            width: "16px",
-            lineHeight: "16px",
-            marginLeft: "4px",
-            marginRight: "4px",
-            padding: "0px",
-
-            selectors: {
-                ":hover": {
-                    color: theme.palette.white,
-                    backgroundColor: theme.palette.themeSecondary
-                },
-                "& .close-action": {
-                    selectors: {
-                        ":hover": {
-                            color: theme.palette.white,
-                            backgroundColor: theme.palette.redDark
-                        }
-                    }
-                },
-                ".ms-Icon": {
-                    lineHeight: "16px",
-                    fontSize: "8px",
-                    fontWeight: FontWeights.regular,
-                    margin: "0px",
-                    height: "16px",
-                    width: "16px"
-                }
-            }
-        },
-        windowActionBar: {
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center"
-        },
-        windowBody: {
-            position: "absolute",
-            top: 28,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            backgroundColor: theme.palette.white,
-            selectors: {
-                "&.content-hidden": {
-                    height: 0,
-                    overflow: "hidden"
-                }
-            }
+            top: 2,
+            right: 2,
+            bottom: 2,
+            left: 2,
+            backgroundColor: theme.palette.neutralLight
         }
     };
 

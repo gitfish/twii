@@ -1,15 +1,14 @@
 import { IWindowManager } from "./IWindowManager";
 
 interface IGrid extends IWindowManager {
+    rows: number;
     columns: number;
-    width : number;
-    height : number;
-    cellWidth : number;
-    defaultCellHeight: number;
-
+    cellWidth: number;
+    cellHeight: number;
+    setCellWidth(cellWidth : number) : void;
+    setCellHeight(cellHeight : number) : void;
+    setRows(rows : number) : void;
     setColumns(columns : number) : void;
-    setDefaultCellHeight(defaultCellHeight : number) : void;
-    //layout(width : number, height : number) : void;
 }
 
 export { IGrid }

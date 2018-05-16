@@ -115,9 +115,7 @@ class WindowManager extends Component implements IWindowManager {
             if(refWindow) {
                 if(drag.parent === this) {
                     const dragIdx = this.windows.indexOf(win);
-                    console.log("-- Drag Idx: " + dragIdx);
                     const refIdx = this.windows.indexOf(refWindow);
-                    console.log("-- Ref Idx: " + refIdx);
                     this.insertAt(win, dragIdx > refIdx ? refIdx : refIdx + 1);
                 } else {
                     this.insertBefore(win, refWindow);

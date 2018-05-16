@@ -18,11 +18,11 @@ class Stack extends WindowManager implements IStack {
     private _type : string;
     @observable private _activeIndex : number;
     @observable private _headerHeight : number = 28;
-    private _setViewportDispoer : IReactionDisposer;
+    private _setViewportDisposer : IReactionDisposer;
 
     constructor() {
         super();
-        this._setViewportDispoer = autorun(this._setWindowViewports);
+        this._setViewportDisposer = autorun(this._setWindowViewports);
     }
     
     get type() {
