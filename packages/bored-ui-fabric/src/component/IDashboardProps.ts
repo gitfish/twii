@@ -1,4 +1,4 @@
-import { IDashboard } from "../model/IDashboard";
+import { IDashboard } from "@twii/bored/lib/model/IDashboard";
 
 interface IDashboardProps {
     dashboard: IDashboard;

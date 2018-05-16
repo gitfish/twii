@@ -1,9 +1,9 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
-import { IPortal } from "../model/IPortal";
-import { IWindow } from "../model/IWindow";
-import { AppHostContainer } from "@twii/core-ui-fabric/lib/component/AppHost";
+import { IPortal } from "@twii/bored/lib/model/IPortal";
+import { IWindow } from "@twii/bored/lib/model/IWindow";
 import { dispatchWindowResize } from "./DOMHelper";
+import { AppHostContainer } from "@twii/core-ui-fabric/lib/component/AppHost";
 
 class AppContainerPortal implements IPortal {
     private _root : HTMLElement;

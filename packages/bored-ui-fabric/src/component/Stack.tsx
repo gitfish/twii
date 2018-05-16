@@ -1,13 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { observer } from "mobx-react";
-import { IStack } from "../model/IStack";
-import { IWindow } from "../model/IWindow";
-import { removeComponent } from "../ComponentActions";
+import { IStack } from "@twii/bored/lib/model/IStack";
+import { IWindow } from "@twii/bored/lib/model/IWindow";
+import { removeComponent } from "@twii/bored/lib/ComponentActions";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { css } from "office-ui-fabric-react/lib/Utilities";
-import { setSingleChild } from "./DOMHelper";
 import { getStyles, IStackStyles } from "./Stack.styles";
 import { getClassNames, IStackClassNames } from "./Stack.classNames";
 

@@ -1,10 +1,10 @@
 import * as React from "react";
 import { autorun, IReactionDisposer } from "mobx";
 import { observer } from "mobx-react";
-import { IVSplit } from "../model/ISplit";
+import { IVSplit } from "@twii/bored/lib/model/ISplit";
 import { IVSplitStyles, getStyles } from "./VSplit.styles";
 import { IVSplitClassNames, getClassNames } from "./VSplit.classNames";
-import { ComponentFactory } from "./ComponentFactory";
+import { ViewFactory } from "./ViewFactory";
 import { css } from "@uifabric/utilities";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 
@@ -60,8 +60,8 @@ class VSplit extends React.Component<IVSplitProps, any> {
         const { vsplit, styles, className } = this.props;
         const classNames = getClassNames(getStyles(null, styles), className);
         
-        let topContent = ComponentFactory(vsplit.top);
-        let bottomContent = ComponentFactory(vsplit.bottom);
+        let topContent = ViewFactory(vsplit.top);
+        let bottomContent = ViewFactory(vsplit.bottom);
         return (
             <div className={classNames.root} ref={this._onRef}>
                 <div className={classNames.topPane}

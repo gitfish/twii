@@ -1,4 +1,4 @@
-import { DashboardAdd } from "./model/DashboardAdd";
+import { DashboardAdd } from "./DashboardAdd";
 
 const DashboardAddStore = new DashboardAdd();
 

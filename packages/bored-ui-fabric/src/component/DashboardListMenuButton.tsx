@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IDashboardList } from "../model/IDashboardList";
+import { IDashboardList } from "@twii/bored/lib/model/IDashboardList";
 import { DefaultButton } from "office-ui-fabric-react/lib/Button";
 import { IContextualMenuProps } from "office-ui-fabric-react/lib/ContextualMenu";
 import { Sync } from "@twii/core-ui-fabric/lib/component/Sync";

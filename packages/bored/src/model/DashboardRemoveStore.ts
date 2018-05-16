@@ -1,4 +1,4 @@
-import { DashboardRemove } from "./model/DashboardRemove";
+import { DashboardRemove } from "./DashboardRemove";
 
 const DashboardRemoveStore = new DashboardRemove();
 

@@ -1,13 +1,13 @@
 import * as React from "react";
 import { autorun, IReactionDisposer } from "mobx";
 import { observer } from "mobx-react";
-import { IWindow } from "../model/IWindow";
+import { IWindow } from "@twii/bored/lib/model/IWindow";
 import { IGridStyles, getStyles } from "./Grid.styles";
 import { IGridClassNames, getClassNames } from "./Grid.classNames";
 import * as GridLayout from "react-grid-layout";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { css } from "@uifabric/utilities";
-import { IGrid } from "../model/IGrid";
+import { IGrid } from "@twii/bored/lib/model/IGrid";
 import { ThemeSettingName } from "@uifabric/styling";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IDashboard } from "../model/IDashboard";
+import { IDashboard } from "@twii/bored/lib/model/IDashboard";
 import { BoundTextField } from "@twii/core-ui-fabric/lib/component/BoundTextField";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
-import { IDashboardAdd } from "../model/IDashboardAdd";
+import { IDashboardAdd } from "@twii/bored/lib/model/IDashboardAdd";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { isBlank, isNotBlank } from "@twii/core/lib/StringUtils";

@@ -1,10 +1,10 @@
 import { ListModel } from "@twii/core/lib/model/ListModel";
-import { IDashboard } from "../model/IDashboard";
+import { IDashboard } from "@twii/bored/lib/model/IDashboard";
 import { IIconProps } from "office-ui-fabric-react/lib/Icon";
-import * as TabLayout from "../model/TabLayout";
-import * as TwoColumnLayout from "../model/TwoColumnLayout";
-import * as ThreeColumnLayout from "../model/ThreeColumnLayout";
-import * as GridLayout from "../model/GridLayout";
+import * as TabLayout from "@twii/bored/lib/model/TabLayout";
+import * as TwoColumnLayout from "@twii/bored/lib/model/TwoColumnLayout";
+import * as ThreeColumnLayout from "@twii/bored/lib/model/ThreeColumnLayout";
+import * as GridLayout from "@twii/bored/lib/model/GridLayout";
 
 interface IDashboardLayoutItem {
     key: string;

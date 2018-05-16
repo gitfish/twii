@@ -2,14 +2,14 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { Dialog, DialogFooter, DialogContent } from "office-ui-fabric-react/lib/Dialog";
 import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
-import { IComponentRemove } from "../model/IComponentRemove";
+import { IDashboardRemove } from "@twii/bored/lib/model/IDashboardRemove";
 
-interface IComponentRemoveProps {
-    remove: IComponentRemove;
+interface IDashboardRemoveProps {
+    remove: IDashboardRemove;
 }
 
 @observer
-class ComponentRemoveDialog extends React.Component<IComponentRemoveProps, any> {
+class DashboardRemoveDialog extends React.Component<IDashboardRemoveProps, any> {
     private _onClickCancel = () => {
         this.props.remove.cancel();
     }
@@ -20,31 +20,19 @@ class ComponentRemoveDialog extends React.Component<IComponentRemoveProps, any> 
         this.props.remove.cancel();
     }
     render() {
-        let footer = (
+        const footer = (
             <DialogFooter>
                 <DefaultButton className="dashboard-form-action" onClick={this._onClickCancel}>Cancel</DefaultButton>
                 <PrimaryButton className="dashboard-form-action" onClick={this._onClickSave}>OK</PrimaryButton>
             </DialogFooter>
         );
-        
-        const c = this.props.remove.component;
-        let title;
-        if(c) {
-            if(c.type === "stack" || c.type === "list") {
-                title = "all Tabs";
-            }
-        }
-        if(!title) {
-            title = "the Tab";
-        }
-        
         return (
             <Dialog hidden={!this.props.remove.active}
                     onDismiss={this._onDismissed}
                     dialogContentProps={
                         {
-                            title: `Close ${title}`,
-                            subText: `Are you sure you want to close ${title}?`
+                            title: this.props.remove.dashboard ? "Remove Dashboard" : "Remove All Dashboards",
+                            subText: this.props.remove.dashboard ? `Are you sure you want to remove ${this.props.remove.dashboard.title}?` : "Are you sure you want to remove all dashboards?"
                         }   
                     }>
                 {footer}
@@ -53,4 +41,4 @@ class ComponentRemoveDialog extends React.Component<IComponentRemoveProps, any> 
     }
 }
 
-export { IComponentRemoveProps, ComponentRemoveDialog }
+export { IDashboardRemoveProps, DashboardRemoveDialog }

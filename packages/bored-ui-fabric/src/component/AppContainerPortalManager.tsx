@@ -1,6 +1,6 @@
-import { IPortalManager } from "../model/IPortalManager";
+import { IPortalManager } from "@twii/bored/lib/model/IPortalManager";
 import { AppContainerPortal } from "./AppContainerPortal";
-import { IWindow } from "../model/IWindow";
+import { IWindow } from "@twii/bored/lib/model/IWindow";
 
 class AppContainerPortalManager implements IPortalManager {
     private _root : HTMLElement;

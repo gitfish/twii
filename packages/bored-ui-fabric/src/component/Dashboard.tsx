@@ -1,20 +1,20 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { observer } from "mobx-react";
-import { IDashboard } from "../model/IDashboard";
-import { ComponentFactory } from "./ComponentFactory";
+import { IDashboard } from "@twii/bored/lib/model/IDashboard";
+import { ViewFactory } from "./ViewFactory";
 import { Sync } from "@twii/core-ui-fabric/lib/component/Sync";
 import { ComponentRemoveDialog } from "./ComponentRemove";
-import { ComponentRemoveStore } from "../ComponentRemoveStore";
+import { ComponentRemoveStore } from "@twii/bored/lib/model/ComponentRemoveStore";
 import { IEventTarget } from "@twii/core/lib/IEventEmitter";
-import { ComponentGlobals } from "../ComponentGlobals";
+import { ComponentGlobals } from "./ComponentGlobals";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import { IDashboardStyles, getStyles } from "./Dashboard.styles";
 import { getClassNames, IDashboardClassNames } from "./Dashboard.classNames";
-import * as ComponentTypes from "../model/ComponentTypes";
-import { IWindow } from "../model/IWindow";
+import * as ComponentTypes from "@twii/bored/lib/model/ComponentTypes";
+import { IWindow } from "@twii/bored/lib/model/IWindow";
 import { AppContainerPortal } from "./AppContainerPortal";
-import { IPortalManager } from "../model/IPortalManager";
+import { IPortalManager } from "@twii/bored/lib/model/IPortalManager";
 import { AppContainerPortalManager } from "./AppContainerPortalManager";
 
 interface IDashboardProps {
@@ -93,7 +93,7 @@ class Dashboard extends React.Component<IDashboardProps, any> {
     render() {
         const classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
         const component = this.props.dashboard.component;
-        let content = ComponentFactory(component);
+        let content = ViewFactory(component);
         return (
             <div id={this.props.dashboard.id}
                  className={css(classNames.root, { hidden: this.props.hidden })}

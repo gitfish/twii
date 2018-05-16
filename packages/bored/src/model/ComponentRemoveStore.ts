@@ -1,4 +1,4 @@
-import { ComponentRemove } from "./model/ComponentRemove";
+import { ComponentRemove } from "./ComponentRemove";
 
 const ComponentRemoveStore = new ComponentRemove();
 

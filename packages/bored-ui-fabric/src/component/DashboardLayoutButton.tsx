@@ -1,10 +1,10 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import { IDashboardList } from "../model/IDashboardList";
-import { IDashboard } from "../model/IDashboard";
+import { IDashboardList } from "@twii/bored/lib/model/IDashboardList";
+import { IDashboard } from "@twii/bored/lib/model/IDashboard";
 import { DefaultButton } from "office-ui-fabric-react/lib/Button";
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
-import { DashboardAddStore } from "../DashboardAddStore";
+import { DashboardAddStore } from "@twii/bored/lib/model/DashboardAddStore";
 import { IDashboardProps } from "./IDashboardProps";
 import { IDashboardListProps } from "./IDashboardListProps";
 import { Sync } from "@twii/core-ui-fabric/lib/component/Sync";

@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { HostAppView } from "@twii/core-ui-fabric/lib/component/HostAppView";
 import { IAppProps } from "@twii/core-ui/lib/component/IAppProps";
-import { DashboardListContainer } from "@twii/bored/lib/component/DashboardList";
+import { DashboardListContainer } from "@twii/bored-ui-fabric/lib/component/DashboardList";
 import { DashboardListStore } from "../model/DashboardListStore";
 import { getTheme } from "@uifabric/styling";
 import { addDashboard } from "@twii/bored/lib/DashboardActions";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
-import { IDashboard } from "../model/IDashboard";
-import { IDashboardList } from "../model/IDashboardList";
+import { IDashboard } from "@twii/bored/lib/model/IDashboard";
+import { IDashboardList } from "@twii/bored/lib/model/IDashboardList";
 import { IIconProps } from "office-ui-fabric-react/lib/Icon";
 import { IDashboardLayoutItem, DashboardLayoutRegistry } from "./DashboardLayoutRegistry";
 

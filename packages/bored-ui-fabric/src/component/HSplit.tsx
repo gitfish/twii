@@ -1,8 +1,8 @@
 import * as React from "react";
 import { autorun, IReactionDisposer } from "mobx";
 import { observer } from "mobx-react";
-import { ComponentFactory } from "./ComponentFactory";
-import { IHSplit } from "../model/ISplit";
+import { ViewFactory } from "./ViewFactory";
+import { IHSplit } from "@twii/bored/lib/model/ISplit";
 import { IHSplitStyles, getStyles } from "./HSplit.styles";
 import { IHSplitClassNames, getClassNames } from "./HSplit.classNames";
 import { css } from "@uifabric/utilities";
@@ -59,8 +59,8 @@ class HSplit extends React.Component<IHSplitProps, any> {
     render() {
         const { hsplit, styles, className } = this.props;
         const classNames = getClassNames(getStyles(null, styles), className);
-        let leftContent = ComponentFactory(hsplit.left);
-        let rightContent = ComponentFactory(hsplit.right);
+        let leftContent = ViewFactory(hsplit.left);
+        let rightContent = ViewFactory(hsplit.right);
         
         return (
             <div className={classNames.root} ref={this._onRef}>
