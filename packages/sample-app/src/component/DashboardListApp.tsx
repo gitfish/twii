@@ -7,8 +7,8 @@ import { DashboardListContainer } from "@twii/bored-ui-fabric/lib/component/Dash
 import { DashboardListStore } from "../model/DashboardListStore";
 import { getTheme } from "@uifabric/styling";
 import { addDashboard } from "@twii/bored/lib/DashboardActions";
-import { createCommandBarMenuItem } from "@twii/bored/lib/component/DashboardMenuHelper";
-import { createDashboardListMenu } from "@twii/bored/lib/component/DashboardLayoutMenuHelper";
+import { createCommandBarMenuItem } from "@twii/bored-ui-fabric/lib/component/DashboardMenuHelper";
+import { createDashboardListMenu } from "@twii/bored-ui-fabric/lib/component/DashboardLayoutMenuHelper";
 
 @observer
 class DashboardListApp extends React.Component<IAppProps, any> {

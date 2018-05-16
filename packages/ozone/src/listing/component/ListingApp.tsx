@@ -10,33 +10,41 @@ import { IListingModelSupplier } from "../model/IListingModelSupplier";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { createPlaceMenu, createPlaceItems, createPlaceItem, createListingPlaceItem } from "./ListingMenuHelper";
 import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
+import { IAppHost } from "@twii/core/lib/IAppHost";
+import { IUserProfile } from "../../user/IUserProfile";
 
 @observer
 class ListingApp extends React.Component<IOzoneAppProps, any> {
     private _titleSetDisposer : IReactionDisposer;
+    get host() : IAppHost {
+        return this.props.match.host;
+    }
+    get userProfile() : IUserProfile {
+        return this.props.match.userProfile;
+    }
+    get listingId() {
+        return this.props.match.params.listingId;
+    }
     private _onEdit = (listing) => {
-        this.props.host.load({ path: `/ozone/listings/${listing.id}/edit` });
+        this.host.load({ path: `/ozone/listings/${listing.id}/edit` });
     }
     private _onDelete = (listing) => {
         ListingDeleteStore.setValue(listing);
     }
     private _onOpen = (listing) => {
-        this.props.host.open({ path: `/ozone/listings/${listing.id}/launch` });
+        this.host.open({ path: `/ozone/listings/${listing.id}/launch` });
     }
     private _onRefresh = () => {
         this.listingSupplier.refresh();
     }
-    get listingId() {
-        return this.props.params.listingId;
-    }
     get listingSupplier() : IListingModelSupplier {
-        return this.props.host.getState("listingSupplier", () => {
+        return this.host.getState("listingSupplier", () => {
             return findById(this.listingId); 
         }, s => s.listingId !== this.listingId);
     }
     componentWillMount() {
         this._titleSetDisposer = autorun(() =>
-            this.props.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? `${this.listingSupplier.value.title} Listing` : undefined)
+            this.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? `${this.listingSupplier.value.title} Listing` : undefined)
         );
     }
     componentWillUnount() {
@@ -46,11 +54,11 @@ class ListingApp extends React.Component<IOzoneAppProps, any> {
         }
     }
     render() {
-        const placeItems = createPlaceItems(this.props);
+        const placeItems = createPlaceItems({ host: this.host, userProfile: this.userProfile });
         const listingDetailsItem = createListingPlaceItem({
             key: "listingDetails",
-            host: this.props.host,
-            path: this.props.host.path,
+            host: this.host,
+            path: this.host.path,
             listingSupplier: this.listingSupplier,
             onRenderTitle: s => `${s.value.title} - Details`
         });
@@ -60,7 +68,7 @@ class ListingApp extends React.Component<IOzoneAppProps, any> {
         });
         placeItems.unshift(listingDetailsItem);
         const items : IContextualMenuItem[] = [
-            createPlaceMenu(this.props, placeItems)
+            createPlaceMenu({ host: this.host, userProfile: this.userProfile, placeItems: placeItems })
         ];
         const farItems : IContextualMenuItem[] = [
             {
@@ -74,7 +82,7 @@ class ListingApp extends React.Component<IOzoneAppProps, any> {
             }
         ];
         return (
-            <HostAppView host={this.props.host} commandBarProps={{ items: items, farItems: farItems }}>
+            <HostAppView host={this.host} commandBarProps={{ items: items, farItems: farItems }}>
                 <ListingDeleteDialog listingSupplier={ListingDeleteStore} />
                 <ListingContainer listingSupplier={this.listingSupplier} onEdit={this._onEdit} onDelete={this._onDelete} onOpen={this._onOpen} />
             </HostAppView>

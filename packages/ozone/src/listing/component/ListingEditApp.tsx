@@ -12,12 +12,20 @@ import { createPlaceItems, createPlaceItem, createPlaceMenu, createListingPlaceI
 import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
+import { IAppHost } from "@twii/core/lib/IAppHost";
+import { IUserProfile } from "../../user/IUserProfile";
 
 @observer
 class ListingEditApp extends React.Component<IOzoneAppProps, any> {
     private _titleSetDisposer : IReactionDisposer;
+    get host() : IAppHost {
+        return this.props.match.host;
+    }
+    get userProfile() : IUserProfile {
+        return this.props.match.userProfile;
+    }
     private _onBackToListing = () => {
-        this.props.host.load({ path: `/ozone/listings/${this.listingId}` });
+        this.host.load({ path: `/ozone/listings/${this.listingId}` });
     }
     private _onSave = (listing : IListingModel) => {
         listing.save().then(this._onBackToListing).catch(() => {
@@ -33,19 +41,19 @@ class ListingEditApp extends React.Component<IOzoneAppProps, any> {
         });
     }
     private _onCancel = () => {
-        this.props.host.load({ path: `/ozone/listings/${this.listingId}` });
+        this.host.load({ path: `/ozone/listings/${this.listingId}` });
     }
     get listingId() {
-        return this.props.params.listingId;
+        return this.props.match.params.listingId;
     }
     get listingSupplier() : IListingModelSupplier {
-        return this.props.host.getState("listingSupplier", () => {
+        return this.host.getState("listingSupplier", () => {
             return findById(this.listingId); 
         }, s => s.listingId !== this.listingId);
     }
     componentWillMount() {
         this._titleSetDisposer = autorun(() => {
-            this.props.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? this.listingSupplier.value.title : undefined);
+            this.host.setTitle(this.listingSupplier.sync.syncing ? "Loading..." : this.listingSupplier.value ? this.listingSupplier.value.title : undefined);
         });
     }
     componentWillUnount() {
@@ -55,18 +63,18 @@ class ListingEditApp extends React.Component<IOzoneAppProps, any> {
         }
     }
     render() {
-        const placeItems = createPlaceItems(this.props);
+        const placeItems = createPlaceItems({ host: this.host, userProfile: this.userProfile });
         const listingDetailsItem = createListingPlaceItem({
             key: "listingDetails",
-            host: this.props.host,
+            host: this.host,
             path: `/ozone/listings/${encodeURIComponent(this.listingId)}`,
             listingSupplier: this.listingSupplier,
             onRenderTitle: s => `${s.value.title} - Details`
         });
         const listingEditItem = createListingPlaceItem({
             key: "listingEdit",
-            host: this.props.host,
-            path: this.props.host.path,
+            host: this.host,
+            path: this.host.path,
             listingSupplier: this.listingSupplier,
             onRenderTitle: s => `${s.value.title} - Edit`
         });
@@ -77,7 +85,7 @@ class ListingEditApp extends React.Component<IOzoneAppProps, any> {
         placeItems.unshift(listingDetailsItem);
         placeItems.unshift(listingEditItem);
         const items : IContextualMenuItem[] = [
-            createPlaceMenu(this.props, placeItems),
+            createPlaceMenu({ host: this.host, userProfile: this.userProfile, placeItems: placeItems }),
             {
                 key: "cancel",
                 name: "Cancel",
@@ -97,7 +105,7 @@ class ListingEditApp extends React.Component<IOzoneAppProps, any> {
             }
         ];
         return (
-            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
+            <HostAppView host={this.host} commandBarProps={{ items: items }}>
                 <ListingFormContainer listingSupplier={this.listingSupplier}
                                       onSave={this._onSave}
                                       onSubmitForApproval={this._onSubmitForApproval}

@@ -9,10 +9,12 @@ import { EventEmitter } from "@twii/core/lib/EventEmitter";
 import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IPredicateFunc } from "@twii/core/lib/IPredicateFunc";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
+import { IPortalManager } from "./IPortalManager";
 
 abstract class Component {
     private _id : string;
     @observable.ref parent : IComponent;
+    @observable.ref private _portalManager : IPortalManager;
     @observable.ref private _addApp : IRequest | ISupplierFunc<IRequest>;
     @observable.ref private _router : IRouter;
     @observable private _x : number = 0;
@@ -92,6 +94,26 @@ abstract class Component {
 
     set addApp(addApp : IRequest | ISupplierFunc<IRequest>) {
         this.setAddApp(addApp);
+    }
+
+    @computed
+    get portalManager() : IPortalManager {
+        if(this._portalManager !== undefined) {
+            return this._portalManager;
+        }
+        const p = this.parent;
+        if(p === this) {
+            console.warn("-- Ancestor Resolution Cycle Detected");
+            return undefined;
+        }
+        return p ? p.portalManager : undefined;
+    }
+    set portalManager(value) {
+        this._portalManager = value;
+    }
+    @action
+    setPortalManager(portalManager : IPortalManager) {
+        this._portalManager = portalManager;
     }
 
     @action

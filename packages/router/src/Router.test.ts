@@ -1,6 +1,6 @@
-import { Router } from "Router";
+import { Router } from "./Router";
 import { IRequest } from "./IRequest";
-import { exactPath } from "Routers";
+import { exactPath } from "./Routers";
 
 describe("Router Test", () => {
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
-import { Error } from "component/Error";
+import { Error } from "./Error";
 
 describe("Error Component", () => {
     test("render", () => {

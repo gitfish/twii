@@ -25,9 +25,14 @@ const createPlaceItem = (host : IAppHost, item: IContextualMenuItem) : IContextu
     return r;
 };
 
-const createPlaceItems = (props : IOzoneAppProps) : IContextualMenuItem[] => {
+interface IPlaceItemOptions {
+    host: IAppHost;
+    userProfile: IUserProfile;
+}
+
+const createPlaceItems = (opts : IPlaceItemOptions) : IContextualMenuItem[] => {
     const r : IContextualMenuItem[] = [
-        createPlaceItem(props.host, {
+        createPlaceItem(opts.host, {
             key: "bookmarks",
             name: "Bookmarks",
             path: "/ozone/bookmarks",
@@ -35,7 +40,7 @@ const createPlaceItems = (props : IOzoneAppProps) : IContextualMenuItem[] => {
                 iconName: "DoubleBookmark"
             }
         }),
-        createPlaceItem(props.host, {
+        createPlaceItem(opts.host, {
             key: "store",
             name: "Store",
             path: "/ozone/store",
@@ -44,9 +49,9 @@ const createPlaceItems = (props : IOzoneAppProps) : IContextualMenuItem[] => {
             }
         })
     ];
-    if(UserAdminContext.value(props.userProfile)) {
+    if(UserAdminContext.value(opts.userProfile)) {
         r.push(
-            createPlaceItem(props.host, {
+            createPlaceItem(opts.host, {
                 key: "allListings",
                 name: "All Listings",
                 path: "/ozone/listings",
@@ -59,8 +64,13 @@ const createPlaceItems = (props : IOzoneAppProps) : IContextualMenuItem[] => {
     return r;
 };
 
-const createPlaceMenu = (props : IOzoneAppProps, placeItems: IContextualMenuItem[] = createPlaceItems(props)) : IContextualMenuItem => {
-    if(props.host.sync.syncing) {
+interface IPlaceMenuOptions extends IPlaceItemOptions {
+    placeItems?: IContextualMenuItem[];
+}
+
+const createPlaceMenu = (opts : IPlaceMenuOptions) : IContextualMenuItem => {
+    const placeItems = opts.placeItems || createPlaceItems(opts);
+    if(opts.host.sync.syncing) {
         return {
             key: "place",
             name: "Loading...",
@@ -86,14 +96,14 @@ const createPlaceMenu = (props : IOzoneAppProps, placeItems: IContextualMenuItem
     }
     return {
         key: "place",
-        name: props.host.title,
+        name: opts.host.title,
         subMenuProps: {
             items: placeItems
         }
     };
 };
 
-interface ICreateListingPlaceItemOptions {
+interface IListingPlaceItemOptions {
     key: string;
     path: string;
     host: IAppHost;
@@ -105,7 +115,7 @@ const defaultRenderTitle = (listingSupplier : IListingModelSupplier) => {
     return listingSupplier.value.title;
 };
 
-const createListingPlaceItem = (opts : ICreateListingPlaceItemOptions) => {
+const createListingPlaceItem = (opts : IListingPlaceItemOptions) => {
     const { host, listingSupplier } = opts;
     const onRenderTitle = opts.onRenderTitle || defaultRenderTitle;
     return createPlaceItem(host,
@@ -124,9 +134,11 @@ const createListingPlaceItem = (opts : ICreateListingPlaceItemOptions) => {
 };
 
 export {
+    IPlaceItemOptions,
     createPlaceItems,
     createPlaceItem,
+    IPlaceMenuOptions,
     createPlaceMenu,
-    ICreateListingPlaceItemOptions,
+    IListingPlaceItemOptions,
     createListingPlaceItem
 }

@@ -205,11 +205,6 @@ class Window extends Component implements IWindow {
         return this.appHost.load(request);
     }
 
-    @computed
-    get portalManager() : IPortalManager {
-        return this.dashboard ? this.dashboard.portalManager : undefined;
-    }
-
     @action
     close() {
         this._appHost.emit({ type: "beforeunload" });

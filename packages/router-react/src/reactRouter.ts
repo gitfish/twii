@@ -16,19 +16,20 @@ const DefaultReactRouterOptions = {
     requestPropKey: "match"
 };
 
-const reactRouter = (importer: () => Promise<any>, opts: IReactRouterOptions = DefaultReactRouterOptions) => {
+const reactRouter = (importer: () => Promise<any> | any, opts?: IReactRouterOptions) => {
+    const mergedOpts = Object.assign({}, DefaultReactRouterOptions, opts);
     const handler = (request : IRequest) => {
-        return importer().then(m => {
-            const type = opts.exportKey ? m[opts.exportKey] : m.default;
+        return Promise.resolve(importer()).then(m => {
+            const type = mergedOpts.exportKey ? m[mergedOpts.exportKey] : m.default;
             if(!type) {
                 throw { code: "ILLEGAL_ARGUMENT", message: "Unable to resolve React Component Type"};
             }
             const props = {};
-            props[opts.requestPropKey] = opts.requestPropKey;
+            props[mergedOpts.requestPropKey] = request;
             return React.createElement(type, props);
         });
     };
-    return opts.exact ? exactPath(handler, opts) : handler;
+    return mergedOpts.exact ? exactPath(handler, mergedOpts) : handler;
 };
 
 export {

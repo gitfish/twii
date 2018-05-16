@@ -7,10 +7,10 @@ import { MockPortalManager, MockPortal } from "./MockPortal";
 import * as ComponentTypes from "./ComponentTypes";
 
 describe("Stack Test", () => {
-    test("stack basic test", async () => {
+    test("stack basic test", () => {
         const portalManager = new MockPortalManager();
         const db = new Dashboard();
-        db.setPortalManager(portalManager);
+        db.portalManager = portalManager;
         
         const stack = new Stack();
         expect(stack.windowCount).toBe(0);
@@ -72,7 +72,7 @@ describe("Stack Test", () => {
         expect(stack.active).toBe(stack.windows[1]);
     });
 
-    test("stack config observe test", async () => {
+    test("stack config observe test", () => {
         const stack = new Stack();
         let config : any;
         autorun(() => {
@@ -113,10 +113,10 @@ describe("Stack Test", () => {
         expect(config.windows[1].path).toBe(tw.path);
     });
 
-    test("stack viewport test", async () => {
+    test("stack viewport test", () => {
         const portalManager = new MockPortalManager();
         const db = new Dashboard();
-        db.setPortalManager(portalManager);
+        db.portalManager = portalManager;
         const stack = new Stack();
         stack.headerHeight = 32;
         const window = new Window();

@@ -1,4 +1,4 @@
-import { PathTemplate } from "PathTemplate";
+import { PathTemplate } from "./PathTemplate";
 
 describe("Path Template Test", () => {
 

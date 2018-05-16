@@ -6,6 +6,7 @@ import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IPredicateFunc } from "@twii/core/lib/IPredicateFunc";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 import { IViewport } from "./IViewport";
+import { IPortalManager } from "./IPortalManager";
 
 interface IComponent extends IViewport {
     id: string;
@@ -16,6 +17,8 @@ interface IComponent extends IViewport {
     config : any;
     router: IRouter;
     isWindowManager: boolean;
+    portalManager: IPortalManager;
+    setPortalManager(portalManager : IPortalManager) : void;
     setRouter(router : IRouter) : void;
     addApp: IRequest | ISupplierFunc<IRequest>;
     setAddApp(addApp : IRequest | ISupplierFunc<IRequest>) : void;

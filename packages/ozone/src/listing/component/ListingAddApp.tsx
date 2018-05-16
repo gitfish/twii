@@ -7,16 +7,20 @@ import { findById } from "../model/ListingFinder";
 import { createPlaceItems, createPlaceItem, createPlaceMenu } from "./ListingMenuHelper";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
+import { IAppHost } from "@twii/core/lib/IAppHost";
+import { IUserProfile } from "../../user/IUserProfile";
 
-interface IListingAddAppProps extends IOzoneAppProps {
-    from?: string;
-}
-
-class ListingAddApp extends React.Component<IListingAddAppProps, any> {
+class ListingAddApp extends React.Component<IOzoneAppProps, any> {
     private _listing : ListingModel;
+    get host() : IAppHost {
+        return this.props.match.host;
+    }
+    get userProfile() : IUserProfile {
+        return this.props.match.userProfile;
+    }
     private _onSave = (listing : IListingModel) => {
         listing.save().then(() => {
-            this.props.host.load({ path: `/ozone/listings/${listing.id}`});
+            this.host.load({ path: `/ozone/listings/${listing.id}`});
         }).catch(() => {
             // we don't do anything here - the error should be reported on the model
         });
@@ -26,28 +30,28 @@ class ListingAddApp extends React.Component<IListingAddAppProps, any> {
     }
     private _onSubmitForApproval = (listing : IListingModel) => {
         listing.submitForApproval().then(() => {
-            this.props.host.load({ path: `/ozone/listings/${listing.id}`});
+            this.host.load({ path: `/ozone/listings/${listing.id}`});
         }).catch(() => {
             // we don't do anything here - the error should be reported on the model
         });
     }
     private _onCancel = () => {
-        if(this.props.from === "list") {
-            this.props.host.load({ path: "/ozone/listings" });
+        if(this.props.match.params.from === "list") {
+            this.host.load({ path: "/ozone/listings" });
         } else {
-            this.props.host.load({ path: "/ozone/store" });
+            this.host.load({ path: "/ozone/store" });
         }
     }
     componentWillMount() {
-        this.props.host.setTitle("Add Listing");
+        this.host.setTitle("Add Listing");
     }
     render() {
         this._listing = new ListingModel();
-        const placeItems = createPlaceItems(this.props);
-        const addItem = createPlaceItem(this.props.host, {
+        const placeItems = createPlaceItems({ host: this.host, userProfile: this.userProfile });
+        const addItem = createPlaceItem(this.host, {
             key: "add",
             name: "Add Listing",
-            path: this.props.host.path,
+            path: this.host.path,
             iconProps: {
                 iconName: "Add"
             }
@@ -58,7 +62,7 @@ class ListingAddApp extends React.Component<IListingAddAppProps, any> {
         });
         placeItems.unshift(addItem);
         const items : IContextualMenuItem[] = [
-            createPlaceMenu(this.props, placeItems),
+            createPlaceMenu({ host: this.host, userProfile: this.userProfile, placeItems: placeItems }),
             {
                 key: "cancel",
                 name: "Cancel",
@@ -78,7 +82,7 @@ class ListingAddApp extends React.Component<IListingAddAppProps, any> {
             }
         ];
         return (
-            <HostAppView host={this.props.host} commandBarProps={{ items: items }}>
+            <HostAppView host={this.host} commandBarProps={{ items: items }}>
                 <ListingForm listing={this._listing}
                              onSave={this._onSave}
                              onSubmitForApproval={this._onSubmitForApproval}
@@ -88,8 +92,7 @@ class ListingAddApp extends React.Component<IListingAddAppProps, any> {
     }
 }
 
-export { 
-    IListingAddAppProps,
+export {
     ListingAddApp,
     ListingAddApp as default
 }

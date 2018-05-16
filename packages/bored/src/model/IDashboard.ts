@@ -13,7 +13,6 @@ interface IDashboard extends IComponent {
     drag: IComponent;
     closeDisabled : boolean;
     windows : IWindow[];
-    portalManager : IPortalManager;
     
     setTitle(title : string) : void;
     setComponent(component : IComponent) : void;
@@ -24,7 +23,6 @@ interface IDashboard extends IComponent {
     setBlockSource(blockSource : IComponent) : void;
     clearBlockSource() : void;
     setCloseDisabled(closeDisabled : boolean) : void;
-    setPortalManager(portalManager : IPortalManager) : void;
     clear() : void;
 }
 

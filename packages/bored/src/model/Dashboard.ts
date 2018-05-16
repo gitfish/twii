@@ -18,7 +18,6 @@ class Dashboard extends Component implements IDashboard {
     @observable sync = new Sync();
     @observable private _title : string;
     @observable private _closeDisabled: boolean;
-    @observable.ref private _portalManager : IPortalManager;
     private _setViewportDisposer : IReactionDisposer;
     
     constructor() {
@@ -311,18 +310,6 @@ class Dashboard extends Component implements IDashboard {
         if(this._component) {
             this._component.setViewport(0, 0, this.width, this.height);
         }
-    }
-
-    @computed
-    get portalManager() {
-        return this._portalManager;
-    }
-    set portalManager(value) {
-        this._portalManager = value;
-    }
-    @action
-    setPortalManager(portalManager : IPortalManager) {
-        this._portalManager = portalManager;
     }
 }
 

@@ -9,29 +9,37 @@ import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
 import { UserAdminContext } from "../../user/UserAdminContext";
 import { createPlaceMenu } from "./ListingMenuHelper";
+import { IAppHost } from "@twii/core/lib/IAppHost";
+import { IUserProfile } from "../../user/IUserProfile";
 
 @observer
 class ListingStoreFrontApp extends React.Component<IOzoneAppProps, any> {
+    get host() : IAppHost {
+        return this.props.match.host;
+    }
+    get userProfile() : IUserProfile {
+        return this.props.match.userProfile;
+    }
     private _onSelectItem = (listing : IListing) => {
-        this.props.host.load({ path: `/ozone/listings/${listing.id}`});
+        this.host.load({ path: `/ozone/listings/${listing.id}`});
     }
     private _onAdd = () => {
-        this.props.host.load({ path: "/ozone/listings/add" });
+        this.host.load({ path: "/ozone/listings/add" });
     }
     private _onRefresh = () =>{
         this.listingStoreFront.refresh();
     }
     get listingStoreFront() {
-        return this.props.host.getState("listingStoreFront", () => {
+        return this.host.getState("listingStoreFront", () => {
             return new ListingStoreFrontModel(); 
         });
     }
     componentWillMount() {
-        this.props.host.setTitle("Store");
+        this.host.setTitle("Store");
     }
     render() {
         const items : IContextualMenuItem[] = [
-            createPlaceMenu(this.props),
+            createPlaceMenu({ host: this.host, userProfile: this.userProfile }),
             {
                 key: "add",
                 name: "Add Listing",
@@ -53,7 +61,7 @@ class ListingStoreFrontApp extends React.Component<IOzoneAppProps, any> {
             }
         ];
         return (
-            <HostAppView host={this.props.host} commandBarProps={{ items: items, farItems: farItems }}>
+            <HostAppView host={this.host} commandBarProps={{ items: items, farItems: farItems }}>
                 <ListingStoreFrontContainer storeFront={this.listingStoreFront}
                                             onSelectItem={this._onSelectItem} />
             </HostAppView>

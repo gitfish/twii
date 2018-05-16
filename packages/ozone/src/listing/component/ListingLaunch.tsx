@@ -12,6 +12,7 @@ import { HostAppView } from "@twii/core-ui-fabric/lib/component/HostAppView";
 import { ListingModelSupplier } from "../model/ListingModelSupplier";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IOzoneAppProps } from "../../common/component/IOzoneAppProps";
+import { IAppHost } from "@twii/core/lib/IAppHost";
 
 interface IListingLaunchProps extends IAppProps {
     listing: IListingModel;
@@ -90,16 +91,19 @@ class ListingLaunchContainer extends React.Component<IListingLaunchContainerProp
 }
 
 class ListingLaunchApp extends React.Component<IOzoneAppProps, any> {
+    get host() : IAppHost {
+        return this.props.match.host;
+    }
     componentWillMount() {
-        this.props.host.setTitle(`${this.props.host.params.title || ""}`);
+        this.host.setTitle(`${this.props.match.params.title || ""}`);
     }
     get listingId() {
-        return this.props.params.listingId;
+        return this.props.match.params.listingId;
     }
     render() {
         return (
-            <HostAppView host={this.props.host}>
-                <ListingLaunchContainer host={this.props.host} listingSupplier={new ListingModelSupplier(this.listingId)} />
+            <HostAppView host={this.host}>
+                <ListingLaunchContainer host={this.host} listingSupplier={new ListingModelSupplier(this.listingId)} />
             </HostAppView>
         );
     }
