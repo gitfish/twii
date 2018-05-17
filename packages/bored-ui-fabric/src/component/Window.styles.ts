@@ -19,10 +19,6 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IWindowStyles)
     const DefaultStyles : IWindowStyles = {
         root: {
             position: "absolute",
-            top: 8,
-            right: 8,
-            bottom: 8,
-            left: 8,
             boxShadow: `0 0 ${5}px 0 rgba(0, 0, 0, 0.4)`,
             backgroundColor: theme.palette.white,
             selectors: {
@@ -59,19 +55,20 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IWindowStyles)
         },
         action: {
             color: theme.palette.white,
-            height: "16px",
-            width: "16px",
-            lineHeight: "16px",
-            marginLeft: "4px",
-            marginRight: "4px",
+            height: 28,
+            width: 28,
+            lineHeight: 28,
+            cursor: "pointer",
             padding: "0px",
-
+            outline: "none",
+            border: "none",
+            background: "transparent",
             selectors: {
                 ":hover": {
                     color: theme.palette.white,
                     backgroundColor: theme.palette.themeSecondary
                 },
-                "& .close-action": {
+                "&.close-action": {
                     selectors: {
                         ":hover": {
                             color: theme.palette.white,
@@ -79,9 +76,9 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IWindowStyles)
                         }
                     }
                 },
-                ".ms-Icon": {
+                "& .window-action-icon": {
                     lineHeight: "16px",
-                    fontSize: "8px",
+                    fontSize: FontSizes.mini,
                     fontWeight: FontWeights.regular,
                     margin: "0px",
                     height: "16px",

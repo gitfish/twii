@@ -6,7 +6,6 @@ interface IGridStyles {
     rowContainer?: IStyle;
     row?: IStyle;
     cell?: IStyle;
-    cellContent?: IStyle;
 }
 
 const getStyles = memoizeFunction((theme : ITheme, customStyles?: IGridStyles) => {
@@ -25,21 +24,14 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IGridStyles) =
         },
         rowContainer: {
             position: "absolute",
-            top: 2,
-            left: 2
+            top: 0,
+            left: 0,
+            backgroundColor: theme.palette.neutralLighter
         },
         row: {
             display: "flex"
         },
         cell: {
-            position: "relative"
-        },
-        cellContent: {
-            position: "absolute",
-            top: 2,
-            right: 2,
-            bottom: 2,
-            left: 2,
             backgroundColor: theme.palette.neutralLight
         }
     };

@@ -16,6 +16,14 @@ class WindowManager extends Component implements IWindowManager {
         return null;
     }
 
+    get decorateWindow() {
+        return false;
+    }
+
+    get windowHeaderHeight() {
+        return 0;
+    }
+
     @computed
     get first() {
         return this.windowCount > 0 ? this.windows[0] : undefined;

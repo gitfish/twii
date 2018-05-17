@@ -4,7 +4,7 @@ import { IIconProps } from "office-ui-fabric-react/lib/Icon";
 import * as TabLayout from "@twii/bored/lib/model/TabLayout";
 import * as TwoColumnLayout from "@twii/bored/lib/model/TwoColumnLayout";
 import * as ThreeColumnLayout from "@twii/bored/lib/model/ThreeColumnLayout";
-import * as GridLayout from "@twii/bored/lib/model/GridLayout";
+//import * as GridLayout from "@twii/bored/lib/model/GridLayout";
 
 interface IDashboardLayoutItem {
     key: string;
@@ -36,7 +36,7 @@ const DashboardLayoutRegistry = new ListModel<IDashboardLayoutItem>([
         iconProps: { iconName: "TripleColumn" },
         applyLayout: ThreeColumnLayout.applyLayout,
         isLayoutApplied: ThreeColumnLayout.isLayoutApplied
-    },
+    }/*,
     {
         key: "grid",
         name: "Grid",
@@ -44,6 +44,7 @@ const DashboardLayoutRegistry = new ListModel<IDashboardLayoutItem>([
         applyLayout: GridLayout.applyLayout,
         isLayoutApplied: GridLayout.isLayoutApplied
     }
+    */
 ]);
 
 export { IDashboardLayoutItem, DashboardLayoutRegistry }

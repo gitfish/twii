@@ -18,6 +18,12 @@ interface IComponent extends IViewport {
     router: IRouter;
     isWindowManager: boolean;
     portalManager: IPortalManager;
+    x: number;
+    rx: number;
+    y: number;
+    ry: number;
+    width: number;
+    height: number;
     setPortalManager(portalManager : IPortalManager) : void;
     setRouter(router : IRouter) : void;
     addApp: IRequest | ISupplierFunc<IRequest>;

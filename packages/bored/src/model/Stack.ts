@@ -198,12 +198,14 @@ class Stack extends WindowManager implements IStack {
     }
 
     private _setWindowViewports = () => {
-        const childY = this.y + this.headerHeight;
-        const childHeight = this.height - this.headerHeight;
-        const active = this.active;
-        this.windows.forEach(w => {
-            w.setViewport(this.x, childY, w === active ? this.width : 0, w === active ? childHeight : 0);
-        });
+        if(this.portalManager) {
+            const childY = this.y + this.headerHeight;
+            const childHeight = this.height - this.headerHeight;
+            const active = this.active;
+            this.windows.forEach(w => {
+                w.setViewport(this.x, childY, w === active ? this.width : 0, w === active ? childHeight : 0);
+            });
+        }
     }
 }
 

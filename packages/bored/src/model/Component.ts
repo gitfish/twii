@@ -45,8 +45,18 @@ abstract class Component {
     }
 
     @computed
+    get rx() {
+        return this.x - (this.parent ? this.parent.x : 0);
+    }
+
+    @computed
     get y() {
         return this._y;
+    }
+
+    @computed
+    get ry() {
+        return this.y - (this.parent ? this.parent.y : 0);
     }
 
     @computed

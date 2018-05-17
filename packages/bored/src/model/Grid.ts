@@ -11,10 +11,11 @@ import { IComponent } from "./IComponent";
 import { WindowManager } from "./WindowManager";
 
 class Grid extends WindowManager implements IGrid {
-    @observable private _cellWidth : number = 80;
-    @observable private _cellHeight : number = 80;
+    @observable private _cellSize : number = 80;
+    @observable private _cellMargin : number = 8;
     @observable private _rows : number = 30;
     @observable private _columns : number = 30;
+    @observable private _windowHeaderHeight : number = 28;
     private _setViewportDisposer : IReactionDisposer;
 
     constructor() {
@@ -26,31 +27,47 @@ class Grid extends WindowManager implements IGrid {
         return ComponentTypes.grid;
     }
 
-    @computed
-    get cellWidth() {
-        return this._cellWidth;
+    get decorateWindow() {
+        return true;
     }
-    set cellWidth(value) {
-        this.setCellWidth(value);
+
+    @computed
+    get windowHeaderHeight() {
+        return this._windowHeaderHeight;
+    }
+    set windowHeaderHeight(value) {
+        this.setWindowHeaderHeight(value);
     }
     @action
-    setCellWidth(cellWidth : number) {
-        if(cellWidth > 0) {
-            this._cellWidth = cellWidth;
+    setWindowHeaderHeight(windowHeaderHeight : number) {
+        this._windowHeaderHeight = windowHeaderHeight;
+    }
+
+    @computed
+    get cellSize() {
+        return this._cellSize;
+    }
+    set cellSize(value) {
+        this.setCellSize(value);
+    }
+    @action
+    setCellSize(cellSize : number) {
+        if(cellSize > 0) {
+            this._cellSize = cellSize;
         }
     }
 
     @computed
-    get cellHeight() {
-        return this._cellHeight;
+    get cellMargin() {
+        return this._cellMargin;
     }
-    set cellHeight(value) {
-        this.setCellHeight(value);
+    set cellMargin(value) {
+        this.setCellMargin(value);
     }
     @action
-    setCellHeight(cellHeight : number) {
-        if(cellHeight > 0) {
-            this._cellHeight = cellHeight;
+    setCellMargin(cellMargin : number) {
+        if(cellMargin >= 0) {
+            this._cellMargin = cellMargin;
         }
     }
 
@@ -86,8 +103,8 @@ class Grid extends WindowManager implements IGrid {
     get config() {
         return {
             type: this.type,
-            cellWidth: this.cellWidth,
-            celllHeight: this.cellHeight,
+            cellSize: this.cellSize,
+            cellMargin: this.cellMargin,
             rows: this.rows,
             columns: this.columns,
             windows: this.windows.filter(w => !w.transient).map(w => w.config),
@@ -109,8 +126,8 @@ class Grid extends WindowManager implements IGrid {
             windowPromise = Promise.resolve();
         }
         return windowPromise.then(action(() => {
-            this.setCellWidth(config ? config.cellWidth : undefined);
-            this.setCellHeight(config ? config.cellHeight : undefined);
+            this.setCellSize(config ? config.cellSize : undefined);
+            this.setCellMargin(config ? config.cellMargin : undefined);
             this.setRows(config ? config.rows : undefined);
             this.setColumns(config ? config.columns : undefined);
             this.setCloseDisabled(config ? config.closeDisabled : undefined);
@@ -118,16 +135,49 @@ class Grid extends WindowManager implements IGrid {
     }
 
     private _setWindowViewports = () => {
-        let x = this.x;
-        let y = this.y;
-        const windowColumns = 4;
-        const windowRows = 3;
-        this.windows.forEach(w => {
-            const width = windowColumns * this.cellWidth;
-            const height = windowRows * this.cellHeight;
-            w.setViewport(x, y, width, height);
-            x += width;
-        });
+        if(this.portalManager) {
+            let nx = 0;
+            let ny = 0;
+            let maxY = 0;
+            this.windows.forEach(w => {
+                const layout = w.layout;
+                let x;
+                let y;
+                let colspan;
+                let rowspan;
+                if(layout && layout.grid) {
+                    x = layout.grid.x;
+                    y = layout.grid.y;
+                    rowspan = layout.grid.rowspan;
+                    colspan = layout.grid.colspan;
+                }
+                if(!rowspan) {
+                    rowspan = 3;
+                }
+                if(!colspan) {
+                    colspan = 4;
+                }
+                if(!x) {
+                    if(nx + colspan >= this.columns) {
+                        nx = 0;
+                        ny = maxY;
+                    }
+                    x = nx;
+                    nx += colspan;
+                }
+                if(!y) {
+                    y = ny;
+                }
+                if(rowspan > maxY) {
+                    maxY = rowspan;
+                }
+                const vx = this.x + this.cellMargin + (x * (this.cellSize + this.cellMargin));
+                const vy = this.y + this.cellMargin + (y * (this.cellSize + this.cellMargin));
+                const width = colspan * this.cellSize + ((colspan - 1) * this.cellMargin);
+                const height = rowspan * this.cellSize + ((rowspan - 1) * this.cellMargin);
+                w.setViewport(vx, vy, width, height);
+            });
+        }
     }
 }
 

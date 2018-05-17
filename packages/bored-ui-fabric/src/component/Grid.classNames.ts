@@ -7,7 +7,6 @@ interface IGridClassNames {
     rowContainer?: string;
     row?: string;
     cell?: string;
-    cellContent?: string;
 }
 
 const getClassNames = memoizeFunction((styles : IGridStyles, className?: string) => {
@@ -15,8 +14,7 @@ const getClassNames = memoizeFunction((styles : IGridStyles, className?: string)
         root: mergeStyles("grid", className, styles.root),
         rowContainer: mergeStyles("grid-row-container", styles.rowContainer),
         row: mergeStyles("grid-row", styles.row),
-        cell: mergeStyles("grid-cell", styles.cell),
-        cellContent: mergeStyles("grid-cell-content", styles.cellContent)
+        cell: mergeStyles("grid-cell", styles.cell)
     };
 });
 

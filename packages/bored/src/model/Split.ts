@@ -349,11 +349,13 @@ class HSplit extends Split implements IHSplit {
     }
 
     private _setPaneViewports = () => {
-        if(this.left) {
-            this.left.setViewport(this.x, this.y, this.leftWidth, this.height);
-        }
-        if(this.right) {
-            this.right.setViewport(this.x + this.leftWidth + this.splitterWidth, this.y, this.rightWidth, this.height);
+        if(this.portalManager) {
+            if(this.left) {
+                this.left.setViewport(this.x, this.y, this.leftWidth, this.height);
+            }
+            if(this.right) {
+                this.right.setViewport(this.x + this.leftWidth + this.splitterWidth, this.y, this.rightWidth, this.height);
+            }
         }
     }
 }
@@ -507,11 +509,13 @@ class VSplit extends Split implements IVSplit {
     }
 
     private _setPaneViewports = () => {
-        if(this.top) {
-            this.top.setViewport(this.x, this.y, this.width, this.topHeight);
-        }
-        if(this.bottom) {
-            this.bottom.setViewport(this.x, this.y + this.topHeight + this.splitterHeight, this.width, this.bottomHeight);
+        if(this.portalManager) {
+            if(this.top) {
+                this.top.setViewport(this.x, this.y, this.width, this.topHeight);
+            }
+            if(this.bottom) {
+                this.bottom.setViewport(this.x, this.y + this.topHeight + this.splitterHeight, this.width, this.bottomHeight);
+            }
         }
     }
 }

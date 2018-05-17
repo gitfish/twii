@@ -7,6 +7,8 @@ interface IWindowManager extends IComponent {
     last : IWindow;
     windowCount : number;
     windows: IWindow[];
+    decorateWindow: boolean;
+    windowHeaderHeight: number;
     add(win : IWindow, opts? : any) : void;
     addNew(opts?: any) : void;
     dropWindow(refWindow?: IWindow) : void;

@@ -50,7 +50,6 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             color: theme.palette.neutralSecondary,
             cursor: "pointer",
             height: 28,
-            marginLeft: 2,
             transition: "background-color 0.3s ease",
             selectors: {
                 "&.active": {
@@ -77,7 +76,6 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             border: "none",
             height: 28,
             width: 28,
-            marginLeft: 2,
             cursor: "pointer",
             transition: "background-color 0.3s ease",
             selectors: {

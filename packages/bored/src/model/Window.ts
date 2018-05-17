@@ -143,7 +143,7 @@ class Window extends Component implements IWindow {
     @computed
     get manager() : IWindowManager {
         const parent = this.parent;
-        return parent && (parent.type === ComponentTypes.stack || parent.type === ComponentTypes.grid) ? parent as IWindowManager : undefined;
+        return parent && parent.isWindowManager ? parent as IWindowManager : undefined;
     }
 
     get type() {
@@ -224,7 +224,12 @@ class Window extends Component implements IWindow {
     private _setPortalViewport = () => {
         const portalManager = this.portalManager;
         if(portalManager) {
-            const { x, y, width, height } = this;
+            let { x, y, width, height } = this;
+            const mgr = this.manager;
+            if(mgr && mgr.decorateWindow && mgr.windowHeaderHeight > 0) {
+                y += mgr.windowHeaderHeight;
+                height -= mgr.windowHeaderHeight;
+            }
             portalManager.getPortal(this).setViewport(x, y, width, height);
         }
     }

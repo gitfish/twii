@@ -13,9 +13,8 @@ import { IDashboardStyles, getStyles } from "./Dashboard.styles";
 import { getClassNames, IDashboardClassNames } from "./Dashboard.classNames";
 import * as ComponentTypes from "@twii/bored/lib/model/ComponentTypes";
 import { IWindow } from "@twii/bored/lib/model/IWindow";
-import { AppContainerPortal } from "./AppContainerPortal";
 import { IPortalManager } from "@twii/bored/lib/model/IPortalManager";
-import { AppContainerPortalManager } from "./AppContainerPortalManager";
+import { AppPortalManager } from "./AppPortalManager";
 
 interface IDashboardProps {
     dashboard: IDashboard;
@@ -50,6 +49,9 @@ class Dashboard extends React.Component<IDashboardProps, any> {
     private _onRef = (ref : HTMLDivElement) => {
         this._ref = ref;
     }
+    private _onPortalRootRef = (ref : HTMLDivElement) => {
+        
+    }
     private _resizeToViewport() {
         if(this._ref) {
             const bounds = this._ref.getBoundingClientRect();
@@ -72,7 +74,7 @@ class Dashboard extends React.Component<IDashboardProps, any> {
         }
     }
     componentDidMount() {
-        this.props.dashboard.setPortalManager(new AppContainerPortalManager(this._ref));
+        this.props.dashboard.setPortalManager(new AppPortalManager(this._ref));
         this._addHostListener(this.props.host);
         this._resizeToViewport();
     }
@@ -89,7 +91,7 @@ class Dashboard extends React.Component<IDashboardProps, any> {
             if(currentPortalManager) {
                 currentPortalManager.destroy();
             }
-            this.props.dashboard.setPortalManager(new AppContainerPortalManager(this._ref));
+            this.props.dashboard.setPortalManager(new AppPortalManager(this._ref));
         }
     }
     render() {

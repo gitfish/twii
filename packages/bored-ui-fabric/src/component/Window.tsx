@@ -4,10 +4,15 @@ import { IWindow } from "@twii/bored/lib/model/IWindow";
 import { IWindowStyles, getStyles } from "./Window.styles";
 import { IWindowClassNames, getClassNames } from "./Window.classNames";
 import { css } from "@uifabric/utilities";
-import { IconButton } from "office-ui-fabric-react/lib/Button";
+import { Icon } from "office-ui-fabric-react/lib/Icon";
 
 interface IWindowProps {
     window: IWindow;
+    relative?: boolean;
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
     styles?: IWindowStyles;
     className?: string;
 }
@@ -23,11 +28,15 @@ class WindowCloseAction extends React.Component<IWindowProps, any> {
     }
     render() {
         if(this.props.window && !this.props.window.closeDisabled) {
-            return <IconButton className={this.props.className}
-                               title={`Close ${this.props.window.title || "App"}`}
-                               iconProps={{ iconName: "ChromeClose" }}
-                               onMouseDown={this._onMouseDown}
-                               onClick={this._onClick} />
+           return (
+                <button type="button"
+                        className={css(this.props.className, "close-action")}
+                        title={`Close ${this.props.window.title || "App"}`}
+                        onClick={this._onClick}
+                        onMouseDown={this._onMouseDown}>
+                    <Icon className="window-action-icon" iconName="ChromeClose" />
+                </button>
+           );
         }
         return null;
     }
@@ -111,7 +120,6 @@ class Window extends React.Component<IWindowProps, any> {
     private _renderHeader() : React.ReactNode {
         return (
             <div className={this._classNames.header}
-                draggable={true}
                 onMouseDown={this._onHeaderMouseDown}>
                 {this._renderTitle()}
                 {this._renderActionBar()}
@@ -125,16 +133,26 @@ class Window extends React.Component<IWindowProps, any> {
         );
     }
     render() {
-        this._classNames = getClassNames(getStyles(null, this.props.styles), this.props.className);
+        const { window, relative, styles, className, x, y, width, height } = this.props;
+        this._classNames = getClassNames(getStyles(null, styles), className);
         return (
             <div className={this._classNames.root}
+                style={{
+                    left: x !== undefined ? x : relative ? window.rx : window.x,
+                    top: y !== undefined ? y : relative ? window.ry : window.y,
+                    width: width !== undefined ? width : window.width,
+                    height: height !== undefined ? height : window.height
+                }}
                 onDragStart={this._onDragStart}
                 onDragEnd={this._onDragEnd}
                 onDragOver={this._onDragOver}
-                onDrop={this._onDrop}>
+                onDrop={this._onDrop}
+                draggable={true}>
                 {this._renderHeader()}
                 {this._renderBody()}
             </div>
         );
     }
 }
+
+export { IWindowProps, Window }

@@ -15,7 +15,7 @@ interface IWindowClassNames {
 const getClassNames = memoizeFunction((styles : IWindowStyles, className?: string) => {
     return {
         root: mergeStyles("window", className, styles.root),
-        windowHeader: mergeStyles("window-header", styles.header),
+        header: mergeStyles("window-header", styles.header),
         titleContainer: mergeStyles("window-title-container", styles.titleContainer),
         title: mergeStyles("window-title", styles.title),
         actionBar: mergeStyles("window-action-bar", styles.actionBar),

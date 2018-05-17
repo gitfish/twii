@@ -4,12 +4,12 @@ import { observer } from "mobx-react";
 import { IWindow } from "@twii/bored/lib/model/IWindow";
 import { IGridStyles, getStyles } from "./Grid.styles";
 import { IGridClassNames, getClassNames } from "./Grid.classNames";
-import * as GridLayout from "react-grid-layout";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
 import { css } from "@uifabric/utilities";
 import { IGrid } from "@twii/bored/lib/model/IGrid";
 import { ThemeSettingName } from "@uifabric/styling";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
+import { Window } from "./Window";
 
 interface IGridProps {
     grid: IGrid;
@@ -21,22 +21,28 @@ interface IGridProps {
 class Grid extends React.Component<IGridProps, any> {
     private _classNames : IGridClassNames;
     private _rootRef : HTMLDivElement;
+    private _rowContainerRef : HTMLDivElement;
     private _onRootScroll = () => {
-        // TODO
+        const { grid } = this.props;
+        grid.position(0 - this._rootRef.scrollLeft, 0 - this._rootRef.scrollTop);
     }
     private _onRootRef = (ref : HTMLDivElement) => {
         this._rootRef = ref;
+    }
+    private _onRowContainerRef = (ref : HTMLDivElement) => {
+        this._rowContainerRef = ref;
     }
     private _renderCell(row : number, column : number) : React.ReactNode {
         return (
             <div key={column}
                  className={this._classNames.cell}
                  style={{
-                     minWidth: this.props.grid.cellWidth,
-                     width: this.props.grid.cellWidth,
-                     minHeight: this.props.grid.cellHeight,
-                     height: this.props.grid.cellHeight }}>
-                 <div className={this._classNames.cellContent}></div>
+                     minWidth: this.props.grid.cellSize,
+                     width: this.props.grid.cellSize,
+                     minHeight: this.props.grid.cellSize,
+                     height: this.props.grid.cellSize,
+                     marginLeft: this.props.grid.cellMargin
+                 }}>
             </div>
         )
     }
@@ -46,7 +52,7 @@ class Grid extends React.Component<IGridProps, any> {
             cells.push(this._renderCell(row, i));
         }
         return (
-            <div className={this._classNames.row} key={row}>
+            <div className={this._classNames.row} key={row} style={{ marginTop: this.props.grid.cellMargin }}>
                 {cells}
             </div>
         );
@@ -58,11 +64,15 @@ class Grid extends React.Component<IGridProps, any> {
         for(let r = 0; r < grid.rows; r ++) {
             rows.push(this._renderRow(r));
         }
+        const windows = grid.windows.map(w => {
+            return <Window key={w.id} window={w} relative styles={{ header: { height: grid.windowHeaderHeight } }} />;
+        });
         return (
             <div className={this._classNames.root} ref={this._onRootRef} onScroll={this._onRootScroll}>
-                <div className={this._classNames.rowContainer}>
+                <div className={this._classNames.rowContainer} ref={this._onRowContainerRef}>
                     {rows}
                 </div>
+                {windows}
             </div>
         );
     }
