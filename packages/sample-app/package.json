@@ -10,8 +10,7 @@
     "start-mock": "webpack-dev-server --env.configId=mock",
     "build": "webpack",
     "build-watch": "webpack --progress --watch",
-    "build-watch-mock": "webpack --progress --watch --env.configName=mock",
-    "test": "jest"
+    "build-watch-mock": "webpack --progress --watch --env.configId=mock"
   },
   "publishConfig": {
     "access": "public"
