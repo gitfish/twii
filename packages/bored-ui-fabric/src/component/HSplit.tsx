@@ -74,12 +74,12 @@ class HSplit extends React.Component<IHSplitProps, any> {
                     onMouseDown={this._onSplitterMouseDown}
                     style={{ left: hsplit.leftWidth, width: hsplit.splitterWidth }}
                     ref={this._onSplitterRef}>
-                    <div className={css(classNames.splitterContent, { active: hsplit.splitActive })}>
+                    <div className={css(classNames.splitterHandle, { active: hsplit.splitActive })}>
                         <Icon iconName="GripperBarVertical" className="hsplit-icon" />
                     </div>
                 </div>
                 <div className={classNames.rightPane}
-                     style={{ width: hsplit.rightWidth }}>
+                     style={{ left: hsplit.leftWidth + hsplit.splitterWidth, width: hsplit.rightWidth }}>
                     <div className={classNames.rightContent}>
                         {rightContent}
                     </div>

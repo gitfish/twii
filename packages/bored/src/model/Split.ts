@@ -199,7 +199,7 @@ class Split extends Component implements ISplit {
 
 class HSplit extends Split implements IHSplit {
     @observable private _minItemWidth : number = 30;
-    @observable private _splitterWidth : number = 5;
+    @observable private _splitterWidth : number = 1;
     private _setViewportDisposer : IReactionDisposer;
 
     constructor() {
@@ -256,16 +256,19 @@ class HSplit extends Split implements IHSplit {
 
     @computed
     get leftWidth() {
-        return Math.floor(this.offset * this.width);
+        return this.offset * this.width;
     }
     set leftWidth(value) {
         this.setLeftWidth(value);
     }
     @action
     setLeftWidth(leftWidth : number) {
-        if(leftWidth >= this.minItemWidth && leftWidth <= this.maxItemWidth) {
-            this.setOffset(leftWidth / this.width);
+        if(leftWidth < this.minItemWidth) {
+            leftWidth = this.minItemWidth;
+        } else if(leftWidth > this.maxItemWidth) {
+            leftWidth = this.maxItemWidth;
         }
+        this.setOffset(leftWidth / this.width);
     }
 
     @computed
@@ -301,9 +304,12 @@ class HSplit extends Split implements IHSplit {
     }
     @action
     setRightWidth(rightWidth : number) {
-        if(rightWidth >= this.minItemWidth && rightWidth <= this.maxItemWidth) {
-            this.setLeftWidth(this.width - rightWidth - this.splitterWidth);
+        if(rightWidth < this.minItemWidth) {
+            rightWidth = this.minItemWidth;
+        } else if(rightWidth > this.maxItemWidth) {
+            rightWidth = this.maxItemWidth;
         }
+        this.setLeftWidth(this.width - rightWidth - this.splitterWidth);
     }
 
     @computed
@@ -360,7 +366,7 @@ class HSplit extends Split implements IHSplit {
 
 class VSplit extends Split implements IVSplit {
     @observable private _minItemHeight : number = 30;
-    @observable private _splitterHeight : number = 5;
+    @observable private _splitterHeight : number = 1;
 
     private _setViewportDisposer : IReactionDisposer;
 
@@ -404,7 +410,7 @@ class VSplit extends Split implements IVSplit {
 
     @computed
     get topHeight() {
-        return Math.floor(this.height * this.offset);
+        return this.height * this.offset;
     }
     set topHeight(value) {
         this.setTopHeight(value);

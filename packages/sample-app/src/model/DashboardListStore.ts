@@ -11,7 +11,7 @@ DashboardListStore.loader = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(StorageServiceContext.value.getItem(storageKey));
-        }, 5000)
+        }, 1000)
     });
 };
 DashboardListStore.saver = (data) => {

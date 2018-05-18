@@ -74,7 +74,7 @@ class VSplit extends React.Component<IVSplitProps, any> {
                      onMouseDown={this._onSplitterMouseDown}
                      style={{ top: vsplit.topHeight, height: vsplit.splitterHeight }}
                      ref={this._onSplitterRef}>
-                    <div className={css(classNames.splitterContent, { active: vsplit.splitActive })}>
+                    <div className={css(classNames.splitterHandle, { active: vsplit.splitActive })}>
                         <Icon iconName="GripperBarHorizontal" className="vsplit-icon" />
                     </div>
                 </div>

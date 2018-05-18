@@ -4,7 +4,7 @@ import { memoizeFunction } from "@uifabric/utilities";
 interface IHSplitStyles {
     root?: IStyle;
     splitter?: IStyle;
-    splitterContent?: IStyle;
+    splitterHandle?: IStyle;
     leftPane?: IStyle;
     leftContent?: IStyle;
     rightPane?: IStyle;
@@ -21,30 +21,46 @@ const defaultStyles = (theme : ITheme) : IHSplitStyles => {
             left: 0
         },
         splitter: {
-            cursor: "ew-resize",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
             top: 0,
             bottom: 0,
-            width: 5
+            backgroundColor: theme.palette.themeDark 
         },
-        splitterContent: {
+        splitterHandle: {
+            cursor: "ew-resize",
             position: "absolute",
             top: 0,
-            right: 0,
             bottom: 0,
-            left: 0,
+            left: -2,
+            right: -2,
             overflow: "hidden",
-            backgroundColor: theme.palette.neutralTertiaryAlt,
-            color: theme.palette.themeDark,
+            backgroundColor: "transparent",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            zIndex: 2,
+            transition: "background-color 0.3s ease",
             selectors: {
+                ":hover": {
+                    backgroundColor: theme.palette.themeDark,
+                    opacity: 0.5,
+                },
                 ".hsplit-icon": {
-                    fontSize: FontSizes.mini
+                    fontSize: FontSizes.mini,
+                    visibility: "hidden",
+                    color: theme.palette.white
+                },
+                "&.active": {
+                    backgroundColor: theme.palette.themeDark,
+                    opacity: 1.0,
+                    selectors: {
+                        ".hsplit-icon": {
+                            visibility: "visible"
+                        }
+                    }
                 }
             }
         },
