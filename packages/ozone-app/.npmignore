@@ -1,0 +1,9 @@
+src/
+test/
+task/
+__coverage__/
+.gitignore
+.travis.yml
+tsconfig.json
+yarn.lock
+yarn-error.log

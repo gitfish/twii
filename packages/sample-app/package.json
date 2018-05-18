@@ -19,7 +19,7 @@
     "@twii/bored": "^2.1.0",
     "@twii/core": "^2.1.0",
     "@twii/core-ui": "^2.1.0",
-    "@twii/ozone": "^2.1.0",
+    "@twii/ozone-app": "^2.1.0",
     "@twii/router": "^2.1.0",
     "@twii/sample-base": "^2.1.0",
     "@uifabric/icons": "^5.7.0",

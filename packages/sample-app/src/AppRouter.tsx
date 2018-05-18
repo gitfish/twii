@@ -3,7 +3,7 @@ import { Router } from "@twii/router/lib/Router";
 import { exactPath } from "@twii/router/lib/Routers";
 import { createSampleRouter } from "@twii/sample-base/lib/sampleRouter";
 import { ConfigRouter } from "@twii/core/lib/ConfigRouter";
-import { OzoneRouter } from "@twii/ozone/lib/OzoneRouter";
+import { OzoneRouter } from "@twii/ozone-app/lib/OzoneRouter";
 import * as configMap from "./config/map";
 
 const r = new Router();
