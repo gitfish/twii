@@ -168,9 +168,11 @@ class Dashboard extends Component implements IDashboard {
     }
     @action
     setConfig(value) {
+        this.sync.syncStart();
         this.setTitle(value ? value.title : undefined);
         this.setCloseDisabled(value ? value.closeDisabled : undefined);
         this.setComponentConfig(value ? value.component : undefined);
+        this.sync.syncEnd();
     }
 
     @action

@@ -101,6 +101,7 @@ class DashboardList extends Component implements IDashboardList {
     }
     @action
     setConfig(value) {
+        this.sync.syncStart();
         this.dashboards = [];
         let dashboardPromise;
         if(value && value.dashboards && value.dashboards.length > 0) {
@@ -112,6 +113,7 @@ class DashboardList extends Component implements IDashboardList {
         }
         this.setActiveIndex(value && !isNaN(value.activeIndex) ? value.activeIndex : -1);
         this.setCloseDisabled(value ? value.removeItemsDisabled : undefined);
+        this.sync.syncEnd();
     }
 
     @action

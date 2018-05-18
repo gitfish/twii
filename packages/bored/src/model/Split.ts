@@ -256,7 +256,7 @@ class HSplit extends Split implements IHSplit {
 
     @computed
     get leftWidth() {
-        return this.offset * this.width;
+        return Math.floor(this.offset * this.width);
     }
     set leftWidth(value) {
         this.setLeftWidth(value);
@@ -410,7 +410,7 @@ class VSplit extends Split implements IVSplit {
 
     @computed
     get topHeight() {
-        return this.height * this.offset;
+        return Math.floor(this.height * this.offset);
     }
     set topHeight(value) {
         this.setTopHeight(value);
