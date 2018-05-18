@@ -1,6 +1,6 @@
 {
   "name": "@twii/bored-ui-fabric",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "twii fabric based ui for bored",
   "main": "index.js",
   "keywords": [
@@ -21,9 +21,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@twii/bored": "^2.1.0",
-    "@twii/core-ui": "^2.1.0",
-    "@twii/core-ui-fabric": "^2.1.0",
+    "@twii/bored": "^2.2.0",
+    "@twii/core-ui": "^2.2.0",
+    "@twii/core-ui-fabric": "^2.2.0",
     "@uifabric/styling": "^5.23.1",
     "@uifabric/utilities": "^5.24.0",
     "lodash.isequal": "^4.5.0",

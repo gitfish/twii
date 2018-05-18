@@ -1,7 +1,7 @@
 {
   "name": "@twii/ozone",
   "description": "twii Ozone Client",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,11 +13,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/core": "^2.1.0",
-    "@twii/core-ui": "^2.1.0",
-    "@twii/core-ui-fabric": "^2.1.0",
-    "@twii/router": "^2.1.0",
-    "@twii/router-react": "^2.1.0",
+    "@twii/core": "^2.2.0",
+    "@twii/core-ui": "^2.2.0",
+    "@twii/core-ui-fabric": "^2.2.0",
+    "@twii/router": "^2.2.0",
+    "@twii/router-react": "^2.2.0",
     "axios": "0.18.0",
     "mobx": "^4.2.0",
     "mobx-react": "^5.1.2",

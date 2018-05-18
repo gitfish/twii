@@ -1,6 +1,6 @@
 {
   "name": "@twii/bored",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "twii dashboard lib",
   "main": "index.js",
   "keywords": [
@@ -21,8 +21,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@twii/core": "^2.1.0",
-    "@twii/router": "^2.1.0",
+    "@twii/core": "^2.2.0",
+    "@twii/router": "^2.2.0",
     "@uifabric/styling": "^5.23.1",
     "@uifabric/utilities": "^5.24.0",
     "mobx": "^4.2.0",
