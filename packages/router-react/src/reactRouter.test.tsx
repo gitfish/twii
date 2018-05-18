@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { Router } from "@twii/router/lib/Router";
-import { reactRouter } from "./reactRouter";
 import { IRequest } from "@twii/router/lib/IRequest";
+import { reactRouter } from "./reactRouter";
 
 class Sample extends React.Component<{ match: IRequest }, any> {
     get match() {

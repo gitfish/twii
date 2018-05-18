@@ -10,11 +10,17 @@ import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IPredicateFunc } from "@twii/core/lib/IPredicateFunc";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 import { IPortalManager } from "./IPortalManager";
+import { IComponentFactory } from "./IComponentFactory";
 
-abstract class Component {
+const NotConfiguredComponentFactory : IComponentFactory = (type : string) => {
+    throw { code: "ILLEGAL_STATE", message: "A component factory has not been configured" };
+};
+
+abstract class Component implements IComponent {
     private _id : string;
     @observable.ref parent : IComponent;
     @observable.ref private _portalManager : IPortalManager;
+    @observable.ref private _componentFactory : IComponentFactory;
     @observable.ref private _addApp : IRequest | ISupplierFunc<IRequest>;
     @observable.ref private _router : IRouter;
     @observable private _x : number = 0;
@@ -119,11 +125,31 @@ abstract class Component {
         return p ? p.portalManager : undefined;
     }
     set portalManager(value) {
-        this._portalManager = value;
+        this.setPortalManager(value);
     }
     @action
     setPortalManager(portalManager : IPortalManager) {
         this._portalManager = portalManager;
+    }
+
+    @computed
+    get componentFactory() : IComponentFactory {
+        if(this._componentFactory !== undefined) {
+            return this._componentFactory;
+        }
+        const p = this.parent;
+        if(p === this) {
+            console.warn("-- Ancestor Resolution Cycle Detected");
+            return undefined;
+        }
+        return p ? p.componentFactory : NotConfiguredComponentFactory;
+    }
+    set componentFactory(value) {
+        this.setComponentFactory(value);
+    }
+    @action
+    setComponentFactory(componentFactory : IComponentFactory) {
+        this._componentFactory = componentFactory;
     }
 
     @action
@@ -181,10 +207,12 @@ abstract class Component {
         // default impl
         return undefined;
     }
-
+    set config(value) {
+        this.setConfig(value);
+    }
     @action
-    setConfig(config : any) : Promise<any> {
-        return Promise.resolve();
+    setConfig(config : any) : void {
+        // does nothing
     }
 
     protected _visitChildren(callback : IConsumerFunc<IComponent>) : void {

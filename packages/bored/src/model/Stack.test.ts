@@ -5,11 +5,14 @@ import { IWindow } from "./IWindow";
 import { Window } from "./Window";
 import { MockPortalManager, MockPortal } from "./MockPortal";
 import * as ComponentTypes from "./ComponentTypes";
+import { ComponentFactory } from "./ComponentFactory";
+import { Component } from "./Component";
 
 describe("Stack Test", () => {
     test("stack basic test", () => {
-        const portalManager = new MockPortalManager();
         const db = new Dashboard();
+        db.componentFactory = ComponentFactory;
+        const portalManager = new MockPortalManager();
         db.portalManager = portalManager;
         
         const stack = new Stack();
@@ -49,10 +52,13 @@ describe("Stack Test", () => {
         expect(w.active).toBeTruthy();
     });
 
-    test("stack config set test", async () => {
+    test("stack config set test", () => {
         const stack = new Stack();
-        await stack.setConfig({
+        stack.componentFactory = ComponentFactory;
+        stack.config = {
+            type: "stack",
             activeIndex: 1,
+            closeDisabled: false,
             windows: [
                 {
                     type: "window",
@@ -63,7 +69,7 @@ describe("Stack Test", () => {
                     path: "/bar"
                 }
             ]
-        });
+        };
 
         expect(stack.windowCount).toBe(2);
         expect(stack.windows[0].path).toBe("/woo");
@@ -74,6 +80,7 @@ describe("Stack Test", () => {
 
     test("stack config observe test", () => {
         const stack = new Stack();
+        stack.componentFactory = ComponentFactory;
         let config : any;
         autorun(() => {
             config = stack.config;
@@ -114,8 +121,9 @@ describe("Stack Test", () => {
     });
 
     test("stack viewport test", () => {
-        const portalManager = new MockPortalManager();
         const db = new Dashboard();
+        db.componentFactory = ComponentFactory;
+        const portalManager = new MockPortalManager();
         db.portalManager = portalManager;
         const stack = new Stack();
         stack.headerHeight = 32;

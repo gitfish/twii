@@ -13,4 +13,4 @@ const exactPath = (handler : IRequestHandler, opts?: IExactPathOptions) : IReque
     };
 };
 
-export { IExactPathOptions, exactPath,  }
+export { IExactPathOptions, exactPath }

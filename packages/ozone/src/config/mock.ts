@@ -6,4 +6,4 @@ const mock = (env : any) => {
     mockUserService(env);
 };
 
-export { mock }
+export { mock, mock as default }

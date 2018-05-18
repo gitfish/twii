@@ -2,7 +2,6 @@ import { observable, action, computed, autorun, IReactionDisposer } from "mobx";
 import { Component } from "./Component";
 import { IComponent } from "./IComponent";
 import { ISplit, IHSplit, IVSplit } from "./ISplit";
-import { ComponentFactory } from "./ComponentFactory";
 import * as ComponentTypes from "./ComponentTypes";
 
 const Defaults = {
@@ -62,14 +61,14 @@ class Split extends Component implements ISplit {
     
     @action
     setFirstConfig(config : any) {
+        let first : IComponent;
         if(config && config.component) {
-            return ComponentFactory(config.component.type).then(component => {
-                this.setFirst(component);
-                return component.setConfig(config.component);
-            });
+            first = this.componentFactory(config.component.type);
+            if(first) {
+                first.setConfig(config.component);
+            }
         }
-        this.setFirst(undefined);
-        return Promise.resolve();
+        this.setFirst(first);
     }
 
     @computed
@@ -101,14 +100,14 @@ class Split extends Component implements ISplit {
 
     @action
     setSecondConfig(config : any) {
+        let second : IComponent;
         if(config && config.component) {
-            return ComponentFactory(config.component.type).then(component => {
-                this.setSecond(component);
-                return component.setConfig(config.component);
-            });
+            second = this.componentFactory(config.component.type);
+            if(second) {
+                second.setConfig(config.component);
+            }
         }
-        this.setSecond(undefined);
-        return Promise.resolve();
+        this.setSecond(second);
     }
 
     @computed
@@ -278,7 +277,7 @@ class HSplit extends Split implements IHSplit {
     }
     @action
     setLeftConfig(config : any) {
-        return this.setFirstConfig(config);
+        this.setFirstConfig(config);
     }
 
     @computed
@@ -328,15 +327,14 @@ class HSplit extends Split implements IHSplit {
             right: this.rightConfig
         };
     }
-
+    set config(value) {
+        this.setConfig(value);
+    }
     @action
     setConfig(config : any) {
-        return Promise.all([
-            this.setLeftConfig(config ? config.left : undefined),
-            this.setRightConfig(config ? config.right : undefined)
-        ]).then(() => {
-            this.setOffset(config ? config.offset : Defaults.offset);
-        });
+        this.setLeftConfig(config ? config.left : undefined),
+        this.setRightConfig(config ? config.right : undefined)
+        this.setOffset(config ? config.offset : Defaults.offset);
     }
 
     @computed
@@ -488,7 +486,9 @@ class VSplit extends Split implements IVSplit {
             bottom: this.bottomConfig
         };
     }
-
+    set config(value) {
+        this.setConfig(value);
+    }
     @action
     setConfig(config : any) {
         return Promise.all([

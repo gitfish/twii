@@ -6,7 +6,7 @@ module.exports = {
     ],
     coverageDirectory: "__coverage__",
     transform: {
-      ".(ts|tsx)": "../../node_modules/ts-jest/preprocessor.js"
+      ".(ts|tsx|js|jsx)": "../../node_modules/ts-jest/preprocessor.js"
     },
     testMatch: [
       "**/src/**/*.test.*"

@@ -1,18 +1,15 @@
 import { IWindowManager } from "./IWindowManager";
 import { IComponent } from "./IComponent";
 import { IWindow } from "./IWindow";
+import { ISplittable } from "./ISplittable";
 
-interface IStack extends IWindowManager {
+interface IStack extends IWindowManager, ISplittable {
     active : IWindow;
     activeIndex: number;
     headerHeight: number;
     setActiveIndex(activeIndex : number) : void;
     setActive(win : IWindow) : void;
     setHeaderHeight(headerHeight : number) : void;
-    splitLeft(newComp?: IComponent) : Promise<any>;
-    splitRight(newComp?: IComponent) : Promise<any>;
-    splitTop(newComp?: IComponent) : Promise<any>;
-    splitBottom(newComp?: IComponent) : Promise<any>;
 }
 
 export { IStack }

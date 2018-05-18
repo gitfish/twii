@@ -6,12 +6,14 @@ import { MockPortalManager } from "./MockPortal";
 import * as ComponentTypes from "./ComponentTypes";
 import * as qs from "qs";
 import { IStack } from "./IStack";
+import { ComponentFactory } from "./ComponentFactory";
 
 describe("Split Test", () => {
     test("hsplit basic test", () => {
-        const portalManager = new MockPortalManager();
         const db = new Dashboard();
-        db.setPortalManager(portalManager);
+        db.componentFactory = ComponentFactory;
+        const portalManager = new MockPortalManager();
+        db.portalManager = portalManager;
 
         const hsplit = new HSplit();
         expect(hsplit.dashboard).toBeFalsy();
@@ -42,9 +44,12 @@ describe("Split Test", () => {
         expect(right.dashboard).toBe(db);
     });
 
-    test("hsplit config test", async () => {
+    test("hsplit config test", () => {
         const hsplit = new HSplit();
-        await hsplit.setConfig({
+        hsplit.componentFactory = ComponentFactory;
+        hsplit.config = {
+            type: "hsplit",
+            offset: 0.5,
             left: {
                 component: {
                     type: "window",
@@ -66,7 +71,7 @@ describe("Split Test", () => {
                     ]
                 }
             }
-        });
+        };
 
         expect(hsplit.left.type).toBe(ComponentTypes.window);
         expect(hsplit.right.type).toBe(ComponentTypes.stack);
@@ -81,9 +86,10 @@ describe("Split Test", () => {
     });
 
     test("hsplit viewport test", () => {
-        const portalManager = new MockPortalManager();
         const db = new Dashboard();
-        db.setPortalManager(portalManager);
+        db.componentFactory = ComponentFactory;
+        const portalManager = new MockPortalManager();
+        db.portalManager = portalManager;
 
         const hsplit = new HSplit();
         hsplit.offset = 0.5;
@@ -129,9 +135,10 @@ describe("Split Test", () => {
     });
 
     test("vsplit basic test", () => {
-        const portalManager = new MockPortalManager();
         const db = new Dashboard();
-        db.setPortalManager(portalManager);
+        db.componentFactory = ComponentFactory;
+        const portalManager = new MockPortalManager();
+        db.portalManager = portalManager;
 
         const vsplit = new VSplit();
         expect(vsplit.dashboard).toBeFalsy();
@@ -162,9 +169,12 @@ describe("Split Test", () => {
         expect(bottom.dashboard).toBe(db);
     });
 
-    test("vsplit config test", async () => {
+    test("vsplit config test", () => {
         const vsplit = new VSplit();
-        await vsplit.setConfig({
+        vsplit.componentFactory = ComponentFactory;
+        vsplit.config = {
+            type: "vsplit",
+            offset: 0.5,
             top: {
                 component: {
                     type: "window",
@@ -186,7 +196,7 @@ describe("Split Test", () => {
                     ]
                 }
             }
-        });
+        };
 
         expect(vsplit.top.type).toBe(ComponentTypes.window);
         expect(vsplit.bottom.type).toBe(ComponentTypes.stack);
@@ -201,9 +211,9 @@ describe("Split Test", () => {
     });
 
     test("vsplit viewport test", () => {
-        const portalManager = new MockPortalManager();
         const db = new Dashboard();
-        db.setPortalManager(portalManager);
+        const portalManager = new MockPortalManager();
+        db.portalManager = portalManager;
 
         const vsplit = new VSplit();
         vsplit.offset = 0.5;

@@ -145,12 +145,12 @@ class Dashboard extends Component implements IDashboard {
     @action
     setComponentConfig(config : any) {
         if(config) {
-            return ComponentFactory(config.type).then(component => {
-                this.setComponent(component);
-                return component.setConfig(config);
-            });
+            const c = this.componentFactory(config.type);
+            this.setComponent(c);
+            c.setConfig(config);
+        } else {
+            this.setComponent(undefined);
         }
-        this.setComponent(undefined);
         return Promise.resolve();
     }
 
@@ -163,15 +163,14 @@ class Dashboard extends Component implements IDashboard {
             component: this.componentConfig
         };
     }
-
+    set config(value) {
+        this.setConfig(value);
+    }
     @action
     setConfig(value) {
-        this.sync.syncStart();
         this.setTitle(value ? value.title : undefined);
         this.setCloseDisabled(value ? value.closeDisabled : undefined);
-        return this.setComponentConfig(value ? value.component : undefined).then(() => {
-            this.sync.syncEnd();
-        });
+        this.setComponentConfig(value ? value.component : undefined);
     }
 
     @action
@@ -204,21 +203,20 @@ class Dashboard extends Component implements IDashboard {
 
     @action
     private _loadDone = (config) => {
-        return this.setConfig(config).then(() => {
-            if(this.saver) {
-                this._configSaveDisposer = reaction(() => {
-                    return this.config;
-                }, this._saveConfig, { delay: this.saveDelay });
-            }
-        });
+        this.setConfig(config);
+        if(this.saver) {
+            this._configSaveDisposer = reaction(() => {
+                return this.config;
+            }, this._saveConfig, { delay: this.saveDelay });
+        }
+        this.sync.syncEnd();
     }
 
     @action
     private _loadError = (error : any) => {
         console.error(error);
-        return this.setConfig(undefined).then(() => {
-            this.sync.syncError(error);
-        });
+        this.setConfig(undefined);
+        this.sync.syncError(error);
     }
 
     @action
@@ -247,38 +245,6 @@ class Dashboard extends Component implements IDashboard {
     @computed
     get isListLayout() {
         return this.component && this.component.type === "list";
-    }
-
-    @action
-    splitLeft(newComp?: IComponent) : Promise<any> {
-        if(this.component && this.component.type === ComponentTypes.stack) {
-            return (this.component as IStack).splitLeft(newComp);
-        }
-        return Promise.resolve();
-    }
-
-    @action
-    splitRight(newComp?: IComponent) : Promise<any> {
-        if(this.component && this.component.type === ComponentTypes.stack) {
-            return (this.component as IStack).splitRight(newComp);
-        }
-        return Promise.resolve();
-    }
-
-    @action
-    splitTop(newComp : IComponent) : Promise<any> {
-        if(this.component && this.component.type === ComponentTypes.stack) {
-            return (this.component as IStack).splitTop(newComp);
-        }
-        return Promise.resolve();
-    }
-    
-    @action
-    splitBottom(newComp : IComponent) : Promise<any> {
-        if(this.component && this.component.type === ComponentTypes.stack) {
-            return (this.component as IStack).splitBottom(newComp);
-        }
-        return Promise.resolve();
     }
 
     protected _visitChildren(callback) {

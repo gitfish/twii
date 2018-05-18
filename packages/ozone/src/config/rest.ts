@@ -6,4 +6,4 @@ const rest = (env : any) => {
     restUserService(env);
 };
 
-export { rest }
+export { rest, rest as default }

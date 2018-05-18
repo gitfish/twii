@@ -7,6 +7,7 @@ import { IPredicateFunc } from "@twii/core/lib/IPredicateFunc";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 import { IViewport } from "./IViewport";
 import { IPortalManager } from "./IPortalManager";
+import { IComponentFactory } from "./IComponentFactory";
 
 interface IComponent extends IViewport {
     id: string;
@@ -18,6 +19,7 @@ interface IComponent extends IViewport {
     router: IRouter;
     isWindowManager: boolean;
     portalManager: IPortalManager;
+    componentFactory: IComponentFactory;
     x: number;
     rx: number;
     y: number;
@@ -28,7 +30,7 @@ interface IComponent extends IViewport {
     setRouter(router : IRouter) : void;
     addApp: IRequest | ISupplierFunc<IRequest>;
     setAddApp(addApp : IRequest | ISupplierFunc<IRequest>) : void;
-    setConfig(state : any) : Promise<any>;
+    setConfig(state : any) : void;
     remove(comp : IComponent) : void;
     removeFromParent() : void;
     replace(newComp : IComponent, oldComp : IComponent) : void;

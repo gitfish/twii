@@ -96,25 +96,22 @@ class DashboardList extends Component implements IDashboardList {
             closeDisabled: this._closeDisabled
         };
     }
-
+    set config(value) {
+        this.setConfig(value);
+    }
     @action
     setConfig(value) {
         this.dashboards = [];
         let dashboardPromise;
         if(value && value.dashboards && value.dashboards.length > 0) {
-            dashboardPromise = Promise.all(value.dashboards.map(dc => {
+            value.dashboards.forEach(dc => {
                 const db = new Dashboard();
                 this.add(db);
-                return db.setConfig(dc);
-            }));
-        } else {
-            dashboardPromise = Promise.resolve();
+                db.setConfig(dc);
+            });
         }
-        return dashboardPromise.then(action(() => {
-            this.setActiveIndex(value && !isNaN(value.activeIndex) ? value.activeIndex : -1);
-            this.setCloseDisabled(value ? value.removeItemsDisabled : undefined);
-            this.sync.syncEnd();
-        }));
+        this.setActiveIndex(value && !isNaN(value.activeIndex) ? value.activeIndex : -1);
+        this.setCloseDisabled(value ? value.removeItemsDisabled : undefined);
     }
 
     @action
@@ -176,24 +173,23 @@ class DashboardList extends Component implements IDashboardList {
 
     @action
     private _loadDone = (config) => {
-        return this.setConfig(config).then(() => {
-            if(this.saver) {
-                this._configSaveDisposer = reaction(() => {
-                    return this.config;
-                }, this._saveConfig, { delay: this.saveDelay });
-            }
-            if(this.dashboardCount === 0) {
-                this.addDefaultDashboard();
-            }
-        });
+        this.setConfig(config);
+        if(this.saver) {
+            this._configSaveDisposer = reaction(() => {
+                return this.config;
+            }, this._saveConfig, { delay: this.saveDelay });
+        }
+        if(this.dashboardCount === 0) {
+            this.addDefaultDashboard();
+        }
+        this.sync.syncEnd();
     }
 
     @action
     private _loadError = (error : any) => {
         console.error(error);
-        return this.setConfig(undefined).then(() => {
-            this.sync.syncError(error);
-        });
+        this.setConfig(undefined);
+        this.sync.syncError(error);
     }
 
     @action

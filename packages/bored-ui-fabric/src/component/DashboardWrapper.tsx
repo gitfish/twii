@@ -8,6 +8,8 @@ import { DashboardContainer } from "./Dashboard";
 import { IEventEmitter } from "@twii/core/lib/IEventEmitter";
 import { IDashboardStyles, getStyles } from "./Dashboard.styles";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
+import { IComponentFactory } from "@twii/bored/lib/model/IComponentFactory";
+import { ComponentFactory } from "@twii/bored/lib/model/ComponentFactory";
 
 interface IDashboardWrapperProps {
     className?: string;
@@ -19,6 +21,7 @@ interface IDashboardWrapperProps {
     host?: IEventEmitter;
     styles?: IDashboardStyles;
     router?: IRouter;
+    componentFactory?: IComponentFactory;
 }
 
 interface IDashboardWrapper {
@@ -26,7 +29,10 @@ interface IDashboardWrapper {
 }
 
 class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> implements IDashboardWrapper {
-    dashboard : Dashboard = new Dashboard();
+    private _dashboard : Dashboard = new Dashboard();
+    get dashboard() {
+        return this._dashboard;
+    }
     constructor(props : IDashboardWrapperProps) {
         super(props);
         this._setFromProps(this.props);
@@ -37,6 +43,7 @@ class DashboardWrapper extends React.Component<IDashboardWrapperProps, any> impl
         this.dashboard.loader = props.loader;
         this.dashboard.saver = props.saver;
         this.dashboard.saveDelay = props.saveDelay;
+        this.dashboard.componentFactory = props.componentFactory || ComponentFactory;
     }
     private _load(props : IDashboardWrapperProps) {
         if(props.loader) {

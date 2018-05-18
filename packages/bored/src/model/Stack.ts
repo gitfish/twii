@@ -10,6 +10,7 @@ import { isFunction } from "@twii/core/lib/LangUtils";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 import * as ComponentTypes from "./ComponentTypes";
 import { WindowManager } from "./WindowManager";
+import { splitHorizontal, splitVertical } from "../SplitActions";
 
 /**
  * Stack - a bunch/stack of windows
@@ -85,74 +86,50 @@ class Stack extends WindowManager implements IStack {
 
     @action
     splitLeft(newComp?: IComponent) {
-        const right = this;
-        return import("./Split").then(m => {
-            const split = new m.HSplit();
-            const newStack = new Stack();
-            newStack.setCloseDisabled(this.closeDisabled);
-            split.setLeft(newStack);
-            this.parent.replace(split, this);
-            if(newComp) {
-                newStack.add(newComp as IWindow);
-            } else {
-                newStack.addNew();
-            }
-            split.setRight(this);
-        });
+        const newStack = new Stack();
+        newStack.setCloseDisabled(this.closeDisabled);
+        if(newComp) {
+            newStack.add(newComp as IWindow);
+        } else {
+            newStack.addNew();
+        }
+        splitHorizontal(this, newStack, this);
     }
 
     @action
     splitRight(newComp?: IComponent) {
-        const left = this;
-        return import("./Split").then(m => {
-            const split = new m.HSplit();
-            const newStack = new Stack();
-            newStack.setCloseDisabled(this.closeDisabled);
-            split.setRight(newStack);
-            this.parent.replace(split, this);
-            if(newComp) {
-                newStack.add(newComp as IWindow);
-            } else {
-                newStack.addNew();
-            }
-            split.setLeft(this);
-        });
+        const newStack = new Stack();
+        newStack.setCloseDisabled(this.closeDisabled);
+        if(newComp) {
+            newStack.add(newComp as IWindow);
+        } else {
+            newStack.addNew();
+        }
+        splitHorizontal(this, this, newStack);
     }
 
     @action
     splitTop(newComp?: IComponent) {
-        const bottom = this;
-        return import("./Split").then(m => {
-            const split = new m.VSplit();
-            const newStack = new Stack();
-            newStack.setCloseDisabled(this.closeDisabled);
-            split.setTop(newStack);
-            this.parent.replace(split, this);
-            if(newComp) {
-                newStack.add(newComp as IWindow);
-            } else {
-                newStack.addNew();
-            }
-            split.setBottom(bottom);
-        });
+        const newStack = new Stack();
+        newStack.setCloseDisabled(this.closeDisabled);
+        if(newComp) {
+            newStack.add(newComp as IWindow);
+        } else {
+            newStack.addNew();
+        }
+        splitVertical(this, newStack, this);
     }
 
     @action
     splitBottom(newComp?: IComponent) {
-        const top = this;
-        return import("./Split").then(m => {
-            const split = new m.VSplit();
-            const newStack = new Stack();
-            newStack.setCloseDisabled(this.closeDisabled);
-            split.setBottom(newStack);
-            this.parent.replace(split, this);
-            if(newComp) {
-                newStack.add(newComp as IWindow);
-            } else {
-                newStack.addNew();
-            }
-            split.setTop(top);
-        });
+        const newStack = new Stack();
+        newStack.setCloseDisabled(this.closeDisabled);
+        if(newComp) {
+            newStack.add(newComp as IWindow);
+        } else {
+            newStack.addNew();
+        }
+        splitVertical(this, this, newStack);
     }
 
     @computed
@@ -167,24 +144,19 @@ class Stack extends WindowManager implements IStack {
     set config(value) {
         this.setConfig(value);
     }
-
     @action
-    setConfig(config : any) : Promise<any> {
+    setConfig(config : any) : void {
         this.windows = [];
         let windowPromise;
         if(config && config.windows && config.windows.length > 0) {
-            windowPromise = Promise.all(config.windows.map(wc => {
+            config.windows.forEach(wc => {
                 const w = new Window();
                 this.add(w);
-                return w.setConfig(wc);
-            }));
-        } else {
-            windowPromise = Promise.resolve();
+                w.setConfig(wc);
+            });
         }
-        return windowPromise.then(action(() => {
-            this.setActiveIndex(config && !isNaN(config.activeIndex) ? config.activeIndex : 0);
-            this.setCloseDisabled(config ? config.closeDisabled : undefined);
-        }));
+        this.setActiveIndex(config && !isNaN(config.activeIndex) ? config.activeIndex : 0);
+        this.setCloseDisabled(config ? config.closeDisabled : undefined);
     }
 
     @action

@@ -77,7 +77,8 @@ const createMenuItems = (dashboardList : IDashboardList) : IContextualMenuItem[]
         name: "Add Dashboard",
         dashboardList: dashboardList,
         onClick: onAddDashboardClick,
-        iconProps: { iconName: "Add" }
+        iconProps: { iconName: "Add" },
+        disabled: dashboardList.sync.syncing
     });
     
     if(dashboardList.dashboards.length > 0) {
@@ -110,7 +111,7 @@ const createMenuItems = (dashboardList : IDashboardList) : IContextualMenuItem[]
 const createCommandBarMenuItem = (dashboardList : IDashboardList) : IContextualMenuItem => {
     const sync = dashboardList.sync;
     const active = dashboardList.active;
-    const title = sync.syncing ? "Loading..." : sync.error ? "Error" : active ? active.title : "Dashboards";
+    const title = sync.syncing ? "Loading Dashboards..." : sync.error ? "Error" : active ? active.title : "Dashboards";
     return {
         key: "dashboardsCommbarBarItem",
         name: title,

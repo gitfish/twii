@@ -179,7 +179,9 @@ class Window extends Component implements IWindow {
             layout: this._layout
         };
     }
-
+    set config(value) {
+        this.setConfig(value);
+    }
     @action
     setConfig(config) {
         this.setTitle(config ? config.title : undefined);
@@ -189,7 +191,6 @@ class Window extends Component implements IWindow {
         this.setQuery(config ? config.query : undefined);
         this.setContentHidden(config ? config.contentHidden : undefined);
         this.setLayout(config ? config.layout : undefined);
-        return Promise.resolve();
     }
 
     open(request : IRequest) {

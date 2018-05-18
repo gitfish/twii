@@ -4,7 +4,6 @@
         "outDir": "./dist",
         "sourceMap": true,
         "noImplicitAny": false,
-        "module": "esnext",
         "moduleResolution": "node",
         "target": "es5",
         "jsx": "react",
@@ -18,7 +17,7 @@
             "dom",
             "es5",
             "scripthost",
-            "es2017"
+            "esnext"
         ]
     },
     "include": [

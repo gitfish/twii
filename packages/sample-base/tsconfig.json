@@ -13,9 +13,8 @@
         "experimentalDecorators": true,
         "lib": [
             "dom",
-            "es5",
             "scripthost",
-            "es2017"
+            "esnext"
         ]
     },
     "include": [

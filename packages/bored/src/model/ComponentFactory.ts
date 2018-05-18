@@ -1,59 +1,45 @@
 import { Router } from "@twii/router/lib/Router";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 import { IComponent } from "./IComponent";
+import { IComponentFactory } from "./IComponentFactory";
 import { window, stack, vsplit, hsplit, grid } from "./ComponentTypes";
+import { Window } from "./Window";
+import { Stack } from "./Stack";
+import { HSplit, VSplit } from "./Split";
+import { Grid } from "./Grid";
 
-interface IComponentFactory {
-    (type : string) : Promise<IComponent>;
+interface IComponentFactoryMap {
+    [key : string]: () => IComponent;
 }
 
-interface ITypeComponentSupplierMap {
-    [key : string]: ISupplierFunc<Promise<IComponent>>;
-}
-
-const WindowSupplier = () => {
-    return import("./Window").then(m => {
-        return new m.Window();
-    });
+const ComponentFactoryMap : IComponentFactoryMap = {};
+ComponentFactoryMap[window] = () => {
+    return new Window();
 };
-
-const StackSupplier = () => {
-    return import("./Stack").then(m => {
-        return new m.Stack();
-    });
+ComponentFactoryMap[stack] = () => {
+    return new Stack();
 };
-
-const VSplitSupplier = () => {
-    return import("./Split").then(m => {
-        return new m.VSplit();
-    });
+ComponentFactoryMap[hsplit] = () => {
+    return new HSplit();
 };
-
-const HSplitSupplier = () => {
-    return import("./Split").then(m => {
-        return new m.HSplit();
-    });
+ComponentFactoryMap[vsplit] = () => {
+    return new VSplit();
 };
-
-const GridSupplier = () => {
-    return import("./Grid").then(m => {
-        return new m.Grid();
-    });
+ComponentFactoryMap[grid] = () => {
+    return new Grid();   
 };
-
-const TypeComponentSupplierMap : ITypeComponentSupplierMap = {};
-TypeComponentSupplierMap[window] = WindowSupplier;
-TypeComponentSupplierMap[stack] = StackSupplier;
-TypeComponentSupplierMap[hsplit] = HSplitSupplier;
-TypeComponentSupplierMap[vsplit] = VSplitSupplier;
-TypeComponentSupplierMap[grid] = GridSupplier;
 
 const ComponentFactory : IComponentFactory = (type : string) => {
-    const s = TypeComponentSupplierMap[type];
+    const s = ComponentFactoryMap[type];
     if(s) {
         return s();
     }
-    return Promise.reject({ code: "NOT_FOUND", type: type, message: `Component Type ${type} is not registered`});
+    throw { code: "NOT_FOUND", type: type, message: `Component Type ${type} is not registered`};
 };
 
-export { IComponentFactory, ComponentFactory }
+export {
+    IComponentFactory,
+    ComponentFactory,
+    IComponentFactoryMap,
+    ComponentFactoryMap
+}

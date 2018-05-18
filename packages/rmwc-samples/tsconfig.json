@@ -3,7 +3,6 @@
         "rootDir": "./src",
         "outDir": "./lib",
         "noImplicitAny": false,
-        "module": "esnext",
         "moduleResolution": "node",
         "declaration": true,
         "target": "es5",
@@ -12,9 +11,8 @@
         "experimentalDecorators": true,
         "lib": [
             "dom",
-            "es5",
             "scripthost",
-            "es2017"
+            "esnext"
         ],
         "types": [
             "jest"
