@@ -4,7 +4,7 @@ import { IDashboardStyles } from "@twii/bored-ui-fabric/lib/component/Dashboard.
 import { getTheme } from "@uifabric/styling";
 import { IAppProps } from "@twii/core-ui/lib/component/IAppProps";
 import { createSampleRouter } from "../../sampleRouter";
-import { OzoneRouter } from "@twii/ozone/lib/OzoneRouter";
+import { OzoneRouter } from "@twii/ozone-app/lib/OzoneRouter";
 
 const dashboardRouter = createSampleRouter();
 dashboardRouter.use(OzoneRouter);

@@ -9,6 +9,7 @@
     "scripts": {
         "clean": "leran run clean",
         "build": "lerna run build",
-        "test": "lerna run test"
+        "test": "lerna run test",
+        "publish": "lerna run clean & lerna run build & lerna run test & lerna publish"
     }
 }
