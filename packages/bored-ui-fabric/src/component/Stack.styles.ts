@@ -48,20 +48,32 @@ const defaultStyles = (theme : ITheme) : IStackStyles => {
             overflow: "hidden",
             backgroundColor: theme.palette.neutralTertiary,
             color: theme.palette.neutralSecondary,
+            borderRight: `1px solid ${theme.palette.neutralSecondary}`,
             cursor: "pointer",
             height: 28,
             transition: "background-color 0.3s ease",
             selectors: {
+                ".close-action": {
+                    visibility: "hidden"
+                },
                 "&.active": {
                     backgroundColor: theme.palette.neutralLighter,
                     color: theme.palette.neutralPrimary,
                     selectors: {
+                        ".close-action": {
+                            visibility: "visible"
+                        },
                         ":hover": {
                             backgroundColor: theme.palette.neutralLighter
                         }
                     }
                 },
                 ":hover": {
+                    selectors: {
+                        ".close-action": {
+                            visibility: "visible"
+                        }
+                    },
                     backgroundColor: theme.palette.neutralTertiaryAlt
                 }
             }
