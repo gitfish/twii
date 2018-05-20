@@ -226,11 +226,6 @@ class Window extends Component implements IWindow {
         const portalManager = this.portalManager;
         if(portalManager) {
             let { x, y, width, height } = this;
-            const mgr = this.manager;
-            if(mgr && mgr.decorateWindow && mgr.windowHeaderHeight > 0) {
-                y += mgr.windowHeaderHeight;
-                height -= mgr.windowHeaderHeight;
-            }
             portalManager.getPortal(this).setViewport(x, y, width, height);
         }
     }

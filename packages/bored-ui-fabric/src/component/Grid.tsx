@@ -17,6 +17,22 @@ interface IGridProps {
     styles?: IGridStyles;
 }
 
+interface IGridWindowProps {
+    window: IWindow;
+    className?: string;
+}
+
+@observer
+class GridWindow extends React.Component<IGridWindowProps, any> {
+    render() {
+        const w = this.props.window;
+        return (
+            <div className={this.props.className} style={{ position: "absolute", backgroundColor: "white", overflow: "hidden", left: w.rx, top: w.ry, width: w.width, height: w.height }}>
+            </div>
+        );
+    }
+}
+
 @observer
 class Grid extends React.Component<IGridProps, any> {
     private _classNames : IGridClassNames;
@@ -57,6 +73,9 @@ class Grid extends React.Component<IGridProps, any> {
             </div>
         );
     }
+    private _renderWindow(w : IWindow) : React.ReactNode {
+        return <GridWindow key={w.id} window={w} />;
+    }
     render() {
         const { grid, styles } = this.props;
         this._classNames = getClassNames(getStyles(null, styles));
@@ -65,7 +84,7 @@ class Grid extends React.Component<IGridProps, any> {
             rows.push(this._renderRow(r));
         }
         const windows = grid.windows.map(w => {
-            return <Window key={w.id} window={w} relative styles={{ header: { height: grid.windowHeaderHeight } }} />;
+            return this._renderWindow(w);
         });
         return (
             <div className={this._classNames.root} ref={this._onRootRef} onScroll={this._onRootScroll}>

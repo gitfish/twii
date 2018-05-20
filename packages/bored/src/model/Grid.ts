@@ -15,7 +15,6 @@ class Grid extends WindowManager implements IGrid {
     @observable private _cellMargin : number = 8;
     @observable private _rows : number = 30;
     @observable private _columns : number = 30;
-    @observable private _windowHeaderHeight : number = 28;
     private _setViewportDisposer : IReactionDisposer;
 
     constructor() {
@@ -25,22 +24,6 @@ class Grid extends WindowManager implements IGrid {
 
     get type() {
         return ComponentTypes.grid;
-    }
-
-    get decorateWindow() {
-        return true;
-    }
-
-    @computed
-    get windowHeaderHeight() {
-        return this._windowHeaderHeight;
-    }
-    set windowHeaderHeight(value) {
-        this.setWindowHeaderHeight(value);
-    }
-    @action
-    setWindowHeaderHeight(windowHeaderHeight : number) {
-        this._windowHeaderHeight = windowHeaderHeight;
     }
 
     @computed
