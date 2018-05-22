@@ -7,21 +7,20 @@ import { isFunction } from "@twii/core/lib/LangUtils";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 import { IRequest } from "@twii/router/lib/IRequest";
 import { IComponent } from "./IComponent";
+import { WindowSettings } from "./WindowSettings";
 
 class WindowManager extends Component implements IWindowManager {
     @observable private _closeDisabled = false;
     @observable windows : IWindow[] = [];
+    @observable protected _windowSettings = new WindowSettings();
 
     get type() {
         return null;
     }
 
-    get decorateWindow() {
-        return false;
-    }
-
-    get windowHeaderHeight() {
-        return 0;
+    @computed
+    get windowSettings() {
+        return this._windowSettings;
     }
 
     @computed

@@ -11,6 +11,7 @@ import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IStack } from "./IStack";
 import { IPortal } from "./IPortal";
 import { IPortalManager } from "./IPortalManager";
+import { WindowSettings } from "./WindowSettings";
 
 class Window extends Component implements IWindow {
     name : string;
@@ -19,16 +20,21 @@ class Window extends Component implements IWindow {
     @observable private _params : any;
     @observable private _query : any;
     @observable private _appHost : WindowAppHost;
-    @observable private _contentHidden : boolean = false;
-    @observable private _closeDisabled = false;
+    @observable private _contentHidden : boolean;
+    @observable private _closeDisabled : boolean;
     @observable private _transient : boolean = false;
-    @observable private _layout : any;
+    @observable private _settings : WindowSettings = new WindowSettings(this);
     private _setViewportDisposer : IReactionDisposer;
 
     constructor() {
         super();
         this._appHost = new WindowAppHost(this);
         this._setViewportDisposer = autorun(this._setPortalViewport);
+    }
+
+    @computed
+    get settings() {
+        return this._settings;
     }
 
     @computed
@@ -74,18 +80,6 @@ class Window extends Component implements IWindow {
     }
 
     @computed
-    get layout() {
-        return Object.assign({}, this._layout);
-    }
-    set layout(value) {
-        this.setLayout(value);
-    }
-    @action
-    setLayout(layout : any) {
-        this._layout = layout;
-    }
-
-    @computed
     get title() {
         return this._appHost.title;
     }
@@ -99,15 +93,19 @@ class Window extends Component implements IWindow {
 
     @computed
     get closeDisabled() {
-        return this._closeDisabled || (this.manager && this.manager.closeDisabled);
+        return this._closeDisabled || (this.manager && this.manager.closeDisabled) ? true : false;
     }
     set closeDisabled(value) {
-        this._closeDisabled = value;
+        this.setCloseDisabled(value);
+    }
+    @action
+    setCloseDisabled(closeDisabled : boolean) : void {
+        this._closeDisabled = closeDisabled;
     }
 
     @computed
     get contentHidden() {
-        return this._contentHidden;
+        return this._contentHidden ? true : false;
     }
     set contentHidden(value) {
         this.setContentHidden(value);
@@ -120,11 +118,6 @@ class Window extends Component implements IWindow {
     @action
     toggleContent() {
         this.setContentHidden(!this.contentHidden);
-    }
-
-    @action
-    setCloseDisabled(closeDisabled : boolean) : void {
-        this._closeDisabled = closeDisabled;
     }
 
     @computed
@@ -175,8 +168,7 @@ class Window extends Component implements IWindow {
             params: this._params,
             query: this._query,
             closeDisabled: this._closeDisabled,
-            contentHidden: this._contentHidden,
-            layout: this._layout
+            contentHidden: this._contentHidden
         };
     }
     set config(value) {
@@ -190,7 +182,6 @@ class Window extends Component implements IWindow {
         this.setParams(config ? config.params : undefined);
         this.setQuery(config ? config.query : undefined);
         this.setContentHidden(config ? config.contentHidden : undefined);
-        this.setLayout(config ? config.layout : undefined);
     }
 
     open(request : IRequest) {
@@ -226,7 +217,8 @@ class Window extends Component implements IWindow {
         const portalManager = this.portalManager;
         if(portalManager) {
             let { x, y, width, height } = this;
-            portalManager.getPortal(this).setViewport(x, y, width, height);
+            const { borderWidth } = this.settings;
+            portalManager.getPortal(this).setViewport(x + borderWidth, y + borderWidth, width - (2 * borderWidth), height - (2 * borderWidth));
         }
     }
 }

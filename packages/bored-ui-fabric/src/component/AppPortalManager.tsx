@@ -5,6 +5,7 @@ import { IPortalManager } from "@twii/bored/lib/model/IPortalManager";
 import { IWindow } from "@twii/bored/lib/model/IWindow";
 import { dispatchWindowResize } from "./DOMHelper";
 import { AppHostContainer } from "@twii/core-ui-fabric/lib/component/AppHost";
+import { Window } from "./Window";
 
 class AppPortal implements IPortal {
     private _root : HTMLElement;
@@ -16,7 +17,11 @@ class AppPortal implements IPortal {
         this._el = el;
         this._window = window;
         this._onDestroy = onDestroy;
-        ReactDOM.render(<AppHostContainer host={this._window.appHost} />, this._el);
+        ReactDOM.render(
+            <Window window={this._window}>
+                <AppHostContainer host={this._window.appHost} />
+            </Window>
+        , this._el);
     }
     setViewport(left: number, top: number, width: number, height: number) {
         const clientBounds = this._el.getBoundingClientRect();

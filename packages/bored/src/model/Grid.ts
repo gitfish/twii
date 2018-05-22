@@ -9,6 +9,7 @@ import { isFunction } from "@twii/core/lib/LangUtils";
 import { ISupplierFunc } from "@twii/core/lib/ISupplierFunc";
 import { IComponent } from "./IComponent";
 import { WindowManager } from "./WindowManager";
+import { IWindowGridData } from "./IWindowGridData";
 
 class Grid extends WindowManager implements IGrid {
     @observable private _cellSize : number = 80;
@@ -19,6 +20,8 @@ class Grid extends WindowManager implements IGrid {
 
     constructor() {
         super();
+        this.windowSettings.borderWidth = 1;
+        this.windowSettings.headerHeight = 28;
         this._setViewportDisposer = autorun(this._setWindowViewports);
     }
 
@@ -117,47 +120,44 @@ class Grid extends WindowManager implements IGrid {
         }));
     }
 
+    private _getGridData(w : IWindow) : IWindowGridData {
+        let gridData =  w.settings.data.grid as IWindowGridData;
+        if(!gridData) {
+            // TODO: make this configurable
+            gridData = { colSpan: 6, rowSpan: 4 };
+        }
+        return gridData;
+    }
+
     private _setWindowViewports = () => {
         if(this.portalManager) {
             let nx = 0;
             let ny = 0;
             let maxY = 0;
             this.windows.forEach(w => {
-                const layout = w.layout;
-                let x;
-                let y;
-                let colspan;
-                let rowspan;
-                if(layout && layout.grid) {
-                    x = layout.grid.x;
-                    y = layout.grid.y;
-                    rowspan = layout.grid.rowspan;
-                    colspan = layout.grid.colspan;
-                }
-                if(!rowspan) {
-                    rowspan = 3;
-                }
-                if(!colspan) {
-                    colspan = 4;
-                }
+                const data = this._getGridData(w);
+                let x = data.colIndex;
+                let y = data.rowIndex;
+                let colSpan = data.colSpan;
+                let rowSpan = data.rowSpan;
                 if(!x) {
-                    if(nx + colspan >= this.columns) {
+                    if(nx + colSpan >= this.columns) {
                         nx = 0;
                         ny = maxY;
                     }
                     x = nx;
-                    nx += colspan;
+                    nx += colSpan;
                 }
                 if(!y) {
                     y = ny;
                 }
-                if(rowspan > maxY) {
-                    maxY = rowspan;
+                if(rowSpan > maxY) {
+                    maxY = rowSpan;
                 }
                 const vx = this.x + this.cellMargin + (x * (this.cellSize + this.cellMargin));
                 const vy = this.y + this.cellMargin + (y * (this.cellSize + this.cellMargin));
-                const width = colspan * this.cellSize + ((colspan - 1) * this.cellMargin);
-                const height = rowspan * this.cellSize + ((rowspan - 1) * this.cellMargin);
+                const width = colSpan * this.cellSize + ((colSpan - 1) * this.cellMargin);
+                const height = rowSpan * this.cellSize + ((rowSpan - 1) * this.cellMargin);
                 w.setViewport(vx, vy, width, height);
             });
         }

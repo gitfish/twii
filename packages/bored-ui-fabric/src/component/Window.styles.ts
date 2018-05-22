@@ -19,8 +19,14 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IWindowStyles)
     const DefaultStyles : IWindowStyles = {
         root: {
             position: "absolute",
-            boxShadow: `0 0 ${5}px 0 rgba(0, 0, 0, 0.4)`,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            //boxShadow: `0 0 ${5}px 0 rgba(0, 0, 0, 0.4)`,
             backgroundColor: theme.palette.white,
+            borderColor: theme.palette.themePrimary,
+            borderStyle: "solid",
             selectors: {
                 "&.content-hidden": {
                     height: 28
@@ -37,8 +43,7 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IWindowStyles)
             cursor: "pointer",
             overflow: "hidden",
             backgroundColor: theme.palette.themeDarkAlt,
-            color: theme.palette.white,
-            height: 28
+            color: theme.palette.white
         },
         titleContainer: {
             display: "flex",

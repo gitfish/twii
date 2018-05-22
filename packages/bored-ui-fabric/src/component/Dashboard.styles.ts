@@ -15,7 +15,7 @@ const defaultStyles = (theme : ITheme) : IDashboardStyles => {
             bottom: 0,
             left: 0,
             background: "transparent",
-            overflow: "hidden",
+            overflow: "auto",
             selectors: {
                 "&.hidden": {
                     top: -1,

@@ -14,18 +14,12 @@ const getStyles = memoizeFunction((theme : ITheme, customStyles?: IGridStyles) =
     }
 
     const DefaultStyles : IGridStyles = {
-        root: {
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            overflow: "auto"
-        },
+        root: {},
         rowContainer: {
             position: "absolute",
             top: 0,
             left: 0,
+            zIndex: -20,
             backgroundColor: theme.palette.neutralLighter
         },
         row: {

@@ -5,13 +5,13 @@ import { IAppHost } from "@twii/core/lib/IAppHost";
 import { IConsumerFunc } from "@twii/core/lib/IConsumerFunc";
 import { IEventEmitter } from "@twii/core/lib/IEventEmitter";
 import { IPortal } from "./IPortal";
+import { IWindowSettings } from "./IWindowSettings";
 
 interface IWindow extends IComponent {
     name: string;
     path: string;
     params : any;
     query : any;
-    layout: any;
     title: string;
     onClose : IConsumerFunc<IWindow>
     closeDisabled : boolean;
@@ -19,11 +19,12 @@ interface IWindow extends IComponent {
     contentHidden : boolean;
     appHost: IAppHost;
     transient : boolean;
+    manager : IWindowManager;
+    settings : IWindowSettings;
     setPath(path : string) : void;
     setParams(params : any) : void;
     setQuery(query : any) : void;
     setTitle(title : string) : void;
-    setLayout(layout : any) : void;
     setCloseDisabled(closeDisabled : boolean) : void;
     activate() : void;
     setContentHidden(hidden : boolean) : void;

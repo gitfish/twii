@@ -8,11 +8,6 @@ import { Icon } from "office-ui-fabric-react/lib/Icon";
 
 interface IWindowProps {
     window: IWindow;
-    relative?: boolean;
-    x?: number;
-    y?: number;
-    width?: number;
-    height?: number;
     styles?: IWindowStyles;
     className?: string;
 }
@@ -55,8 +50,7 @@ class Window extends React.Component<IWindowProps, any> {
         this._canDrag = false;
     }
     private _onDragStart = (e : React.DragEvent<HTMLElement>) => {
-        /*
-        const db = this.props.grid.dashboard;
+        const db = this.props.window.dashboard;
         if(db && this._canDrag) {
             e.stopPropagation();
             const transferText = String(JSON.stringify(this.props.window.config));
@@ -67,16 +61,13 @@ class Window extends React.Component<IWindowProps, any> {
         } else {
             e.preventDefault();
         }
-        */
     }
     private _onDragEnd = (e : React.DragEvent<HTMLElement>) => {
-        /*
         this._canDrag = false;
-        const db = this.props.grid.dashboard;
+        const db = this.props.window.dashboard;
         if(db) {
             db.clearDrag();
         }
-        */
     }
     private _onDragOver = (e : React.DragEvent<HTMLElement>) => {
         /*
@@ -118,30 +109,43 @@ class Window extends React.Component<IWindowProps, any> {
         );
     }
     private _renderHeader() : React.ReactNode {
-        return (
-            <div className={this._classNames.header}
-                onMouseDown={this._onHeaderMouseDown}>
-                {this._renderTitle()}
-                {this._renderActionBar()}
-            </div>
-        );
+        if(this.props.window.settings.headerHeight > 0) {
+            return (
+                <div className={this._classNames.header}
+                    onMouseDown={this._onHeaderMouseDown}
+                    style={{
+                        top: 0,
+                        right: 0,
+                        left: 0,
+                        height: this.props.window.settings.headerHeight
+                    }}>
+                    {this._renderTitle()}
+                    {this._renderActionBar()}
+                </div>
+            );
+        }
+        return null;
     }
     private _renderBody() : React.ReactNode {
         return (
-            <div className={css(this._classNames.body, { "content-hidden": this.props.window.contentHidden})}>
+            <div className={css(this._classNames.body, { "content-hidden": this.props.window.contentHidden})}
+                 style={{
+                    top: this.props.window.settings.headerHeight,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                 }}>
+                {this.props.children}
             </div>
         );
     }
     render() {
-        const { window, relative, styles, className, x, y, width, height } = this.props;
+        const { window, styles, className } = this.props;
         this._classNames = getClassNames(getStyles(null, styles), className);
         return (
             <div className={this._classNames.root}
                 style={{
-                    left: x !== undefined ? x : relative ? window.rx : window.x,
-                    top: y !== undefined ? y : relative ? window.ry : window.y,
-                    width: width !== undefined ? width : window.width,
-                    height: height !== undefined ? height : window.height
+                    borderWidth: window.settings.borderWidth
                 }}
                 onDragStart={this._onDragStart}
                 onDragEnd={this._onDragEnd}
