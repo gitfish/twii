@@ -6,5 +6,6 @@ __coverage__/
 .gitignore
 .travis.yml
 tsconfig.json
+jest.config.js
 yarn.lock
 yarn-error.log
