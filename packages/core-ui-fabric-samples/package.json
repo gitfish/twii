@@ -1,7 +1,7 @@
 {
   "name": "@twii/core-ui-fabric-samples",
   "description": "samples using the core ui fabric stuff",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/core-ui": "^2.3.1",
-    "@twii/core-ui-fabric": "^2.3.1",
+    "@twii/core-ui": "^2.4.0",
+    "@twii/core-ui-fabric": "^2.4.0",
     "office-ui-fabric-react": "^5.107.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"

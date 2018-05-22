@@ -1,7 +1,7 @@
 {
   "name": "@twii/router-react",
   "description": "twii react based router / request handler",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/router": "^2.2.0",
+    "@twii/router": "^2.4.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
