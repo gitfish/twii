@@ -1,7 +1,7 @@
 {
   "name": "@twii/router-react",
   "description": "twii react based router / request handler",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "main": "index.js",
   "license": "MIT",
   "keywords": [

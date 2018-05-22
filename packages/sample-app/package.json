@@ -1,7 +1,7 @@
 {
   "name": "@twii/sample-app",
   "description": "twii Application Sample using common libs",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -16,12 +16,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/bored": "^2.3.0",
-    "@twii/core": "^2.2.0",
-    "@twii/core-ui": "^2.2.0",
-    "@twii/ozone-app": "^2.3.0",
+    "@twii/bored": "^2.3.1",
+    "@twii/core": "^2.3.1",
+    "@twii/core-ui": "^2.3.1",
+    "@twii/ozone-app": "^2.3.1",
     "@twii/router": "^2.2.0",
-    "@twii/sample-base": "^2.3.0",
+    "@twii/sample-base": "^2.3.1",
     "@uifabric/icons": "^5.7.0",
     "@uifabric/styling": "^5.30.2",
     "@uifabric/utilities": "^5.31.0",

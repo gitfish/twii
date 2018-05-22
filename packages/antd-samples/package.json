@@ -1,6 +1,6 @@
 {
   "name": "@twii/antd-samples",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -12,7 +12,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/core": "^2.2.0",
+    "@twii/core": "^2.3.1",
     "antd": "^3.4.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"

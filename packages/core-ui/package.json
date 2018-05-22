@@ -1,7 +1,7 @@
 {
   "name": "@twii/core-ui",
   "description": "twii core ui lib",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/core": "^2.2.0",
+    "@twii/core": "^2.3.1",
     "@twii/router": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
