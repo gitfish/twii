@@ -1,7 +1,7 @@
 {
   "name": "@twii/core-ui-fabric",
   "description": "core ui stuff based on fabric",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -14,8 +14,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@twii/core": "^2.4.0",
-    "@twii/core-ui": "^2.4.0",
+    "@twii/core": "^2.5.0",
+    "@twii/core-ui": "^2.5.0",
     "@twii/router": "^2.4.0",
     "@uifabric/styling": "^5.30.2",
     "@uifabric/utilities": "^5.31.0",
