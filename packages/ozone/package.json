@@ -1,7 +1,7 @@
 {
   "name": "@twii/ozone",
   "description": "twii Ozone Client",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "@twii/core": "^2.2.0",
     "@twii/core-ui": "^2.2.0",
-    "@twii/core-ui-fabric": "^2.2.0",
+    "@twii/core-ui-fabric": "^2.3.0",
     "@twii/router": "^2.2.0",
     "@twii/router-react": "^2.2.0",
     "@uifabric/styling": "^5.30.2",
