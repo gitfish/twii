@@ -1,0 +1,17 @@
+@import "~@twii/common/lib/component/CommonMixins.scss";
+
+.frame-wrapper {
+    overflow: hidden;
+    @include fill();
+    
+    .wrapped-frame {
+        border: none;
+    }
+}
+
+.layout-flow {
+    .frame-wrapper {
+        position: relative;
+        height: 80vh;
+    }
+}

@@ -1,6 +1,8 @@
-node_modules/
-lib/
-dist/
-__coverage__/
-lerna-debug.log
-yarn-error.log
+node_modules
+temp
+lib
+lib-amd
+lib-commonjs
+lib-es2015
+
+common/temp

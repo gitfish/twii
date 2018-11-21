@@ -1,0 +1,97 @@
+@mixin fill() {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+@mixin flow() {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+}
+
+@mixin dockRow($offset, $height) {
+    position: absolute;
+    top: $offset;
+    left: 0px;
+    right: 0px;
+    height: $height;
+}
+
+@mixin dockColumn($offset, $width) {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: $offset;
+    width: $width;
+}
+
+@mixin dockTop($height) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: $height;
+    max-height: $height;
+}
+
+@mixin dockTopOffset($offset) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: $offset;
+    max-height: $height;
+}
+
+@mixin dockBottom($height) {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: $height;
+}
+
+@mixin dockBottomOffset($offset) {
+    position: absolute;
+    top: $offset;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+@mixin dockLeft($width) {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: $width;
+}
+
+@mixin dockLeftOffset($offset) {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: $offset;
+}
+
+@mixin dockRight($width) {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: $width;
+}
+
+@mixin dockRightOffset($offset) {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: $offset;
+}

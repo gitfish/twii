@@ -1,0 +1,11 @@
+src/
+__tests__/
+*.test.*
+task/
+__coverage__/
+.idea/
+.gitignore
+.travis.yml
+tsconfig.json
+yarn.lock
+common.iml
