@@ -11,10 +11,10 @@
 		"mobx-react": "^5.2.3",
 		"moment": "^2.18.1",
 		"office-ui-fabric-react": "^6.90.0",
+		"path-to-regexp": "1.7.0",
 		"qs": "^6.5.1",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
-		"roota": "1.2.0",
 		"xmldom": "0.1.27"
 	},
 	"devDependencies": {
@@ -33,12 +33,12 @@
 		"mobx-react": "^5.2.3",
 		"moment": "^2.18.1",
 		"office-ui-fabric-react": "^6.90.0",
+		"path-to-regexp": "1.7.0",
 		"qs": "^6.5.1",
 		"raf": "^3.4.0",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-test-renderer": "^16.0.0",
-		"roota": "1.2.0",
 		"ts-jest": "^21.0.1",
 		"typescript": "^3.0.3",
 		"xmldom": "0.1.27"

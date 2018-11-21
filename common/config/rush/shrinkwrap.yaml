@@ -15,12 +15,12 @@ dependencies:
   mobx-react: 5.4.2
   moment: 2.22.2
   office-ui-fabric-react: 6.106.1
+  path-to-regexp: 1.7.0
   qs: 6.5.2
   raf: 3.4.1
   react: 16.6.3
   react-dom: 16.6.3
   react-test-renderer: 16.6.3
-  roota: 1.2.0
   ts-jest: 21.2.4
   typescript: 3.1.6
   xmldom: 0.1.27
@@ -84,6 +84,13 @@ packages:
       '@uifabric/utilities': 6.27.0
       tslib: 1.9.3
     dev: false
+    resolution:
+      integrity: sha512-1O97PUK+qGoU4eMSuxU8Ta7I+lVkeBTVO5H5q+2u14pR+tHt/KAqV4DcQCRKrimrh1S3/Nto6qMTb+W277gmmA==
+  /@uifabric/styling/6.35.0/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@uifabric/utilities': /@uifabric/utilities/6.27.0/react-dom@16.6.3+react@16.6.3
+    dev: false
+    id: registry.npmjs.org/@uifabric/styling/6.35.0
     resolution:
       integrity: sha512-1O97PUK+qGoU4eMSuxU8Ta7I+lVkeBTVO5H5q+2u14pR+tHt/KAqV4DcQCRKrimrh1S3/Nto6qMTb+W277gmmA==
   /@uifabric/utilities/6.27.0:
@@ -2379,7 +2386,7 @@ packages:
       parse5: 4.0.0
       pn: 1.1.0
       request: 2.88.0
-      request-promise-native: /request-promise-native/1.0.5/request@2.88.0
+      request-promise-native: 1.0.5
       sax: 1.2.4
       symbol-tree: 3.2.2
       tough-cookie: 2.4.3
@@ -3526,28 +3533,20 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-UhTFOpJtNVJwdSf7q0FdvAjQbdo=
-  /request-promise-core/1.1.1/request@2.88.0:
-    dependencies:
-      lodash: 4.17.11
-      request: 2.88.0
+  /request-promise-core/1.1.1:
     dev: false
     engines:
       node: '>=0.10.0'
-    id: registry.npmjs.org/request-promise-core/1.1.1
     peerDependencies:
       request: ^2.34
     resolution:
       integrity: sha1-Pu4AssWqgyOc+wTFcA2jb4HNCLY=
-  /request-promise-native/1.0.5/request@2.88.0:
+  /request-promise-native/1.0.5:
     dependencies:
-      request: 2.88.0
-      request-promise-core: /request-promise-core/1.1.1/request@2.88.0
-      stealthy-require: 1.1.1
-      tough-cookie: 2.4.3
+      request-promise-core: 1.1.1
     dev: false
     engines:
       node: '>=0.12.0'
-    id: registry.npmjs.org/request-promise-native/1.0.5
     peerDependencies:
       request: ^2.34
     resolution:
@@ -3882,12 +3881,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-YICcOcv/VTNyJv1eC1IPNB8ftcY=
-  /stealthy-require/1.1.1:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    resolution:
-      integrity: sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
   /string-length/2.0.0:
     dependencies:
       astral-regex: 1.0.0
@@ -4537,7 +4530,7 @@ packages:
       '@types/jest': 21.1.10
       '@types/react': 16.7.6
       '@types/react-dom': 16.0.9
-      '@uifabric/styling': 6.35.0
+      '@uifabric/styling': /@uifabric/styling/6.35.0/react-dom@16.6.3+react@16.6.3
       '@uifabric/utilities': /@uifabric/utilities/6.27.0/react-dom@16.6.3+react@16.6.3
       axios: 0.18.0
       copyfiles: 2.0.0
@@ -4549,6 +4542,7 @@ packages:
       mobx-react: /mobx-react/5.4.2/mobx@4.6.0+react@16.6.3
       moment: 2.22.2
       office-ui-fabric-react: /office-ui-fabric-react/6.106.1/react-dom@16.6.3+react@16.6.3
+      path-to-regexp: 1.7.0
       qs: 6.5.2
       raf: 3.4.1
       react: 16.6.3
@@ -4561,7 +4555,7 @@ packages:
     dev: false
     name: '@rush-temp/core'
     resolution:
-      integrity: sha512-fGN8ZQgUveE39VeihjaGVpoq8T0fLgpTjfDUFe2YJ+L6a9xiLX5jyAiA5G3UZH2je5v/+ef3UuA45aIRhaJJPQ==
+      integrity: sha512-Hdm/+Mg8IP/t4LmOBuWYoE/INOzOI811Q4asVJwgemPNBHFbb/1XpdfTZ25WDofFit9fA2axIT9N0462Biu89A==
       tarball: 'file:projects/core.tgz'
     version: 0.0.0
 registry: 'https://registry.npmjs.org/'
@@ -4584,12 +4578,12 @@ specifiers:
   mobx-react: ^5.2.3
   moment: ^2.18.1
   office-ui-fabric-react: ^6.90.0
+  path-to-regexp: 1.7.0
   qs: ^6.5.1
   raf: ^3.4.0
   react: ^16.4.1
   react-dom: ^16.4.1
   react-test-renderer: ^16.0.0
-  roota: 1.2.0
   ts-jest: ^21.0.1
   typescript: ^3.0.3
   xmldom: 0.1.27

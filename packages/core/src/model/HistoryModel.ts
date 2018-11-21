@@ -2,7 +2,7 @@ import { action, observable } from "mobx";
 import IHistoryModel from "./IHistoryModel";
 import IHistoryEntry from "../IHistoryEntry";
 import { currentTimestampDataText } from "../DateUtils";
-import { StorageServiceContext } from "../StorageServiceContext";
+import { StorageServiceContext } from "../service/StorageServiceContext";
 import { IStorageService } from "../service/IStorageService";
 import { ListModel } from "./ListModel";
 import { Sync } from "./Sync";

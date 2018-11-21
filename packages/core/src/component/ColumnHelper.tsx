@@ -4,7 +4,6 @@ import {
     ColumnActionsMode
 } from "office-ui-fabric-react/lib/DetailsList";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
-import IViewPreferencesModel from "../IViewPreferencesModel";
 import { IWordColumn } from "./ColumnTextHelper";
 
 const applyColumnActionsMode = (columns: IColumn[], columnActionsMode: ColumnActionsMode): IColumn[] => {
@@ -47,14 +46,6 @@ const createItemIndexColumn = (addColumnIndexValue: (item: any, idx: number, col
             return <div>{idx + 1}</div>;
         }
     }
-};
-
-const getViewPreferenceColumns = (columns: IColumn[], viewPreferences?: IViewPreferencesModel): IColumn[] => {
-    return columns && viewPreferences ? columns.filter(c => viewPreferences.isFieldVisible(c.fieldName)) : columns;
-};
-
-const getViewPreferenceLists = (columns: IWordColumn[], viewPreferences?: IViewPreferencesModel): IWordColumn[] => {
-    return columns && viewPreferences ? columns.filter(c => viewPreferences.isFieldVisible(c.key)) : columns;
 };
 
 interface IColumnRendererMap {
@@ -103,8 +94,6 @@ export {
     applyColumnActionsMode,
     createItemRemoveColumn,
     getActionDisabledVariant,
-    getViewPreferenceColumns,
-    getViewPreferenceLists,
     createItemIndexColumn,
     IColumnRendererMap,
     mergeRenderers,

@@ -4,5 +4,6 @@ lib
 lib-amd
 lib-commonjs
 lib-es2015
+**/*.build.log
 
 common/temp

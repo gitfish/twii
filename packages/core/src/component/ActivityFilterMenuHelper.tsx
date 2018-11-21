@@ -1,9 +1,9 @@
 import * as React from "react";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
-import IActivityFilterModel from "../IActivityFilterModel";
+import { IActivityFilterModel } from "../model/IActivityFilterModel";
 import { IActivityListModel as IActivityListModelNew } from "../model/IActivityListModel";
 import { ActivityFilterMenuButton, IActivityFilterProps, IActivityFilterViewOptions } from "./ActivityFilterMenuButton";
-import IActivityListModel from "../IActivityListModel";
+import { IActivityListModel } from "../model/IActivityListModel";
 import { isNotBlank } from "../util/String";
 import { momentToOutputText } from "../util/Date";
 

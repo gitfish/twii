@@ -1,4 +1,3 @@
-import IHandle from "./IHandle";
 import { ISupplierFunc } from "./ISupplierFunc";
 import { IMutableSupplier } from "./IMutableSupplier";
 
@@ -8,7 +7,7 @@ interface IContextOptions<T> {
     factory?: ISupplierFunc<T>;
 }
 
-class Context<T> implements IHandle<T>, IMutableSupplier<T> {
+class Context<T> implements IMutableSupplier<T> {
     private _id : string;
     private _origValue : T;
     private _value : T;

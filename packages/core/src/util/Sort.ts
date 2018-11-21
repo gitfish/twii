@@ -3,9 +3,8 @@ import * as StringUtils from "./String";
 import * as DateUtils from "./Date";
 import ISortProps from "../ISortProps";
 import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
-import IFieldTransformer from "../IFieldTransformer";
-import { defaultFieldTransformer } from "../FieldTransformers";
 import { IKeyMapFunc } from "../IKeyMapFunc";
+import { defaultKeyMap } from "../KeyMapFuncs";
 
 const toSortNumber = (o : any) : number => {
     if(LangUtils.isNumber(o)) {
@@ -81,34 +80,14 @@ const compare = (l : any, r : any, sort?: ISortProps) : number => {
     return result;
 };
 
-
-const sort = <T = any>(items: T[], sort : ISortProps, fieldTransformer: IFieldTransformer = defaultFieldTransformer) : T[] => {
-    return items && sort && StringUtils.isNotBlank(sort.field)
-        ? items.sort((a, b) => compare(fieldTransformer(a, sort.field), fieldTransformer(b, sort.field), sort)) : items;
-};
-
-const mappedSort = <T = any>(items : T[], sort : ISortProps, keyMap : IKeyMapFunc) : T[] => {
+const sort = <T = any>(items : T[], sort : ISortProps, keyMap : IKeyMapFunc = defaultKeyMap) : T[] => {
     return items && sort && StringUtils.isNotBlank(sort.field) ?
         items.sort((a, b) => compare(keyMap(a, sort.field), keyMap(b, sort.field), sort)) : items;
 };
 
-const dateAwareFieldTransformer = function(dateColumns: IColumn[]) {
-    const dateFieldNames = dateColumns.map((column: IColumn) => column.fieldName);
-    return function(item: any, field : string): any {
-        if (item) {
-            if (dateFieldNames.indexOf(field) >= 0) {
-                return DateUtils.dateFromDataText(item[field]);
-            }
-            return item[field];
-        }
-    };
-};
-
 export {
     compare,
-    sort,
-    dateAwareFieldTransformer,
     toSortString,
     toSortNumber,
-    mappedSort
+    sort
 };

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer } from "mobx-react";
-import IActivityFilterModel from "../IActivityFilterModel";
+import { IActivityFilterModel } from "../model/IActivityFilterModel";
 import { CommandBarButton } from "office-ui-fabric-react/lib/Button";
 import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
 import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuProps } from "office-ui-fabric-react/lib/ContextualMenu";
