@@ -4,6 +4,7 @@ lib
 lib-amd
 lib-commonjs
 lib-es2015
+__coverage__
 **/*.build.log
 
 common/temp
