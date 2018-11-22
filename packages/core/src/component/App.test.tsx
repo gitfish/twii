@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactTestRenderer from "react-test-renderer";
 import { AppContainer } from "./App";
 import { AppHostContainer } from "./AppHost";
-import { Router } from "../Router";
+import { Router } from "@twii/router/lib/Router";
 import { toPromise } from "../SyncUtils";
 
 describe("App Container Component", () => {

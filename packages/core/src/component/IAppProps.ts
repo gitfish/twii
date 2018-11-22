@@ -1,4 +1,4 @@
-import { IRequest } from "../IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 
 interface IAppProps {
     match: IRequest;

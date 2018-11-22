@@ -1,5 +1,5 @@
 import { BrowserAppHost, Defaults } from "./BrowserAppHost";
-import { Router } from "../Router";
+import { Router } from "@twii/router/lib/Router";
 import { JSDOM } from "jsdom";
 
 describe("Browser App Host", () => {

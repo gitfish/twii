@@ -3,7 +3,7 @@ import { IPathTemplate } from "./IPathTemplate";
 import { IPathTemplateOptions } from "./IPathTemplateOptions";
 import * as pathToRegexp from "path-to-regexp";
 
-class PathTemplate {
+class PathTemplate implements IPathTemplate {
     private _text: string;
     private _keys: any[] = [];
     private _re : RegExp;

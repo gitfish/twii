@@ -3,7 +3,7 @@ import * as ReactTestRenderer from "react-test-renderer";
 import { HostAppView } from "./HostAppView";
 import { AppHost } from "../model/AppHost";
 import { BrowserAppHost } from "../model/BrowserAppHost";
-import { Router } from "../Router";
+import { Router } from "@twii/router/lib/Router";
 import { JSDOM } from "jsdom";
 
 describe("Host App View Component", () => {

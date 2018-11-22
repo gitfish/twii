@@ -1,5 +1,5 @@
 import { AppHost } from "./AppHost";
-import { Router } from "../Router";
+import { Router } from "@twii/router/lib/Router";
 import * as qs from "qs";
 
 describe("App Host", () => {

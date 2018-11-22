@@ -1,0 +1,23 @@
+{
+  "files": {
+    "packages/router/package-deps.json": "8a5840f263586536356778c240c7540b50da0d3d",
+    "packages/router/package.json": "db35a1c22fad3cfc007a35b8448f4d24b1676995",
+    "packages/router/src/IPathTemplate.ts": "d411a188c5bede08bf6b5127a174e524b374d936",
+    "packages/router/src/IPathTemplateOptions.ts": "f2bb50ef3b9c3ec13f752528bf0b1a73299055dd",
+    "packages/router/src/IPathTestResult.ts": "076df8c7e645ebec8a4d605f816fc90ee121970d",
+    "packages/router/src/IRequest.ts": "cd33b1c7c9387f150e1925a45b600d212b5c8f14",
+    "packages/router/src/IRequestHandler.ts": "e06b4fdab5d36202ac86b67dfeb3c9936fc30ff0",
+    "packages/router/src/IRouter.ts": "e00eb4be2756428fe9d867deeba23c7d7f032020",
+    "packages/router/src/IRouterManager.ts": "b99bd9232985cad2ad6adf5a29691414e41e285e",
+    "packages/router/src/PathTemplate.test.ts": "0111ede367e3d0e02c7fbfc45d0a56fbba2af70f",
+    "packages/router/src/PathTemplate.ts": "bae72946f912e424103cef7d496995e2d4a4e469",
+    "packages/router/src/Router.test.ts": "015cc100a9aefb37e2720037d43ec1ec17135793",
+    "packages/router/src/Router.ts": "bf574616ed6e1474734247aa3feb61b26717c5b5",
+    "packages/router/src/Routers.ts": "0cbe896c2c37f7272cc36fa64433ab5923d55801",
+    "packages/router/src/index.ts": "952376ae1f0ea7823f3576ac5db173ba2d437914",
+    "packages/router/tsconfig.cjs.json": "b64de99224a9d380b732e56892f889c623308e3e",
+    "packages/router/tsconfig.json": "5781c2c2548c03d377e38c409a72164ec2f7f9c5",
+    "common/config/rush/shrinkwrap.yaml": "667c007ce4ec2a9296a8f73e71d86d9d04579d87"
+  },
+  "arguments": "tsc && tsc -p tsconfig.cjs.json "
+}

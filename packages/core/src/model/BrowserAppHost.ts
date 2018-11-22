@@ -1,7 +1,7 @@
 import { AbstractAppHost } from "./AbstractAppHost";
 import { action } from "mobx";
 import { IAppHost } from "../IAppHost";
-import { IRequest } from "../IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import * as PathUtils from "../PathUtils";
 import * as qs from "qs";
 import { stripRight } from "../StringUtils";

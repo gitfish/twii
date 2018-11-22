@@ -1,6 +1,6 @@
 import { IAppHost } from "./IAppHost";
 import { IMutableSupplier } from "./IMutableSupplier";
-import { IRequest } from "./IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { Supplier } from "./model/Supplier";
 
 const getRequestSupplier = (host : IAppHost) : IMutableSupplier<IRequest> => {

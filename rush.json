@@ -255,6 +255,18 @@
    */
   "projects": [
     {
+      "packageName": "@twii/lang",
+      "projectFolder": "packages/lang"
+    },
+    {
+      "packageName": "@twii/router",
+      "projectFolder": "packages/router"
+    },
+    {
+      "packageName": "@twii/router-react",
+      "projectFolder": "packages/router-react"
+    },
+    {
       "packageName": "@twii/core",
       "projectFolder": "packages/core"
     }

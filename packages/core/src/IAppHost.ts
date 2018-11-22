@@ -1,6 +1,6 @@
 import { IEventEmitter } from "./IEventEmitter";
-import { IRequest } from "./IRequest";
-import { IRouter } from "./IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { ISync } from "./ISync";
 import { IStateManager } from "./IStateManager";
 import { IAppIcon } from "./IAppIcon";

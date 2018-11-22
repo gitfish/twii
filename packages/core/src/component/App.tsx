@@ -2,8 +2,8 @@ import * as React from "react";
 import { IAppHost } from "../IAppHost";
 import { AppHost } from "../model/AppHost";
 import { IAppHostProps, AppHostContainer } from "./AppHost";
-import { IRequest } from "../IRequest";
-import { IRouter } from "../IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";
+import { IRouter } from "@twii/router/lib/IRouter";
 import { IAppLauncher } from "../IAppLauncher";
 
 interface IAppContainerBaseProps {

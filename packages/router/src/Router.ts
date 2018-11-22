@@ -4,7 +4,7 @@ import { IRouter } from "./IRouter";
 import { IRequestHandler } from "./IRequestHandler";
 import { IRouterManager } from "./IRouterManager";
 import { PathTemplate } from "./PathTemplate";
-import { isFunction, isString } from "./LangUtils";
+import { isFunction, isString } from "@twii/lang";
 
 interface IRouterEntry {
     r: IRouter;

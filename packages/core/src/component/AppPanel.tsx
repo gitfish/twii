@@ -1,7 +1,7 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { IMutableSupplier } from "../IMutableSupplier";
-import { IRequest } from "../IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { IPanelProps, Panel, IPanel } from "office-ui-fabric-react/lib/Panel";
 import { IAppContainerBaseProps } from "./App";
 import { IconButton } from "office-ui-fabric-react/lib/Button";

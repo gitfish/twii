@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IAppHost } from "../IAppHost";
-import { IRequest } from "../IRequest";
+import { IRequest } from "@twii/router/lib/IRequest";
 import { Link } from "office-ui-fabric-react/lib/Link";
 
 interface IAppLinkProps {

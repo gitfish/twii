@@ -1,6 +1,6 @@
-import { IRouter } from "./IRouter";
-import { IRequest } from "./IRequest";
-import { IRequestHandler } from "./IRequestHandler";
+import { IRouter } from "@twii/router/lib/IRouter";
+import { IRequest } from "@twii/router/lib/IRequest";;
+import { IRequestHandler } from "@twii/router/lib/IRequestHandler";
 
 const Defaults = {
     configId: "default"

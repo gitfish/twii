@@ -1,0 +1,27 @@
+{
+	"name": "@twii/router",
+	"description": "twii router lib",
+	"version": "3.0.0",
+    "license": "MIT",
+    "main": "lib/index.js",
+	"peerDependencies": {
+        "path-to-regexp": "1.7.0",
+        "@twii/lang": "^3.0.0"
+	},
+	"devDependencies": {
+		"@types/jest": "^21.1.5",
+		"del-cli": "^1.1.0",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^23.6.0",
+		"path-to-regexp": "1.7.0",
+		"ts-jest": "^23.10.4",
+        "typescript": "^3.0.3",
+        "@twii/lang": "^3.0.0"
+	},
+	"scripts": {
+		"clean": "del-cli lib --force && del-cli lib-commonjs --force",
+		"build": "tsc && tsc -p tsconfig.cjs.json",
+		"build-watch": "tsc --watch",
+		"test": "jest"
+	}
+}

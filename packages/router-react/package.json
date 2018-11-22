@@ -1,0 +1,29 @@
+{
+	"name": "@twii/router-react",
+	"description": "twii router react lib",
+	"version": "3.0.0",
+    "license": "MIT",
+    "main": "lib/index.js",
+	"peerDependencies": {
+        "@twii/router": "^3.0.0",
+        "react": "^16.6.3",
+		"react-dom": "^16.6.3"
+	},
+	"devDependencies": {
+		"@types/jest": "^21.1.5",
+		"del-cli": "^1.1.0",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^23.6.0",
+		"ts-jest": "^23.10.4",
+        "typescript": "^3.0.3",
+        "@twii/router": "^3.0.0",
+        "react": "^16.6.3",
+		"react-dom": "^16.6.3",
+	},
+	"scripts": {
+		"clean": "del-cli lib --force && del-cli lib-commonjs --force",
+		"build": "tsc && tsc -p tsconfig.cjs.json",
+		"build-watch": "tsc --watch",
+		"test": "jest"
+	}
+}
