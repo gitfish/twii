@@ -1,5 +1,5 @@
 interface IHistoryEntry<T> {
-    timestamp: string;
+    timestamp: Date;
     value: T;
     [key : string] : any;
 }

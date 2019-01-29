@@ -1,6 +1,6 @@
 {
   "files": {
-    "packages/router/package-deps.json": "8a5840f263586536356778c240c7540b50da0d3d",
+    "packages/router/package-deps.json": "4e3f3e5b1e81a7075005637ade7b17f04ecd61fb",
     "packages/router/package.json": "db35a1c22fad3cfc007a35b8448f4d24b1676995",
     "packages/router/src/IPathTemplate.ts": "d411a188c5bede08bf6b5127a174e524b374d936",
     "packages/router/src/IPathTemplateOptions.ts": "f2bb50ef3b9c3ec13f752528bf0b1a73299055dd",

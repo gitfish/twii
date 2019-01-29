@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./lib-commonjs",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "declaration": true,
+        "target": "es5",
+        "allowJs": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "lib": ["dom", "es5", "scripthost", "es2017"],
+        "types": [
+            "jest"
+        ]
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

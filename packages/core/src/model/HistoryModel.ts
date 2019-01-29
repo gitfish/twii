@@ -1,7 +1,6 @@
 import { action, observable } from "mobx";
 import IHistoryModel from "./IHistoryModel";
 import IHistoryEntry from "../IHistoryEntry";
-import { currentTimestampDataText } from "../DateUtils";
 import { StorageServiceContext } from "../service/StorageServiceContext";
 import { IStorageService } from "../service/IStorageService";
 import { ListModel } from "./ListModel";
@@ -34,7 +33,7 @@ class HistoryModel<T> extends ListModel<IHistoryEntry<T>> implements IHistoryMod
     addEntry(value : T) : Promise<any> {
         // ensure items loaded
         return this.load().then(() => {
-            this.items.unshift({ value : value, timestamp: currentTimestampDataText() });
+            this.items.unshift({ value : value, timestamp: new Date() });
             if(this.items.length > this.limit) {
                 this.items.splice(this.items.length - 1);
             }

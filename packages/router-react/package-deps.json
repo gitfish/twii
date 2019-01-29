@@ -1,5 +1,6 @@
 {
   "files": {
+    "packages/router-react/package-deps.json": "862c1b1a5c01cbbfe0ed7518f23a36bbdf99fba4",
     "packages/router-react/package.json": "62b2a34e6c861b7ba9540c3921890b9cad48cd22",
     "packages/router-react/src/index.ts": "58e847abfc073cf51263811c6f60d4ff1dcc213b",
     "packages/router-react/tsconfig.cjs.json": "b64de99224a9d380b732e56892f889c623308e3e",
