@@ -1,4 +1,4 @@
-import * as filters from "../StringFilters";
+import * as filters from "./StringFilters";
 import { IConsumerFunc } from "../IConsumerFunc";
 import { IPredicateFunc } from "../IPredicateFunc";
 import { IMapFunc } from "../IMapFunc";

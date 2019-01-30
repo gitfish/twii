@@ -1,11 +1,11 @@
 {
   "files": {
-    "packages/router-react/package-deps.json": "862c1b1a5c01cbbfe0ed7518f23a36bbdf99fba4",
-    "packages/router-react/package.json": "62b2a34e6c861b7ba9540c3921890b9cad48cd22",
+    "packages/router-react/package-deps.json": "2e128252512a2c16f7bfcf631780e7b9695bc3d6",
+    "packages/router-react/package.json": "fa78b965850d35b594d5aaf29581ea46b7b0acac",
     "packages/router-react/src/index.ts": "58e847abfc073cf51263811c6f60d4ff1dcc213b",
     "packages/router-react/tsconfig.cjs.json": "b64de99224a9d380b732e56892f889c623308e3e",
     "packages/router-react/tsconfig.json": "5781c2c2548c03d377e38c409a72164ec2f7f9c5",
-    "common/config/rush/shrinkwrap.yaml": "667c007ce4ec2a9296a8f73e71d86d9d04579d87"
+    "common/config/rush/shrinkwrap.yaml": "fc95c2798743734ac9f34ba37fe70d9574784c33"
   },
   "arguments": "tsc && tsc -p tsconfig.cjs.json "
 }

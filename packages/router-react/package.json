@@ -4,7 +4,7 @@
 	"version": "3.0.0",
     "license": "MIT",
     "main": "lib/index.js",
-	"peerDependencies": {
+	"dependencies": {
         "@twii/router": "^3.0.0",
         "react": "^16.6.3",
 		"react-dom": "^16.6.3"
@@ -15,10 +15,7 @@
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^23.6.0",
 		"ts-jest": "^23.10.4",
-        "typescript": "^3.0.3",
-        "@twii/router": "^3.0.0",
-        "react": "^16.6.3",
-		"react-dom": "^16.6.3",
+        "typescript": "^3.0.3"
 	},
 	"scripts": {
 		"clean": "del-cli lib --force && del-cli lib-commonjs --force",

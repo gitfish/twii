@@ -1,7 +1,7 @@
 {
   "files": {
-    "packages/router/package-deps.json": "4e3f3e5b1e81a7075005637ade7b17f04ecd61fb",
-    "packages/router/package.json": "db35a1c22fad3cfc007a35b8448f4d24b1676995",
+    "packages/router/package-deps.json": "20e70370eb877005172a5211fd0fcb08804a81a4",
+    "packages/router/package.json": "7f49f54c6a0d685c6663fc56fa2621f54d8010fa",
     "packages/router/src/IPathTemplate.ts": "d411a188c5bede08bf6b5127a174e524b374d936",
     "packages/router/src/IPathTemplateOptions.ts": "f2bb50ef3b9c3ec13f752528bf0b1a73299055dd",
     "packages/router/src/IPathTestResult.ts": "076df8c7e645ebec8a4d605f816fc90ee121970d",
@@ -17,7 +17,7 @@
     "packages/router/src/index.ts": "952376ae1f0ea7823f3576ac5db173ba2d437914",
     "packages/router/tsconfig.cjs.json": "b64de99224a9d380b732e56892f889c623308e3e",
     "packages/router/tsconfig.json": "5781c2c2548c03d377e38c409a72164ec2f7f9c5",
-    "common/config/rush/shrinkwrap.yaml": "667c007ce4ec2a9296a8f73e71d86d9d04579d87"
+    "common/config/rush/shrinkwrap.yaml": "fc95c2798743734ac9f34ba37fe70d9574784c33"
   },
   "arguments": "tsc && tsc -p tsconfig.cjs.json "
 }

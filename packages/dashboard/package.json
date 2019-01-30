@@ -3,8 +3,8 @@
 	"description": "twii dashboard lib",
 	"version": "2.3.10",
 	"license": "MIT",
-	"peerDependencies": {
-		"@twii/common": "^1.0.74",
+	"dependencies": {
+		"@twii/core": "^3.0.0",
 		"@uifabric/styling": "^6.28.0",
 		"@uifabric/utilities": "^6.21.1",
 		"mobx": "^4.3.1",
@@ -12,8 +12,7 @@
 		"qs": "^6.5.1",
 		"office-ui-fabric-react": "^6.76.0",
 		"react": "^16.4.1",
-		"react-dom": "^16.4.1",
-		"moment": "^2.18.1"
+		"react-dom": "^16.4.1"
 	},
 	"devDependencies": {
 		"@types/jest": "^21.1.5",
@@ -26,17 +25,7 @@
 		"ts-jest": "^21.0.1",
 		"typescript": "^3.0.3",
 		"copyfiles": "2.0.0",
-		"raf": "^3.4.0",
-		"@twii/common": "^1.0.74",
-		"@uifabric/styling": "^6.28.0",
-		"@uifabric/utilities": "^6.21.1",
-		"mobx": "^4.3.1",
-		"mobx-react": "^5.2.3",
-		"qs": "^6.5.1",
-		"office-ui-fabric-react": "^6.76.0",
-		"react": "^16.4.1",
-		"react-dom": "^16.4.1",
-		"moment": "^2.18.1"
+		"raf": "^3.4.0"
 	},
 	"scripts": {
 		"clean": "del-cli lib --force && del-cli lib-commonjs --force",

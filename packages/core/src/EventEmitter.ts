@@ -1,5 +1,5 @@
 import { IEvent, IEventEmitter } from "./IEventEmitter";
-import { isFunction } from "./LangUtils";
+import { isFunction } from "@twii/lang";
 
 class EventEmitter implements IEventEmitter {
     private _listeners : any;

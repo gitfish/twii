@@ -1,13 +1,12 @@
 {
-	"name": "@twii/core",
-	"description": "twii core lib",
+	"name": "@twii/xml",
+	"description": "twii xml lib",
 	"version": "3.0.0",
-	"license": "MIT",
-	"dependencies": {
-		"@twii/lang": "^3.0.0",
-		"@twii/router": "^3.0.0",
-		"mobx": "^4.3.1",
-		"qs": "^6.5.1"
+    "license": "MIT",
+    "main": "lib/index.js",
+	"peerDependencies": {
+        "xmldom": "0.1.27",
+        "@twii/lang": "^3.0.0"
 	},
 	"devDependencies": {
 		"@types/jest": "^21.1.5",
@@ -15,8 +14,8 @@
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^23.6.0",
 		"ts-jest": "^23.10.4",
-		"typescript": "^3.0.3",
-		"jsdom": "^13.2.0"
+        "typescript": "^3.0.3",
+        "@twii/lang": "^3.0.0"
 	},
 	"scripts": {
 		"clean": "del-cli lib --force && del-cli lib-commonjs --force",

@@ -4,14 +4,6 @@ const numberType = typeof(1);
 const booleanType = typeof(true);
 const functionType = typeof(function() {});
 
-const type = {
-    string: stringType,
-    object: objectType,
-    number: numberType,
-    boolean: booleanType,
-    function: functionType
-};
-
 const isString = (o : any) : boolean => {
     return typeof(o) === stringType;
 };
@@ -38,7 +30,6 @@ const isNullOrUndefined = (o : any) : boolean => {
 };
 
 export {
-    type,
     isString,
     isObject,
     isNumber,

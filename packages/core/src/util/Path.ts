@@ -1,5 +1,5 @@
 import * as StringUtils from "./String";
-import { isOneOf } from "../StringFilters";
+import { isOneOf } from "./StringFilters";
 
 const sep = "/";
 const extDelim = ".";

@@ -1,5 +1,5 @@
 import * as StringUtils from "./String";
-import * as LangUtils from "./Lang";
+import { isArray, isFunction, isObject } from "@twii/lang";
 
 interface IContainsTextOptions {
     matcher: (text: string, match: string) => boolean;
@@ -11,13 +11,13 @@ const DefaultContainsTextOptions : IContainsTextOptions = {
 
 const containsTextImmediate = function(o : any, text : string, matcher : (text: string, match: string) => boolean) : boolean {
     if(o) {
-        if(LangUtils.isArray(o) || (o && LangUtils.isFunction(o.some))) {
+        if(isArray(o) || (o && isFunction(o.some))) {
             return o.some(value => {
                 return containsTextImmediate(value, text, matcher);
             });
         }
         
-        if(LangUtils.isObject(o)) {
+        if(isObject(o)) {
             return Object.keys(o).some(key => {
                 return containsTextImmediate(o[key], text, matcher);
             });

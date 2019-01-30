@@ -1,32 +1,31 @@
-import * as LangUtils from "./Lang";
 import * as StringUtils from "./String";
-import * as DateUtils from "./Date";
 import ISortProps from "../ISortProps";
-import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
 import { IKeyMapFunc } from "../IKeyMapFunc";
 import { defaultKeyMap } from "../KeyMapFuncs";
+import { isNumber, isString, isBoolean, isObject, isArray } from "@twii/lang";
 
 const toSortNumber = (o : any) : number => {
-    if(LangUtils.isNumber(o)) {
+    if(isNumber(o)) {
         return o;
     }
-    if(LangUtils.isDate(o)) {
-        return o.getTime();
-    }
-    if(LangUtils.isString(o)) {
+    if(isString(o)) {
         return parseInt(o);
     }
-    if(LangUtils.isBoolean(o)) {
+    if(isBoolean(o)) {
         return o ? 1 : 0;
     }
+    if(o instanceof Date) {
+        return o.getTime();
+    }
+    
     return 0;
 };
 
 const toSortString = (o : any) : string => {
     let s;
-    if(LangUtils.isString(o)) {
+    if(isString(o)) {
         s = o;
-    } else if(LangUtils.isObject(o)) {
+    } else if(isObject(o)) {
         s = String(o);
         if(s === String({})) {
             s = JSON.stringify(o);
@@ -38,7 +37,7 @@ const toSortString = (o : any) : string => {
 };
 
 const toSortArray = (o : any) : any[] => {
-    if(LangUtils.isArray(o)) {
+    if(isArray(o)) {
         return o;
     }
     return [o];
@@ -57,17 +56,17 @@ const compareArrays = (l : any, r : any, sort?: ISortProps) : number => {
 const compare = (l : any, r : any, sort?: ISortProps) : number => {
     let result;
     
-    if(LangUtils.isNumber(l)) {
+    if(isNumber(l)) {
         result = r !== undefined && r !== null ? l - toSortNumber(r) : 1;
-    } else if(LangUtils.isDate(l)) {
+    } else if(l instanceof Date) {
         result = r ? (l as Date).getTime() - toSortNumber(r) : 1;
-    } else if(LangUtils.isString(l)) {
+    } else if(isString(l)) {
         result = r !== undefined && r !== null ? (l as string).localeCompare(toSortString(r)) : 1;
-    } else if(LangUtils.isBoolean(l)) {
+    } else if(isBoolean(l)) {
         result = r !== undefined && r !== null ? (l ? 1 : 0) - toSortNumber(r) : 1;
-    } else if(LangUtils.isArray(l)) {
+    } else if(isArray(l)) {
         result = compareArrays(l, toSortArray(r), sort);
-    } else if(LangUtils.isObject(l)) {
+    } else if(isObject(l)) {
         result = r !== undefined && r !== null ? toSortString(l).localeCompare(toSortString(r)) : 1;
     } else {
         result = r ? -1 : 0;
