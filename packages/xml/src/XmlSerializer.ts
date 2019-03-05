@@ -1,8 +1,8 @@
 import IXmlActions from "./IXmlActions";
 import { IXmlType, IXmlTypeProp } from "./IXmlType";
 import { dateTime, time } from "./SimpleXmlType";
-import * as LangUtils from "../util/Lang";
-import * as DateUtils from "../util/Date";
+import * as LangUtils from "@twii/lang";
+import * as DateUtils from "./DateUtils";
 import { xsiNamespaceURI, xsiNamespacePrefix } from "./XmlCommon";
 
 interface IElementOptions {

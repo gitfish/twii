@@ -1,6 +1,6 @@
 {
   "files": {
-    "packages/lang/package-deps.json": "fcc40bf4c4980d8dca44016b7dd3f1533e141b8d",
+    "packages/lang/package-deps.json": "80ca49e334b1e50325dae3db7d8b322632d5df7c",
     "packages/lang/package.json": "5b9e4073e573a9ff070e7b0c8dab006434495367",
     "packages/lang/src/index.ts": "8a58951d5ce1d01129f940c68dc026fac1521ff0",
     "packages/lang/tsconfig.cjs.json": "b64de99224a9d380b732e56892f889c623308e3e",

@@ -1,7 +1,7 @@
 import { deserializeEnvelope } from "./SoapDeserializer";
 import { string, date, dateTime, time, boolean, int } from "./SimpleXmlType";
 import IXmlType from "./IXmlType";
-import * as DateUtils from "../DateUtils";
+import * as DateUtils from "./DateUtils";
 import { soapEnvelopeNamespaceURI } from "./SoapCommon";
 
 interface IAddress {

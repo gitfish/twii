@@ -1,7 +1,7 @@
 import { deserialize } from "./XmlDeserializer";
 import { string, date, dateTime, time, boolean, int } from "./SimpleXmlType";
 import IXmlType from "./IXmlType";
-import * as DateUtils from "../DateUtils";
+import * as DateUtils from "./DateUtils";
 
 interface IAddress {
     line1?: string;

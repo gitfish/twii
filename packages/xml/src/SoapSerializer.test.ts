@@ -2,7 +2,7 @@ import { serializeEnvelope } from "./SoapSerializer";
 import ElementBuilder from "./ElementBuilder";
 import { string, date, dateTime, time, boolean } from "./SimpleXmlType";
 import IXmlType from "./IXmlType";
-import * as DateUtils from "../DateUtils";
+import * as DateUtils from "./DateUtils";
 import { soapEnvelopePrefix, envelopeTagName, envelopeBodyTagName } from "./SoapCommon";
 
 interface IAddress {

@@ -16,7 +16,7 @@ const DefaultReactRouterOptions = {
 };
 
 const reactRouter = (importer: () => Promise<any> | any, opts?: IReactRouterOptions) => {
-    const mergedOpts = Object.assign({}, DefaultReactRouterOptions, opts);
+    const mergedOpts = {...DefaultReactRouterOptions, ...opts};
     const handler = (request : IRequest) => {
         return Promise.resolve(importer()).then(m => {
             const type = mergedOpts.exportKey ? m[mergedOpts.exportKey] : m.default;
@@ -30,3 +30,10 @@ const reactRouter = (importer: () => Promise<any> | any, opts?: IReactRouterOpti
     };
     return mergedOpts.exact ? exactPath(handler, mergedOpts) : handler;
 };
+
+export {
+    reactRouter,
+    reactRouter as default,
+    IReactRouterOptions,
+    DefaultReactRouterOptions
+}

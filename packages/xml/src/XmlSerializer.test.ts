@@ -2,7 +2,7 @@ import { serialize } from "./XmlSerializer";
 import ElementBuilder from "./ElementBuilder";
 import { string, date, dateTime, time, boolean } from "./SimpleXmlType";
 import IXmlType from "./IXmlType";
-import * as DateUtils from "../DateUtils";
+import * as DateUtils from "./DateUtils";
 
 interface IAddress {
     line1?: string;

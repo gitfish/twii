@@ -1,6 +1,6 @@
 import axios from "axios";
 import IXmlType from "./IXmlType";
-import * as StringUtils from "../util/String";
+import * as StringUtils from "@twii/core/lib/util/String";
 import { serializeEnvelope } from "./SoapSerializer";
 import { deserializeEnvelope } from "./SoapDeserializer";
 import { IElementOptions } from "./XmlSerializer";

@@ -1,6 +1,6 @@
 import IDocumentFactory from "./IDocumentFactory";
 import DefaultDocumentFactory from "./DefaultDocumentFactory";
-import Context from "../Context";
+import Context from "@twii/core/lib/Context";
 
 const DocumentFactoryContext = new Context<IDocumentFactory>({
     factory() {

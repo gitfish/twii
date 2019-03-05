@@ -1,5 +1,4 @@
-import { equalsIgnoreCase, startsWith } from "../util/String";
-import IXmlType from "./IXmlType";
+import { equalsIgnoreCase, startsWith } from "@twii/core/lib/util/String";
 
 const xsiNamespaceURI = "http://www.w3.org/2001/XMLSchema-instance";
 const xsiNamespacePrefix = "xsi";

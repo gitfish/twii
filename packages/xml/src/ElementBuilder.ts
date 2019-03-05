@@ -1,7 +1,7 @@
 import { IXmlActions, IElementOptions, IAttributeOptions, INamespaceOptions } from "./IXmlActions";
 import IDocumentFactory from "./IDocumentFactory";
 import DocumentFactoryContext from "./DocumentFactoryContext";
-import { Sequence } from "../util/Id";
+import { Sequence } from "@twii/core/lib/Id";
 
 const ROOT_PREFIX = "xml";
 const NAMESPACE_PREFIX = "xmlns";

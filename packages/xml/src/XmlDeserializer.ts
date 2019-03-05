@@ -6,7 +6,7 @@ import {
     getNamespacePrefix,
     getElementsByName
 } from "./XmlCommon";
-import * as DateUtils from "../util/Date";
+import * as DateUtils from "./DateUtils";
 
 const _deserializePropAttribute = (parent : Element, type : IXmlType, propKey : string, prop : IXmlTypeProp) : any => {
     let name = prop.name || propKey;
