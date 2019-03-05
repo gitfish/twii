@@ -6,6 +6,7 @@
         "packages/router",
         "packages/router-react",
         "packages/core",
-        "packages/core-react" 
+        "packages/core-react",
+        "packages/core-react-sample"
     ]
 }
