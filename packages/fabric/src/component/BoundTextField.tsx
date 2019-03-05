@@ -1,9 +1,9 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { TextField, ITextFieldProps } from "office-ui-fabric-react/lib/TextField";
-import { IBoundProps } from "./IBoundProps";
-import { setBoundValue, getBoundValue, getErrorMessage } from "./BoundHelper";
-import { IError } from "../IError";
+import { IBoundProps } from "../../../core-ui/src/component/IBoundProps";
+import { setBoundValue, getBoundValue, getErrorMessage } from "../../../core-ui/src/component/BoundHelper";
+import { IError } from "@twii/core/lib/IError";
 
 interface IBoundTextFieldProps extends ITextFieldProps, IBoundProps<any, string> {
     errors?: IError[];

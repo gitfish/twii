@@ -1,6 +1,11 @@
 {
     "private": true,
     "workspaces": [
-        "packages/*"    
+        "packages/lang",
+        "packages/xml",
+        "packages/router",
+        "packages/router-react",
+        "packages/core",
+        "packages/core-react" 
     ]
 }

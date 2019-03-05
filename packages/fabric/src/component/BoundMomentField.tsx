@@ -2,8 +2,8 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { MomentField, IMomentFieldProps } from "./MomentField";
 import * as moment from "moment";
-import { IBoundProps } from "./IBoundProps";
-import { setBoundValue, getBoundValue } from "./BoundHelper";
+import { IBoundProps } from "../../../core-ui/src/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "../../../core-ui/src/component/BoundHelper";
 
 interface IBoundMomentFieldProps extends IMomentFieldProps, IBoundProps<any, moment.Moment> {}
 

@@ -1,9 +1,8 @@
 import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
-import ISortProps from "../ISortProps";
-import ISortModel from "../ISortModel";
-import { ISortModel as INewSortModel } from "../model/ISortModel";
-import * as StringUtils from "../util/String";
+import { ISortProps } from "@twii/core/lib/ISortProps";
+import { ISortModel } from "@twii/core/lib/ISortModel";
+import * as StringUtils from "@twii/core/lib/StringUtils";
 
 interface ICreateMenuItemsFromColumnsOptions {
     columns: IColumn[];
@@ -127,19 +126,19 @@ const createSortItem = (opts: ICreateSortItemsOptions) : IContextualMenuItem => 
 
 interface ICreateSortItemFromModelOptions {
     columns: IColumn[];
-    sort: ISortModel | INewSortModel;
+    sort: ISortModel;
     name?: string;
     title?: string;
     hideLabel?: boolean;
 }
 
 const onModelSortFieldClick = (e, item) => {
-    const sort : ISortModel | INewSortModel = item.context;
+    const sort : ISortModel = item.context;
     sort.setField(item.fieldName);
 };
 
 const onModelSortOrderClick = (e, item) => {
-    const sort : ISortModel | INewSortModel = item.context;
+    const sort : ISortModel = item.context;
     sort.setDescending(item.sortDescending);
 }
 

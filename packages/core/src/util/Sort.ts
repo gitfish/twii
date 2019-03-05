@@ -51,7 +51,7 @@ const compareArrays = (l : any, r : any, sort?: ISortProps) : number => {
         return compare(ra, rb, sort);
     });
     return compare(ls.length > 0 ? ls[0] : undefined, rs.length > 0 ? rs[0] : undefined);
-}
+};
 
 const compare = (l : any, r : any, sort?: ISortProps) : number => {
     let result;

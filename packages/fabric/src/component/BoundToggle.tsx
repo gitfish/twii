@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Toggle, IToggleProps } from "office-ui-fabric-react/lib/Toggle";
 import { observer } from "mobx-react";
-import { IBoundProps } from "./IBoundProps";
-import { setBoundValue, getBoundValue } from "./BoundHelper";
+import { IBoundProps } from "../../../core-ui/src/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "../../../core-ui/src/component/BoundHelper";
 
 interface IBoundToggleProps extends IToggleProps, IBoundProps<any, boolean> {}
 

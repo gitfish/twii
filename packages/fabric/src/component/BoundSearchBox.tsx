@@ -1,8 +1,8 @@
 import * as React from "react";
 import { observer } from "mobx-react";
 import { SearchBox, ISearchBoxProps } from "office-ui-fabric-react/lib/SearchBox";
-import { IBoundProps } from "./IBoundProps";
-import { setBoundValue, getBoundValue } from "./BoundHelper";
+import { IBoundProps } from "../../../core-ui/src/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "../../../core-ui/src/component/BoundHelper";
 
 interface IBoundSearchBoxProps extends ISearchBoxProps, IBoundProps<any, string> { }
 

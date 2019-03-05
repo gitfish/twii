@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Checkbox, ICheckboxProps } from "office-ui-fabric-react/lib/Checkbox";
 import { observer } from "mobx-react";
-import { IBoundProps } from "./IBoundProps";
-import { setBoundValue, getBoundValue } from "./BoundHelper";
+import { IBoundProps } from "../../../core-ui/src/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "../../../core-ui/src/component/BoundHelper";
 
 interface IBoundCheckboxProps extends ICheckboxProps, IBoundProps<any, boolean> {}
 

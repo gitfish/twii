@@ -1,4 +1,4 @@
-import Context from "../Context";
+import Context from "@twii/core/lib/Context";
 import { ICalendarStrings } from "office-ui-fabric-react/lib/Calendar";
 
 const CalendarStringsContext = new Context<ICalendarStrings>({

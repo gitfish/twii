@@ -4,7 +4,6 @@ import {
     ColumnActionsMode
 } from "office-ui-fabric-react/lib/DetailsList";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
-import { IWordColumn } from "./ColumnTextHelper";
 
 const applyColumnActionsMode = (columns: IColumn[], columnActionsMode: ColumnActionsMode): IColumn[] => {
     return columns ? columns.map(c => {

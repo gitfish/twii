@@ -1,13 +1,16 @@
 import * as React from "react";
 import { Dropdown, IDropdownProps, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { observer } from "mobx-react";
-import { IOptionListModel } from "../model/IOptionListModel";
-import { IBoundProps } from "./IBoundProps";
-import { setBoundValue, getBoundValue } from "./BoundHelper";
+import { IBoundProps } from "../../../core-ui/src/component/IBoundProps";
+import { setBoundValue, getBoundValue } from "../../../core-ui/src/component/BoundHelper";
+import { IMapFunc } from "@twii/core/lib/IMapFunc";
+import * as SortUtils from "@twii/core/lib/SortUtils";
 
 interface IBoundDropdownProps extends IDropdownProps, IBoundProps<any, string> {
-    optionList?: IOptionListModel;
+    optionList?: any[];
+    optionItemMapper?: IMapFunc<any, IDropdownOption>;
     sortOptions?: boolean;
+    sortDesc?: boolean;
     includeEmptyOption?: boolean;
     emptyOptionText?: string;
 }
@@ -21,20 +24,18 @@ class BoundDropdown extends React.Component<IBoundDropdownProps, any> {
             this.props.onChanged(option, index);
         }
     }
+    private _mapOptionItem = (item : any) : IDropdownOption => {
+        return this.props.optionItemMapper ? this.props.optionItemMapper(item) : item as IDropdownOption;
+    }
     render() {
         let dropdownOptions : IDropdownOption[] = [];
         if(this.props.options) {
             dropdownOptions = dropdownOptions.concat(this.props.options);
+        } else if(this.props.optionList) {
+            dropdownOptions = dropdownOptions.concat(this.props.optionList.map(this._mapOptionItem));
         }
-        const optionsList = this.props.optionList;
-        if(optionsList) {
-            const options = this.props.sortOptions ? optionsList.itemsSorted : optionsList.itemsView;
-            options.forEach(o => {
-                dropdownOptions.push({
-                    key: o.key,
-                    text: o.text
-                });
-            });
+        if(this.props.sortOptions) {
+            SortUtils.sort(dropdownOptions, { field: "text", descending: this.props.sortDesc });
         }
         
         if(this.props.includeEmptyOption) {
