@@ -1,0 +1,13 @@
+{
+    "lerna": "3.13.1",
+    "packages": [
+      "packages/lang",
+      "packages/xml",
+      "packages/router",
+      "packages/router-react",
+      "packages/core",
+      "packages/core-react",
+      "packages/core-react-sample"
+    ],
+    "version": "1.0.0"
+  }
