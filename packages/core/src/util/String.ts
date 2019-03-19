@@ -6,6 +6,10 @@ import { not } from "../Predicates";
 
 const empty = "";
 
+const Defaults = {
+    padChar: " "
+};
+
 const isSane = (text : string) => {
     return text !== undefined && text !== null;
 };
@@ -237,7 +241,7 @@ const equalsIgnoreCase = (l : string, r : string) : boolean => {
     return (l === r) || (l !== undefined && r !== undefined ? l.toLowerCase() === r.toLowerCase() : false);
 };
 
-const padLeft = (s : string, length : number, padChar : string = " ") : string => {
+const padLeft = (s : string, length : number, padChar : string = Defaults.padChar) : string => {
     let r = s || "";
     while(r.length < length) {
         r = padChar + r;
@@ -257,7 +261,7 @@ const stripLeft = (s : string, stripChar : string) : string => {
     return s;
 };
 
-const padRight = (s : string, length : number, padChar : string = " ") : string => {
+const padRight = (s : string, length : number, padChar : string = Defaults.padChar) : string => {
     let r = s || "";
     while(r.length < length) {
         r = r + padChar;
@@ -354,5 +358,6 @@ export {
     join,
     capitalizeFirstLetter,
     wordsToCamelCase,
-    filters
+    filters,
+    Defaults
 };
