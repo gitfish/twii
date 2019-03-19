@@ -108,7 +108,7 @@ const filter = (text : string, pr : IPredicateFunc<string, string>) : string => 
 
 const reject = (text : string, pr : IPredicateFunc<string, string>) : string => {
     if(text) {
-        var r = empty;
+        let r = empty;
         const action = (ch, idx, source) => {
             if(!pr(ch, idx, source)) {
                 r += ch;
