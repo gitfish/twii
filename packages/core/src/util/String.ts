@@ -83,7 +83,7 @@ const every = (text : string, pr : IPredicateFunc<string, string>) : boolean => 
 const everyRtl = (text : string, pr : IPredicateFunc<string, string>) : boolean => {
     if(text) {
         let tl = text.length;
-        for(var i = tl - 1; i >= 0; i--) {
+        for(let i = tl - 1; i >= 0; i--) {
             if(!pr(text.charAt(i), i, text)) {
                 return false;
             }
