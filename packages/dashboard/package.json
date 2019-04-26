@@ -7,6 +7,9 @@
 		"name": "Michael Fisher",
 		"email": "mfisher.au@gmail.com"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"@twii/core": "^3.0.0",
 		"mobx": "^4.3.1",

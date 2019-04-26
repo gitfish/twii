@@ -14,6 +14,9 @@
 		"name": "Michael Fisher",
 		"email": "mfisher.au@gmail.com"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"license": "MIT",
 	"dependencies": {
 		"@twii/core": "^3.0.3",
@@ -43,5 +46,6 @@
 		"webpack-dev-server": "^3.2.1",
 		"webpack-sources": "^1.3.0",
 		"yargs": "^9.0.1"
-	}
+	},
+	"gitHead": "4bb07df48e355cea7f5d4270d0bbe88d114445fd"
 }

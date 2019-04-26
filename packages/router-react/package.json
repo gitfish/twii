@@ -8,6 +8,9 @@
 		"name": "Michael Fisher",
 		"email": "mfisher.au@gmail.com"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"@twii/router": "^3.0.3",
 		"react": "^16.6.3",
@@ -26,5 +29,6 @@
 		"build": "tsc && tsc -p tsconfig.cjs.json",
 		"build-watch": "tsc --watch",
 		"test": "jest"
-	}
+	},
+	"gitHead": "4bb07df48e355cea7f5d4270d0bbe88d114445fd"
 }
