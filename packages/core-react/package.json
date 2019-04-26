@@ -3,6 +3,10 @@
 	"description": "twii core react lib",
 	"version": "3.0.2",
 	"license": "MIT",
+	"author": {
+		"name": "Michael Fisher",
+		"email": "mfisher.au@gmail.com"
+	},
 	"dependencies": {
 		"@twii/core": "^3.0.2",
 		"@twii/lang": "^3.0.2",

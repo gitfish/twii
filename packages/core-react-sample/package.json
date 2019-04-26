@@ -10,8 +10,11 @@
 		"start": "webpack-dev-server",
 		"start-mock": "webpack-dev-server --env.configId=mock"
 	},
-	"author": "mfisher.au@gmail.com",
-	"license": "ISC",
+	"author": {
+		"name": "Michael Fisher",
+		"email": "mfisher.au@gmail.com"
+	},
+	"license": "MIT",
 	"dependencies": {
 		"@twii/core": "^3.0.2",
 		"@twii/core-react": "^3.0.2",
