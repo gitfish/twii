@@ -1,7 +1,7 @@
 {
 	"name": "@twii/router-react",
 	"description": "twii router react lib",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"license": "MIT",
 	"main": "lib/index.js",
 	"author": {
@@ -9,7 +9,7 @@
 		"email": "mfisher.au@gmail.com"
 	},
 	"dependencies": {
-		"@twii/router": "^3.0.2",
+		"@twii/router": "^3.0.3",
 		"react": "^16.6.3",
 		"react-dom": "^16.6.3"
 	},

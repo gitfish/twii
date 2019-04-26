@@ -1,7 +1,7 @@
 {
 	"name": "@twii/xml",
 	"description": "twii xml lib",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"license": "MIT",
 	"main": "lib/index.js",
 	"author": {
@@ -9,8 +9,8 @@
 		"email": "mfisher.au@gmail.com"
 	},
 	"dependencies": {
-		"@twii/core": "^3.0.2",
-		"@twii/lang": "^3.0.2",
+		"@twii/core": "^3.0.3",
+		"@twii/lang": "^3.0.3",
 		"axios": "^0.18.0",
 		"moment": "^2.18.1",
 		"xmldom": "0.1.27"

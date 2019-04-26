@@ -1,7 +1,7 @@
 {
 	"name": "@twii/router",
 	"description": "twii router lib",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"license": "MIT",
 	"main": "lib/index.js",
 	"author": {
@@ -9,7 +9,7 @@
 		"email": "mfisher.au@gmail.com"
 	},
 	"dependencies": {
-		"@twii/lang": "^3.0.2",
+		"@twii/lang": "^3.0.3",
 		"path-to-regexp": "1.7.0"
 	},
 	"devDependencies": {
