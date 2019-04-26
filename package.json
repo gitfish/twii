@@ -16,6 +16,7 @@
         "clean": "lerna run clean",
         "build": "lerna run build",
         "publish": "lerna publish",
+        "publishFromGit": "lerna publish from-git",
         "test": "lerna run test"
     }
 }
