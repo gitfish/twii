@@ -1,12 +1,12 @@
 {
 	"name": "@twii/xml",
 	"description": "twii xml lib",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"license": "MIT",
 	"main": "lib/index.js",
 	"dependencies": {
-		"@twii/core": "^3.0.1",
-		"@twii/lang": "^3.0.1",
+		"@twii/core": "^3.0.2",
+		"@twii/lang": "^3.0.2",
 		"axios": "^0.18.0",
 		"moment": "^2.18.1",
 		"xmldom": "0.1.27"

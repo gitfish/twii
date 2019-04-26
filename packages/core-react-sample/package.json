@@ -1,6 +1,6 @@
 {
 	"name": "@twii/core-react-sample",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "core react lib sample",
 	"scripts": {
 		"clean": "del-cli dist --force",
@@ -13,10 +13,10 @@
 	"author": "mfisher.au@gmail.com",
 	"license": "ISC",
 	"dependencies": {
-		"@twii/core": "^3.0.1",
-		"@twii/core-react": "^3.0.1",
-		"@twii/router": "^3.0.1",
-		"@twii/router-react": "^3.0.1",
+		"@twii/core": "^3.0.2",
+		"@twii/core-react": "^3.0.2",
+		"@twii/router": "^3.0.2",
+		"@twii/router-react": "^3.0.2",
 		"core-js": "2.5.0",
 		"office-ui-fabric-react": "^6.84.0",
 		"react": "^16.4.1",

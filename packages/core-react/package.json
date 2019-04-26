@@ -1,12 +1,12 @@
 {
 	"name": "@twii/core-react",
 	"description": "twii core react lib",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"license": "MIT",
 	"dependencies": {
-		"@twii/core": "^3.0.1",
-		"@twii/lang": "^3.0.1",
-		"@twii/router": "^3.0.1",
+		"@twii/core": "^3.0.2",
+		"@twii/lang": "^3.0.2",
+		"@twii/router": "^3.0.2",
 		"mobx": "^4.3.1",
 		"mobx-react": "^5.2.3",
 		"moment": "^2.18.1",
