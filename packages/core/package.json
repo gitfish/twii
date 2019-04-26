@@ -1,7 +1,7 @@
 {
 	"name": "@twii/core",
 	"description": "twii core lib",
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"license": "MIT",
 	"author": {
 		"name": "Michael Fisher",
@@ -11,8 +11,8 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@twii/lang": "^3.0.3",
-		"@twii/router": "^3.0.3",
+		"@twii/lang": "^3.0.4",
+		"@twii/router": "^3.0.4",
 		"mobx": "^4.3.1",
 		"qs": "^6.5.1"
 	},
