@@ -69,22 +69,22 @@ const createConfig = (env) => {
                     exclude: isNodeModuleFile
                 },
                 {
+                    test: endsWith(".woff", ".woff2", ".svg", ".ttf", ".eot"),
+                    use: [
+                        { loader: "file-loader" }
+                    ]
+                },
+                {
+                    test: endsWith(".png", ".jpg", ".gif", ".bmp"),
+                    use: [
+                        { loader: "file-loader" }
+                    ]
+                },
+                {
                     test: endsWith(".css"),
                     use: [
-                        { loader: "@microsoft/loader-load-themed-styles" },
+                        { loader: "style-loader" },
                         { loader: "css-loader" }
-                    ]
-                },
-                {
-                    test: endsWith(".woff", ".woff2", ".font.svg", ".ttf", ".eot"),
-                    use: [
-                        { loader: "file-loader" }
-                    ]
-                },
-                {
-                    test: endsWith(".png", ".jpg", ".gif"),
-                    use: [
-                        { loader: "file-loader" }
                     ]
                 }
             ]
