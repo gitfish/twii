@@ -10,7 +10,7 @@
 		"start": "webpack-dev-server",
 		"start-mock": "webpack-dev-server --env.configId=mock"
 	},
-	"author": "analystdesktop@border.gov.au",
+	"author": "mfisher.au@gmail.com",
 	"license": "ISC",
 	"dependencies": {
 		"@twii/router": "^3.0.0",
