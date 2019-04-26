@@ -8,3 +8,4 @@ __coverage__
 **/*.build.log
 
 common/temp
+lerna-debug.log

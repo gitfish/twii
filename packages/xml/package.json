@@ -1,23 +1,23 @@
 {
 	"name": "@twii/xml",
 	"description": "twii xml lib",
-	"version": "3.0.0",
-    "license": "MIT",
-    "main": "lib/index.js",
+	"version": "3.0.1",
+	"license": "MIT",
+	"main": "lib/index.js",
 	"dependencies": {
+		"@twii/core": "^3.0.1",
+		"@twii/lang": "^3.0.1",
 		"axios": "^0.18.0",
-        "xmldom": "0.1.27",
-		"@twii/lang": "^3.0.0",
-		"@twii/core": "^3.0.0",
-		"moment": "^2.18.1"
+		"moment": "^2.18.1",
+		"xmldom": "0.1.27"
 	},
 	"devDependencies": {
 		"@types/jest": "^21.1.5",
 		"del-cli": "^1.1.0",
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^24.1.0",
-        "ts-jest": "^24.0.0",
-        "typescript": "^3.0.3"
+		"ts-jest": "^24.0.0",
+		"typescript": "^3.0.3"
 	},
 	"scripts": {
 		"clean": "del-cli lib --force && del-cli lib-commonjs --force",

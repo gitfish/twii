@@ -1,12 +1,12 @@
 {
 	"name": "@twii/router-react",
 	"description": "twii router react lib",
-	"version": "3.0.0",
-    "license": "MIT",
-    "main": "lib/index.js",
+	"version": "3.0.1",
+	"license": "MIT",
+	"main": "lib/index.js",
 	"dependencies": {
-        "@twii/router": "^3.0.0",
-        "react": "^16.6.3",
+		"@twii/router": "^3.0.1",
+		"react": "^16.6.3",
 		"react-dom": "^16.6.3"
 	},
 	"devDependencies": {
@@ -14,8 +14,8 @@
 		"del-cli": "^1.1.0",
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^24.1.0",
-        "ts-jest": "^24.0.0",
-        "typescript": "^3.0.3"
+		"ts-jest": "^24.0.0",
+		"typescript": "^3.0.3"
 	},
 	"scripts": {
 		"clean": "del-cli lib --force && del-cli lib-commonjs --force",
