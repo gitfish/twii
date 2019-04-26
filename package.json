@@ -15,6 +15,7 @@
     "scripts": {
         "clean": "lerna run clean",
         "build": "lerna run build",
+        "publish": "lerna publish",
         "test": "lerna run test"
     }
 }
