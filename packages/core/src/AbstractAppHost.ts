@@ -30,7 +30,6 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     @observable.ref private _request : IRequest;
     @observable protected _initialized : boolean = false;
     @observable protected _requestHistory : IRequest[] = [];
-    protected _defaultRequest : IRequest;
     launcher : IAppLauncher;
 
     get id() {
@@ -159,7 +158,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     }
 
     protected _init(request?: IRequest) : Promise<any> {
-        this.setRequest(request || this.defaultRequest);
+        this.setRequest(request);
         this._updateRequestHistory();
         return this._loadImpl();
     }
@@ -169,7 +168,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
     }
 
     protected _updateRequestHistory() {
-        const req = Object.assign({}, this.request, { replace: false });
+        const req = { ...this.request, replace: false };
         if(this.request.replace) {
             if(this._requestHistory.length > 0) {
                 this._requestHistory[this._requestHistory.length - 1] = req;
@@ -195,7 +194,7 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
         }
 
         const currentUrl = this.url;
-        this.setRequest(request || this.defaultRequest);
+        this.setRequest(request);
         const url = this.getUrl(this.request);
 
         if(url !== currentUrl) {
@@ -207,32 +206,29 @@ abstract class AbstractAppHost extends StateManager implements IAppHost {
 
     open(request: IRequest) {
         if(this.launcher) {
-            const launchRequest = Object.assign({}, request, { opener: this });
+            const launchRequest = { ...request, opener: this };
             return Promise.resolve(this.launcher(launchRequest));
         }
         return Promise.reject({ code: "ILLEGAL_STATE", message: "A launcher hasn't been configured" });
     }
 
     get defaultRequest() : IRequest {
-        return Object.assign({}, this._defaultRequest);
-    }
-    set defaultRequest(value : IRequest) {
-        this.setDefaultRequest(value);
-    }
-    setDefaultRequest(defaultRequest : IRequest) {
-        this._defaultRequest = defaultRequest;
+        return {};
     }
 
     @computed
     get request() : IRequest {
-        return Object.assign({}, this._request);
+        if(!this._request) {
+            return this.defaultRequest;
+        }
+        return { ...this._request };
     }
     set request(value) {
         this.setRequest(value);
     }
-
+    
     @action
-    protected setRequest(request : IRequest) {
+    setRequest(request : IRequest) {
         this._request = request;
     }
 

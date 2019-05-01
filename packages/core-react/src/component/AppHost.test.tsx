@@ -17,7 +17,6 @@ describe("App Host Container Component", () => {
         let r = ReactTestRenderer.create(
             <AppHostContainer host={host} noLoadOnMount={true} />
         );
-        const instance = r.getInstance();
 
         let out = r.toJSON();
         console.log("-- Out: " + out);

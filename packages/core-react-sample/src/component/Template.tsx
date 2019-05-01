@@ -1,4 +1,5 @@
 import * as React from "react";
+import "semantic-ui-css/semantic.min.css";
 import { IAppProps } from "@twii/core-react/lib/component/IAppProps";
 import { Menu, Container, Dropdown } from "semantic-ui-react";
 

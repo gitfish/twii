@@ -172,13 +172,7 @@ class BrowserAppHost extends AbstractAppHost {
     }
 
     get defaultRequest() : IRequest {
-        if(this._defaultRequest) {
-            return Object.assign({}, this._defaultRequest);
-        }
         return this.locationRequest;
-    }
-    set defaultRequest(value : IRequest) {
-        this.setDefaultRequest(value);
     }
 }
 

@@ -19,7 +19,7 @@ module.exports = {
     ],
     moduleNameMapper: {
       "@twii/lang": "@twii/lang/lib-commonjs/index.js",
-      "@twii/router/lib/(.*)$": "@twii/router/lib-commonjs/$1"
+      "@twii/router/lib/(.*)$": "@twii/router/lib-commonjs/$1",
     },
     preset: "ts-jest",
     globals: {
