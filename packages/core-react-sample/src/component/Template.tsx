@@ -14,7 +14,10 @@ const Template = (props : ITemplateProps) => {
     };
     const onClickImport = () => {
         host.load({ path: "/import" });
-    }
+    };
+    const onClickForm = () => {
+        host.load({ path: "/form" });
+    };
     return (
         <div>
             <Menu fixed="top" inverted>
@@ -26,7 +29,7 @@ const Template = (props : ITemplateProps) => {
                     <Dropdown item simple text="Data">
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={onClickImport}>Import</Dropdown.Item>
-                        <Dropdown.Item>List Item</Dropdown.Item>
+                        <Dropdown.Item onClick={onClickForm}>Form</Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Header>Header Item</Dropdown.Header>
                         <Dropdown.Item>

@@ -109,7 +109,8 @@ const createConfig = (env) => {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
-            }
+            },
+            port: 1717
         },
         plugins: [
             new HtmlWebpackPlugin({

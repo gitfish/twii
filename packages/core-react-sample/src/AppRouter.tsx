@@ -11,6 +11,7 @@ AppRouter.use((req, next) => {
     return next(req);
 });
 AppRouter.use("/import", reactRouter(() => import("./component/Import")));
+AppRouter.use("/form", reactRouter(() => import("./component/Form")));
 
 export {
     AppRouter,

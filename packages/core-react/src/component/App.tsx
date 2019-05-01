@@ -20,10 +20,7 @@ interface IAppContainer {
 }
 
 const AppContainer = (props : IAppContainerProps) => {
-    const hostRef = React.useRef<AppHost>();
-    if(!hostRef.current) {
-        hostRef.current = new AppHost();
-    }
+    const hostRef = React.useRef<AppHost>(new AppHost());
     const host = hostRef.current;
     host.root = props.root ? true : false;
     host.router = props.router;
