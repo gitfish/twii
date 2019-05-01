@@ -3,13 +3,14 @@ import { reactRouter } from "@twii/router-react";
 
 const AppRouter = new Router();
 
-const defaultRouter = reactRouter(() => import("./component/Default"), { exact: false });
+const homeRouter = reactRouter(() => import("./component/Home"), { exact: false });
 AppRouter.use((req, next) => {
-    if (req.path === "/" || req.path === "/index") {
-        return defaultRouter(req, next);
+    if (req.path === "/" || req.path === "/index" || req.path === "/home") {
+        return homeRouter(req, next);
     }
     return next(req);
 });
+AppRouter.use("/import", reactRouter(() => import("./component/Import")));
 
 export {
     AppRouter,
