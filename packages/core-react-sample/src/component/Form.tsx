@@ -4,7 +4,6 @@ import { next } from "@twii/core/lib/Id";
 import Template from "./Template";
 
 const FormSample = (props : any) => {
-    console.log("-- Func exec");
     const firstNameIdRef = React.useRef<string>(next("firstName"));
     const lastNameIdRef = React.useRef<string>(next("lastName"));
 
