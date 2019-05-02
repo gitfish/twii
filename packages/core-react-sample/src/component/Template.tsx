@@ -18,6 +18,9 @@ const Template = (props : ITemplateProps) => {
     const onClickForm = () => {
         host.load({ path: "/form" });
     };
+    const onClickCard = () => {
+        host.load({ path: "/card" });
+    };
     return (
         <div>
             <Menu fixed="top" inverted>
@@ -26,10 +29,11 @@ const Template = (props : ITemplateProps) => {
                         Twii Sample App
                     </Menu.Item>
                     <Menu.Item as="a" onClick={onClickHome}>Home</Menu.Item>
-                    <Dropdown item simple text="Data">
+                    <Dropdown item simple text="Samples">
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={onClickImport}>Import</Dropdown.Item>
                         <Dropdown.Item onClick={onClickForm}>Form</Dropdown.Item>
+                        <Dropdown.Item onClick={onClickCard}>Card</Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Header>Header Item</Dropdown.Header>
                         <Dropdown.Item>

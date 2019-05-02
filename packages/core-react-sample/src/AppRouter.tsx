@@ -12,6 +12,7 @@ AppRouter.use((req, next) => {
 });
 AppRouter.use("/import", reactRouter(() => import("./component/Import")));
 AppRouter.use("/form", reactRouter(() => import("./component/Form")));
+AppRouter.use("/card", reactRouter(() => import("./component/Card")));
 
 export {
     AppRouter,
